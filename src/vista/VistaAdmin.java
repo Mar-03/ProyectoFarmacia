@@ -26,72 +26,147 @@ public class VistaAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        fondoPanel = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        imagen = new javax.swing.JLabel();
+        userAdmin = new javax.swing.JLabel();
+        btnProductos = new javax.swing.JPanel();
+        productos = new javax.swing.JLabel();
+        btnGestionInventario = new javax.swing.JPanel();
+        inventario = new javax.swing.JLabel();
+        btnReportes = new javax.swing.JPanel();
+        reportes = new javax.swing.JLabel();
+        btnRegistroUsuarios = new javax.swing.JPanel();
+        usuarios = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JPanel();
+        salir = new javax.swing.JLabel();
+        fondoIzquierda = new javax.swing.JLabel();
+        fondoDerecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jLabel1.setText("INICIO");
+        fondoPanel.setPreferredSize(new java.awt.Dimension(1200, 700));
+        fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("imagen");
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("FARMACIA");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 350, -1));
 
-        jLabel3.setText("Usuario:");
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/150 x 142.jpg"))); // NOI18N
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 150, -1));
 
-        jLabel4.setText("Contraseña:");
+        userAdmin.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        userAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        userAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userAdmin.setText("User: ADMIN");
+        fondoPanel.add(userAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 230, 350, -1));
 
-        jButton1.setText("Acceder");
+        btnProductos.setBackground(new java.awt.Color(75, 128, 146));
+        btnProductos.setForeground(new java.awt.Color(255, 255, 255));
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        btnProductos.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                btnProductosAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        btnProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        productos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        productos.setForeground(new java.awt.Color(255, 255, 255));
+        productos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productos.setText("Productos");
+        btnProductos.add(productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        fondoPanel.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 210, 30));
+
+        btnGestionInventario.setBackground(new java.awt.Color(75, 128, 146));
+        btnGestionInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        inventario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        inventario.setForeground(new java.awt.Color(255, 255, 255));
+        inventario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inventario.setText("Gestión Inventario");
+        btnGestionInventario.add(inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        fondoPanel.add(btnGestionInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 210, 30));
+
+        btnReportes.setBackground(new java.awt.Color(75, 128, 146));
+        btnReportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        reportes.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        reportes.setForeground(new java.awt.Color(255, 255, 255));
+        reportes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        reportes.setText("Reportes");
+        btnReportes.add(reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        fondoPanel.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 210, 30));
+
+        btnRegistroUsuarios.setBackground(new java.awt.Color(75, 128, 146));
+        btnRegistroUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        usuarios.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        usuarios.setForeground(new java.awt.Color(255, 255, 255));
+        usuarios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usuarios.setText("Registro Usuarios");
+        btnRegistroUsuarios.add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        fondoPanel.add(btnRegistroUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 210, 30));
+
+        btnSalir.setBackground(new java.awt.Color(75, 128, 146));
+        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+        });
+        btnSalir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        salir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        salir.setText("Salir");
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+
+        fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 110, 30));
+
+        fondoIzquierda.setBackground(new java.awt.Color(23, 75, 93));
+        fondoIzquierda.setOpaque(true);
+        fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 700));
+
+        fondoDerecha.setBackground(new java.awt.Color(28, 95, 118));
+        fondoDerecha.setOpaque(true);
+        fondoPanel.add(fondoDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 0, 860, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(397, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)))
-                        .addGap(69, 69, 69))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(132, 132, 132))))
+            .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(60, 60, 60)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(jButton1)
-                .addContainerGap(137, Short.MAX_VALUE))
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnProductosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_btnProductosAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductosAncestorAdded
+
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        System.exit(0); 
+    }//GEN-LAST:event_btnSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -129,12 +204,21 @@ public class VistaAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel btnGestionInventario;
+    private javax.swing.JPanel btnProductos;
+    private javax.swing.JPanel btnRegistroUsuarios;
+    private javax.swing.JPanel btnReportes;
+    private javax.swing.JPanel btnSalir;
+    private javax.swing.JLabel fondoDerecha;
+    private javax.swing.JLabel fondoIzquierda;
+    private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JLabel inventario;
+    private javax.swing.JLabel productos;
+    private javax.swing.JLabel reportes;
+    private javax.swing.JLabel salir;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel userAdmin;
+    private javax.swing.JLabel usuarios;
     // End of variables declaration//GEN-END:variables
 }

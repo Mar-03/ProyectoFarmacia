@@ -4,6 +4,8 @@
  */
 package vista;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author cindy
@@ -15,6 +17,8 @@ public class VistaInicio extends javax.swing.JFrame {
      */
     public VistaInicio() {
         initComponents();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -26,21 +30,124 @@ public class VistaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondoPanel = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        contraseña = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
+        huella = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JTextField();
+        btnAcceder = new javax.swing.JPanel();
+        acceder = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        fondoIzquierda = new javax.swing.JLabel();
+        fondoDerecha = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
+        fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("INICIO");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 170, -1));
+
+        contraseña.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        contraseña.setForeground(new java.awt.Color(255, 255, 255));
+        contraseña.setText("Contraseña:");
+        fondoPanel.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 130, -1));
+
+        usuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        usuario.setForeground(new java.awt.Color(255, 255, 255));
+        usuario.setText("Usuario: ");
+        fondoPanel.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 80, 20));
+
+        huella.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/100 x 100.png"))); // NOI18N
+        huella.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        huella.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        fondoPanel.add(huella, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 90, 80));
+
+        txtUsuario.setBackground(new java.awt.Color(75, 128, 146));
+        txtUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setActionCommand("<Not Set>");
+        txtUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUsuario.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txtUsuario.setDoubleBuffered(true);
+        txtUsuario.setSelectionColor(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 290, 30));
+
+        txtContraseña.setBackground(new java.awt.Color(75, 128, 146));
+        txtContraseña.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        txtContraseña.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtContraseña.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtContraseña.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txtContraseña.setSelectionColor(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 290, 30));
+
+        btnAcceder.setBackground(new java.awt.Color(75, 128, 146));
+        btnAcceder.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAcceder.setInheritsPopupMenu(true);
+        btnAcceder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        acceder.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        acceder.setForeground(new java.awt.Color(255, 255, 255));
+        acceder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acceder.setText("Acceder");
+        btnAcceder.add(acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 106, 26));
+
+        fondoPanel.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 110, 30));
+
+        btnSalir.setBackground(new java.awt.Color(75, 128, 146));
+        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+        });
+        btnSalir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Salir");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+
+        fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 660, 80, 30));
+
+        fondoIzquierda.setBackground(new java.awt.Color(23, 75, 93));
+        fondoIzquierda.setOpaque(true);
+        fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 101, 408, 480));
+
+        fondoDerecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/600 x 568.jpg"))); // NOI18N
+        fondoPanel.add(fondoDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 530, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1193, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        System.exit(0); 
+    }//GEN-LAST:event_btnSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +185,18 @@ public class VistaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel acceder;
+    private javax.swing.JPanel btnAcceder;
+    public javax.swing.JPanel btnSalir;
+    private javax.swing.JLabel contraseña;
+    private javax.swing.JLabel fondoDerecha;
+    private javax.swing.JLabel fondoIzquierda;
+    private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel huella;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

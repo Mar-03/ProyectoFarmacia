@@ -26,21 +26,108 @@ public class VistaVendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        fondoPanel = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        imagen = new javax.swing.JLabel();
+        userCajero = new javax.swing.JLabel();
+        btnVentas = new javax.swing.JPanel();
+        ventas = new javax.swing.JLabel();
+        btnClientes = new javax.swing.JPanel();
+        clientes = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JPanel();
+        salir = new javax.swing.JLabel();
+        fondoIzquierda = new javax.swing.JLabel();
+        fondoDerecha = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("FARMACIA");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 350, -1));
+
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/150 x 142.jpg"))); // NOI18N
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+
+        userCajero.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        userCajero.setForeground(new java.awt.Color(255, 255, 255));
+        userCajero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userCajero.setText("User: CAJERO");
+        fondoPanel.add(userCajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 350, 30));
+
+        btnVentas.setBackground(new java.awt.Color(75, 128, 146));
+        btnVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ventas.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        ventas.setForeground(new java.awt.Color(255, 255, 255));
+        ventas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ventas.setText("Ventas");
+        btnVentas.add(ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        fondoPanel.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 210, 30));
+
+        btnClientes.setBackground(new java.awt.Color(75, 128, 146));
+        btnClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        clientes.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        clientes.setForeground(new java.awt.Color(255, 255, 255));
+        clientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        clientes.setText("Clientes");
+        btnClientes.add(clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        fondoPanel.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 210, 30));
+
+        btnSalir.setBackground(new java.awt.Color(75, 128, 146));
+        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+        });
+        btnSalir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        salir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        salir.setText("Salir");
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+
+        fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 110, 30));
+
+        fondoIzquierda.setBackground(new java.awt.Color(23, 75, 93));
+        fondoIzquierda.setOpaque(true);
+        fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 700));
+
+        fondoDerecha.setBackground(new java.awt.Color(28, 95, 118));
+        fondoDerecha.setOpaque(true);
+        fondoPanel.add(fondoDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 0, 860, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +165,18 @@ public class VistaVendedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnClientes;
+    private javax.swing.JPanel btnSalir;
+    private javax.swing.JPanel btnVentas;
+    private javax.swing.JLabel clientes;
+    private javax.swing.JLabel fondoDerecha;
+    private javax.swing.JLabel fondoIzquierda;
+    private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel salir;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel userCajero;
+    private javax.swing.JLabel ventas;
     // End of variables declaration//GEN-END:variables
 }
