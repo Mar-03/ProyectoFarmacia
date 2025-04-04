@@ -28,15 +28,21 @@ public class VistaVendedor extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         fondoPanel = new javax.swing.JPanel();
-        titulo = new javax.swing.JLabel();
+        marcaAgua = new javax.swing.JLabel();
         imagen = new javax.swing.JLabel();
         userCajero = new javax.swing.JLabel();
+        bienvenida = new javax.swing.JLabel();
         btnVentas = new javax.swing.JPanel();
         ventas = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         btnClientes = new javax.swing.JPanel();
         clientes = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JPanel();
         salir = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
+        btnRegresar = new javax.swing.JPanel();
+        regresar = new javax.swing.JLabel();
         fondoIzquierda = new javax.swing.JLabel();
         fondoDerecha = new javax.swing.JLabel();
 
@@ -47,20 +53,27 @@ public class VistaVendedor extends javax.swing.JFrame {
 
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("FARMACIA");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 350, -1));
+        marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
+        marcaAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        marcaAgua.setText("FARMACIA");
+        fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 350, -1));
 
+        imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/150 x 142.jpg"))); // NOI18N
-        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
-        userCajero.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        userCajero.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         userCajero.setForeground(new java.awt.Color(255, 255, 255));
         userCajero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        userCajero.setText("User: CAJERO");
-        fondoPanel.add(userCajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 350, 30));
+        userCajero.setText("VENDEDOR");
+        fondoPanel.add(userCajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 350, 40));
+
+        bienvenida.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        bienvenida.setForeground(new java.awt.Color(255, 255, 255));
+        bienvenida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bienvenida.setText("Bienvenido");
+        fondoPanel.add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 350, -1));
 
         btnVentas.setBackground(new java.awt.Color(75, 128, 146));
         btnVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -68,8 +81,12 @@ public class VistaVendedor extends javax.swing.JFrame {
         ventas.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         ventas.setForeground(new java.awt.Color(255, 255, 255));
         ventas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ventas.setText("Ventas");
+        ventas.setText("   Ventas");
         btnVentas.add(ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("🛒");
+        btnVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 20, 30));
 
         fondoPanel.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 210, 30));
 
@@ -79,8 +96,12 @@ public class VistaVendedor extends javax.swing.JFrame {
         clientes.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         clientes.setForeground(new java.awt.Color(255, 255, 255));
         clientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        clientes.setText("Clientes");
+        clientes.setText("  Clientes");
         btnClientes.add(clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("💁");
+        btnClientes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 20, 30));
 
         fondoPanel.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 210, 30));
 
@@ -96,11 +117,28 @@ public class VistaVendedor extends javax.swing.JFrame {
         salir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         salir.setForeground(new java.awt.Color(255, 255, 255));
         salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        salir.setText("Salir");
+        salir.setText("X");
         salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
-        fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 110, 30));
+        fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 30, 30));
+
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 310, -1));
+
+        btnRegresar.setBackground(new java.awt.Color(75, 128, 146));
+        btnRegresar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegresar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        regresar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        regresar.setForeground(new java.awt.Color(255, 255, 255));
+        regresar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regresar.setText("Regresar");
+        regresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 100, 20));
+
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 110, 30));
 
         fondoIzquierda.setBackground(new java.awt.Color(23, 75, 93));
         fondoIzquierda.setOpaque(true);
@@ -165,7 +203,9 @@ public class VistaVendedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bienvenida;
     private javax.swing.JPanel btnClientes;
+    private javax.swing.JPanel btnRegresar;
     private javax.swing.JPanel btnSalir;
     private javax.swing.JPanel btnVentas;
     private javax.swing.JLabel clientes;
@@ -174,8 +214,12 @@ public class VistaVendedor extends javax.swing.JFrame {
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel imagen;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel marcaAgua;
+    private javax.swing.JLabel regresar;
     private javax.swing.JLabel salir;
-    private javax.swing.JLabel titulo;
+    private javax.swing.JSeparator separador;
     private javax.swing.JLabel userCajero;
     private javax.swing.JLabel ventas;
     // End of variables declaration//GEN-END:variables

@@ -54,22 +54,23 @@ public class VistaInicio extends javax.swing.JFrame {
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("INICIO");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 170, -1));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 410, -1));
 
         contraseña.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         contraseña.setForeground(new java.awt.Color(255, 255, 255));
         contraseña.setText("Contraseña:");
-        fondoPanel.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 130, -1));
+        fondoPanel.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 130, -1));
 
         usuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         usuario.setForeground(new java.awt.Color(255, 255, 255));
         usuario.setText("Usuario: ");
-        fondoPanel.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 80, 20));
+        fondoPanel.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 80, 20));
 
+        huella.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         huella.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/100 x 100.png"))); // NOI18N
         huella.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         huella.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        fondoPanel.add(huella, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 90, 80));
+        fondoPanel.add(huella, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 410, 90));
 
         txtUsuario.setBackground(new java.awt.Color(75, 128, 146));
         txtUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -77,20 +78,21 @@ public class VistaInicio extends javax.swing.JFrame {
         txtUsuario.setActionCommand("<Not Set>");
         txtUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txtUsuario.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txtUsuario.setDoubleBuffered(true);
         txtUsuario.setSelectionColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 290, 30));
+        fondoPanel.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 290, 30));
 
         txtContraseña.setBackground(new java.awt.Color(75, 128, 146));
         txtContraseña.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
         txtContraseña.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtContraseña.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txtContraseña.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txtContraseña.setSelectionColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 290, 30));
+        fondoPanel.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 290, 30));
 
         btnAcceder.setBackground(new java.awt.Color(75, 128, 146));
         btnAcceder.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -101,9 +103,9 @@ public class VistaInicio extends javax.swing.JFrame {
         acceder.setForeground(new java.awt.Color(255, 255, 255));
         acceder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acceder.setText("Acceder");
-        btnAcceder.add(acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 106, 26));
+        btnAcceder.add(acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 2, 110, 26));
 
-        fondoPanel.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 110, 30));
+        fondoPanel.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, 110, 30));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -117,18 +119,19 @@ public class VistaInicio extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Salir");
+        jLabel2.setText("X");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalir.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+        btnSalir.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
-        fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 660, 80, 30));
+        fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 30, 30));
 
         fondoIzquierda.setBackground(new java.awt.Color(23, 75, 93));
         fondoIzquierda.setOpaque(true);
-        fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 101, 408, 480));
+        fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 408, 480));
 
+        fondoDerecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondoDerecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/600 x 568.jpg"))); // NOI18N
-        fondoPanel.add(fondoDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 530, 480));
+        fondoPanel.add(fondoDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 450, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

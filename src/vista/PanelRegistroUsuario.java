@@ -26,19 +26,161 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondoPanel = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        nombreUsuario = new javax.swing.JLabel();
+        contraseñaUsuario = new javax.swing.JLabel();
+        tipoUsuario = new javax.swing.JLabel();
+        txtNombreUsuario = new javax.swing.JTextField();
+        txtContraseñaUsuario = new javax.swing.JTextField();
+        boxTipoUsuario = new javax.swing.JComboBox<>();
+        btnRegistrar = new javax.swing.JPanel();
+        registrar = new javax.swing.JLabel();
+        btnBorrar = new javax.swing.JPanel();
+        borrar = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JPanel();
+        salir = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
+        separador2 = new javax.swing.JSeparator();
+        marcaAgua = new javax.swing.JLabel();
+
+        fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
+        fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("REGISTRO DE USUARIOS");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 850, -1));
+
+        nombreUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        nombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        nombreUsuario.setText("Nombre de Usuario:");
+        fondoPanel.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
+
+        contraseñaUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        contraseñaUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        contraseñaUsuario.setText("Contraseña de Usuario:");
+        fondoPanel.add(contraseñaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
+
+        tipoUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        tipoUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        tipoUsuario.setText("Tipo de Usuario:");
+        fondoPanel.add(tipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
+
+        txtNombreUsuario.setBackground(new java.awt.Color(75, 128, 146));
+        txtNombreUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombreUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtNombreUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fondoPanel.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 270, -1));
+
+        txtContraseñaUsuario.setBackground(new java.awt.Color(75, 128, 146));
+        txtContraseñaUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtContraseñaUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtContraseñaUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtContraseñaUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fondoPanel.add(txtContraseñaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 270, -1));
+
+        boxTipoUsuario.setBackground(new java.awt.Color(75, 128, 146));
+        boxTipoUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        boxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        fondoPanel.add(boxTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 120, -1));
+
+        btnRegistrar.setBackground(new java.awt.Color(75, 128, 146));
+        btnRegistrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegistrar.setPreferredSize(new java.awt.Dimension(110, 30));
+        btnRegistrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        registrar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        registrar.setForeground(new java.awt.Color(255, 255, 255));
+        registrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        registrar.setText("Registrar");
+        registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrar.add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 100, 20));
+
+        fondoPanel.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, -1, 30));
+
+        btnBorrar.setBackground(new java.awt.Color(75, 128, 146));
+        btnBorrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBorrar.setPreferredSize(new java.awt.Dimension(110, 30));
+        btnBorrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        borrar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        borrar.setForeground(new java.awt.Color(255, 255, 255));
+        borrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        borrar.setText("Borrar");
+        borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBorrar.add(borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, 110, 20));
+
+        fondoPanel.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, 30));
+
+        btnSalir.setBackground(new java.awt.Color(75, 128, 146));
+        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+        });
+        btnSalir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        salir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        salir.setText("X");
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+
+        fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
+
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 850, -1));
+
+        separador2.setBackground(new java.awt.Color(255, 255, 255));
+        separador2.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 850, -1));
+
+        marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
+        marcaAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        marcaAgua.setText("FARMACIA");
+        fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 850, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        System.exit(0); 
+    }//GEN-LAST:event_btnSalirMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel borrar;
+    private javax.swing.JComboBox<String> boxTipoUsuario;
+    private javax.swing.JPanel btnBorrar;
+    private javax.swing.JPanel btnRegistrar;
+    private javax.swing.JPanel btnSalir;
+    private javax.swing.JLabel contraseñaUsuario;
+    private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel marcaAgua;
+    private javax.swing.JLabel nombreUsuario;
+    private javax.swing.JLabel registrar;
+    private javax.swing.JLabel salir;
+    private javax.swing.JSeparator separador;
+    private javax.swing.JSeparator separador2;
+    private javax.swing.JLabel tipoUsuario;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtContraseñaUsuario;
+    private javax.swing.JTextField txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
 }
