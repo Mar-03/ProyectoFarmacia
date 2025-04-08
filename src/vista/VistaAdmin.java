@@ -105,6 +105,7 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("📦");
+        jLabel2.setToolTipText("");
         btnProductos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 30, 30));
 
         fondoPanel.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 210, 30));
