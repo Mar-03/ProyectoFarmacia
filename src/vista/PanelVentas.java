@@ -27,9 +27,26 @@ public class PanelVentas extends javax.swing.JPanel {
     private void initComponents() {
 
         fondoPanel = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        marcaAgua = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
+        separador2 = new javax.swing.JSeparator();
+
+        setPreferredSize(new java.awt.Dimension(850, 700));
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("VENTAS");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 850, -1));
+
+        marcaAgua.setText("FARMACIA");
+        fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 630, -1, -1));
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 500, -1, -1));
+        fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 540, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -46,5 +63,9 @@ public class PanelVentas extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel marcaAgua;
+    private javax.swing.JSeparator separador;
+    private javax.swing.JSeparator separador2;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

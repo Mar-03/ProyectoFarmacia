@@ -27,9 +27,10 @@ public class PanelInventario extends javax.swing.JPanel {
     private void initComponents() {
 
         fondoPanel = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        marcaAgua = new javax.swing.JLabel();
         btnSalir = new javax.swing.JPanel();
         salir = new javax.swing.JLabel();
-        titulo = new javax.swing.JLabel();
         btnRegistroInventario = new javax.swing.JPanel();
         registroInventario = new javax.swing.JLabel();
         btnRegistroVenta = new javax.swing.JPanel();
@@ -38,12 +39,24 @@ public class PanelInventario extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         separador = new javax.swing.JSeparator();
         separador2 = new javax.swing.JSeparator();
-        marcaAgua = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(850, 700));
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("INVENTARIO");
+        titulo.setPreferredSize(new java.awt.Dimension(302, 29));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 850, -1));
+
+        marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
+        marcaAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        marcaAgua.setText("FARMACIA");
+        fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 850, -1));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -57,13 +70,6 @@ public class PanelInventario extends javax.swing.JPanel {
         btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 0, 30, 30));
 
         fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
-
-        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("INVENTARIO");
-        titulo.setPreferredSize(new java.awt.Dimension(302, 29));
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 850, -1));
 
         btnRegistroInventario.setBackground(new java.awt.Color(75, 128, 146));
         btnRegistroInventario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -116,12 +122,6 @@ public class PanelInventario extends javax.swing.JPanel {
         separador2.setBackground(new java.awt.Color(255, 255, 255));
         separador2.setForeground(new java.awt.Color(255, 255, 255));
         fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 850, -1));
-
-        marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
-        marcaAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        marcaAgua.setText("FARMACIA");
-        fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 850, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

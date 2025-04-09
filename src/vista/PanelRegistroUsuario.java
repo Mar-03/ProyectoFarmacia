@@ -31,6 +31,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         nombreUsuario = new javax.swing.JLabel();
         contraseñaUsuario = new javax.swing.JLabel();
         tipoUsuario = new javax.swing.JLabel();
+        marcaAgua = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
         txtContraseñaUsuario = new javax.swing.JTextField();
         boxTipoUsuario = new javax.swing.JComboBox<>();
@@ -42,7 +43,6 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         salir = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
         separador2 = new javax.swing.JSeparator();
-        marcaAgua = new javax.swing.JLabel();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,6 +67,12 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         tipoUsuario.setForeground(new java.awt.Color(255, 255, 255));
         tipoUsuario.setText("Tipo de Usuario:");
         fondoPanel.add(tipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
+
+        marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
+        marcaAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        marcaAgua.setText("FARMACIA");
+        fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 850, -1));
 
         txtNombreUsuario.setBackground(new java.awt.Color(75, 128, 146));
         txtNombreUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -140,12 +146,6 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         separador2.setBackground(new java.awt.Color(255, 255, 255));
         separador2.setForeground(new java.awt.Color(255, 255, 255));
         fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 850, -1));
-
-        marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
-        marcaAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        marcaAgua.setText("FARMACIA");
-        fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 850, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
