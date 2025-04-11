@@ -4,7 +4,9 @@
  */
 package vista;
 
+import controladores.ControladorVistaInicio;
 import javax.swing.JFrame;
+import modelos.ModeloVistaInicio;
 
 /**
  *
@@ -19,6 +21,12 @@ public class VistaInicio extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        
+        ModeloVistaInicio modelo = new ModeloVistaInicio(this);
+        ControladorVistaInicio controlador = new ControladorVistaInicio(modelo);
+        
+        setControlador(controlador);
+        
     }
 
     /**
@@ -189,7 +197,7 @@ public class VistaInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acceder;
-    private javax.swing.JPanel btnAcceder;
+    public javax.swing.JPanel btnAcceder;
     public javax.swing.JPanel btnSalir;
     private javax.swing.JLabel contraseña;
     private javax.swing.JLabel fondoDerecha;
@@ -202,4 +210,12 @@ public class VistaInicio extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
+
+public void setControlador(ControladorVistaInicio controlador){
+    
+    btnAcceder.addMouseListener(controlador);
+    
+}
+
+
 }

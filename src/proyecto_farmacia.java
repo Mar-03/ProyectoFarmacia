@@ -1,12 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 
-/**
- *
- * @author anyi4
- */
+import vista.VistaInicio;
+
 public class proyecto_farmacia {
 
     /**
@@ -14,6 +8,10 @@ public class proyecto_farmacia {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        VistaInicio vistainicio = new VistaInicio();
+        vistainicio.setVisible(true);
+        
     }
     
 }
