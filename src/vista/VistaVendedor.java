@@ -4,6 +4,9 @@
  */
 package vista;
 
+import controladores.ControladorVistaVendedor;
+import modelos.ModeloVistaVendedor;
+
 /**
  *
  * @author cindy
@@ -15,6 +18,12 @@ public class VistaVendedor extends javax.swing.JFrame {
      */
     public VistaVendedor() {
         initComponents();
+        
+        ModeloVistaVendedor modelo = new ModeloVistaVendedor(this);
+        ControladorVistaVendedor controlador = new ControladorVistaVendedor(modelo);
+        
+        setControlador(controlador);
+        
     }
 
     /**
@@ -204,10 +213,10 @@ public class VistaVendedor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenida;
-    private javax.swing.JPanel btnClientes;
-    private javax.swing.JPanel btnRegresar;
+    public javax.swing.JPanel btnClientes;
+    public javax.swing.JPanel btnRegresar;
     private javax.swing.JPanel btnSalir;
-    private javax.swing.JPanel btnVentas;
+    public javax.swing.JPanel btnVentas;
     private javax.swing.JLabel clientes;
     private javax.swing.JLabel fondoDerecha;
     private javax.swing.JLabel fondoIzquierda;
@@ -223,4 +232,14 @@ public class VistaVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel userCajero;
     private javax.swing.JLabel ventas;
     // End of variables declaration//GEN-END:variables
+
+public void setControlador(ControladorVistaVendedor controlador){
+    
+   btnRegresar.addMouseListener(controlador);
+   btnClientes.addMouseListener(controlador);
+   btnVentas.addMouseListener(controlador);
+    
+    
+}
+
 }

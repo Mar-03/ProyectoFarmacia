@@ -44,7 +44,7 @@ public class ControladorVistaAdmin implements MouseListener{
         } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)){
             modelo.getVistaAdmin().btnReportes.setBackground(new Color(50,95,110));
         } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)){
-            modelo.getVistaAdmin().btnReportes.setBackground(new Color(50,95,110));
+            modelo.getVistaAdmin().btnRegistroUsuarios.setBackground(new Color(50,95,110));
         }
     }
 

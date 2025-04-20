@@ -4,10 +4,29 @@
  */
 package modelos;
 
+import vista.VistaVendedor;
+
 /**
  *
  * @author jhosu
  */
 public class ModeloVistaVendedor {
+    
+    VistaVendedor vistaVendedor;
+
+    public ModeloVistaVendedor() {
+    }
+
+    public ModeloVistaVendedor(VistaVendedor vistaVendedor) {
+        this.vistaVendedor = vistaVendedor;
+    }
+
+    public VistaVendedor getVistaVendedor() {
+        return vistaVendedor;
+    }
+
+    public void setVistaVendedor(VistaVendedor vistaVendedor) {
+        this.vistaVendedor = vistaVendedor;
+    }
     
 }
