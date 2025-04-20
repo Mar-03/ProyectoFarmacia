@@ -85,6 +85,7 @@ public class VistaVendedor extends javax.swing.JFrame {
         fondoPanel.add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 350, -1));
 
         btnVentas.setBackground(new java.awt.Color(75, 128, 146));
+        btnVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ventas.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -100,6 +101,7 @@ public class VistaVendedor extends javax.swing.JFrame {
         fondoPanel.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 210, 30));
 
         btnClientes.setBackground(new java.awt.Color(75, 128, 146));
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         clientes.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N

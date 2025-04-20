@@ -94,7 +94,7 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         btnProductos.setBackground(new java.awt.Color(75, 128, 146));
         btnProductos.setForeground(new java.awt.Color(255, 255, 255));
-        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProductos.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 btnProductosAncestorAdded(evt);
@@ -120,6 +120,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         fondoPanel.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 210, 30));
 
         btnGestionInventario.setBackground(new java.awt.Color(75, 128, 146));
+        btnGestionInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGestionInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         inventario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -135,6 +136,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         fondoPanel.add(btnGestionInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 210, 30));
 
         btnReportes.setBackground(new java.awt.Color(75, 128, 146));
+        btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         reportes.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -150,6 +152,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         fondoPanel.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 210, 30));
 
         btnRegistroUsuarios.setBackground(new java.awt.Color(75, 128, 146));
+        btnRegistroUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistroUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         usuarios.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
