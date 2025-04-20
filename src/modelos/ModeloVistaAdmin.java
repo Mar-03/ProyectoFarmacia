@@ -1,13 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelos;
 
-/**
- *
- * @author jhosu
- */
+import vista.VistaAdmin;
+
 public class ModeloVistaAdmin {
     
+   VistaAdmin vistaAdmin;
+
+    public ModeloVistaAdmin() {
+    }
+
+    public ModeloVistaAdmin(VistaAdmin vistaAdmin) {
+        this.vistaAdmin = vistaAdmin;
+    }
+
+    public VistaAdmin getVistaAdmin() {
+        return vistaAdmin;
+    }
+
+    public void setVistaAdmin(VistaAdmin vistaAdmin) {
+        this.vistaAdmin = vistaAdmin;
+    }
+   
 }

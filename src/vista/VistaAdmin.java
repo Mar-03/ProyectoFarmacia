@@ -4,6 +4,9 @@
  */
 package vista;
 
+import controladores.ControladorVistaAdmin;
+import modelos.ModeloVistaAdmin;
+
 /**
  *
  * @author cindy
@@ -15,6 +18,12 @@ public class VistaAdmin extends javax.swing.JFrame {
      */
     public VistaAdmin() {
         initComponents();
+        
+        ModeloVistaAdmin modelo = new ModeloVistaAdmin(this);
+        ControladorVistaAdmin controlador = new ControladorVistaAdmin(modelo);
+        
+        setControlador(controlador);
+        
     }
 
     /**
@@ -254,11 +263,11 @@ public class VistaAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenida;
-    private javax.swing.JPanel btnGestionInventario;
-    private javax.swing.JPanel btnProductos;
-    private javax.swing.JPanel btnRegistroUsuarios;
-    private javax.swing.JPanel btnRegresar;
-    private javax.swing.JPanel btnReportes;
+    public javax.swing.JPanel btnGestionInventario;
+    public javax.swing.JPanel btnProductos;
+    public javax.swing.JPanel btnRegistroUsuarios;
+    public javax.swing.JPanel btnRegresar;
+    public javax.swing.JPanel btnReportes;
     private javax.swing.JPanel btnSalir;
     private javax.swing.JLabel fondoDerecha;
     private javax.swing.JLabel fondoIzquierda;
@@ -278,4 +287,16 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel userAdmin;
     private javax.swing.JLabel usuarios;
     // End of variables declaration//GEN-END:variables
+
+public void setControlador(ControladorVistaAdmin controlador){
+    
+    btnRegresar.addMouseListener(controlador);
+    btnProductos.addMouseListener(controlador);
+    btnGestionInventario.addMouseListener(controlador);
+    btnReportes.addMouseListener(controlador);
+    btnRegistroUsuarios.addMouseListener(controlador);
+    
+}
+
+
 }

@@ -206,8 +206,8 @@ public class VistaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel huella;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel titulo;
-    private javax.swing.JTextField txtContraseña;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JTextField txtContraseña;
+    public javax.swing.JTextField txtUsuario;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 
