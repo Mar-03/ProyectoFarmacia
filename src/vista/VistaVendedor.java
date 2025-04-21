@@ -53,7 +53,7 @@ public class VistaVendedor extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JPanel();
         regresar = new javax.swing.JLabel();
         fondoIzquierda = new javax.swing.JLabel();
-        fondoDerecha = new javax.swing.JLabel();
+        contenedorFondo = new javax.swing.JPanel();
 
         jButton1.setText("jButton1");
 
@@ -155,9 +155,20 @@ public class VistaVendedor extends javax.swing.JFrame {
         fondoIzquierda.setOpaque(true);
         fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 700));
 
-        fondoDerecha.setBackground(new java.awt.Color(28, 95, 118));
-        fondoDerecha.setOpaque(true);
-        fondoPanel.add(fondoDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 0, 860, 700));
+        contenedorFondo.setBackground(new java.awt.Color(28, 95, 118));
+
+        javax.swing.GroupLayout contenedorFondoLayout = new javax.swing.GroupLayout(contenedorFondo);
+        contenedorFondo.setLayout(contenedorFondoLayout);
+        contenedorFondoLayout.setHorizontalGroup(
+            contenedorFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 860, Short.MAX_VALUE)
+        );
+        contenedorFondoLayout.setVerticalGroup(
+            contenedorFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 700, Short.MAX_VALUE)
+        );
+
+        fondoPanel.add(contenedorFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 860, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,7 +231,7 @@ public class VistaVendedor extends javax.swing.JFrame {
     private javax.swing.JPanel btnSalir;
     public javax.swing.JPanel btnVentas;
     private javax.swing.JLabel clientes;
-    private javax.swing.JLabel fondoDerecha;
+    public javax.swing.JPanel contenedorFondo;
     private javax.swing.JLabel fondoIzquierda;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel imagen;

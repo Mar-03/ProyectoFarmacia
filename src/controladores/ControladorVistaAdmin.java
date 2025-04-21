@@ -1,9 +1,15 @@
 package controladores;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JPanel;
 import modelos.ModeloVistaAdmin;
+import vista.PanelInventario;
+import vista.PanelProducto;
+import vista.PanelRegistroUsuario;
+import vista.PanelReportes;
 import vista.VistaInicio;
 
 public class ControladorVistaAdmin implements MouseListener{
@@ -21,6 +27,18 @@ public class ControladorVistaAdmin implements MouseListener{
             VistaInicio vistaInicio = new VistaInicio();
             vistaInicio.setVisible(true);
             modelo.getVistaAdmin().dispose();
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnProductos)){
+            PanelProducto vistaPanelProd = new PanelProducto();
+            mostrarPaneles(vistaPanelProd);
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnGestionInventario)){
+            PanelInventario vistaPanelInvent = new PanelInventario();
+            mostrarPaneles(vistaPanelInvent);
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)){
+            PanelReportes vistaPanelReport = new PanelReportes();
+            mostrarPaneles(vistaPanelReport);
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)){
+            PanelRegistroUsuario vistaPanelRegistro = new PanelRegistroUsuario();
+            mostrarPaneles(vistaPanelRegistro);
         }
         
     }
@@ -66,7 +84,15 @@ public class ControladorVistaAdmin implements MouseListener{
     }
     
     
-    public void mostrarPaneles(){
+    public void mostrarPaneles(JPanel p){
+        
+        p.setSize(855,700);
+        p.setLocation(0, 0);
+        
+        modelo.getVistaAdmin().contenedorFondo.removeAll();
+        modelo.getVistaAdmin().contenedorFondo.add(p, BorderLayout.CENTER);
+        modelo.getVistaAdmin().contenedorFondo.revalidate();
+        modelo.getVistaAdmin().contenedorFondo.repaint();
         
     }
     

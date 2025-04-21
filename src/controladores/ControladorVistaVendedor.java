@@ -1,9 +1,13 @@
 package controladores;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JPanel;
 import modelos.ModeloVistaVendedor;
+import vista.PanelClientes;
+import vista.PanelVentas;
 import vista.VistaInicio;
 
 /**
@@ -25,6 +29,12 @@ public class ControladorVistaVendedor implements MouseListener{
             VistaInicio vistaInicio = new VistaInicio();
             vistaInicio.setVisible(true);
             modelo.getVistaVendedor().dispose();
+        } else if (e.getComponent().equals(modelo.getVistaVendedor().btnVentas)){
+            PanelVentas vistaPanelVentas = new PanelVentas();
+            mostrarPanel(vistaPanelVentas);
+        } else if (e.getComponent().equals(modelo.getVistaVendedor().btnClientes)){
+            PanelClientes vistaPanelClientes = new PanelClientes();
+            mostrarPanel(vistaPanelClientes);
         }
     }
 
@@ -61,8 +71,15 @@ public class ControladorVistaVendedor implements MouseListener{
        
     
     
-    public void mostrarPanel(){
+    public void mostrarPanel(JPanel p){
         
+        p.setSize(855,700);
+        p.setLocation(0, 0);
+        
+        modelo.getVistaVendedor().contenedorFondo.removeAll();
+        modelo.getVistaVendedor().contenedorFondo.add(p, BorderLayout.CENTER);
+        modelo.getVistaVendedor().contenedorFondo.revalidate();
+        modelo.getVistaVendedor().contenedorFondo.repaint();
     }
     
     

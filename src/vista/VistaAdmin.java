@@ -53,12 +53,12 @@ public class VistaAdmin extends javax.swing.JFrame {
         btnRegistroUsuarios = new javax.swing.JPanel();
         usuarios = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnSalir = new javax.swing.JPanel();
-        salir = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JPanel();
         regresar = new javax.swing.JLabel();
         fondoIzquierda = new javax.swing.JLabel();
-        fondoDerecha = new javax.swing.JLabel();
+        contenedorFondo = new javax.swing.JPanel();
+        btnSalir = new javax.swing.JPanel();
+        salir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -167,24 +167,6 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         fondoPanel.add(btnRegistroUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 210, 30));
 
-        btnSalir.setBackground(new java.awt.Color(75, 128, 146));
-        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalirMouseClicked(evt);
-            }
-        });
-        btnSalir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        salir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        salir.setForeground(new java.awt.Color(255, 255, 255));
-        salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        salir.setText("X");
-        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
-
-        fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 30, 30));
-
         btnRegresar.setBackground(new java.awt.Color(75, 128, 146));
         btnRegresar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRegresar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -202,9 +184,42 @@ public class VistaAdmin extends javax.swing.JFrame {
         fondoIzquierda.setOpaque(true);
         fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 700));
 
-        fondoDerecha.setBackground(new java.awt.Color(28, 95, 118));
-        fondoDerecha.setOpaque(true);
-        fondoPanel.add(fondoDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 0, 860, 700));
+        contenedorFondo.setBackground(new java.awt.Color(28, 95, 118));
+
+        btnSalir.setBackground(new java.awt.Color(75, 128, 146));
+        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+        });
+        btnSalir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        salir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        salir.setText("X");
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+
+        javax.swing.GroupLayout contenedorFondoLayout = new javax.swing.GroupLayout(contenedorFondo);
+        contenedorFondo.setLayout(contenedorFondoLayout);
+        contenedorFondoLayout.setHorizontalGroup(
+            contenedorFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorFondoLayout.createSequentialGroup()
+                .addContainerGap(821, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        contenedorFondoLayout.setVerticalGroup(
+            contenedorFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorFondoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(664, Short.MAX_VALUE))
+        );
+
+        fondoPanel.add(contenedorFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 860, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -272,7 +287,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     public javax.swing.JPanel btnRegresar;
     public javax.swing.JPanel btnReportes;
     private javax.swing.JPanel btnSalir;
-    private javax.swing.JLabel fondoDerecha;
+    public javax.swing.JPanel contenedorFondo;
     private javax.swing.JLabel fondoIzquierda;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel imagen;
