@@ -135,7 +135,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         salir.setText("X");
         salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 0, 30, 30));
 
         fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
 

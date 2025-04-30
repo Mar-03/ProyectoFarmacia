@@ -130,7 +130,7 @@ public class VistaVendedor extends javax.swing.JFrame {
         salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         salir.setText("X");
         salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 0, 30, 30));
 
         fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 30, 30));
 
@@ -156,6 +156,7 @@ public class VistaVendedor extends javax.swing.JFrame {
         fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 700));
 
         contenedorFondo.setBackground(new java.awt.Color(28, 95, 118));
+        contenedorFondo.setPreferredSize(new java.awt.Dimension(850, 655));
 
         javax.swing.GroupLayout contenedorFondoLayout = new javax.swing.GroupLayout(contenedorFondo);
         contenedorFondo.setLayout(contenedorFondoLayout);

@@ -185,9 +185,12 @@ public class VistaAdmin extends javax.swing.JFrame {
         fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 700));
 
         contenedorFondo.setBackground(new java.awt.Color(28, 95, 118));
+        contenedorFondo.setPreferredSize(new java.awt.Dimension(850, 655));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.setMinimumSize(new java.awt.Dimension(30, 27));
+        btnSalir.setPreferredSize(new java.awt.Dimension(30, 27));
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalirMouseClicked(evt);
@@ -200,15 +203,15 @@ public class VistaAdmin extends javax.swing.JFrame {
         salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         salir.setText("X");
         salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+        btnSalir.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 0, 30, 30));
 
         javax.swing.GroupLayout contenedorFondoLayout = new javax.swing.GroupLayout(contenedorFondo);
         contenedorFondo.setLayout(contenedorFondoLayout);
         contenedorFondoLayout.setHorizontalGroup(
             contenedorFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorFondoLayout.createSequentialGroup()
-                .addContainerGap(821, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(824, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         contenedorFondoLayout.setVerticalGroup(

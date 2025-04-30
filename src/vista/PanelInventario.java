@@ -60,6 +60,11 @@ public class PanelInventario extends javax.swing.JPanel {
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+        });
         btnSalir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         salir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -134,6 +139,10 @@ public class PanelInventario extends javax.swing.JPanel {
             .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        System.exit(0); 
+    }//GEN-LAST:event_btnSalirMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
