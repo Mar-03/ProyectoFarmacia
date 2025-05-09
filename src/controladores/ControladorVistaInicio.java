@@ -1,5 +1,6 @@
 package controladores;
 
+import Implementacion.SesionInicioImp;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,6 +20,8 @@ public class ControladorVistaInicio implements MouseListener{
         this.modelo = modelo;
     }
 
+    SesionInicioImp implementacion = new SesionInicioImp();
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getComponent().equals(modelo.getVistaInicio().btnAcceder)){
@@ -65,5 +68,7 @@ public class ControladorVistaInicio implements MouseListener{
         
         return usuarioIngresado;
     }
+    
+    
     
 }
