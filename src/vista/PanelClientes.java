@@ -93,6 +93,7 @@ public class PanelClientes extends javax.swing.JPanel {
         txtIdCliente.setBackground(new java.awt.Color(75, 128, 146));
         txtIdCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIdCliente.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fondoPanel.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 150, -1));
 
         txtNombreCliente.setBackground(new java.awt.Color(75, 128, 146));

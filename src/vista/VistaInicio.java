@@ -86,7 +86,7 @@ public class VistaInicio extends javax.swing.JFrame {
         txtUsuario.setActionCommand("<Not Set>");
         txtUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtUsuario.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txtUsuario.setDoubleBuffered(true);
         txtUsuario.setSelectionColor(new java.awt.Color(255, 255, 255));
@@ -97,7 +97,7 @@ public class VistaInicio extends javax.swing.JFrame {
         txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
         txtContraseña.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtContraseña.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtContraseña.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txtContraseña.setSelectionColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 290, 30));

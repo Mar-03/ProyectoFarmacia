@@ -78,19 +78,20 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         txtNombreUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtNombreUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtNombreUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtNombreUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fondoPanel.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 270, -1));
 
         txtContraseñaUsuario.setBackground(new java.awt.Color(75, 128, 146));
         txtContraseñaUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtContraseñaUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtContraseñaUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtContraseñaUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtContraseñaUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fondoPanel.add(txtContraseñaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 270, -1));
 
         boxTipoUsuario.setBackground(new java.awt.Color(75, 128, 146));
         boxTipoUsuario.setForeground(new java.awt.Color(255, 255, 255));
         boxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxTipoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         fondoPanel.add(boxTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 120, -1));
 
         btnRegistrar.setBackground(new java.awt.Color(75, 128, 146));
