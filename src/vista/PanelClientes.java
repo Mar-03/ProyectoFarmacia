@@ -31,8 +31,24 @@ public class PanelClientes extends javax.swing.JPanel {
         marcaAgua = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
         separador2 = new javax.swing.JSeparator();
+        IDCliente = new javax.swing.JLabel();
+        nombreCliente = new javax.swing.JLabel();
+        telefono = new javax.swing.JLabel();
+        NIT = new javax.swing.JLabel();
+        txtIdCliente = new javax.swing.JTextField();
+        txtNombreCliente = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtNIT = new javax.swing.JTextField();
+        tblRegistroClientes = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         btnSalir = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JPanel();
+        agregar = new javax.swing.JLabel();
+        btnActualizar = new javax.swing.JPanel();
+        actualizar = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JPanel();
+        eliminar = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(850, 700));
 
@@ -53,6 +69,62 @@ public class PanelClientes extends javax.swing.JPanel {
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 850, -1));
         fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 850, -1));
 
+        IDCliente.setBackground(new java.awt.Color(255, 255, 255));
+        IDCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        IDCliente.setForeground(new java.awt.Color(255, 255, 255));
+        IDCliente.setText("ID de Cliente:");
+        fondoPanel.add(IDCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+
+        nombreCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        nombreCliente.setForeground(new java.awt.Color(255, 255, 255));
+        nombreCliente.setText("Nombre Cliente:");
+        fondoPanel.add(nombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
+
+        telefono.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        telefono.setForeground(new java.awt.Color(255, 255, 255));
+        telefono.setText("Teléfono:");
+        fondoPanel.add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
+
+        NIT.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        NIT.setForeground(new java.awt.Color(255, 255, 255));
+        NIT.setText("NIT:");
+        fondoPanel.add(NIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, -1));
+
+        txtIdCliente.setBackground(new java.awt.Color(75, 128, 146));
+        txtIdCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtIdCliente.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 150, -1));
+
+        txtNombreCliente.setBackground(new java.awt.Color(75, 128, 146));
+        txtNombreCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtNombreCliente.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 150, -1));
+
+        txtTelefono.setBackground(new java.awt.Color(75, 128, 146));
+        txtTelefono.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 150, -1));
+
+        txtNIT.setBackground(new java.awt.Color(75, 128, 146));
+        txtNIT.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtNIT.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 150, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblRegistroClientes.setViewportView(jTable1);
+
+        fondoPanel.add(tblRegistroClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 410, 250));
+
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,6 +142,45 @@ public class PanelClientes extends javax.swing.JPanel {
         btnSalir.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 0, 30, 30));
 
         fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
+
+        btnAgregar.setBackground(new java.awt.Color(75, 128, 146));
+        btnAgregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAgregar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        agregar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        agregar.setForeground(new java.awt.Color(255, 255, 255));
+        agregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agregar.setText("Agregar");
+        agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+
+        fondoPanel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 80, 30));
+
+        btnActualizar.setBackground(new java.awt.Color(75, 128, 146));
+        btnActualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnActualizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        actualizar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        actualizar.setForeground(new java.awt.Color(255, 255, 255));
+        actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        actualizar.setText("Actualizar");
+        actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+
+        fondoPanel.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 80, 30));
+
+        btnEliminar.setBackground(new java.awt.Color(75, 128, 146));
+        btnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        eliminar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        eliminar.setForeground(new java.awt.Color(255, 255, 255));
+        eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eliminar.setText("Eliminar");
+        eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+
+        fondoPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,12 +200,28 @@ public class PanelClientes extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IDCliente;
+    private javax.swing.JLabel NIT;
+    private javax.swing.JLabel actualizar;
+    private javax.swing.JLabel agregar;
+    private javax.swing.JPanel btnActualizar;
+    private javax.swing.JPanel btnAgregar;
+    private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnSalir;
+    private javax.swing.JLabel eliminar;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel marcaAgua;
+    private javax.swing.JLabel nombreCliente;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
+    private javax.swing.JScrollPane tblRegistroClientes;
+    private javax.swing.JLabel telefono;
     private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtIdCliente;
+    private javax.swing.JTextField txtNIT;
+    private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

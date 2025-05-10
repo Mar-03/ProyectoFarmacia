@@ -111,6 +111,7 @@ public class VistaInicio extends javax.swing.JFrame {
         acceder.setForeground(new java.awt.Color(255, 255, 255));
         acceder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acceder.setText("Acceder");
+        acceder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAcceder.add(acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 2, 110, 26));
 
         fondoPanel.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, 110, 30));

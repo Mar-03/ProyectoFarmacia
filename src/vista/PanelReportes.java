@@ -33,6 +33,12 @@ public class PanelReportes extends javax.swing.JPanel {
         separador2 = new javax.swing.JSeparator();
         btnSalir = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnMostrarVentas = new javax.swing.JPanel();
+        mostrarVentas = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnExportarPDF = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setPreferredSize(new java.awt.Dimension(850, 655));
@@ -70,6 +76,47 @@ public class PanelReportes extends javax.swing.JPanel {
 
         fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
 
+        btnMostrarVentas.setBackground(new java.awt.Color(75, 128, 146));
+        btnMostrarVentas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMostrarVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        mostrarVentas.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        mostrarVentas.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mostrarVentas.setText("Mostrar Ventas del Día");
+        mostrarVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMostrarVentas.add(mostrarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        fondoPanel.add(btnMostrarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 210, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 280, 670, 260));
+
+        btnExportarPDF.setBackground(new java.awt.Color(75, 128, 146));
+        btnExportarPDF.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExportarPDF.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Exportar PDF");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExportarPDF.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 30));
+
+        fondoPanel.add(btnExportarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(634, 550, 130, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,10 +135,16 @@ public class PanelReportes extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnExportarPDF;
+    private javax.swing.JPanel btnMostrarVentas;
     private javax.swing.JPanel btnSalir;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel marcaAgua;
+    private javax.swing.JLabel mostrarVentas;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
     private javax.swing.JLabel titulo;

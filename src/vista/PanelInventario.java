@@ -118,7 +118,7 @@ public class PanelInventario extends javax.swing.JPanel {
         jTable1.setShowGrid(false);
         tblTablaInventario.setViewportView(jTable1);
 
-        fondoPanel.add(tblTablaInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 670, 240));
+        fondoPanel.add(tblTablaInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 670, 260));
 
         separador.setBackground(new java.awt.Color(255, 255, 255));
         separador.setForeground(new java.awt.Color(255, 255, 255));
