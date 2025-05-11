@@ -26,6 +26,7 @@ public class PanelClientes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         fondoPanel = new javax.swing.JPanel();
         separador = new javax.swing.JSeparator();
         separador2 = new javax.swing.JSeparator();
@@ -63,6 +64,17 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         telefono = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setPreferredSize(new java.awt.Dimension(850, 700));
 
@@ -175,9 +187,9 @@ public class PanelClientes extends javax.swing.JPanel {
         agregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         agregar.setText("Agregar");
         agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregar.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+        btnAgregar.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 560, 80, 30));
+        fondoPanel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 550, 90, 30));
 
         btnActualizar.setBackground(new java.awt.Color(75, 128, 146));
         btnActualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -188,9 +200,9 @@ public class PanelClientes extends javax.swing.JPanel {
         actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         actualizar.setText("Actualizar");
         actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnActualizar.add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+        btnActualizar.add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 70, 30));
 
-        fondoPanel.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 560, 80, 30));
+        fondoPanel.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, 90, 30));
 
         btnEliminar.setBackground(new java.awt.Color(75, 128, 146));
         btnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -201,9 +213,9 @@ public class PanelClientes extends javax.swing.JPanel {
         eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         eliminar.setText("Eliminar");
         eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEliminar.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+        btnEliminar.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 50, 30));
 
-        fondoPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 560, 80, 30));
+        fondoPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 550, 90, 30));
 
         titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -292,7 +304,7 @@ public class PanelClientes extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -316,6 +328,7 @@ public class PanelClientes extends javax.swing.JPanel {
     public javax.swing.JPanel btnSalir;
     private javax.swing.JLabel eliminar;
     private javax.swing.JPanel fondoPanel;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
