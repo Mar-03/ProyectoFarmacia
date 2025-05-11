@@ -33,6 +33,28 @@ public class PanelProducto extends javax.swing.JPanel {
         separador2 = new javax.swing.JSeparator();
         btnSalir = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,6 +91,54 @@ public class PanelProducto extends javax.swing.JPanel {
 
         fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
 
+        jLabel2.setText("Nombre producto:");
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
+        fondoPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 150, -1));
+        fondoPanel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 250, -1));
+
+        jLabel3.setText("Nombre oficial:");
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
+
+        jLabel4.setText("Descripción:");
+        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
+        fondoPanel.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 630, -1));
+
+        jLabel5.setText("Código de barras:");
+        fondoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
+
+        jLabel6.setText("Requiere receta? S/N");
+        fondoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 130, -1));
+        fondoPanel.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 380, -1));
+        fondoPanel.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, -1, -1));
+
+        jLabel7.setText("Activo:");
+        fondoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, -1, -1));
+        fondoPanel.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, -1, -1));
+
+        jLabel8.setText("Fecha registro:");
+        fondoPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, -1, -1));
+        fondoPanel.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, -1, -1));
+
+        jLabel9.setText("Precio:");
+        fondoPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, -1, -1));
+        fondoPanel.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, -1, -1));
+
+        jLabel10.setText("Cantidad:");
+        fondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, -1, -1));
+        fondoPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 500, 90, 20));
+
+        jButton2.setText("Agregar");
+        fondoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, -1, -1));
+
+        jButton3.setText("Actualizar");
+        fondoPanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, -1, -1));
+
+        jButton4.setText("Eliminar");
+        fondoPanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, -1, -1));
+
+        jButton5.setText("Buscar");
+        fondoPanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,7 +159,29 @@ public class PanelProducto extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnSalir;
     private javax.swing.JPanel fondoPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;

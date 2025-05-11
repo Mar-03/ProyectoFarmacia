@@ -33,6 +33,34 @@ public class PanelVentas extends javax.swing.JPanel {
         separador2 = new javax.swing.JSeparator();
         btnSalir = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField14 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(850, 700));
 
@@ -71,6 +99,68 @@ public class PanelVentas extends javax.swing.JPanel {
 
         fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
 
+        jLabel2.setText("No. Codigo barras:");
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+
+        jLabel3.setText("Cantidad:");
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
+
+        jLabel4.setText("ID Cliente:");
+        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+
+        jLabel5.setText("Fecha:");
+        fondoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, -1, -1));
+
+        jLabel6.setText("Subtotal:");
+        fondoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
+
+        jLabel7.setText("Descuento con Subsidio:");
+        fondoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, -1, -1));
+
+        jLabel8.setText("Total:");
+        fondoPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, -1, -1));
+
+        jLabel9.setText("Tipo de pago:");
+        fondoPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
+
+        jLabel10.setText("cuenta con subsidio? S/N:");
+        fondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
+
+        jLabel11.setText("ID Institución de subsidio:");
+        fondoPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, -1, -1));
+
+        jLabel12.setText("Observaciones:");
+        fondoPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, -1, -1));
+        fondoPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 200, -1));
+        fondoPanel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 80, -1));
+        fondoPanel.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 120, -1));
+        fondoPanel.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, -1, -1));
+        fondoPanel.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 200, -1));
+
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 160, -1));
+        fondoPanel.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 180, -1));
+        fondoPanel.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 170, -1));
+        fondoPanel.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 210, -1));
+        fondoPanel.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 100, -1));
+        fondoPanel.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 710, 80));
+
+        jLabel13.setText("ID Producto:");
+        fondoPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        fondoPanel.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 160, -1));
+        fondoPanel.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, -1, -1));
+
+        jLabel14.setText("Nombre Producto:");
+        fondoPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, -1, -1));
+        fondoPanel.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
+
+        jLabel15.setText("Precio:");
+        fondoPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,11 +177,43 @@ public class PanelVentas extends javax.swing.JPanel {
         System.exit(0); 
     }//GEN-LAST:event_btnSalirMouseClicked
 
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnSalir;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
