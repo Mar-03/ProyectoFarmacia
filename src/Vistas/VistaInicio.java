@@ -40,8 +40,8 @@ public class VistaInicio extends javax.swing.JFrame {
 
         fondoPanel = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
-        contraseña = new javax.swing.JLabel();
         usuario = new javax.swing.JLabel();
+        contraseña = new javax.swing.JLabel();
         huella = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         txtContraseña = new javax.swing.JTextField();
@@ -68,15 +68,15 @@ public class VistaInicio extends javax.swing.JFrame {
         titulo.setText("INICIO");
         fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 410, -1));
 
-        contraseña.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        contraseña.setForeground(new java.awt.Color(255, 255, 255));
-        contraseña.setText("Contraseña:");
-        fondoPanel.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 130, -1));
-
         usuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         usuario.setForeground(new java.awt.Color(255, 255, 255));
         usuario.setText("Usuario: ");
         fondoPanel.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 80, 20));
+
+        contraseña.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        contraseña.setForeground(new java.awt.Color(255, 255, 255));
+        contraseña.setText("Contraseña:");
+        fondoPanel.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 130, -1));
 
         huella.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         huella.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/100 x 100.png"))); // NOI18N
