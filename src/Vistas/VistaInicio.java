@@ -51,6 +51,10 @@ public class VistaInicio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         fondoIzquierda = new javax.swing.JLabel();
         fondoDerecha = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -142,11 +146,32 @@ public class VistaInicio extends javax.swing.JFrame {
         fondoDerecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/600 x 568.jpg"))); // NOI18N
         fondoPanel.add(fondoDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 450, 480));
 
+        jSeparator1.setBackground(new java.awt.Color(23, 75, 93));
+        jSeparator1.setForeground(new java.awt.Color(23, 75, 93));
+        jSeparator1.setOpaque(true);
+        fondoPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 30));
+        jSeparator1.getAccessibleContext().setAccessibleName("");
+
+        jSeparator2.setBackground(new java.awt.Color(23, 75, 93));
+        jSeparator2.setForeground(new java.awt.Color(23, 75, 93));
+        jSeparator2.setOpaque(true);
+        fondoPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 1200, 30));
+
+        jSeparator3.setBackground(new java.awt.Color(23, 75, 93));
+        jSeparator3.setForeground(new java.awt.Color(23, 75, 93));
+        jSeparator3.setOpaque(true);
+        fondoPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 700));
+
+        jSeparator4.setBackground(new java.awt.Color(23, 75, 93));
+        jSeparator4.setForeground(new java.awt.Color(23, 75, 93));
+        jSeparator4.setOpaque(true);
+        fondoPanel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 0, 30, 700));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,6 +231,10 @@ public class VistaInicio extends javax.swing.JFrame {
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel huella;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel titulo;
     public javax.swing.JTextField txtContraseña;
     public javax.swing.JTextField txtUsuario;
