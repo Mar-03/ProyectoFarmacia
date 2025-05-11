@@ -1,7 +1,7 @@
 
 package Interfaces;
 
-import modelos.ModeloVistaInicio;
+import Modelo.ModeloVistaInicio;
 
 public interface ISesionInicio {
     

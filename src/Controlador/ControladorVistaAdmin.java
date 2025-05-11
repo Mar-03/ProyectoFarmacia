@@ -1,16 +1,16 @@
-package controladores;
+package Controlador;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
-import modelos.ModeloVistaAdmin;
-import vista.PanelInventario;
-import vista.PanelProducto;
-import vista.PanelRegistroUsuario;
-import vista.PanelReportes;
-import vista.VistaInicio;
+import Modelo.ModeloVistaAdmin;
+import Vistas.PanelInventario;
+import Vistas.PanelProducto;
+import Vistas.PanelRegistroUsuario;
+import Vistas.PanelReportes;
+import Vistas.VistaInicio;
 
 public class ControladorVistaAdmin implements MouseListener{
     

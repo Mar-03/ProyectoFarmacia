@@ -1,5 +1,5 @@
 
-import vista.VistaInicio;
+import Vistas.VistaInicio;
 
 public class proyecto_farmacia {
 

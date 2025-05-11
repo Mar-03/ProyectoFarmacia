@@ -1,6 +1,6 @@
-package modelos;
+package Modelo;
 
-import vista.VistaAdmin;
+import Vistas.VistaAdmin;
 
 public class ModeloVistaAdmin {
     

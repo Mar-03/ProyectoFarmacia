@@ -1,6 +1,6 @@
-package modelos;
+package Modelo;
 
-import vista.VistaInicio;
+import Vistas.VistaInicio;
 
 public class ModeloVistaInicio {
     

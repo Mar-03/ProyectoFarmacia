@@ -3,7 +3,7 @@ package Implementacion;
 import Conector.DBConnection;
 import Conector.SQL;
 import Interfaces.ISesionInicio;
-import modelos.ModeloVistaInicio;
+import Modelo.ModeloVistaInicio;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 

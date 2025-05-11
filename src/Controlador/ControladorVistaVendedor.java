@@ -1,14 +1,14 @@
-package controladores;
+package Controlador;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
-import modelos.ModeloVistaVendedor;
-import vista.PanelClientes;
-import vista.PanelVentas;
-import vista.VistaInicio;
+import Modelo.ModeloVistaVendedor;
+import Vistas.PanelClientes;
+import Vistas.PanelVentas;
+import Vistas.VistaInicio;
 
 /**
  *

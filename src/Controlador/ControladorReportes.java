@@ -1,5 +1,5 @@
 
-package controladores;
+package Controlador;
 
 public class ControladorReportes {
     

@@ -1,12 +1,12 @@
-package controladores;
+package Controlador;
 
 import Implementacion.SesionInicioImp;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import modelos.ModeloVistaInicio;
-import vista.VistaAdmin;
-import vista.VistaVendedor;
+import Modelo.ModeloVistaInicio;
+import Vistas.VistaAdmin;
+import Vistas.VistaVendedor;
 
 /**
  *
