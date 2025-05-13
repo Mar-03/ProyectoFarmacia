@@ -54,9 +54,12 @@ public class ControladorVistaInicio implements MouseListener {
         }
     }
 
-    public void vallidarUsuario(int tipoUsuario, String usuarioIngresado, String contraIngresada, String usuarioEncontrado, String contraEncontrada) {
-
-        if (tipoUsuario == 1) {
+    public void vallidarUsuario(String tipoUsuario, String usuarioIngresado, String contraIngresada, String usuarioEncontrado, String contraEncontrada) {
+        
+        String usuarioAdmin = "ADMINISTRADOR";
+        String usuarioVend = "VENDEDOR";
+        
+        if (tipoUsuario.equals(usuarioAdmin)) {
             if (usuarioIngresado.equals(usuarioEncontrado) && contraIngresada.equals(contraEncontrada)) {
                 VistaAdmin vistaAdmin = new VistaAdmin();
                 vistaAdmin.setVisible(true);
@@ -65,7 +68,7 @@ public class ControladorVistaInicio implements MouseListener {
                 JOptionPane.showMessageDialog(null, "Error al Iniciar Sesión, usuario o contrasenia incorrectos", "ERROR INICIO DE SESIÓN", JOptionPane.ERROR_MESSAGE);
 
             }
-        } else if (tipoUsuario == 2) {
+        } else if (tipoUsuario.equals(usuarioVend)) {
             if (usuarioIngresado.equals(usuarioEncontrado) && contraIngresada.equals(contraEncontrada)) {
                 VistaVendedor vistaVendedor = new VistaVendedor();
                 vistaVendedor.setVisible(true);
@@ -95,9 +98,9 @@ public class ControladorVistaInicio implements MouseListener {
 
         ModeloVistaInicio model = implementacion.consultaUsuario(usuarioIngresado, contraseniaIngresada);
 
-        String usuarioEncontrado = modelo.getUsuarioEncontrado();
-        String contraseniaEncontrada = modelo.getContraseniaEncontrada();
-        int tipoDeUsuario = modelo.getTipoUsuario();
+        String usuarioEncontrado = model.getUsuarioEncontrado();
+        String contraseniaEncontrada = model.getContraseniaEncontrada();
+        String tipoDeUsuario = model.getTipoUsuario();
 
         vallidarUsuario(tipoDeUsuario, usuarioIngresado, contraseniaIngresada, usuarioEncontrado, contraseniaEncontrada);
 

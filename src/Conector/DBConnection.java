@@ -15,17 +15,17 @@ import java.sql.PreparedStatement;
  */
 public class DBConnection {
     
-    private final String HOST = "localhost";
-    private final String USUARIO = "root";
-    private final String CLAVE = "myserverjosu3.";
-    private final String BASEDATOS = "farmacia_social";
+    private final String HOST = "sql.freedb.tech";
+    private final String USUARIO = "freedb_UserPruebas";
+    private final String CLAVE = "bnRB@krf4&bB#72";
+    private final String BASEDATOS = "freedb_FarmaciaSocial";
     private final String URL;
     
     private Connection link;
     private PreparedStatement ps;
     
     public DBConnection(){
-        this.URL = "" + this.HOST + "/" + this.BASEDATOS;
+        this.URL = "jdbc:mysql://" + this.HOST + "/" + this.BASEDATOS;
     }
     
     public void conectar(){

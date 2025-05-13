@@ -79,7 +79,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         fondoPanel.add(bienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 350, -1));
 
         imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/150 x 142.jpg"))); // NOI18N
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/150 x 142.jpg"))); // NOI18N
         fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 150, -1));
 
         userAdmin.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N

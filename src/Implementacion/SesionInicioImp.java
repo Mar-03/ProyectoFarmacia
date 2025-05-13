@@ -6,6 +6,7 @@ import Interfaces.ISesionInicio;
 import Modelo.ModeloVistaInicio;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SesionInicioImp implements ISesionInicio{
 
@@ -28,18 +29,17 @@ public class SesionInicioImp implements ISesionInicio{
             
             while(rs.next()){
                 modelo.setIdUsuarioEncontrado(rs.getInt("id_usuario"));
-                modelo.setUsuarioEncontrado(rs.getString("nombre_usuario"));
-                modelo.setContraseniaEncontrada(rs.getString("contrasenia_usuario"));
-                modelo.setTipoUsuario(Integer.parseInt("tipo_usuario"));
+                modelo.setUsuarioEncontrado(rs.getString("nombre"));
+                modelo.setContraseniaEncontrada(rs.getString("contrasena"));
+                modelo.setTipoUsuario(rs.getString("tipo_usuario"));
+                System.out.println(rs.getString("tipo_usuario"));
             }
             conector.desconectar();
             
-        } catch (Exception e) {
-            System.out.println("Error en la consulta");
+        } catch (SQLException e) {
+            System.out.println("Error en la consulta Implementacion");
         }
     return modelo;
     }
-    
-    
-    
+      
 }

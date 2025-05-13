@@ -7,7 +7,7 @@ public class ModeloVistaInicio {
     VistaInicio vistaInicio;
     private String usuario;
     private String contrasenia;
-    private static int tipoUsuario;
+    private static String tipoUsuario;
     private static String usuarioEncontrado;
     private static String contraseniaEncontrada;
     private static int idUsuarioEncontrado;
@@ -44,14 +44,6 @@ public class ModeloVistaInicio {
         this.contrasenia = contrasenia;
     }
 
-    public static int getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public static void setTipoUsuario(int tipoUsuario) {
-        ModeloVistaInicio.tipoUsuario = tipoUsuario;
-    }
-
     public static String getUsuarioEncontrado() {
         return usuarioEncontrado;
     }
@@ -74,6 +66,14 @@ public class ModeloVistaInicio {
 
     public static void setIdUsuarioEncontrado(int idUsuarioEncontrado) {
         ModeloVistaInicio.idUsuarioEncontrado = idUsuarioEncontrado;
+    }
+
+    public static String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public static void setTipoUsuario(String tipoUsuario) {
+        ModeloVistaInicio.tipoUsuario = tipoUsuario;
     }
        
     
