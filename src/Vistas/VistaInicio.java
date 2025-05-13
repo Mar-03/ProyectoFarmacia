@@ -148,7 +148,7 @@ public class VistaInicio extends javax.swing.JFrame {
         fondoPanel.add(fondoIzquierda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 408, 480));
 
         fondoDerecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondoDerecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/600 x 568.jpg"))); // NOI18N
+        fondoDerecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Pill Icon MT 1-100.png"))); // NOI18N
         fondoPanel.add(fondoDerecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 450, 480));
 
         jSeparator1.setBackground(new java.awt.Color(23, 75, 93));
