@@ -53,13 +53,13 @@ public class PanelProducto extends javax.swing.JPanel {
         txtCantidad = new javax.swing.JTextField();
         btnSalir = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnBuscar = new javax.swing.JPanel();
+        btnActualizar = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        btnActualizar = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
@@ -207,18 +207,18 @@ public class PanelProducto extends javax.swing.JPanel {
 
         fondoPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
 
-        btnBuscar.setBackground(new java.awt.Color(75, 128, 146));
-        btnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btnActualizar.setBackground(new java.awt.Color(75, 128, 146));
+        btnActualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnActualizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Actualizar");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscar.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
+        btnActualizar.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 90, 30));
+        fondoPanel.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 90, 30));
 
         btnAgregar.setBackground(new java.awt.Color(75, 128, 146));
         btnAgregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -233,31 +233,31 @@ public class PanelProducto extends javax.swing.JPanel {
 
         fondoPanel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, 90, 30));
 
-        btnActualizar.setBackground(new java.awt.Color(75, 128, 146));
-        btnActualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnActualizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btnEliminar.setBackground(new java.awt.Color(75, 128, 146));
+        btnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Eliminar");
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnActualizar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
+        btnEliminar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 90, 30));
+        fondoPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 90, 30));
 
-        btnEliminar.setBackground(new java.awt.Color(75, 128, 146));
-        btnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btnBuscar.setBackground(new java.awt.Color(75, 128, 146));
+        btnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Buscar");
         jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEliminar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
+        btnBuscar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 355, 90, 30));
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 355, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -277,9 +277,9 @@ public class PanelProducto extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnActualizar;
-    private javax.swing.JPanel btnAgregar;
-    private javax.swing.JPanel btnBuscar;
+    public javax.swing.JPanel btnActualizar;
+    public javax.swing.JPanel btnAgregar;
+    public javax.swing.JPanel btnBuscar;
     public javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnSalir;
     private javax.swing.JPanel fondoPanel;

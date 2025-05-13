@@ -7,6 +7,8 @@ package Vistas;
 import Controlador.ControladorVistaInicio;
 import javax.swing.JFrame;
 import Modelo.ModeloVistaInicio;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  *
@@ -21,6 +23,9 @@ public class VistaInicio extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        
+        Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagen/Pill Icon MT 1-100.png"));
+        setIconImage(icono);
         
         ModeloVistaInicio modelo = new ModeloVistaInicio(this);
         ControladorVistaInicio controlador = new ControladorVistaInicio(modelo);
