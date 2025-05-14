@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import Controlador.ControladorProducto;
+import Modelo.ModeloProducto;
+
 /**
  *
  * @author cindy
@@ -15,6 +18,11 @@ public class PanelProducto extends javax.swing.JPanel {
      */
     public PanelProducto() {
         initComponents();
+        
+        ModeloProducto modelo = new ModeloProducto(this);
+        ControladorProducto controlador = new ControladorProducto(modelo);
+        
+        setControlador(controlador);
     }
 
     /**
@@ -313,4 +321,16 @@ public class PanelProducto extends javax.swing.JPanel {
     public javax.swing.JTextField txtPrecioNuevo;
     public javax.swing.JTextField txtReceta;
     // End of variables declaration//GEN-END:variables
+
+public void setControlador(ControladorProducto controlador){
+    
+    btnAgregar.addMouseListener(controlador);
+    btnBuscar.addMouseListener(controlador);
+    btnActualizar.addMouseListener(controlador);
+    btnEliminar.addMouseListener(controlador);
+    
+}
+
+
+
 }

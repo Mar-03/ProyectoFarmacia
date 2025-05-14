@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import Controlador.ControladorReportes;
+import Modelo.ModeloReporte;
+
 /**
  *
  * @author cindy
@@ -15,6 +18,9 @@ public class PanelReportes extends javax.swing.JPanel {
      */
     public PanelReportes() {
         initComponents();
+        ModeloReporte modelo = new ModeloReporte();
+        ControladorReportes controlador = new ControladorReportes(modelo);
+        
     }
 
     /**
@@ -149,4 +155,13 @@ public class PanelReportes extends javax.swing.JPanel {
     private javax.swing.JSeparator separador2;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
+
+public void setControlador(ControladorReportes controlador){
+    
+    btnExportarPDF.addMouseListener(controlador);
+    btnMostrarVentas.addMouseListener(controlador);
+   
+}
+
+
 }

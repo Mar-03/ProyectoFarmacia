@@ -1,5 +1,6 @@
 package Controlador;
 
+import Implementacion.RegistroUsuarioImp;
 import Modelo.ModeloProducto;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -9,6 +10,8 @@ import javax.swing.JOptionPane;
 public class ControladorProducto implements MouseListener {
 
     ModeloProducto modelo;
+    
+    RegistroUsuarioImp implementacion = new RegistroUsuarioImp();
 
     public ControladorProducto(ModeloProducto modelo) {
         this.modelo = modelo;

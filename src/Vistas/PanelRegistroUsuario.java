@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import Controlador.ControladorRegistroUsuario;
+import Modelo.ModeloRegistroUsuario;
+
 /**
  *
  * @author cindy
@@ -15,6 +18,11 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
      */
     public PanelRegistroUsuario() {
         initComponents();
+        
+        ModeloRegistroUsuario modelo = new ModeloRegistroUsuario();
+        ControladorRegistroUsuario controlador = new ControladorRegistroUsuario(modelo);
+       
+        setControlador(controlador);
     }
 
     /**
@@ -284,4 +292,10 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
     public javax.swing.JPasswordField txtPassword;
     public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+
+public void setControlador(ControladorRegistroUsuario controlador){
+    btnRegistrar.addMouseListener(controlador);
+    btnBorrar.addMouseListener(controlador);   
+}
+
 }
