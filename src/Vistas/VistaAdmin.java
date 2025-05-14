@@ -53,6 +53,9 @@ public class VistaAdmin extends javax.swing.JFrame {
         btnRegistroUsuarios = new javax.swing.JPanel();
         usuarios = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnComponentesProductos = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JPanel();
         regresar = new javax.swing.JLabel();
         fondoIzquierda = new javax.swing.JLabel();
@@ -117,7 +120,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         jLabel2.setToolTipText("");
         btnProductos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 30, 30));
 
-        fondoPanel.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 210, 30));
+        fondoPanel.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 210, 30));
 
         btnGestionInventario.setBackground(new java.awt.Color(75, 128, 146));
         btnGestionInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -133,7 +136,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         jLabel1.setText("📂");
         btnGestionInventario.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -4, 20, 40));
 
-        fondoPanel.add(btnGestionInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 210, 30));
+        fondoPanel.add(btnGestionInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 210, 30));
 
         btnReportes.setBackground(new java.awt.Color(75, 128, 146));
         btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -149,7 +152,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         jLabel3.setText("📝");
         btnReportes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, -4, 20, 40));
 
-        fondoPanel.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 210, 30));
+        fondoPanel.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 210, 30));
 
         btnRegistroUsuarios.setBackground(new java.awt.Color(75, 128, 146));
         btnRegistroUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -165,7 +168,23 @@ public class VistaAdmin extends javax.swing.JFrame {
         jLabel4.setText("👤");
         btnRegistroUsuarios.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 30));
 
-        fondoPanel.add(btnRegistroUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 210, 30));
+        fondoPanel.add(btnRegistroUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 210, 30));
+
+        btnComponentesProductos.setBackground(new java.awt.Color(75, 128, 146));
+        btnComponentesProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("   Componentes Productos");
+        btnComponentesProductos.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("🎲");
+        btnComponentesProductos.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 70, 30));
+
+        fondoPanel.add(btnComponentesProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 210, 30));
 
         btnRegresar.setBackground(new java.awt.Color(75, 128, 146));
         btnRegresar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -284,6 +303,7 @@ public class VistaAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenida;
+    public javax.swing.JPanel btnComponentesProductos;
     public javax.swing.JPanel btnGestionInventario;
     public javax.swing.JPanel btnProductos;
     public javax.swing.JPanel btnRegistroUsuarios;
@@ -299,6 +319,8 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JLabel productos;
     private javax.swing.JLabel regresar;
