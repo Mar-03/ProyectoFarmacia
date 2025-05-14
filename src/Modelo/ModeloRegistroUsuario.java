@@ -16,10 +16,11 @@ public class ModeloRegistroUsuario {
     private String nombreUsuario;
     private String apellidoUsuario;
     private String contraseniaUsuario;
-    private int tipoUsuario;
+    private String tipoUsuario;
     private String numeroUsuario;
     private String emailUsuario;
     private boolean activoUsuario;
+    private String usuario;
 
     public ModeloRegistroUsuario() {
     }
@@ -60,14 +61,6 @@ public class ModeloRegistroUsuario {
         this.contraseniaUsuario = contraseniaUsuario;
     }
 
-    public int getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public void setTipoUsuario(int tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
-
     public String getNumeroUsuario() {
         return numeroUsuario;
     }
@@ -91,4 +84,23 @@ public class ModeloRegistroUsuario {
     public void setActivoUsuario(boolean activoUsuario) {
         this.activoUsuario = activoUsuario;
     }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    
+    
 }

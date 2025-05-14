@@ -16,6 +16,9 @@ public class SQL {
     private final String ELIMINAR_PRODUCTO = "DELETE FROM ProductoS WHERE id_producto = ?";
     private final String ACTUALIZAR_PRODUCTO = "UPDATE productos SET nombre_oficial = ?,descripcion = ?,codigo_barras = ?,requiere_receta = ?,activo = ?,WHERE id_producto = ?";
 
+     //CONSULTA PARA LOS USUARIOS
+    private final String AGREGAR_USUARIO = "INSERT INTO usuarios, nombre, apellido, telefono, email, usuario, contrasena, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    
     public SQL() {
     }
 
@@ -38,4 +41,9 @@ public class SQL {
     public String getACTUALIZAR_PRODUCTO() {
         return ACTUALIZAR_PRODUCTO;
     }
+
+    public String getAGREGAR_USUARIO() {
+        return AGREGAR_USUARIO;
+    }
+        
 }

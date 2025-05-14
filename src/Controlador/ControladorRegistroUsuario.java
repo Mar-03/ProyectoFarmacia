@@ -4,8 +4,12 @@
  */
 package Controlador;
 
+import Implementacion.RegistroUsuarioImp;
+import Modelo.ModeloRegistroUsuario;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,28 +17,94 @@ import java.awt.event.MouseListener;
  */
 public class ControladorRegistroUsuario implements MouseListener {
 
+    ModeloRegistroUsuario modelo;
+
+    RegistroUsuarioImp implementacion = new RegistroUsuarioImp();
+
+    public ControladorRegistroUsuario(ModeloRegistroUsuario modelo) {
+        this.modelo = modelo;
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        if(e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)){
+            inputisEmpty();
+        }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)) {
+            modelo.getVistaRegistro().btnRegistrar.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaRegistro().btnBorrar)) {
+            modelo.getVistaRegistro().btnBorrar.setBackground(new Color(50, 95, 110)); 
+        }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        if (e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)) {
+            modelo.getVistaRegistro().btnRegistrar.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaRegistro().btnBorrar)) {
+            modelo.getVistaRegistro().btnBorrar.setBackground(new Color(75, 128, 146)); 
+        }
+        
+        
+        
     }
+
+    public void inputisEmpty() {
+
+        if (modelo.getVistaRegistro().txtNombreUsuario.getText().isEmpty()
+                || modelo.getVistaRegistro().txtApellidoUsuario.getText().isEmpty()
+                || modelo.getVistaRegistro().txtPassword.getPassword().equals("")
+                || modelo.getVistaRegistro().txtTelefono.getText().isEmpty()
+                || modelo.getVistaRegistro().txtEmail.getText().isEmpty()
+                || modelo.getVistaRegistro().txtActivo.getText().isEmpty()
+                || modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem() == null) {
+
+            JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ERROR \"DATOS VACIOS\"", JOptionPane.ERROR_MESSAGE);
+        } else {
+            capturaDeDatos();
+        }
+
+    }
+
+    public void capturaDeDatos() {
+
+        String nombreIngresado = modelo.getVistaRegistro().txtNombreUsuario.getText();
+        String apellidoIngresado = modelo.getVistaRegistro().txtApellidoUsuario.getText();
+        String contraseniaIngresada = String.valueOf(modelo.getVistaRegistro().txtPassword.getPassword());
+        String telefonoIngresado = modelo.getVistaRegistro().txtTelefono.getText();
+        String emailIngresado = modelo.getVistaRegistro().txtEmail.getText();
+        String usuarioActivo = modelo.getVistaRegistro().txtActivo.getText();
+
+        creacionDeUsuario(nombreIngresado, apellidoIngresado, contraseniaIngresada, telefonoIngresado, emailIngresado, usuarioActivo);
+    }
+
+    public void creacionDeUsuario(String nombreIngre, String apellidoIngre, String contraIngre, String telefonoIngre, String emailIngre, String usuarioActivo) {
+
+        ModeloRegistroUsuario model = new ModeloRegistroUsuario();
+
+        model.setNombreUsuario(nombreIngre);
+        model.setApellidoUsuario(apellidoIngre);
+        model.setContraseniaUsuario(contraIngre);
+        model.setNumeroUsuario(telefonoIngre);
+        model.setEmailUsuario(emailIngre);
+
+        implementacion.guardarUsuario(model);
+
+    }
+
 }
