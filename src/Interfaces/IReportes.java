@@ -9,5 +9,5 @@ package Interfaces;
  * @author jhosu
  */
 public interface IReportes {
-    
+
 }

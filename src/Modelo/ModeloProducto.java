@@ -3,9 +3,9 @@ package Modelo;
 import Vistas.PanelProducto;
 
 public class ModeloProducto {
-    
+
     PanelProducto vistaProducto;
-    
+
     private int idProducto;
     private String nombreOficialP;
     private String descripcionP;
@@ -13,8 +13,7 @@ public class ModeloProducto {
     private boolean requiereRecetaP;
     private boolean activoP;
     private String fechaRegistro;
-   
-    
+
     public ModeloProducto() {
     }
 
@@ -85,6 +84,4 @@ public class ModeloProducto {
     public void setFechaRegistro(String fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
-    
-    
 }

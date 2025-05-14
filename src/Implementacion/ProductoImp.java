@@ -39,16 +39,15 @@ public class ProductoImp implements IProducto {
         } catch (SQLException e) {
             resultado = false;
         }
-
         return resultado;
     }
 
     @Override
     public boolean actualizarProducto(ModeloProducto modelo) {
-        
+
         boolean resultado = false;
         conector.conectar();
-        
+
         try {
             ps = conector.preparar(sql.getACTUALIZAR_PRODUCTO());
             ps.setString(1, modelo.getNombreOficialP());
@@ -56,16 +55,13 @@ public class ProductoImp implements IProducto {
             ps.setString(3, modelo.getCodigoBarrasP());
             ps.setBoolean(4, modelo.isRequiereRecetaP());
             ps.setBoolean(5, modelo.isActivoP());
-           
+
             int filasAfectadas = ps.executeUpdate();
             resultado = (filasAfectadas > 0);
-            
+
         } catch (SQLException e) {
-        
             resultado = false;
-            
         }
-        
         return resultado;
     }
 
@@ -87,6 +83,7 @@ public class ProductoImp implements IProducto {
         } catch (SQLException e) {
             resultado = false;
             System.out.println("No se puedo eliminar el producto Mimp(eliminarProducto) " + e);
+
         } finally {
 
             if (ps != null) {
@@ -95,7 +92,6 @@ public class ProductoImp implements IProducto {
                 } catch (SQLException e) {
                 }
             }
-
             if (conector != null) {
                 conector.desconectar();
             }
@@ -126,9 +122,7 @@ public class ProductoImp implements IProducto {
             conector.desconectar();
         } catch (SQLException e) {
             System.out.println("Error al realizar la consulta " + e);
-
         }
         return modelo;
     }
-
 }

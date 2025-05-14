@@ -19,11 +19,8 @@ public class ControladorProducto implements MouseListener {
         if (e.getComponent().equals(modelo.getVistaProducto().btnBuscar)) {
 
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnAgregar)) {
-
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnActualizar)) {
-
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnEliminar)) {
-
         }
     }
 
@@ -73,10 +70,9 @@ public class ControladorProducto implements MouseListener {
                 || modelo.getVistaProducto().txtDescripcion.getText().isEmpty()) {
             JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ERROR \"DATOS VACIOS\"", JOptionPane.ERROR_MESSAGE);
         } else {
-            
         }
     }
-    
+
     /*
         modelo.getVistaProducto().txtNombreProducto.getText().isEmpty()
                 || modelo.getVistaProducto().txtCantidad.getText().isEmpty()
@@ -86,11 +82,9 @@ public class ControladorProducto implements MouseListener {
                 || modelo.getVistaProducto().txtActivo.getText().isEmpty()
                 || modelo.getVistaProducto().txtCantidad.getText().isEmpty()
                 || modelo.getVistaProducto().txtPrecioNuevo.getText()
-        
-        */
-    public void capturaDeDatosAgregarP(){
-       
-        
+     */
+    public void capturaDeDatosAgregarP() {
+
         String nombreIngresadoP = modelo.getVistaProducto().txtNombreProducto.getText();
         String descripcionIngresadaP = modelo.getVistaProducto().txtDescripcion.getText();
         String codigoBarrasP = modelo.getVistaProducto().txtCodigoBarras.getText();
@@ -100,11 +94,5 @@ public class ControladorProducto implements MouseListener {
         //Dejo pendiente lo mismo que con Receta pero para Activo
         String cantidadStockP = modelo.getVistaProducto().txtCantidad.getText();
 //        String precioNuevoP =  modelo.getVistaProducto().txtPrecioNuevo.getText();
-        
-        
-    
-
-    
     }
-
 }

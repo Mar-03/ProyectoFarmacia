@@ -3,7 +3,7 @@ package Modelo;
 import Vistas.VistaInicio;
 
 public class ModeloVistaInicio {
-    
+
     VistaInicio vistaInicio;
     private String usuario;
     private String contrasenia;
@@ -14,8 +14,7 @@ public class ModeloVistaInicio {
 
     public ModeloVistaInicio() {
     }
-    
-    
+
     public ModeloVistaInicio(VistaInicio vistaInicio) {
         this.vistaInicio = vistaInicio;
     }
@@ -75,8 +74,4 @@ public class ModeloVistaInicio {
     public static void setTipoUsuario(String tipoUsuario) {
         ModeloVistaInicio.tipoUsuario = tipoUsuario;
     }
-       
-    
-    
-    
 }

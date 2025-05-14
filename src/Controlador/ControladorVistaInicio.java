@@ -55,10 +55,10 @@ public class ControladorVistaInicio implements MouseListener {
     }
 
     public void vallidarUsuario(String tipoUsuario, String usuarioIngresado, String contraIngresada, String usuarioEncontrado, String contraEncontrada) {
-        
+
         String usuarioAdmin = "ADMINISTRADOR";
         String usuarioVend = "VENDEDOR";
-        
+
         if (tipoUsuario.equals(usuarioAdmin)) {
             if (usuarioIngresado.equals(usuarioEncontrado) && contraIngresada.equals(contraEncontrada)) {
                 VistaAdmin vistaAdmin = new VistaAdmin();
@@ -66,7 +66,6 @@ public class ControladorVistaInicio implements MouseListener {
                 modelo.getVistaInicio().dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al Iniciar Sesión, usuario o contrasenia incorrectos", "ERROR INICIO DE SESIÓN", JOptionPane.ERROR_MESSAGE);
-
             }
         } else if (tipoUsuario.equals(usuarioVend)) {
             if (usuarioIngresado.equals(usuarioEncontrado) && contraIngresada.equals(contraEncontrada)) {
@@ -76,9 +75,7 @@ public class ControladorVistaInicio implements MouseListener {
             } else {
                 JOptionPane.showMessageDialog(null, "Error al Iniciar Sesión, usuario o contrasenia incorrectos", "ERROR INICIO DE SESIÓN", JOptionPane.ERROR_MESSAGE);
             }
-
         }
-
     }
 
     public void inputIsEmpty() {
@@ -88,7 +85,6 @@ public class ControladorVistaInicio implements MouseListener {
         } else {
             capturaDeDatos();
         }
-
     }
 
     public void capturaDeDatos() {
@@ -103,7 +99,5 @@ public class ControladorVistaInicio implements MouseListener {
         String tipoDeUsuario = model.getTipoUsuario();
 
         vallidarUsuario(tipoDeUsuario, usuarioIngresado, contraseniaIngresada, usuarioEncontrado, contraseniaEncontrada);
-
     }
-
 }

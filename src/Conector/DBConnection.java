@@ -9,44 +9,45 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+
 /**
  *
  * @author jhosu
  */
 public class DBConnection {
-    
+
     private final String HOST = "sql.freedb.tech";
     private final String USUARIO = "freedb_UserPruebas";
     private final String CLAVE = "bnRB@krf4&bB#72";
     private final String BASEDATOS = "freedb_FarmaciaSocial";
     private final String URL;
-    
+
     private Connection link;
     private PreparedStatement ps;
-    
-    public DBConnection(){
+
+    public DBConnection() {
         this.URL = "jdbc:mysql://" + this.HOST + "/" + this.BASEDATOS;
     }
-    
-    public void conectar(){
+
+    public void conectar() {
         try {
             this.link = DriverManager.getConnection(this.URL, this.USUARIO, this.CLAVE);
         } catch (IllegalArgumentException | SecurityException | SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    
-    public void desconectar (){
+
+    public void desconectar() {
         try {
-            if(link != null && !link.isClosed()){
-            this.link.close();    
+            if (link != null && !link.isClosed()) {
+                this.link.close();
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    
-    public PreparedStatement preparar (String sql){
+
+    public PreparedStatement preparar(String sql) {
         try {
             ps = link.prepareStatement(sql);
         } catch (SQLException ex) {
@@ -75,6 +76,4 @@ public class DBConnection {
 //        
 //    }
 //}
-    
-    
 }

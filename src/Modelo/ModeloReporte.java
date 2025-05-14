@@ -3,7 +3,7 @@ package Modelo;
 import Vistas.PanelRegistroUsuario;
 
 public class ModeloReporte {
-    
+
     PanelRegistroUsuario vistaRegistro;
 
     public ModeloReporte() {
@@ -20,5 +20,4 @@ public class ModeloReporte {
     public void setVistaRegistro(PanelRegistroUsuario vistaRegistro) {
         this.vistaRegistro = vistaRegistro;
     }
-     
 }

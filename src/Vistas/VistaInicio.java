@@ -23,15 +23,15 @@ public class VistaInicio extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        
+
         Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagen/Pill Icon MT 1-100.png"));
         setIconImage(icono);
-        
+
         ModeloVistaInicio modelo = new ModeloVistaInicio(this);
         ControladorVistaInicio controlador = new ControladorVistaInicio(modelo);
-        
+
         setControlador(controlador);
-        
+
     }
 
     /**
@@ -188,7 +188,7 @@ public class VistaInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-        System.exit(0); 
+        System.exit(0);
     }//GEN-LAST:event_btnSalirMouseClicked
 
     /**
@@ -246,11 +246,10 @@ public class VistaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 
-public void setControlador(ControladorVistaInicio controlador){
-    
-    btnAcceder.addMouseListener(controlador);
-    
-}
+    public void setControlador(ControladorVistaInicio controlador) {
 
+        btnAcceder.addMouseListener(controlador);
+
+    }
 
 }

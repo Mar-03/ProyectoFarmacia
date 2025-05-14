@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import java.awt.event.MouseEvent;
@@ -25,7 +24,4 @@ public class ControladorReportes implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
-    
-    
 }

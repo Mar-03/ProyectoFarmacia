@@ -12,8 +12,8 @@ import Vistas.PanelRegistroUsuario;
 import Vistas.PanelReportes;
 import Vistas.VistaInicio;
 
-public class ControladorVistaAdmin implements MouseListener{
-    
+public class ControladorVistaAdmin implements MouseListener {
+
     ModeloVistaAdmin modelo;
 
     public ControladorVistaAdmin(ModeloVistaAdmin modelo) {
@@ -22,25 +22,24 @@ public class ControladorVistaAdmin implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
-        if(e.getComponent().equals(modelo.getVistaAdmin().btnRegresar)){
+
+        if (e.getComponent().equals(modelo.getVistaAdmin().btnRegresar)) {
             VistaInicio vistaInicio = new VistaInicio();
             vistaInicio.setVisible(true);
             modelo.getVistaAdmin().dispose();
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnProductos)){
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnProductos)) {
             PanelProducto vistaPanelProd = new PanelProducto();
             mostrarPaneles(vistaPanelProd);
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnGestionInventario)){
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnGestionInventario)) {
             PanelInventario vistaPanelInvent = new PanelInventario();
             mostrarPaneles(vistaPanelInvent);
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)){
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)) {
             PanelReportes vistaPanelReport = new PanelReportes();
             mostrarPaneles(vistaPanelReport);
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)){
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)) {
             PanelRegistroUsuario vistaPanelRegistro = new PanelRegistroUsuario();
             mostrarPaneles(vistaPanelRegistro);
         }
-        
     }
 
     @Override
@@ -53,48 +52,43 @@ public class ControladorVistaAdmin implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        if(e.getComponent().equals(modelo.getVistaAdmin().btnRegresar)){
-            modelo.getVistaAdmin().btnRegresar.setBackground(new Color(50,95,110));
-        } else if(e.getComponent().equals(modelo.getVistaAdmin().btnProductos)){
-            modelo.getVistaAdmin().btnProductos.setBackground(new Color(50,95,110));
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnGestionInventario)){
-            modelo.getVistaAdmin().btnGestionInventario.setBackground(new Color(50,95,110));
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)){
-            modelo.getVistaAdmin().btnReportes.setBackground(new Color(50,95,110));
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)){
-            modelo.getVistaAdmin().btnRegistroUsuarios.setBackground(new Color(50,95,110));
+        if (e.getComponent().equals(modelo.getVistaAdmin().btnRegresar)) {
+            modelo.getVistaAdmin().btnRegresar.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnProductos)) {
+            modelo.getVistaAdmin().btnProductos.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnGestionInventario)) {
+            modelo.getVistaAdmin().btnGestionInventario.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)) {
+            modelo.getVistaAdmin().btnReportes.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)) {
+            modelo.getVistaAdmin().btnRegistroUsuarios.setBackground(new Color(50, 95, 110));
         }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
-        if(e.getComponent().equals(modelo.getVistaAdmin().btnRegresar)){
-            modelo.getVistaAdmin().btnRegresar.setBackground(new Color(75,128,146));
-        } else if(e.getComponent().equals(modelo.getVistaAdmin().btnProductos)){
-            modelo.getVistaAdmin().btnProductos.setBackground(new Color(75,128,146));
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnGestionInventario)){
-            modelo.getVistaAdmin().btnGestionInventario.setBackground(new Color(75,128,146));
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)){
-            modelo.getVistaAdmin().btnReportes.setBackground(new Color(75,128,146));
-        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)){
-            modelo.getVistaAdmin().btnRegistroUsuarios.setBackground(new Color(75,128,146));
+
+        if (e.getComponent().equals(modelo.getVistaAdmin().btnRegresar)) {
+            modelo.getVistaAdmin().btnRegresar.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnProductos)) {
+            modelo.getVistaAdmin().btnProductos.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnGestionInventario)) {
+            modelo.getVistaAdmin().btnGestionInventario.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)) {
+            modelo.getVistaAdmin().btnReportes.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)) {
+            modelo.getVistaAdmin().btnRegistroUsuarios.setBackground(new Color(75, 128, 146));
         }
-        
     }
-    
-    
-    public void mostrarPaneles(JPanel p){
-        
-        p.setSize(855,700);
+
+    public void mostrarPaneles(JPanel p) {
+
+        p.setSize(855, 700);
         p.setLocation(0, 0);
-        
+
         modelo.getVistaAdmin().contenedorFondo.removeAll();
         modelo.getVistaAdmin().contenedorFondo.add(p, BorderLayout.CENTER);
         modelo.getVistaAdmin().contenedorFondo.revalidate();
         modelo.getVistaAdmin().contenedorFondo.repaint();
-        
     }
-    
-    
 }

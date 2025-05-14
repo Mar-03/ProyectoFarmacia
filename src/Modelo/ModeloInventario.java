@@ -3,7 +3,7 @@ package Modelo;
 import Vistas.PanelInventario;
 
 public class ModeloInventario {
-    
+
     PanelInventario vistaInventario;
 
     public ModeloInventario() {
@@ -20,6 +20,4 @@ public class ModeloInventario {
     public void setVistaInventario(PanelInventario vistaInventario) {
         this.vistaInventario = vistaInventario;
     }
-    
-    
 }

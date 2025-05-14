@@ -3,8 +3,8 @@ package Modelo;
 import Vistas.VistaAdmin;
 
 public class ModeloVistaAdmin {
-    
-   VistaAdmin vistaAdmin;
+
+    VistaAdmin vistaAdmin;
 
     public ModeloVistaAdmin() {
     }
@@ -20,5 +20,4 @@ public class ModeloVistaAdmin {
     public void setVistaAdmin(VistaAdmin vistaAdmin) {
         this.vistaAdmin = vistaAdmin;
     }
-   
 }

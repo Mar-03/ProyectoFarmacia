@@ -18,12 +18,12 @@ public class VistaVendedor extends javax.swing.JFrame {
      */
     public VistaVendedor() {
         initComponents();
-        
+
         ModeloVistaVendedor modelo = new ModeloVistaVendedor(this);
         ControladorVistaVendedor controlador = new ControladorVistaVendedor(modelo);
-        
+
         setControlador(controlador);
-        
+
     }
 
     /**
@@ -247,13 +247,12 @@ public class VistaVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel ventas;
     // End of variables declaration//GEN-END:variables
 
-public void setControlador(ControladorVistaVendedor controlador){
-    
-   btnRegresar.addMouseListener(controlador);
-   btnClientes.addMouseListener(controlador);
-   btnVentas.addMouseListener(controlador);
-    
-    
-}
+    public void setControlador(ControladorVistaVendedor controlador) {
+
+        btnRegresar.addMouseListener(controlador);
+        btnClientes.addMouseListener(controlador);
+        btnVentas.addMouseListener(controlador);
+
+    }
 
 }

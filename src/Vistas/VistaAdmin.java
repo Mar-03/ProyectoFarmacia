@@ -18,12 +18,12 @@ public class VistaAdmin extends javax.swing.JFrame {
      */
     public VistaAdmin() {
         initComponents();
-        
+
         ModeloVistaAdmin modelo = new ModeloVistaAdmin(this);
         ControladorVistaAdmin controlador = new ControladorVistaAdmin(modelo);
-        
+
         setControlador(controlador);
-        
+
     }
 
     /**
@@ -244,7 +244,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductosAncestorAdded
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-        System.exit(0); 
+        System.exit(0);
     }//GEN-LAST:event_btnSalirMouseClicked
 
     /**
@@ -309,15 +309,14 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel usuarios;
     // End of variables declaration//GEN-END:variables
 
-public void setControlador(ControladorVistaAdmin controlador){
-    
-    btnRegresar.addMouseListener(controlador);
-    btnProductos.addMouseListener(controlador);
-    btnGestionInventario.addMouseListener(controlador);
-    btnReportes.addMouseListener(controlador);
-    btnRegistroUsuarios.addMouseListener(controlador);
-    
-}
+    public void setControlador(ControladorVistaAdmin controlador) {
 
+        btnRegresar.addMouseListener(controlador);
+        btnProductos.addMouseListener(controlador);
+        btnGestionInventario.addMouseListener(controlador);
+        btnReportes.addMouseListener(controlador);
+        btnRegistroUsuarios.addMouseListener(controlador);
+
+    }
 
 }

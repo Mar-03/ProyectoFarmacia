@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
  *
  * @author jhosu
  */
-public class ControladorRegistroUsuario implements  MouseListener{
+public class ControladorRegistroUsuario implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -37,5 +37,4 @@ public class ControladorRegistroUsuario implements  MouseListener{
     public void mouseExited(MouseEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 }

@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
 /**
  *
  * @author jhosu
@@ -24,19 +23,15 @@ public class RegistroUsuarioImp implements IRegistroUsuario {
     @Override
     public boolean guardarUsuario(ModeloRegistroUsuario modelo) {
         boolean resultado = false;
-        
+
         conector.conectar();
-        
+
         try {
-           
+
             ps.setString(1, modelo.getNombreUsuario());
             ps.setString(2, modelo.getApellidoUsuario());
         } catch (Exception e) {
         }
-        
-        
-        
-       
     }
 
     @Override
@@ -50,5 +45,4 @@ public class RegistroUsuarioImp implements IRegistroUsuario {
     @Override
     public ModeloRegistroUsuario validarUsuario(String nombreU, String contraU) {
     }
-
 }

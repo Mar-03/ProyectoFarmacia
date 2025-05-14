@@ -11,7 +11,7 @@ import Vistas.VistaVendedor;
  * @author jhosu
  */
 public class ModeloVistaVendedor {
-    
+
     VistaVendedor vistaVendedor;
 
     public ModeloVistaVendedor() {
@@ -28,5 +28,4 @@ public class ModeloVistaVendedor {
     public void setVistaVendedor(VistaVendedor vistaVendedor) {
         this.vistaVendedor = vistaVendedor;
     }
-    
 }

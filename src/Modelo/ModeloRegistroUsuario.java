@@ -11,7 +11,7 @@ import Vistas.PanelRegistroUsuario;
  * @author jhosu
  */
 public class ModeloRegistroUsuario {
-    
+
     PanelRegistroUsuario vistaRegistro;
     private String nombreUsuario;
     private String apellidoUsuario;
@@ -20,9 +20,7 @@ public class ModeloRegistroUsuario {
     private String numeroUsuario;
     private String emailUsuario;
     private boolean activoUsuario;
-    
-    
-    
+
     public ModeloRegistroUsuario() {
     }
 
@@ -93,6 +91,4 @@ public class ModeloRegistroUsuario {
     public void setActivoUsuario(boolean activoUsuario) {
         this.activoUsuario = activoUsuario;
     }
-    
-    
 }
