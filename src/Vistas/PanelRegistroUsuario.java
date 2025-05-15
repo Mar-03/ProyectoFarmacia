@@ -21,7 +21,10 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         
         ModeloRegistroUsuario modelo = new ModeloRegistroUsuario(this);
         ControladorRegistroUsuario controlador = new ControladorRegistroUsuario(modelo);
-       
+        
+        btnBorrar.setVisible(false);
+        labelFechaRegistro.setVisible(false);
+        txtFechaRegistro.setVisible(false);
         setControlador(controlador);
     }
 
@@ -60,9 +63,11 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         titulo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        labelFechaRegistro = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         boxUsuarioActivo = new javax.swing.JComboBox<>();
+        btnBuscar = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,7 +132,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrar.add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 100, 20));
 
-        fondoPanel.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, -1, 30));
+        fondoPanel.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 510, -1, 30));
 
         btnBorrar.setBackground(new java.awt.Color(75, 128, 146));
         btnBorrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -141,7 +146,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBorrar.add(borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, 110, 20));
 
-        fondoPanel.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, -1, 30));
+        fondoPanel.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, -1, 30));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -223,11 +228,11 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         jLabel4.setText("Activo:");
         fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 70, -1));
 
-        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Fecha de Registro:");
-        fondoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 140, -1));
+        labelFechaRegistro.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelFechaRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        labelFechaRegistro.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelFechaRegistro.setText("Fecha de Registro:");
+        fondoPanel.add(labelFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 140, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,6 +244,32 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         boxUsuarioActivo.setForeground(new java.awt.Color(255, 255, 255));
         boxUsuarioActivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO", " " }));
         fondoPanel.add(boxUsuarioActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 160, -1));
+
+        btnBuscar.setBackground(new java.awt.Color(75, 128, 146));
+        btnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Buscar");
+
+        javax.swing.GroupLayout btnBuscarLayout = new javax.swing.GroupLayout(btnBuscar);
+        btnBuscar.setLayout(btnBuscarLayout);
+        btnBuscarLayout.setHorizontalGroup(
+            btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBuscarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnBuscarLayout.setVerticalGroup(
+            btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBuscarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -266,6 +297,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> boxTipoUsuario;
     public javax.swing.JComboBox<String> boxUsuarioActivo;
     public javax.swing.JPanel btnBorrar;
+    public javax.swing.JPanel btnBuscar;
     public javax.swing.JPanel btnRegistrar;
     public javax.swing.JPanel btnSalir;
     private javax.swing.JLabel contraseñaUsuario;
@@ -274,8 +306,9 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel labelFechaRegistro;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JLabel nombreUsuario;
     private javax.swing.JLabel registrar;
@@ -295,7 +328,8 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
 
 public void setControlador(ControladorRegistroUsuario controlador){
     btnRegistrar.addMouseListener(controlador);
-    btnBorrar.addMouseListener(controlador);   
+    btnBorrar.addMouseListener(controlador);
+    btnBuscar.addMouseListener(controlador);
 }
 
 }

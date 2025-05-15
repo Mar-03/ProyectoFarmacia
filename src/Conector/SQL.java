@@ -8,7 +8,7 @@ public class SQL {
 
     //DOCUMENTO PARA HACER LAS CONSULTAS A LA BASE DE DATOS
     //CONSULTAS PARA USUARIOS
-    private final String CONSULTA_USUARIO = "SELECT id_usuario, nombre, contrasena, tipo_usuario FROM usuarios WHERE nombre = ?";
+    private final String CONSULTA_USUARIO = "SELECT id_usuario, usuario, contrasena, tipo_usuario FROM usuarios WHERE usuario = ?";
 
     //CONSULTAS PARA PRODUCTOS
     private final String AGREGAR_PRODUCTO = "INSERT INTO productos (nombre_oficial, descripcion, codigo_barras, requiere_receta) VALUES (?,?,?,?)";
@@ -40,7 +40,7 @@ public class SQL {
         "AND direccion LIKE ? AND identificacion = ? AND nit LIKE ? AND subsidio LIKE ? AND fecha LIKE ?";
 
      //CONSULTA PARA LOS USUARIOS
-    private final String AGREGAR_USUARIO = "INSERT INTO usuarios, nombre, apellido, telefono, email, usuario, contrasena, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private final String AGREGAR_USUARIO = "INSERT INTO usuarios (nombre, apellido, telefono, email, usuario, contrasena, tipo_usuario, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
     public String getCONSULTA_USUARIO() {
         return CONSULTA_USUARIO;

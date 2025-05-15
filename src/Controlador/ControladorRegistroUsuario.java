@@ -29,7 +29,9 @@ public class ControladorRegistroUsuario implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         if (e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)) {
-            inputisEmpty();
+            inputisEmptyRegistrar();
+        } else if (e.getComponent().equals(modelo .getVistaRegistro().btnBuscar)){
+            
         }
     }
 
@@ -62,7 +64,25 @@ public class ControladorRegistroUsuario implements MouseListener {
 
     }
 
-    public void inputisEmpty() {
+    public void inputisEmptyRegistrar() {
+
+        if (modelo.getVistaRegistro().txtNombrePersonal.getText().isEmpty()
+                || modelo.getVistaRegistro().txtApellidoPersonal.getText().isEmpty()
+                || modelo.getVistaRegistro().txtPassword.getPassword().equals("")
+                || modelo.getVistaRegistro().txtTelefono.getText().isEmpty()
+                || modelo.getVistaRegistro().txtEmail.getText().isEmpty()
+                || modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem() == null
+                || modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem() == null) {
+//warning
+            JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ADVERTENCIA \"DATOS VACIOS\"", JOptionPane.WARNING_MESSAGE);
+        } else {
+            capturaDeDatos();
+
+            limpiarDatos();
+        }
+
+    }
+    public void inputisEmptyBuscar() {
 
         if (modelo.getVistaRegistro().txtNombrePersonal.getText().isEmpty()
                 || modelo.getVistaRegistro().txtApellidoPersonal.getText().isEmpty()
@@ -109,13 +129,13 @@ public class ControladorRegistroUsuario implements MouseListener {
         model.setActivoUsuario(usuarioActivo);
 
         System.out.println(nombreIngre + apellidoIngre + telefonoIngre + emailIngre + nombreUsuario + contraIngre + tipoUsuario + usuarioActivo);
-//        boolean creacionUsuario = implementacion.guardarUsuario(model);
+        boolean creacionUsuario = implementacion.guardarUsuario(model);
         
-//        if (creacionUsuario == true) {
-//            JOptionPane.showInternalMessageDialog(null, "Usuario creado con éxito", "\"CREACIÓN DE USUARIOS\"", JOptionPane.INFORMATION_MESSAGE);
-//        } else {
-//            JOptionPane.showInternalMessageDialog(null, "Error en la creación del usuario", "ERROR \"ERROR AL CREAR USUARIO\"", JOptionPane.ERROR_MESSAGE);
-//        }
+        if (creacionUsuario == true) {
+            JOptionPane.showInternalMessageDialog(null, "Usuario creado con éxito", "\"CREACIÓN DE USUARIOS\"", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showInternalMessageDialog(null, "Error en la creación del usuario", "ERROR \"ERROR AL CREAR USUARIO\"", JOptionPane.ERROR_MESSAGE);
+        }
 
     }
 

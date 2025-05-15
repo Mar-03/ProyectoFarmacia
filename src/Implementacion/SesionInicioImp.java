@@ -28,7 +28,7 @@ public class SesionInicioImp implements ISesionInicio {
 
             while (rs.next()) {
                 modelo.setIdUsuarioEncontrado(rs.getInt("id_usuario"));
-                modelo.setUsuarioEncontrado(rs.getString("nombre"));
+                modelo.setUsuarioEncontrado(rs.getString("usuario"));
                 modelo.setContraseniaEncontrada(rs.getString("contrasena"));
                 modelo.setTipoUsuario(rs.getString("tipo_usuario"));
                 System.out.println(rs.getString("tipo_usuario"));
