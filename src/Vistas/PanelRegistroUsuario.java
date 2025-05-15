@@ -35,13 +35,12 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
     private void initComponents() {
 
         fondoPanel = new javax.swing.JPanel();
-        txtIdUsuario = new javax.swing.JTextField();
         txtNombreUsuario = new javax.swing.JTextField();
-        txtApellidoUsuario = new javax.swing.JTextField();
+        txtNombrePersonal = new javax.swing.JTextField();
+        txtApellidoPersonal = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         txtFechaRegistro = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        txtActivo = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         boxTipoUsuario = new javax.swing.JComboBox<>();
         btnRegistrar = new javax.swing.JPanel();
@@ -63,31 +62,32 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        boxUsuarioActivo = new javax.swing.JComboBox<>();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtIdUsuario.setBackground(new java.awt.Color(75, 128, 146));
-        txtIdUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtIdUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtIdUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 160, -1));
-
         txtNombreUsuario.setBackground(new java.awt.Color(75, 128, 146));
         txtNombreUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombreUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtNombreUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        fondoPanel.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 160, -1));
+        fondoPanel.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 160, -1));
 
-        txtApellidoUsuario.setBackground(new java.awt.Color(75, 128, 146));
-        txtApellidoUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtApellidoUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtApellidoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 160, -1));
+        txtNombrePersonal.setBackground(new java.awt.Color(75, 128, 146));
+        txtNombrePersonal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtNombrePersonal.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombrePersonal.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtNombrePersonal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        fondoPanel.add(txtNombrePersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 160, -1));
+
+        txtApellidoPersonal.setBackground(new java.awt.Color(75, 128, 146));
+        txtApellidoPersonal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtApellidoPersonal.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtApellidoPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 160, -1));
 
         txtTelefono.setBackground(new java.awt.Color(75, 128, 146));
         txtTelefono.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 160, -1));
+        fondoPanel.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 160, -1));
 
         txtFechaRegistro.setBackground(new java.awt.Color(75, 128, 146));
         txtFechaRegistro.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -97,17 +97,12 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
                 txtFechaRegistroActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 160, -1));
+        fondoPanel.add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 460, 160, -1));
 
         txtEmail.setBackground(new java.awt.Color(75, 128, 146));
         txtEmail.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 160, -1));
-
-        txtActivo.setBackground(new java.awt.Color(75, 128, 146));
-        txtActivo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtActivo.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 160, -1));
+        fondoPanel.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, 160, -1));
 
         txtPassword.setBackground(new java.awt.Color(75, 128, 146));
         txtPassword.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -177,7 +172,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Nombre de Usuario:");
+        jLabel1.setText("Nombres Personales:");
         fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 150, -1));
 
         tipoUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -202,43 +197,48 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Teléfono:");
-        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 140, -1));
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 140, -1));
 
         nombreUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         nombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
         nombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        nombreUsuario.setText("Apellido de Usuario:");
+        nombreUsuario.setText("Apellidos Personales:");
         fondoPanel.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 170, -1));
 
         titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("REGISTRO DE USUARIOS");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 850, -1));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 850, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Email:");
-        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 80, -1));
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 80, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Activo:");
-        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 70, -1));
+        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 70, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Fecha de Registro:");
-        fondoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 140, -1));
+        fondoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 140, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("ID Usuario:");
+        jLabel6.setText("Nombre de Usuario:");
         fondoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 150, -1));
+
+        boxUsuarioActivo.setBackground(new java.awt.Color(75, 128, 146));
+        boxUsuarioActivo.setForeground(new java.awt.Color(255, 255, 255));
+        boxUsuarioActivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO", " " }));
+        fondoPanel.add(boxUsuarioActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 160, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -264,6 +264,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel borrar;
     public javax.swing.JComboBox<String> boxTipoUsuario;
+    public javax.swing.JComboBox<String> boxUsuarioActivo;
     public javax.swing.JPanel btnBorrar;
     public javax.swing.JPanel btnRegistrar;
     public javax.swing.JPanel btnSalir;
@@ -283,11 +284,10 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
     private javax.swing.JSeparator separador2;
     private javax.swing.JLabel tipoUsuario;
     private javax.swing.JLabel titulo;
-    public javax.swing.JTextField txtActivo;
-    public javax.swing.JTextField txtApellidoUsuario;
+    public javax.swing.JTextField txtApellidoPersonal;
     public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtFechaRegistro;
-    public javax.swing.JTextField txtIdUsuario;
+    public javax.swing.JTextField txtNombrePersonal;
     public javax.swing.JTextField txtNombreUsuario;
     public javax.swing.JPasswordField txtPassword;
     public javax.swing.JTextField txtTelefono;

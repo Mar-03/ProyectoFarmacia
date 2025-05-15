@@ -64,12 +64,12 @@ public class ControladorRegistroUsuario implements MouseListener {
 
     public void inputisEmpty() {
 
-        if (modelo.getVistaRegistro().txtNombreUsuario.getText().isEmpty()
-                || modelo.getVistaRegistro().txtApellidoUsuario.getText().isEmpty()
+        if (modelo.getVistaRegistro().txtNombrePersonal.getText().isEmpty()
+                || modelo.getVistaRegistro().txtApellidoPersonal.getText().isEmpty()
                 || modelo.getVistaRegistro().txtPassword.getPassword().equals("")
                 || modelo.getVistaRegistro().txtTelefono.getText().isEmpty()
                 || modelo.getVistaRegistro().txtEmail.getText().isEmpty()
-                || modelo.getVistaRegistro().txtActivo.getText().isEmpty()
+                || modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem() == null
                 || modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem() == null) {
 //warning
             JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ADVERTENCIA \"DATOS VACIOS\"", JOptionPane.WARNING_MESSAGE);
@@ -83,46 +83,66 @@ public class ControladorRegistroUsuario implements MouseListener {
 
     public void capturaDeDatos() {
 
-        String nombreIngresado = modelo.getVistaRegistro().txtNombreUsuario.getText();
-        String apellidoIngresado = modelo.getVistaRegistro().txtApellidoUsuario.getText();
+        String nombreIngresado = modelo.getVistaRegistro().txtNombrePersonal.getText();
+        String apellidoIngresado = modelo.getVistaRegistro().txtApellidoPersonal.getText();
         String contraseniaIngresada = String.valueOf(modelo.getVistaRegistro().txtPassword.getPassword());
         String telefonoIngresado = modelo.getVistaRegistro().txtTelefono.getText();
         String emailIngresado = modelo.getVistaRegistro().txtEmail.getText();
-        String usuarioActivo = modelo.getVistaRegistro().txtActivo.getText();
-
-        creacionDeUsuario(nombreIngresado, apellidoIngresado, contraseniaIngresada, telefonoIngresado, emailIngresado, usuarioActivo);
+        boolean usuarioActivo = validarUsuarioActivo(String.valueOf(modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem()));
+        //String usuarioActivo = String.valueOf(modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem());
+        String tipoUsuario = String.valueOf(modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem());
+        String nombreUsuarioInicio = modelo.getVistaRegistro().txtNombreUsuario.getText();
+        creacionDeUsuario(nombreIngresado, apellidoIngresado, telefonoIngresado, emailIngresado,nombreUsuarioInicio,contraseniaIngresada,tipoUsuario,usuarioActivo);
     }
 
-    public void creacionDeUsuario(String nombreIngre, String apellidoIngre, String contraIngre, String telefonoIngre, String emailIngre, String usuarioActivo) {
+    public void creacionDeUsuario(String nombreIngre, String apellidoIngre, String telefonoIngre,String emailIngre,String nombreUsuario,String contraIngre, String tipoUsuario ,boolean usuarioActivo) {
 
         ModeloRegistroUsuario model = new ModeloRegistroUsuario();
 
         model.setNombreUsuario(nombreIngre);
         model.setApellidoUsuario(apellidoIngre);
-        model.setContraseniaUsuario(contraIngre);
         model.setNumeroUsuario(telefonoIngre);
         model.setEmailUsuario(emailIngre);
+        model.setUsuario(nombreUsuario);
+        model.setContraseniaUsuario(contraIngre);
+        model.setTipoUsuario(tipoUsuario);
+        model.setActivoUsuario(usuarioActivo);
 
-        boolean creacionUsuario = implementacion.guardarUsuario(model);
+        System.out.println(nombreIngre + apellidoIngre + telefonoIngre + emailIngre + nombreUsuario + contraIngre + tipoUsuario + usuarioActivo);
+//        boolean creacionUsuario = implementacion.guardarUsuario(model);
         
-        if (creacionUsuario == true) {
-            JOptionPane.showInternalMessageDialog(null, "Usuario creado con éxito", "\"CREACIÓN DE USUARIOS\"", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showInternalMessageDialog(null, "Error en la creación del usuario", "ERROR \"ERROR AL CREAR USUARIO\"", JOptionPane.ERROR_MESSAGE);
-        }
+//        if (creacionUsuario == true) {
+//            JOptionPane.showInternalMessageDialog(null, "Usuario creado con éxito", "\"CREACIÓN DE USUARIOS\"", JOptionPane.INFORMATION_MESSAGE);
+//        } else {
+//            JOptionPane.showInternalMessageDialog(null, "Error en la creación del usuario", "ERROR \"ERROR AL CREAR USUARIO\"", JOptionPane.ERROR_MESSAGE);
+//        }
 
     }
 
     public void limpiarDatos() {
 
-        modelo.getVistaRegistro().txtNombreUsuario.setText("");
-        modelo.getVistaRegistro().txtApellidoUsuario.setText("");
+        modelo.getVistaRegistro().txtNombrePersonal.setText("");
+        modelo.getVistaRegistro().txtApellidoPersonal.setText("");
         modelo.getVistaRegistro().txtPassword.setText("");
         modelo.getVistaRegistro().txtTelefono.setText("");
         modelo.getVistaRegistro().txtEmail.setText("");
-        modelo.getVistaRegistro().txtActivo.setText("");
+        modelo.getVistaRegistro().boxUsuarioActivo.setSelectedIndex(0);
         modelo.getVistaRegistro().boxTipoUsuario.setSelectedIndex(0);
+        modelo.getVistaRegistro().txtNombreUsuario.setText("");
 
     }
 
+    public boolean validarUsuarioActivo (String usuarioActivo){
+        
+        boolean estaActivo = true;
+        
+        if(usuarioActivo.equals("SI")){
+            estaActivo = true;
+        } else {
+            estaActivo = false;
+        }
+        
+       return estaActivo;
+    }
+    
 }
