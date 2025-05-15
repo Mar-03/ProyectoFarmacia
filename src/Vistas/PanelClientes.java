@@ -8,6 +8,13 @@ package Vistas;
  *
  * @author cindy
  */
+import Conector.*;
+import Controlador.ControladorVistaInicio;
+import modelos.*;
+import controladores.ControladorClientes;
+import java.awt.event.MouseListener;
+
+
 public class PanelClientes extends javax.swing.JPanel {
 
     /**
@@ -15,6 +22,11 @@ public class PanelClientes extends javax.swing.JPanel {
      */
     public PanelClientes() {
         initComponents();
+        
+        ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
+        ControladorClientes controlador = new ControladorClientes(modelo, this);
+
+        setControlador(controlador);
     }
 
     /**
@@ -320,8 +332,8 @@ public class PanelClientes extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDCliente;
     private javax.swing.JLabel NIT;
-    private javax.swing.JLabel actualizar;
-    private javax.swing.JLabel agregar;
+    public javax.swing.JLabel actualizar;
+    public javax.swing.JLabel agregar;
     public javax.swing.JPanel btnActualizar;
     public javax.swing.JPanel btnAgregar;
     public javax.swing.JPanel btnEliminar;
@@ -337,7 +349,7 @@ public class PanelClientes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JLabel nombreCliente;
     private javax.swing.JSeparator separador;
@@ -357,4 +369,12 @@ public class PanelClientes extends javax.swing.JPanel {
     public javax.swing.JTextField txtSubsidio;
     public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+
+ public void setControlador(ControladorClientes controlador) {
+        btnAgregar.addMouseListener ((MouseListener) controlador);
+        btnActualizar.addMouseListener((MouseListener) controlador);
+        btnEliminar.addMouseListener((MouseListener) controlador);
+        tblRegistroClientes.addMouseListener((MouseListener) controlador);
+
+    }
 }

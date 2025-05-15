@@ -15,13 +15,33 @@ public class SQL {
     private final String CONSULTA_PRODUCTO = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE id_producto = ?";
     private final String ELIMINAR_PRODUCTO = "DELETE FROM ProductoS WHERE id_producto = ?";
     private final String ACTUALIZAR_PRODUCTO = "UPDATE productos SET nombre_oficial = ?,descripcion = ?,codigo_barras = ?,requiere_receta = ?,activo = ?,WHERE id_producto = ?";
+    // COSULRA PARA CLIENTES USUSARIOS
+    
+
+    private final String INSERT = 
+        "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    private  final String UPDATE = 
+        "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, identificacion=?, " +
+        "subsidio=?, fecha=? WHERE id_cliente=?";
+
+    private final String DELETE = 
+        "DELETE FROM clientes WHERE id_cliente=?";
+
+    private final String SELECT_ALL = 
+        "SELECT * FROM clientes";
+
+    private final String SELECT_BY_ID = 
+        "SELECT * FROM clientes WHERE id_cliente=?";
+
+    private final String SELECT_BY_PARAMS = 
+        "SELECT * FROM clientes WHERE nombre LIKE ? AND apellido LIKE ? AND telefono = ? " +
+        "AND direccion LIKE ? AND identificacion = ? AND nit LIKE ? AND subsidio LIKE ? AND fecha LIKE ?";
 
      //CONSULTA PARA LOS USUARIOS
     private final String AGREGAR_USUARIO = "INSERT INTO usuarios, nombre, apellido, telefono, email, usuario, contrasena, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
     
-    public SQL() {
-    }
-
     public String getCONSULTA_USUARIO() {
         return CONSULTA_USUARIO;
     }
@@ -45,5 +65,10 @@ public class SQL {
     public String getAGREGAR_USUARIO() {
         return AGREGAR_USUARIO;
     }
-        
+     public String getAtualizar_USUARIO() {
+        return AGREGAR_USUARIO;
+    }
+     public String geteiminar_USUARIO() {
+        return AGREGAR_USUARIO;
+    }
 }
