@@ -69,6 +69,8 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        boxReceta = new javax.swing.JComboBox<>();
+        boxActivo = new javax.swing.JComboBox<>();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,7 +172,7 @@ public class PanelProducto extends javax.swing.JPanel {
         txtReceta.setBackground(new java.awt.Color(75, 128, 146));
         txtReceta.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtReceta.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtReceta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 140, -1));
+        fondoPanel.add(txtReceta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 140, -1));
 
         txtFechaRegistro.setBackground(new java.awt.Color(75, 128, 146));
         txtFechaRegistro.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -185,7 +187,7 @@ public class PanelProducto extends javax.swing.JPanel {
         txtActivo.setBackground(new java.awt.Color(75, 128, 146));
         txtActivo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtActivo.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 140, -1));
+        fondoPanel.add(txtActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 140, -1));
 
         txtPrecioNuevo.setBackground(new java.awt.Color(75, 128, 146));
         txtPrecioNuevo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -267,6 +269,18 @@ public class PanelProducto extends javax.swing.JPanel {
 
         fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 355, 90, 30));
 
+        boxReceta.setBackground(new java.awt.Color(75, 128, 146));
+        boxReceta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        boxReceta.setForeground(new java.awt.Color(255, 255, 255));
+        boxReceta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        fondoPanel.add(boxReceta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 140, 30));
+
+        boxActivo.setBackground(new java.awt.Color(75, 128, 146));
+        boxActivo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        boxActivo.setForeground(new java.awt.Color(255, 255, 255));
+        boxActivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        fondoPanel.add(boxActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 140, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -285,6 +299,8 @@ public class PanelProducto extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> boxActivo;
+    public javax.swing.JComboBox<String> boxReceta;
     public javax.swing.JPanel btnActualizar;
     public javax.swing.JPanel btnAgregar;
     public javax.swing.JPanel btnBuscar;

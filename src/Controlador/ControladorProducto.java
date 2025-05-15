@@ -1,6 +1,6 @@
 package Controlador;
 
-import Implementacion.RegistroUsuarioImp;
+import Implementacion.ProductoImp;
 import Modelo.ModeloProducto;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -11,7 +11,7 @@ public class ControladorProducto implements MouseListener {
 
     ModeloProducto modelo;
     
-    RegistroUsuarioImp implementacion = new RegistroUsuarioImp();
+    ProductoImp implementacion = new ProductoImp();
 
     public ControladorProducto(ModeloProducto modelo) {
         this.modelo = modelo;
@@ -22,7 +22,9 @@ public class ControladorProducto implements MouseListener {
         if (e.getComponent().equals(modelo.getVistaProducto().btnBuscar)) {
 
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnAgregar)) {
+            inputIsEmptyAgregarP();
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnActualizar)) {
+            
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnEliminar)) {
         }
     }
@@ -61,7 +63,7 @@ public class ControladorProducto implements MouseListener {
         }
     }
 
-    public void inputIsEmpty() {
+    public void inputIsEmptyAgregarP() {
         if (modelo.getVistaProducto().txtNombreProducto.getText().isEmpty()
                 || modelo.getVistaProducto().txtCantidad.getText().isEmpty()
                 || modelo.getVistaProducto().txtCodigoBarras.getText().isEmpty()
@@ -73,6 +75,7 @@ public class ControladorProducto implements MouseListener {
                 || modelo.getVistaProducto().txtDescripcion.getText().isEmpty()) {
             JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ERROR \"DATOS VACIOS\"", JOptionPane.ERROR_MESSAGE);
         } else {
+            capturaDeDatosAgregarP();
         }
     }
 
@@ -87,15 +90,19 @@ public class ControladorProducto implements MouseListener {
                 || modelo.getVistaProducto().txtPrecioNuevo.getText()
      */
     public void capturaDeDatosAgregarP() {
+        
+        ModeloProducto model = new ModeloProducto();
 
-        String nombreIngresadoP = modelo.getVistaProducto().txtNombreProducto.getText();
-        String descripcionIngresadaP = modelo.getVistaProducto().txtDescripcion.getText();
-        String codigoBarrasP = modelo.getVistaProducto().txtCodigoBarras.getText();
-        //Dejo pendiente el Requiere Receta S/N sería mejor usar un comboBox
-        String fechaRegistroP = modelo.getVistaProducto().txtFechaRegistro.getText();
-        String precioInicialP = modelo.getVistaProducto().txtPrecioInicial.getText();
-        //Dejo pendiente lo mismo que con Receta pero para Activo
-        String cantidadStockP = modelo.getVistaProducto().txtCantidad.getText();
+        String nombreIngresadoP = model.getVistaProducto().txtNombreProducto.getText();
+        String descripcionIngresadaP = model.getVistaProducto().txtDescripcion.getText();
+        String codigoBarrasP = model.getVistaProducto().txtCodigoBarras.getText();
+        String receta = String.valueOf(model.getVistaProducto().boxReceta.getSelectedItem());
+        String fechaRegistroP = model.getVistaProducto().txtFechaRegistro.getText();
+        String precioInicialP = model.getVistaProducto().txtPrecioInicial.getText();
+         String productoActivo = String.valueOf(model.getVistaProducto().boxActivo.getSelectedItem());
+        String cantidadStockP = model.getVistaProducto().txtCantidad.getText();
 //        String precioNuevoP =  modelo.getVistaProducto().txtPrecioNuevo.getText();
+
+        implementacion.guardarProducto(model);
     }
 }
