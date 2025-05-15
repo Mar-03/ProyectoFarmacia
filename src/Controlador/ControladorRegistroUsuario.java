@@ -27,8 +27,8 @@ public class ControladorRegistroUsuario implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
-        if(e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)){
+
+        if (e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)) {
             inputisEmpty();
         }
     }
@@ -47,21 +47,19 @@ public class ControladorRegistroUsuario implements MouseListener {
         if (e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)) {
             modelo.getVistaRegistro().btnRegistrar.setBackground(new Color(50, 95, 110));
         } else if (e.getComponent().equals(modelo.getVistaRegistro().btnBorrar)) {
-            modelo.getVistaRegistro().btnBorrar.setBackground(new Color(50, 95, 110)); 
+            modelo.getVistaRegistro().btnBorrar.setBackground(new Color(50, 95, 110));
         }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
+
         if (e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)) {
             modelo.getVistaRegistro().btnRegistrar.setBackground(new Color(75, 128, 146));
         } else if (e.getComponent().equals(modelo.getVistaRegistro().btnBorrar)) {
-            modelo.getVistaRegistro().btnBorrar.setBackground(new Color(75, 128, 146)); 
+            modelo.getVistaRegistro().btnBorrar.setBackground(new Color(75, 128, 146));
         }
-        
-        
-        
+
     }
 
     public void inputisEmpty() {
@@ -73,10 +71,12 @@ public class ControladorRegistroUsuario implements MouseListener {
                 || modelo.getVistaRegistro().txtEmail.getText().isEmpty()
                 || modelo.getVistaRegistro().txtActivo.getText().isEmpty()
                 || modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem() == null) {
-
-            JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ERROR \"DATOS VACIOS\"", JOptionPane.ERROR_MESSAGE);
+//warning
+            JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ADVERTENCIA \"DATOS VACIOS\"", JOptionPane.WARNING_MESSAGE);
         } else {
             capturaDeDatos();
+
+            limpiarDatos();
         }
 
     }
@@ -103,7 +103,25 @@ public class ControladorRegistroUsuario implements MouseListener {
         model.setNumeroUsuario(telefonoIngre);
         model.setEmailUsuario(emailIngre);
 
-        implementacion.guardarUsuario(model);
+        boolean creacionUsuario = implementacion.guardarUsuario(model);
+        
+        if (creacionUsuario == true) {
+            JOptionPane.showInternalMessageDialog(null, "Usuario creado con éxito", "\"CREACIÓN DE USUARIOS\"", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showInternalMessageDialog(null, "Error en la creación del usuario", "ERROR \"ERROR AL CREAR USUARIO\"", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    public void limpiarDatos() {
+
+        modelo.getVistaRegistro().txtNombreUsuario.setText("");
+        modelo.getVistaRegistro().txtApellidoUsuario.setText("");
+        modelo.getVistaRegistro().txtPassword.setText("");
+        modelo.getVistaRegistro().txtTelefono.setText("");
+        modelo.getVistaRegistro().txtEmail.setText("");
+        modelo.getVistaRegistro().txtActivo.setText("");
+        modelo.getVistaRegistro().boxTipoUsuario.setSelectedIndex(0);
 
     }
 

@@ -41,7 +41,7 @@ public class RegistroUsuarioImp implements IRegistroUsuario {
 
             int filasAfectadas = ps.executeUpdate();
             resultado = (filasAfectadas > 0);
-
+            
         } catch (SQLException e) {
              resultado = false;
             System.out.println("Error metodo GuardarUsuario " + e);

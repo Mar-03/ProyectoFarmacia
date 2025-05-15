@@ -19,7 +19,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
     public PanelRegistroUsuario() {
         initComponents();
         
-        ModeloRegistroUsuario modelo = new ModeloRegistroUsuario();
+        ModeloRegistroUsuario modelo = new ModeloRegistroUsuario(this);
         ControladorRegistroUsuario controlador = new ControladorRegistroUsuario(modelo);
        
         setControlador(controlador);
@@ -116,7 +116,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
 
         boxTipoUsuario.setBackground(new java.awt.Color(75, 128, 146));
         boxTipoUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        boxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VENDEDOR", "ADMINISTRADOR" }));
         boxTipoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         fondoPanel.add(boxTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 160, -1));
 
