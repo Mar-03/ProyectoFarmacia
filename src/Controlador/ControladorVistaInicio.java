@@ -95,21 +95,27 @@ public class ControladorVistaInicio implements MouseListener {
     }
 
     public void capturaDeDatos() {
+        try {
+            String usuarioIngresado = modelo.getVistaInicio().txtUsuario.getText();
+            String contraseniaIngresada = modelo.getVistaInicio().txtContraseña.getText();
 
-        String usuarioIngresado = modelo.getVistaInicio().txtUsuario.getText();
-        String contraseniaIngresada = modelo.getVistaInicio().txtContraseña.getText();
+            ModeloVistaInicio model = implementacion.consultaUsuario(usuarioIngresado, contraseniaIngresada);
 
-        ModeloVistaInicio model = implementacion.consultaUsuario(usuarioIngresado, contraseniaIngresada);
+            String usuarioEncontrado = model.getUsuarioEncontrado();
+            String contraseniaEncontrada = model.getContraseniaEncontrada();
+            String tipoDeUsuario = model.getTipoUsuario();
 
-        String usuarioEncontrado = model.getUsuarioEncontrado();
-        String contraseniaEncontrada = model.getContraseniaEncontrada();
-        String tipoDeUsuario = model.getTipoUsuario();
+            validarUsuario(tipoDeUsuario, usuarioIngresado, contraseniaIngresada, usuarioEncontrado, contraseniaEncontrada);
+        } catch (NullPointerException e) {
+            System.out.println("ERROR: Datos no encontrados");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage(),"ERROR CRÍTICO", JOptionPane.ERROR_MESSAGE);
 
-        validarUsuario(tipoDeUsuario, usuarioIngresado, contraseniaIngresada, usuarioEncontrado, contraseniaEncontrada);
+        }
+
     }
-    
-    
-    public void limpiarDatos(){
+
+    public void limpiarDatos() {
         modelo.getVistaInicio().txtUsuario.setText("");
         modelo.getVistaInicio().txtContraseña.setText("");
     }
