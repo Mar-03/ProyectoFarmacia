@@ -6,6 +6,8 @@ package Vistas;
 
 import Controlador.ControladorVistaAdmin;
 import Modelo.ModeloVistaAdmin;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  *
@@ -18,7 +20,10 @@ public class VistaAdmin extends javax.swing.JFrame {
      */
     public VistaAdmin() {
         initComponents();
-
+        
+        Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagen/Pill Icon MT 1-100.png"));
+        setIconImage(icono);
+        
         ModeloVistaAdmin modelo = new ModeloVistaAdmin(this);
         ControladorVistaAdmin controlador = new ControladorVistaAdmin(modelo);
 
@@ -338,6 +343,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         btnGestionInventario.addMouseListener(controlador);
         btnReportes.addMouseListener(controlador);
         btnRegistroUsuarios.addMouseListener(controlador);
+        btnComponentesProductos.addMouseListener(controlador);
 
     }
 

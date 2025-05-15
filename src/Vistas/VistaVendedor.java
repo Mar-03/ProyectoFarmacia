@@ -6,6 +6,8 @@ package Vistas;
 
 import Controlador.ControladorVistaVendedor;
 import Modelo.ModeloVistaVendedor;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  *
@@ -19,6 +21,9 @@ public class VistaVendedor extends javax.swing.JFrame {
     public VistaVendedor() {
         initComponents();
 
+        Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagen/Pill Icon MT 1-100.png"));
+        setIconImage(icono);
+        
         ModeloVistaVendedor modelo = new ModeloVistaVendedor(this);
         ControladorVistaVendedor controlador = new ControladorVistaVendedor(modelo);
 
