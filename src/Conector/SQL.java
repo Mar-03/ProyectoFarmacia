@@ -42,6 +42,12 @@ public class SQL {
      //CONSULTA PARA LOS USUARIOS
     private final String AGREGAR_USUARIO = "INSERT INTO usuarios (nombre, apellido, telefono, email, usuario, contrasena, tipo_usuario, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
+    //CONSULTA PARA LAS VENTAS
+    private final String HACER_VENTA ="INSERT INTO ventas (id_usuario, id_cliente, id_institucion_subsidio, subtotal, descuento_subsidio, total, tipo_pago, con_subsidio, observaciones) VALUES (?,?,?,?,?,?,?,?,?)";
+    private final String BUSCAR_PRODUCTOS ="";
+    private final String DETALLE_VENTAS ="";
+    private final String GENERAR_COMPROBANTE = "";
+    
     public String getCONSULTA_USUARIO() {
         return CONSULTA_USUARIO;
     }
@@ -71,4 +77,22 @@ public class SQL {
      public String geteiminar_USUARIO() {
         return AGREGAR_USUARIO;
     }
+
+    public String getHACER_VENTA() {
+        return HACER_VENTA;
+    }
+
+    public String getBUSCAR_PRODUCTOS() {
+        return BUSCAR_PRODUCTOS;
+    }
+
+    public String getDETALLE_VENTAS() {
+        return DETALLE_VENTAS;
+    }
+
+    public String getGENERAR_COMPROBANTE() {
+        return GENERAR_COMPROBANTE;
+    }
+     
+     
 }
