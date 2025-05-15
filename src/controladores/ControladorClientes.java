@@ -36,7 +36,7 @@ public class ControladorClientes implements IcontroladorCliente {
             actualizarCliente();
         } else if (e.getSource() == vista.btnEliminar) {
             eliminarCliente();
-        } else if (e.getSource() == vista.tblRegistroClientes) {
+        } else if (e.getSource() == vista.tblclientes) {
             cargarDatosSeleccionados();
         }
     }
@@ -93,17 +93,17 @@ public class ControladorClientes implements IcontroladorCliente {
     }
 
     private void cargarDatosSeleccionados() {
-        int fila = vista.tblRegistroClientes.getSelectedRow();
+        int fila = vista.tblclientes.getSelectedRow();
         if (fila != -1) {
-            vista.txtIdCliente.setText(vista.tblRegistroClientes.getValueAt(fila, 0).toString());
-            vista.txtNombreCliente.setText(vista.tblRegistroClientes.getValueAt(fila, 1).toString());
-            vista.txtApellidoCliente.setText(vista.tblRegistroClientes.getValueAt(fila, 2).toString());
-            vista.txtTelefono.setText(vista.tblRegistroClientes.getValueAt(fila, 3).toString());
-            vista.txtNIT.setText(vista.tblRegistroClientes.getValueAt(fila, 4).toString());
-            vista.txtDireccion.setText(vista.tblRegistroClientes.getValueAt(fila, 5).toString());
-            vista.txtIdentificacion.setText(vista.tblRegistroClientes.getValueAt(fila, 6).toString());
-            vista.txtSubsidio.setText(vista.tblRegistroClientes.getValueAt(fila, 7).toString());
-            vista.txtFechaRegistro.setText(vista.tblRegistroClientes.getValueAt(fila, 8).toString());
+            vista.txtIdCliente.setText(vista.tblclientes.getValueAt(fila, 0).toString());
+            vista.txtNombreCliente.setText(vista.tblclientes.getValueAt(fila, 1).toString());
+            vista.txtApellidoCliente.setText(vista.tblclientes.getValueAt(fila, 2).toString());
+            vista.txtTelefono.setText(vista.tblclientes.getValueAt(fila, 3).toString());
+            vista.txtNIT.setText(vista.tblclientes.getValueAt(fila, 4).toString());
+            vista.txtDireccion.setText(vista.tblclientes.getValueAt(fila, 5).toString());
+            vista.txtIdentificacion.setText(vista.tblclientes.getValueAt(fila, 6).toString());
+            vista.txtSubsidio.setText(vista.tblclientes.getValueAt(fila, 7).toString());
+            vista.txtFechaRegistro.setText(vista.tblclientes.getValueAt(fila, 8).toString());
         }
     }
 

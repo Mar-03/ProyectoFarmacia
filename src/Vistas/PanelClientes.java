@@ -54,7 +54,7 @@ public class PanelClientes extends javax.swing.JPanel {
         txtFechaRegistro = new javax.swing.JTextField();
         txtActivo = new javax.swing.JTextField();
         tblRegistroClientes = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblclientes = new javax.swing.JTable();
         btnSalir = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JPanel();
@@ -157,7 +157,7 @@ public class PanelClientes extends javax.swing.JPanel {
         txtActivo.setForeground(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 140, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -168,7 +168,7 @@ public class PanelClientes extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblRegistroClientes.setViewportView(jTable1);
+        tblRegistroClientes.setViewportView(tblclientes);
 
         fondoPanel.add(tblRegistroClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 370, 260));
 
@@ -316,7 +316,10 @@ public class PanelClientes extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -349,12 +352,12 @@ public class PanelClientes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    public javax.swing.JTable jTable1;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JLabel nombreCliente;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
     private javax.swing.JScrollPane tblRegistroClientes;
+    public javax.swing.JTable tblclientes;
     private javax.swing.JLabel telefono;
     private javax.swing.JLabel titulo;
     public javax.swing.JTextField txtActivo;
@@ -374,7 +377,7 @@ public class PanelClientes extends javax.swing.JPanel {
         btnAgregar.addMouseListener ((MouseListener) controlador);
         btnActualizar.addMouseListener((MouseListener) controlador);
         btnEliminar.addMouseListener((MouseListener) controlador);
-        tblRegistroClientes.addMouseListener((MouseListener) controlador);
+        tblclientes.addMouseListener((MouseListener) controlador);
 
     }
 }
