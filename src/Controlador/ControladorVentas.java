@@ -6,6 +6,7 @@ package Controlador;
 
 import Implementacion.VentaImp;
 import Modelo.ModeloVenta;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -43,10 +44,29 @@ public class ControladorVentas implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        
+        if (e.getComponent().equals(modelo.getVistaVentas().btnBuscar)) {
+            modelo.getVistaVentas().btnBuscar.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnAgregar)) {
+            modelo.getVistaVentas().btnAgregar.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnEliminar)) {
+            modelo.getVistaVentas().btnEliminar.setBackground(new Color(50, 95, 110));
+        }
+        
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        
+        if (e.getComponent().equals(modelo.getVistaVentas().btnBuscar)) {
+            modelo.getVistaVentas().btnBuscar.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnAgregar)) {
+            modelo.getVistaVentas().btnAgregar.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnEliminar)) {
+            modelo.getVistaVentas().btnEliminar.setBackground(new Color(75, 128, 146));
+        }
+        
+        
     }
     
     

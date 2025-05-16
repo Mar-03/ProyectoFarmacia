@@ -13,6 +13,7 @@ import Vistas.PanelVentas;
 public class ModeloVenta {
 
     PanelVentas vistaVentas;
+    
 
     public ModeloVenta() {
     }

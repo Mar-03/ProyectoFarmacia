@@ -4,6 +4,10 @@
  */
 package Vistas;
 
+import Controlador.ControladorVentas;
+import Controlador.ControladorVistaVendedor;
+import Modelo.ModeloVenta;
+
 /**
  *
  * @author cindy
@@ -15,6 +19,11 @@ public class PanelVentas extends javax.swing.JPanel {
      */
     public PanelVentas() {
         initComponents();
+        
+        ModeloVenta modelo = new ModeloVenta(this);
+        ControladorVentas controlador = new ControladorVentas(modelo);
+        
+        setControlador(controlador);
     }
 
     /**
@@ -70,7 +79,8 @@ public class PanelVentas extends javax.swing.JPanel {
         btnBuscar = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         cmbTipoPago = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        ScrollPane = new javax.swing.JScrollPane();
+        jTableProductos = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(850, 700));
 
@@ -318,7 +328,22 @@ public class PanelVentas extends javax.swing.JPanel {
             }
         });
         fondoPanel.add(cmbTipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, 100, -1));
-        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 770, 180));
+
+        jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        ScrollPane.setViewportView(jTableProductos);
+
+        fondoPanel.add(ScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 770, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -350,6 +375,7 @@ public class PanelVentas extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPane;
     public javax.swing.JPanel btnAgregar;
     public javax.swing.JPanel btnBuscar;
     public javax.swing.JPanel btnEliminar;
@@ -377,7 +403,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable jTableProductos;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JSeparator separador;
@@ -396,4 +422,14 @@ public class PanelVentas extends javax.swing.JPanel {
     public javax.swing.JTextField txtSubtotal;
     public javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
+
+public void setControlador(ControladorVentas controlador){
+    
+    btnAgregar.addMouseListener(controlador);
+    btnBuscar.addMouseListener(controlador);
+    btnEliminar.addMouseListener(controlador);
+    
+    
+}
+
 }
