@@ -9,8 +9,8 @@ import Modelo.ModeloProducto;
 public interface IProducto {
 
     public boolean guardarProducto(ModeloProducto modelo);
-
-    public ModeloProducto mostrarProducto(int idProducto);
+         
+    public ModeloProducto mostrarProducto(String nombreP, String codigoP);
 
     public boolean actualizarProducto(ModeloProducto modelo);
 

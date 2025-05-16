@@ -12,12 +12,13 @@ public class SQL {
 
     //CONSULTAS PARA PRODUCTOS
     private final String AGREGAR_PRODUCTO = "INSERT INTO productos (nombre_oficial, descripcion, codigo_barras, requiere_receta, activo) VALUES (?,?,?,?,?)";
-    private final String CONSULTA_PRODUCTO = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE id_producto = ?";
+    private final String CONSULTA_PRODUCTO_NOMBRE = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE nombre_oficial LIKE '%?%'";
     private final String ELIMINAR_PRODUCTO = "DELETE FROM ProductoS WHERE id_producto = ?";
     private final String ACTUALIZAR_PRODUCTO = "UPDATE productos SET nombre_oficial = ?,descripcion = ?,codigo_barras = ?,requiere_receta = ?,activo = ?,WHERE id_producto = ?";
-    // COSULRA PARA CLIENTES USUSARIOS
+    private final String CONSULTA_PRODUCTO_CODIGO = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE codigo_barras = ?;";
     
 
+// COSULRA PARA CLIENTES USUSARIOS
     private final String INSERT = 
         "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha) " +
         "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -56,10 +57,6 @@ public class SQL {
         return AGREGAR_PRODUCTO;
     }
 
-    public String getCONSULTA_PRODUCTO() {
-        return CONSULTA_PRODUCTO;
-    }
-
     public String getELIMINAR_PRODUCTO() {
         return ELIMINAR_PRODUCTO;
     }
@@ -92,6 +89,14 @@ public class SQL {
 
     public String getGENERAR_COMPROBANTE() {
         return GENERAR_COMPROBANTE;
+    }
+
+    public String getCONSULTA_PRODUCTO_NOMBRE() {
+        return CONSULTA_PRODUCTO_NOMBRE;
+    }
+
+    public String getCONSULTA_PRODUCTO_CODIGO() {
+        return CONSULTA_PRODUCTO_CODIGO;
     }
      
      

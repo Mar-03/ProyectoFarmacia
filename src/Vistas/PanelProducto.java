@@ -21,6 +21,13 @@ public class PanelProducto extends javax.swing.JPanel {
         
         ModeloProducto modelo = new ModeloProducto(this);
         ControladorProducto controlador = new ControladorProducto(modelo);
+     
+        
+        
+        labelIDProducto.setVisible(false);
+        txtIdProducto.setVisible(false);
+        btnActualizar.setVisible(false);
+        btnEliminar.setVisible(false);
         
         setControlador(controlador);
     }
@@ -39,26 +46,18 @@ public class PanelProducto extends javax.swing.JPanel {
         marcaAgua = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelIDProducto = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
         separador2 = new javax.swing.JSeparator();
         txtIdProducto = new javax.swing.JTextField();
         txtNombreProducto = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
         txtCodigoBarras = new javax.swing.JTextField();
-        txtReceta = new javax.swing.JTextField();
         txtFechaRegistro = new javax.swing.JTextField();
-        txtPrecioInicial = new javax.swing.JTextField();
-        txtActivo = new javax.swing.JTextField();
-        txtPrecioNuevo = new javax.swing.JTextField();
-        txtCantidad = new javax.swing.JTextField();
         btnSalir = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JPanel();
@@ -71,6 +70,12 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         boxReceta = new javax.swing.JComboBox<>();
         boxActivo = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtNombreProductoB = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtCodigoBarrasP = new javax.swing.JTextField();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,7 +84,7 @@ public class PanelProducto extends javax.swing.JPanel {
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("REGISTRO PRODUCTO");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 850, -1));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 850, -1));
 
         marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,113 +96,70 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Nombre Producto:");
-        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, -1, -1));
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Descripción:");
-        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("ID Producto:");
-        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 90, -1));
+        labelIDProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelIDProducto.setForeground(new java.awt.Color(255, 255, 255));
+        labelIDProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelIDProducto.setText("ID Producto:");
+        fondoPanel.add(labelIDProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, 90, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Código de Barras:");
-        fondoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
+        fondoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("¿Se requiere receta? S/N:");
-        fondoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 190, -1));
+        jLabel6.setText("Requiere receta:");
+        fondoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 120, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Activo:");
-        fondoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, 100, -1));
+        fondoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 70, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Fecha Registro:");
-        fondoPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 120, -1));
-
-        jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("Precio Inicial:");
-        fondoPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 110, -1));
-
-        jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Cantidad:");
-        fondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 110, -1));
-
-        jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Precio Nuevo:");
-        fondoPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 150, -1));
+        fondoPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 120, -1));
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 850, -1));
         fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 850, -1));
 
         txtIdProducto.setBackground(new java.awt.Color(75, 128, 146));
         txtIdProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIdProducto.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 150, -1));
+        fondoPanel.add(txtIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, 100, -1));
 
         txtNombreProducto.setBackground(new java.awt.Color(75, 128, 146));
         txtNombreProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtNombreProducto.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 150, -1));
+        fondoPanel.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 260, -1));
 
         txtDescripcion.setBackground(new java.awt.Color(75, 128, 146));
         txtDescripcion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 590, 60));
+        fondoPanel.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 390, 80));
 
         txtCodigoBarras.setBackground(new java.awt.Color(75, 128, 146));
         txtCodigoBarras.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtCodigoBarras.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 350, -1));
-
-        txtReceta.setBackground(new java.awt.Color(75, 128, 146));
-        txtReceta.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtReceta.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtReceta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 140, -1));
+        fondoPanel.add(txtCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 280, -1));
 
         txtFechaRegistro.setBackground(new java.awt.Color(75, 128, 146));
         txtFechaRegistro.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtFechaRegistro.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 140, -1));
-
-        txtPrecioInicial.setBackground(new java.awt.Color(75, 128, 146));
-        txtPrecioInicial.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtPrecioInicial.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtPrecioInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 140, -1));
-
-        txtActivo.setBackground(new java.awt.Color(75, 128, 146));
-        txtActivo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtActivo.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 140, -1));
-
-        txtPrecioNuevo.setBackground(new java.awt.Color(75, 128, 146));
-        txtPrecioNuevo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtPrecioNuevo.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtPrecioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 140, -1));
-
-        txtCantidad.setBackground(new java.awt.Color(75, 128, 146));
-        txtCantidad.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtCantidad.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 140, -1));
+        fondoPanel.add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 140, -1));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -228,7 +190,7 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActualizar.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 90, 30));
+        fondoPanel.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 90, 30));
 
         btnAgregar.setBackground(new java.awt.Color(75, 128, 146));
         btnAgregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -241,7 +203,7 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, 90, 30));
+        fondoPanel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 90, 30));
 
         btnEliminar.setBackground(new java.awt.Color(75, 128, 146));
         btnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -254,7 +216,7 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 90, 30));
+        fondoPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 480, 90, 30));
 
         btnBuscar.setBackground(new java.awt.Color(75, 128, 146));
         btnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -267,19 +229,41 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 355, 90, 30));
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 90, 30));
 
         boxReceta.setBackground(new java.awt.Color(75, 128, 146));
         boxReceta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boxReceta.setForeground(new java.awt.Color(255, 255, 255));
         boxReceta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
-        fondoPanel.add(boxReceta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 140, 30));
+        fondoPanel.add(boxReceta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 70, 30));
 
         boxActivo.setBackground(new java.awt.Color(75, 128, 146));
         boxActivo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boxActivo.setForeground(new java.awt.Color(255, 255, 255));
         boxActivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
-        fondoPanel.add(boxActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 140, -1));
+        fondoPanel.add(boxActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 60, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("AGREGAR PRODUCTO");
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("BUSCAR PRODUCTO");
+        fondoPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setText("Nombre Producto:");
+        fondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
+
+        txtNombreProductoB.setBackground(new java.awt.Color(75, 128, 146));
+        fondoPanel.add(txtNombreProductoB, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 260, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setText("Código de Barras");
+        fondoPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
+
+        txtCodigoBarrasP.setBackground(new java.awt.Color(75, 128, 146));
+        fondoPanel.add(txtCodigoBarrasP, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 260, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -322,20 +306,18 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel labelIDProducto;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
     private javax.swing.JLabel titulo;
-    public javax.swing.JTextField txtActivo;
-    public javax.swing.JTextField txtCantidad;
     public javax.swing.JTextField txtCodigoBarras;
+    public javax.swing.JTextField txtCodigoBarrasP;
     public javax.swing.JTextField txtDescripcion;
     public javax.swing.JTextField txtFechaRegistro;
     public javax.swing.JTextField txtIdProducto;
     public javax.swing.JTextField txtNombreProducto;
-    public javax.swing.JTextField txtPrecioInicial;
-    public javax.swing.JTextField txtPrecioNuevo;
-    public javax.swing.JTextField txtReceta;
+    public javax.swing.JTextField txtNombreProductoB;
     // End of variables declaration//GEN-END:variables
 
 public void setControlador(ControladorProducto controlador){
