@@ -8,9 +8,9 @@ package Vistas;
  *
  * @author cindy
  */
+import Modelo.ModeloRegistroCliente;
 import Conector.*;
 import Controlador.ControladorVistaInicio;
-import modelos.*;
 import controladores.ControladorClientes;
 import java.awt.event.MouseListener;
 
@@ -374,10 +374,10 @@ public class PanelClientes extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
  public void setControlador(ControladorClientes controlador) {
-        btnAgregar.addMouseListener ((MouseListener) controlador);
-        btnActualizar.addMouseListener((MouseListener) controlador);
-        btnEliminar.addMouseListener((MouseListener) controlador);
-        tblclientes.addMouseListener((MouseListener) controlador);
+        btnAgregar.addMouseListener ( controlador);
+        btnActualizar.addMouseListener( controlador);
+        btnEliminar.addMouseListener(controlador);
+        tblclientes.addMouseListener( controlador);
 
     }
 }

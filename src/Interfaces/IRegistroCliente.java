@@ -4,21 +4,26 @@
  */
 package Interfaces;
 
-import modelos.*;
+import Modelo.ModeloRegistroCliente;
 
 /**
  *
  * @author anyi4
  */
-public interface IRegistroCliente {
-     public ModeloRegistroCliente ConsultaCliente(String nombre,String apellido,
-     int telefono,String direccion, int identificacion, String nit, String subcidio, String fecha);
-     public boolean insertarCliente(ModeloRegistroCliente cliente);
+import javax.swing.table.DefaultTableModel;
+import Modelo.ModeloRegistroCliente;
 
-   
+public interface IRegistroCliente {
+
+    public ModeloRegistroCliente ConsultaCliente(String nombre, String apellido,
+        int telefono, String direccion, int identificacion, String nit, String subsidio, String fecha);
+
+    public boolean insertarCliente(ModeloRegistroCliente cliente);
+
     public boolean actualizarCliente(ModeloRegistroCliente cliente);
 
-    
     public boolean eliminarCliente(int id_cliente);
 
+   
+    public DefaultTableModel listarClientes();
 }
