@@ -96,10 +96,13 @@ public class SQL {
     private final String AGREGAR_USUARIO = "INSERT INTO usuarios (nombre, apellido, telefono, email, usuario, contrasena, tipo_usuario, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
     //CONSULTA PARA LAS VENTAS
-    private final String HACER_VENTA ="INSERT INTO ventas (id_usuario, id_cliente, id_institucion_subsidio, subtotal, descuento_subsidio, total, tipo_pago, con_subsidio, observaciones) VALUES (?,?,?,?,?,?,?,?,?)";
+    private final String HACER_VENTA ="INSERT INTO ventas (id_usuario,id_cliente,fecha, subtotal, descuento_subsidio, total, tipo_pago, con_subsidio, id_institucion_subsidio, observaciones) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?);";
+    private final String INSERTAR_DETALLE_VENTA = "INSERT INTO detalle_ventas (id_venta, id_lote, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
+    private final String ACTUALIZAR_STOCK = "UPDATE lotes SET cantidad_disponible = cantidad_disponible - ? WHERE id_lote = ?";
+    private final String BUSCAR_CLIENTE = "";
     private final String BUSCAR_PRODUCTOS ="";
-    private final String DETALLE_VENTAS ="";
     private final String GENERAR_COMPROBANTE = "";
+    private final String CONSULTAR_USUARIO = "";
     
     public String getCONSULTA_USUARIO() {
         return CONSULTA_USUARIO;
@@ -135,10 +138,6 @@ public class SQL {
         return BUSCAR_PRODUCTOS;
     }
 
-    public String getDETALLE_VENTAS() {
-        return DETALLE_VENTAS;
-    }
-
     public String getGENERAR_COMPROBANTE() {
         return GENERAR_COMPROBANTE;
     }
@@ -158,5 +157,24 @@ public class SQL {
     public String getAGREGAR_NOMBRE_ALTERNATIVO() {
         return AGREGAR_NOMBRE_ALTERNATIVO;
     }
+
+    public String getINSERTAR_DETALLE_VENTA() {
+        return INSERTAR_DETALLE_VENTA;
+    }
+
+    public String getACTUALIZAR_STOCK() {
+        return ACTUALIZAR_STOCK;
+    }
+
+    public String getBUSCAR_CLIENTE() {
+        return BUSCAR_CLIENTE;
+    }
+
+    public String getCONSULTAR_USUARIO() {
+        return CONSULTAR_USUARIO;
+    }
+    
+    
+    
        
 }

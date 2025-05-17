@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import Modelo.ModeloProducto;
 import Modelo.ModeloVenta;
 
 /**
@@ -13,7 +14,9 @@ import Modelo.ModeloVenta;
 public interface IVenta {
     
     public boolean hacerVenta(ModeloVenta modelo);
-    public ModeloVenta buscarProducto(String nombreP);
+    public ModeloProducto buscarProducto(String nombreP, String codigoB);
+    public boolean guardarDetalleVenta(ModeloVenta modelo);
+    
     
     
 }

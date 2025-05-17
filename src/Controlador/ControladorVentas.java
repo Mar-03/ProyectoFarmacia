@@ -29,6 +29,8 @@ public class ControladorVentas implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         if(e.getComponent().equals(modelo.getVistaVentas().btnAgregar)){
             
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnBuscar)){
+            
         }
         
         
@@ -71,6 +73,10 @@ public class ControladorVentas implements MouseListener{
     
     
     public void capturaDeDatos(){
+        
+       modelo.getVistaVentas().txtNombreProducto.getText();
+       modelo.getVistaVentas().txtCodigoBarras.getText();
+       modelo.getVistaVentas().txtCantidad.getText();
         
     }
     
