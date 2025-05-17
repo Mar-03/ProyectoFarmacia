@@ -21,7 +21,54 @@ public class SQL {
     private final String ELIMINAR_PRODUCTO = "DELETE FROM ProductoS WHERE id_producto = ?";
     private final String ACTUALIZAR_PRODUCTO = "UPDATE productos SET nombre_oficial = ?,descripcion = ?,codigo_barras = ?,requiere_receta = ?,activo = ?,WHERE id_producto = ?";
     private final String CONSULTA_PRODUCTO_CODIGO = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE codigo_barras = ?;";
-    
+    // CONSULTA SOBRE LOTES
+     private final String AGREGAR_LOTE = 
+        "INSERT INTO lotes (id_producto, numero_lote, fecha_vencimiento, fecha_fabricacion, " +
+        "cantidad_disponible, precio_compra, precio_venta, activo) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    private final String ACTUALIZAR_LOTE = 
+        "UPDATE lotes SET id_producto = ?, numero_lote = ?, fecha_vencimiento = ?, " +
+        "fecha_fabricacion = ?, cantidad_disponible = ?, precio_compra = ?, " +
+        "precio_venta = ?, activo = ? WHERE id_lote = ?";
+
+    private final String ELIMINAR_LOTE = 
+        "UPDATE lotes SET activo = false WHERE id_lote = ?";  
+
+    private final String OBTENER_LOTES_ACTIVOS = 
+        "SELECT * FROM lotes WHERE activo = true";
+
+    private final String BUSCAR_LOTE_POR_NUMERO = 
+        "SELECT * FROM lotes WHERE numero_lote LIKE ? AND activo = true";
+
+    private final String OBTENER_LOTES_POR_PRODUCTO = 
+        "SELECT * FROM lotes WHERE id_producto = ? AND activo = true";
+
+   
+    public String getAGREGAR_LOTE() {
+        return AGREGAR_LOTE;
+    }
+
+    public String getACTUALIZAR_LOTE() {
+        return ACTUALIZAR_LOTE;
+    }
+
+    public String getELIMINAR_LOTE() {
+        return ELIMINAR_LOTE;
+    }
+
+    public String getOBTENER_LOTES_ACTIVOS() {
+        return OBTENER_LOTES_ACTIVOS;
+    }
+
+    public String getBUSCAR_LOTE_POR_NUMERO() {
+        return BUSCAR_LOTE_POR_NUMERO;
+    }
+
+    public String getOBTENER_LOTES_POR_PRODUCTO() {
+        return OBTENER_LOTES_POR_PRODUCTO;
+    }
+
 
 // COSULRA PARA CLIENTES USUSARIOS
     private final String INSERT = 

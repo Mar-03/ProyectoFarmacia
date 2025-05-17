@@ -49,20 +49,46 @@ public class ControladorClientes implements MouseListener{
     }
        
 
-   public void agregarCliente() {
-        ModeloRegistroCliente nuevo = new ModeloRegistroCliente();
-        int idCliente = (Integer.parseInt(this.modelo.getPanelCliente().txtIdCliente.getSelectedText()+ 1));
-        nuevo.setNombre(this.modelo.getPanelCliente().txtNombreCliente.getText());
-        nuevo.setApellido(this.modelo.getPanelCliente().txtApellidoCliente.getText());
-        nuevo.setTelefono(Integer.parseInt(this.modelo.getPanelCliente().txtTelefono.getText()));
-        nuevo.setNit(this.modelo.getPanelCliente().txtNIT.getText());
-        nuevo.setDireccion(this.modelo.getPanelCliente().txtDireccion.getText());
+  public void agregarCliente() {
+    
+    ModeloRegistroCliente nuevo = new ModeloRegistroCliente();
+
+    
+    nuevo.setNombre(this.modelo.getPanelCliente().txtNombreCliente.getText());
+    nuevo.setApellido(this.modelo.getPanelCliente().txtApellidoCliente.getText());
+    nuevo.setNit(this.modelo.getPanelCliente().txtNIT.getText());
+    nuevo.setDireccion(this.modelo.getPanelCliente().txtDireccion.getText());
+    
+    try {
         nuevo.setIdentificacion(Integer.parseInt(this.modelo.getPanelCliente().txtIdentificacion.getText()));
-        nuevo.setSubsidio(this.modelo.getPanelCliente().txtSubsidio.getText());
-        nuevo.setFecha(this.modelo.getPanelCliente().txtFechaRegistro.getText());
-
-
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Identificación no válida. Debe ser un número.");
+        return;
     }
+
+    nuevo.setSubsidio(this.modelo.getPanelCliente().txtSubsidio.getText());
+    nuevo.setFecha(this.modelo.getPanelCliente().txtFechaRegistro.getText());
+
+    String textoTelefono = modelo.getPanelCliente().txtTelefono.getText().trim();
+    if (textoTelefono.matches("\\d+")) {
+        nuevo.setTelefono(Integer.parseInt(textoTelefono));
+    } else {
+        JOptionPane.showMessageDialog(null, "Teléfono no válido. Ingresa solo números.");
+        return;
+    }
+
+   
+    boolean exito = dao.insertarCliente(nuevo); 
+
+    if (exito) {
+        JOptionPane.showMessageDialog(null, "Cliente agregado exitosamente.");
+        limpiar();
+    } else {
+        JOptionPane.showMessageDialog(null, "Error al agregar cliente.");
+    }
+}
+
+
 
     private void actualizarCliente() {
         ModeloRegistroCliente actualizado = new ModeloRegistroCliente();

@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import Controlador.*;
+import Modelo.*;
+
 /**
  *
  * @author jhosu
@@ -15,6 +18,7 @@ public class PanelLotesProductos extends javax.swing.JPanel {
      */
     public PanelLotesProductos() {
         initComponents();
+        
     }
 
     /**
@@ -203,11 +207,13 @@ public class PanelLotesProductos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel registrar;
     private javax.swing.JLabel titulo;
-    private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtFechaVencimiento;
+    public javax.swing.JTextField txtCantidad;
+    public javax.swing.JTextField txtFechaVencimiento;
     public javax.swing.JTextField txtNombreUsuario;
-    private javax.swing.JTextField txtNumeroLote;
-    private javax.swing.JTextField txtPrecioCompra;
-    private javax.swing.JTextField txtPrecioVenta;
+    public javax.swing.JTextField txtNumeroLote;
+    public javax.swing.JTextField txtPrecioCompra;
+    public javax.swing.JTextField txtPrecioVenta;
     // End of variables declaration//GEN-END:variables
+
+
 }

@@ -16,15 +16,16 @@ import Vistas.*;
  */
 public class ModeloRegistroCliente {
     PanelClientes panelCliente;
-   private static int id_clientes;
-   private static String nombre;
-   private static String apellido; 
-   private static int telefono; 
-   private static String direccion; 
-   private static int identificacion;
-   private static String nit;
-   private static String subsidio;
-   private static String fecha;
+    
+    private int id_clientes;
+    private String nombre;
+    private String apellido; 
+    private int telefono; 
+    private String direccion; 
+    private int identificacion;
+    private String nit;
+    private String subsidio;
+    private String fecha;
 
     public ModeloRegistroCliente() {
     }
@@ -41,80 +42,75 @@ public class ModeloRegistroCliente {
         this.panelCliente = panelCliente;
     }
 
-    public static int getId_clientes() {
+    public int getId_clientes() {
         return id_clientes;
     }
 
-    public static void setId_clientes(int id_clientes) {
-        ModeloRegistroCliente.id_clientes = id_clientes;
+    public void setId_clientes(int id_clientes) {
+        this.id_clientes = id_clientes;
     }
 
-    public static String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public static void setNombre(String nombre) {
-        ModeloRegistroCliente.nombre = nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public static String getApellido() {
+    public String getApellido() {
         return apellido;
     }
 
-    public static void setApellido(String apellido) {
-        ModeloRegistroCliente.apellido = apellido;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public static int getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public static void setTelefono(int telefono) {
-        ModeloRegistroCliente.telefono = telefono;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 
-    public static String getDireccion() {
+    public String getDireccion() {
         return direccion;
     }
 
-    public static void setDireccion(String direccion) {
-        ModeloRegistroCliente.direccion = direccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public static int getIdentificacion() {
+    public int getIdentificacion() {
         return identificacion;
     }
 
-    public static void setIdentificacion(int identificacion) {
-        ModeloRegistroCliente.identificacion = identificacion;
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
     }
 
-    public static String getNit() {
+    public String getNit() {
         return nit;
     }
 
-    public static void setNit(String nit) {
-        ModeloRegistroCliente.nit = nit;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
-    public static String getSubsidio() {
+    public String getSubsidio() {
         return subsidio;
     }
 
-    public static void setSubsidio(String subsidio) {
-        ModeloRegistroCliente.subsidio = subsidio;
+    public void setSubsidio(String subsidio) {
+        this.subsidio = subsidio;
     }
 
-    public static String getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public static void setFecha(String fecha) {
-        ModeloRegistroCliente.fecha = fecha;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
-   
-    
-
-
-   
 }
