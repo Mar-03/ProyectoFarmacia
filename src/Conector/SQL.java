@@ -12,6 +12,11 @@ public class SQL {
 
     //CONSULTAS PARA PRODUCTOS
     private final String AGREGAR_PRODUCTO = "INSERT INTO productos (nombre_oficial, descripcion, codigo_barras, requiere_receta, activo) VALUES (?,?,?,?,?)";
+    private final String AGREGAR_LOTE_PRODUCTO = "INSERT INTO lotes (id_producto, numero_lote, fecha_vencimiento, fecha_fabricacion, cantidad_disponible, precio_compra, precio_venta, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private final String AGREGAR_NOMBRE_ALTERNATIVO = "INSERT INTO nombres_alternativos (id_producto, nombre_alternativo) VALUES (?, ?)";
+    
+    
+    //Metodos de productos (posible actualización de más funcionalidades)
     private final String CONSULTA_PRODUCTO_NOMBRE = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE nombre_oficial LIKE '%?%'";
     private final String ELIMINAR_PRODUCTO = "DELETE FROM ProductoS WHERE id_producto = ?";
     private final String ACTUALIZAR_PRODUCTO = "UPDATE productos SET nombre_oficial = ?,descripcion = ?,codigo_barras = ?,requiere_receta = ?,activo = ?,WHERE id_producto = ?";
@@ -98,6 +103,13 @@ public class SQL {
     public String getCONSULTA_PRODUCTO_CODIGO() {
         return CONSULTA_PRODUCTO_CODIGO;
     }
-     
-     
+
+    public String getAGREGAR_LOTE_PRODUCTO() {
+        return AGREGAR_LOTE_PRODUCTO;
+    }
+
+    public String getAGREGAR_NOMBRE_ALTERNATIVO() {
+        return AGREGAR_NOMBRE_ALTERNATIVO;
+    }
+       
 }

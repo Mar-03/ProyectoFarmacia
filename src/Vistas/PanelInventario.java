@@ -21,6 +21,8 @@ public class PanelInventario extends javax.swing.JPanel {
         
         ModeloInventario modelo = new ModeloInventario(this);
         ControladorInventario controlador = new ControladorInventario(modelo);
+        
+        setControlador(controlador);
     }
 
     /**
@@ -152,8 +154,8 @@ public class PanelInventario extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnRegistroInventario;
-    private javax.swing.JPanel btnRegistroVenta;
+    public javax.swing.JPanel btnRegistroInventario;
+    public javax.swing.JPanel btnRegistroVenta;
     private javax.swing.JPanel btnSalir;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JTable jTable1;

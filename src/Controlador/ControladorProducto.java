@@ -5,6 +5,7 @@ import Modelo.ModeloProducto;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 
 public class ControladorProducto implements MouseListener {
@@ -95,6 +96,22 @@ public class ControladorProducto implements MouseListener {
         String activo = String.valueOf(modelo.getVistaProducto().boxActivo.getSelectedItem());
         registrarProducto(nombreIngresado, descripcionIngresada, codigoIngresado, receta, activo);
         
+        String nombreAlternativo = modelo.getVistaProducto().txtNombreAlterno.getText();
+        registrarNombreAlternativo(nombreAlternativo);
+        
+        
+        String numeroLote = modelo.getVistaProducto().txtNumeroLote.getText();
+        String fechaVencimiento = modelo.getVistaProducto().txtFechaVencimiento.getText();
+        String fechaFabricacion = modelo.getVistaProducto().txtFechaFabricacion.getText();
+        String cantidad = modelo.getVistaProducto().txtCantidad.getText();
+        BigDecimal precioCompra = new BigDecimal (modelo.getVistaProducto().txtPrecioCompra.getText());
+        BigDecimal precioVenta = new BigDecimal (modelo.getVistaProducto().txtPrecioVenta.getText());
+        
+        registrarLoteProducto(numeroLote, fechaVencimiento, fechaFabricacion, cantidad, precioCompra, precioVenta);
+        
+        //Lote activo por defecto true
+        
+        
     }
     
     public void registrarProducto(String nombre, String descripcion, String codigo, String receta, String activo){
@@ -126,6 +143,31 @@ public class ControladorProducto implements MouseListener {
         
         notificarProductoGuardado(guardarP);
      
+    }
+    
+    public void registrarNombreAlternativo(String nombre){
+        
+         ModeloProducto modeloNombreAlternativo = new ModeloProducto();
+         modeloNombreAlternativo.setNombreAlternativo(nombre);
+        int idObtenido = implementacion.obtenerUltimoIDProducto();
+        implementacion.guardarNombreAlternativo(modeloNombreAlternativo, idObtenido);
+        
+    }
+    
+    public void registrarLoteProducto(String numeroLote, String fechaVencimiento, String fechaFabrica, String cantidad, BigDecimal precioCompra, BigDecimal precioVenta){
+        
+        ModeloProducto modeloLote = new ModeloProducto();
+        modeloLote.setNumeroLote(numeroLote);
+        modeloLote.setFechaVencimiento(fechaVencimiento);
+        modeloLote.setFechaFabricación(fechaFabrica);
+        modeloLote.setCantidadDisponible(Integer.parseInt(cantidad));
+        modeloLote.setPrecioCompra(precioCompra);
+        modeloLote.setPrecioVenta(precioVenta);
+       
+        int idObtenido = implementacion.obtenerUltimoIDProducto();
+        
+        implementacion.guardarLote(modelo, idObtenido);
+        
     }
     
    
@@ -190,7 +232,7 @@ public class ControladorProducto implements MouseListener {
             modelo.getVistaProducto().boxReceta.setSelectedIndex(1);
         }
 
-        modelo.getVistaProducto().txtFechaRegistro.setText(modeloB.getFechaRegistro());
+        modelo.getVistaProducto().txtFechaFabricacion.setText(modeloB.getFechaRegistro());
 
     }
 

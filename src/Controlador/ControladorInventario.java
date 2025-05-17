@@ -22,6 +22,12 @@ public class ControladorInventario implements MouseListener {
     
     @Override
     public void mouseClicked(MouseEvent e) {
+        if(e.getComponent().equals(modelo.getVistaInventario().btnRegistroInventario)){
+            
+            
+        } else if(e.getComponent().equals(modelo.getVistaInventario().btnRegistroVenta)){
+            
+        }
     }
 
     @Override
@@ -38,6 +44,11 @@ public class ControladorInventario implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+    
+    
+    public void mostrarDatos(){
+        
     }
     
     

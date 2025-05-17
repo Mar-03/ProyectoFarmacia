@@ -7,6 +7,9 @@ import Modelo.ModeloProducto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,10 +30,10 @@ public class ProductoImp implements IProducto {
         boolean resultado = false;
         conector.conectar();
         System.out.println("Hola desde implementacion");
-        
+
         try {
             ps = conector.preparar(sql.getAGREGAR_PRODUCTO());
- System.out.println("nombre " + modelo.getNombreOficialP());
+            System.out.println("nombre " + modelo.getNombreOficialP());
             System.out.println("descripcion " + modelo.getDescripcionP());
             ps.setString(1, modelo.getNombreOficialP());
             ps.setString(2, modelo.getDescripcionP());
@@ -178,6 +181,74 @@ public class ProductoImp implements IProducto {
         }
         return modelo;
     }
+
+    @Override
+    public boolean guardarLote(ModeloProducto modelo, int idProducto) {
+
+        boolean resultado = false;
+        conector.conectar();
+        try {
+            ps = conector.preparar(sql.getAGREGAR_LOTE_PRODUCTO());
+
+            //Formatear la fecha papu
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            LocalDate vencimiento = LocalDate.parse(modelo.getFechaVencimiento(), formatter);
+            LocalDate fabricación = LocalDate.parse(modelo.getFechaFabricación(), formatter);
+
+            ps.setInt(1, idProducto);
+            ps.setString(2, modelo.getNumeroLote());
+            ps.setDate(3, Date.valueOf(vencimiento));
+            ps.setDate(4, Date.valueOf(fabricación));
+            ps.setInt(5, modelo.getCantidadDisponible());
+            ps.setBigDecimal(6, modelo.getPrecioCompra());
+            ps.setBigDecimal(7, modelo.getPrecioVenta());
+            ps.setBoolean(8, true); // o lote.isActivo()
+
+            resultado = ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error al guardar lote: " + e);
+        }
+        return resultado;
+
+    }
+
+    @Override
+    public boolean guardarNombreAlternativo(ModeloProducto modelo, int idProducto) {
+
+        boolean resultado = false;
+        conector.conectar();
+        try {
+            ps = conector.preparar(sql.getAGREGAR_NOMBRE_ALTERNATIVO());
+
+            ps.setInt(1, idProducto);
+            ps.setString(2, modelo.getNombreAlternativo());
+
+            resultado = ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error al guardar nombre alternativo: " + e);
+        }
+        return resultado;
+
+    }
+
+    public int obtenerUltimoIDProducto() {
+        int id = -1;
+        conector.conectar();
+        try {
+            ps = conector.preparar("SELECT LAST_INSERT_ID()");
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener último ID: " + e);
+        }
+        return id;
+    }
+
 }
 
 //while (rs.next()) {

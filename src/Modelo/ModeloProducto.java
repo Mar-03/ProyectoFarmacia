@@ -1,6 +1,7 @@
 package Modelo;
 
 import Vistas.PanelProducto;
+import java.math.BigDecimal;
 
 public class ModeloProducto {
 
@@ -13,7 +14,18 @@ public class ModeloProducto {
     private boolean requiereRecetaP;
     private boolean activoP;
     private String fechaRegistro;
-
+    
+    private String numeroLote;
+    private String fechaVencimiento;
+    private String fechaFabricación;
+    private int cantidadDisponible;
+    private BigDecimal precioCompra;
+    private BigDecimal precioVenta;
+    private boolean activo;
+    private String fechaRegistroLotes; 
+    private String nombreAlternativo;
+    
+    
     public ModeloProducto() {
     }
 
@@ -84,4 +96,78 @@ public class ModeloProducto {
     public void setFechaRegistro(String fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
+
+    public String getNumeroLote() {
+        return numeroLote;
+    }
+
+    public void setNumeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+    }
+
+    public String getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(String fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public String getFechaFabricación() {
+        return fechaFabricación;
+    }
+
+    public void setFechaFabricación(String fechaFabricación) {
+        this.fechaFabricación = fechaFabricación;
+    }
+
+    public int getCantidadDisponible() {
+        return cantidadDisponible;
+    }
+
+    public void setCantidadDisponible(int cantidadDisponible) {
+        this.cantidadDisponible = cantidadDisponible;
+    }
+
+    public BigDecimal getPrecioCompra() {
+        return precioCompra;
+    }
+
+    public void setPrecioCompra(BigDecimal precioCompra) {
+        this.precioCompra = precioCompra;
+    }
+
+    public BigDecimal getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(BigDecimal precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public String getFechaRegistroLotes() {
+        return fechaRegistroLotes;
+    }
+
+    public void setFechaRegistroLotes(String fechaRegistroLotes) {
+        this.fechaRegistroLotes = fechaRegistroLotes;
+    }
+
+    public String getNombreAlternativo() {
+        return nombreAlternativo;
+    }
+
+    public void setNombreAlternativo(String nombreAlternativo) {
+        this.nombreAlternativo = nombreAlternativo;
+    }
+
+    
 }
