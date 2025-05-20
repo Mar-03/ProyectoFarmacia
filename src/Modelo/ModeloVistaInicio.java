@@ -11,6 +11,7 @@ public class ModeloVistaInicio {
     private static String usuarioEncontrado;
     private static String contraseniaEncontrada;
     private static int idUsuarioEncontrado;
+    private boolean usuarioActivo;
 
     public ModeloVistaInicio() {
     }
@@ -74,4 +75,13 @@ public class ModeloVistaInicio {
     public static void setTipoUsuario(String tipoUsuario) {
         ModeloVistaInicio.tipoUsuario = tipoUsuario;
     }
+
+    public boolean isUsuarioActivo() {
+        return usuarioActivo;
+    }
+
+    public void setUsuarioActivo(boolean usuarioActivo) {
+        this.usuarioActivo = usuarioActivo;
+    }
+    
 }

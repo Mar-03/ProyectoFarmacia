@@ -31,6 +31,7 @@ public class SesionInicioImp implements ISesionInicio {
                 modelo.setUsuarioEncontrado(rs.getString("usuario"));
                 modelo.setContraseniaEncontrada(rs.getString("contrasena"));
                 modelo.setTipoUsuario(rs.getString("tipo_usuario"));
+                modelo.setUsuarioActivo(rs.getBoolean("activo"));
                 System.out.println(rs.getString("tipo_usuario"));
             }
             conector.desconectar();

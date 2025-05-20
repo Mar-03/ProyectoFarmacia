@@ -49,7 +49,7 @@ public class VistaInicio extends javax.swing.JFrame {
         contraseña = new javax.swing.JLabel();
         huella = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
         btnAcceder = new javax.swing.JPanel();
         acceder = new javax.swing.JLabel();
         btnSalir = new javax.swing.JPanel();
@@ -90,7 +90,7 @@ public class VistaInicio extends javax.swing.JFrame {
         fondoPanel.add(huella, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 410, 90));
 
         txtUsuario.setBackground(new java.awt.Color(75, 128, 146));
-        txtUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtUsuario.setActionCommand("<Not Set>");
         txtUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -99,31 +99,26 @@ public class VistaInicio extends javax.swing.JFrame {
         txtUsuario.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txtUsuario.setDoubleBuffered(true);
         txtUsuario.setSelectionColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 290, 30));
+        fondoPanel.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 290, 40));
 
-        txtContraseña.setBackground(new java.awt.Color(75, 128, 146));
-        txtContraseña.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txtContraseña.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        txtContraseña.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtContraseña.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        txtContraseña.setSelectionColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 290, 30));
+        txtPassword.setBackground(new java.awt.Color(75, 128, 146));
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fondoPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 290, 40));
 
         btnAcceder.setBackground(new java.awt.Color(75, 128, 146));
         btnAcceder.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAcceder.setInheritsPopupMenu(true);
         btnAcceder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        acceder.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        acceder.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         acceder.setForeground(new java.awt.Color(255, 255, 255));
         acceder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acceder.setText("Acceder");
         acceder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAcceder.add(acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 2, 110, 26));
+        btnAcceder.add(acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 50));
 
-        fondoPanel.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, 110, 30));
+        fondoPanel.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, 130, 50));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -241,7 +236,7 @@ public class VistaInicio extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel titulo;
-    public javax.swing.JTextField txtContraseña;
+    public javax.swing.JPasswordField txtPassword;
     public javax.swing.JTextField txtUsuario;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
