@@ -3,7 +3,6 @@ package Implementacion;
 
 import Conector.DBConnection;
 import Interfaces.*;
-import modelo.*;
 import Conector.SQL;
 import Modelo.ModeloInventario;
 import Modelo.ModeloProducto;

@@ -6,6 +6,7 @@ package Modelo;
 
 import Vistas.PanelVentas;
 import java.math.BigDecimal;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,6 +29,7 @@ public class ModeloVenta {
     private boolean checkClienteSinRegistro;
     private String nitCliente;
     private String observaciones;
+    private DefaultTableModel tablaProductos;
     
 
     public ModeloVenta() {
@@ -157,7 +159,12 @@ public class ModeloVenta {
         this.observaciones = observaciones;
     }
 
-    
-    
-    
+    public DefaultTableModel getTablaProductos() {
+        return tablaProductos;
+    }
+
+    public void setTablaProductos(DefaultTableModel tablaProductos) {
+        this.tablaProductos = tablaProductos;
+    }
+
 }

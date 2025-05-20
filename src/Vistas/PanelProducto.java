@@ -71,7 +71,6 @@ public class PanelProducto extends javax.swing.JPanel {
         boxReceta = new javax.swing.JComboBox<>();
         boxActivo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtNombreProductoB = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -120,7 +119,7 @@ public class PanelProducto extends javax.swing.JPanel {
         labelIDProducto.setForeground(new java.awt.Color(255, 255, 255));
         labelIDProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelIDProducto.setText("ID Producto:");
-        fondoPanel.add(labelIDProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, 90, -1));
+        fondoPanel.add(labelIDProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 580, 90, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -151,7 +150,7 @@ public class PanelProducto extends javax.swing.JPanel {
         txtIdProducto.setBackground(new java.awt.Color(75, 128, 146));
         txtIdProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIdProducto.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 100, -1));
+        fondoPanel.add(txtIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 100, -1));
 
         txtNombreProducto.setBackground(new java.awt.Color(75, 128, 146));
         txtNombreProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -172,7 +171,7 @@ public class PanelProducto extends javax.swing.JPanel {
         txtFechaFabricacion.setBackground(new java.awt.Color(75, 128, 146));
         txtFechaFabricacion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtFechaFabricacion.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtFechaFabricacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 140, -1));
+        fondoPanel.add(txtFechaFabricacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 100, -1));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -257,19 +256,16 @@ public class PanelProducto extends javax.swing.JPanel {
         fondoPanel.add(boxActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 60, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("AGREGAR PRODUCTO");
         fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setText("BUSCAR PRODUCTO");
-        fondoPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, -1, -1));
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Nombre Producto:");
-        fondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, -1, -1));
+        fondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, -1, -1));
 
         txtNombreProductoB.setBackground(new java.awt.Color(75, 128, 146));
-        fondoPanel.add(txtNombreProductoB, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 260, -1));
+        fondoPanel.add(txtNombreProductoB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, 260, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("Código de Barras");
@@ -296,7 +292,7 @@ public class PanelProducto extends javax.swing.JPanel {
                 txtCantidadActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, -1, -1));
+        fondoPanel.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 100, -1));
 
         jLabel18.setText("Cantidad");
         fondoPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
@@ -307,13 +303,13 @@ public class PanelProducto extends javax.swing.JPanel {
                 txtPrecioCompraActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtPrecioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, -1, -1));
+        fondoPanel.add(txtPrecioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 100, -1));
 
         jLabel19.setText("Precio Compra");
         fondoPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
 
         txtPrecioVenta.setBackground(new java.awt.Color(75, 128, 146));
-        fondoPanel.add(txtPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, -1, -1));
+        fondoPanel.add(txtPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 100, -1));
 
         jLabel20.setText("Precio Venta");
         fondoPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
@@ -322,7 +318,7 @@ public class PanelProducto extends javax.swing.JPanel {
         fondoPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
 
         txtFechaVencimiento.setBackground(new java.awt.Color(75, 128, 146));
-        fondoPanel.add(txtFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 90, -1));
+        fondoPanel.add(txtFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -378,7 +374,6 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel labelIDProducto;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JSeparator separador;

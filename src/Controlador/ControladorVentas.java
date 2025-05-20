@@ -5,10 +5,12 @@
 package Controlador;
 
 import Implementacion.VentaImp;
+import Modelo.ModeloProducto;
 import Modelo.ModeloVenta;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,7 +32,7 @@ public class ControladorVentas implements MouseListener{
         if(e.getComponent().equals(modelo.getVistaVentas().btnAgregar)){
             
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnBuscar)){
-            
+           capturaDatosBuscarP(); 
         }
         
         
@@ -72,12 +74,12 @@ public class ControladorVentas implements MouseListener{
     }
     
     
-    public void capturaDeDatos(){
+    public void capturaDatosBuscarP(){
         
-       modelo.getVistaVentas().txtNombreProducto.getText();
-       modelo.getVistaVentas().txtCodigoBarras.getText();
-       modelo.getVistaVentas().txtCantidad.getText();
-        
+       String nombreIngresado = modelo.getVistaVentas().txtNombreProducto.getText();
+       String codigoIngresadoP = modelo.getVistaVentas().txtCodigoBarras.getText();
+       
+        consultarProducto(nombreIngresado, codigoIngresadoP);
     }
     
     
@@ -88,6 +90,31 @@ public class ControladorVentas implements MouseListener{
     
     public void elementosVisibles(){
     
+    }
+    
+    public void consultarProducto(String nombreP, String codigoB){
+        
+       implementacion.buscarProducto(nombreP, codigoB);
+       ModeloVenta modeloV = new ModeloVenta();
+       ModeloProducto modeloP = new ModeloProducto();
+       
+       modeloV.getVistaVentas().txtIdProducto.setText(String.valueOf(modeloP.getIdProducto()));
+       
+       agregarDatosTabla();
+        
+    }
+    
+    public void agregarDatosTabla(){
+        
+        Object[][] data = {
+            {"Aspirina", "5.50", "1", "5.50", "5.50"},
+        };
+        
+        
+        String[] nombreColumnas = {"Nombre Producto", "Precio", "Cantidad", "SubTotal", "Total"};
+        DefaultTableModel modeloTabla = new DefaultTableModel(data, nombreColumnas);
+        
+        modelo.getVistaVentas().jTableProductos.setModel(modeloTabla);
     }
     
 }
