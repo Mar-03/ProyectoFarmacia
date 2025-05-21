@@ -9,5 +9,5 @@ package Implementacion;
  * @author jhosu
  */
 public class ReporteImp {
-    
+
 }

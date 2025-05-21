@@ -14,7 +14,6 @@ import Controlador.ControladorVistaInicio;
 import controladores.ControladorClientes;
 import java.awt.event.MouseListener;
 
-
 public class PanelClientes extends javax.swing.JPanel {
 
     /**
@@ -22,7 +21,7 @@ public class PanelClientes extends javax.swing.JPanel {
      */
     public PanelClientes() {
         initComponents();
-        
+
         ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
         ControladorClientes controlador = new ControladorClientes(modelo, this);
 
@@ -49,10 +48,8 @@ public class PanelClientes extends javax.swing.JPanel {
         txtNIT = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         txtIdentificacion = new javax.swing.JTextField();
-        txtSubsidio = new javax.swing.JTextField();
         txtInsSubsidio = new javax.swing.JTextField();
         txtFechaRegistro = new javax.swing.JTextField();
-        txtActivo = new javax.swing.JTextField();
         tblRegistroClientes = new javax.swing.JScrollPane();
         tblclientes = new javax.swing.JTable();
         btnSalir = new javax.swing.JPanel();
@@ -76,6 +73,8 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         telefono = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        txtSubsidio = new javax.swing.JTextField();
+        txtActivo = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -92,12 +91,19 @@ public class PanelClientes extends javax.swing.JPanel {
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 850, -1));
+
+        separador2.setBackground(new java.awt.Color(255, 255, 255));
+        separador2.setForeground(new java.awt.Color(255, 255, 255));
         fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 850, -1));
 
         txtIdCliente.setBackground(new java.awt.Color(75, 128, 146));
         txtIdCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIdCliente.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdCliente.setCaretColor(new java.awt.Color(255, 255, 255));
         txtIdCliente.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         txtIdCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,53 +115,51 @@ public class PanelClientes extends javax.swing.JPanel {
         txtNombreCliente.setBackground(new java.awt.Color(75, 128, 146));
         txtNombreCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtNombreCliente.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombreCliente.setCaretColor(new java.awt.Color(255, 255, 255));
         txtNombreCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fondoPanel.add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 150, -1));
 
         txtApellidoCliente.setBackground(new java.awt.Color(75, 128, 146));
         txtApellidoCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtApellidoCliente.setForeground(new java.awt.Color(255, 255, 255));
+        txtApellidoCliente.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 150, -1));
 
         txtTelefono.setBackground(new java.awt.Color(75, 128, 146));
         txtTelefono.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 150, -1));
 
         txtNIT.setBackground(new java.awt.Color(75, 128, 146));
         txtNIT.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtNIT.setForeground(new java.awt.Color(255, 255, 255));
+        txtNIT.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 150, -1));
 
         txtDireccion.setBackground(new java.awt.Color(75, 128, 146));
         txtDireccion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        txtDireccion.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 150, -1));
 
         txtIdentificacion.setBackground(new java.awt.Color(75, 128, 146));
         txtIdentificacion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdentificacion.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 150, -1));
-
-        txtSubsidio.setBackground(new java.awt.Color(75, 128, 146));
-        txtSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtSubsidio.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 160, -1));
 
         txtInsSubsidio.setBackground(new java.awt.Color(75, 128, 146));
         txtInsSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtInsSubsidio.setForeground(new java.awt.Color(255, 255, 255));
+        txtInsSubsidio.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtInsSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 160, -1));
 
         txtFechaRegistro.setBackground(new java.awt.Color(75, 128, 146));
         txtFechaRegistro.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtFechaRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        txtFechaRegistro.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 470, 140, -1));
-
-        txtActivo.setBackground(new java.awt.Color(75, 128, 146));
-        txtActivo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtActivo.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 140, -1));
 
         tblclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -257,7 +261,7 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("¿Cuénta con Subsidio? S/N:");
+        jLabel4.setText("¿Cuénta con Subsidio?:");
         fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 200, -1));
 
         NIT.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -308,6 +312,18 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel2.setText("Dirección:");
         fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 120, -1));
 
+        txtSubsidio.setBackground(new java.awt.Color(75, 128, 146));
+        txtSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtSubsidio.setForeground(new java.awt.Color(255, 255, 255));
+        txtSubsidio.setCaretColor(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 160, -1));
+
+        txtActivo.setBackground(new java.awt.Color(75, 128, 146));
+        txtActivo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtActivo.setForeground(new java.awt.Color(255, 255, 255));
+        txtActivo.setCaretColor(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 140, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -316,10 +332,7 @@ public class PanelClientes extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -373,11 +386,10 @@ public class PanelClientes extends javax.swing.JPanel {
     public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 
- public void setControlador(ControladorClientes controlador) {
-        btnAgregar.addMouseListener ( controlador);
-        btnActualizar.addMouseListener( controlador);
+    public void setControlador(ControladorClientes controlador) {
+        btnAgregar.addMouseListener(controlador);
+        btnActualizar.addMouseListener(controlador);
         btnEliminar.addMouseListener(controlador);
-        tblclientes.addMouseListener( controlador);
-
+        tblclientes.addMouseListener(controlador);
     }
 }

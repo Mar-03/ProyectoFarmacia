@@ -18,8 +18,8 @@ import java.util.logging.Logger;
  *
  * @author jhosu
  */
-public class VentaImp implements IVenta{
-    
+public class VentaImp implements IVenta {
+
     DBConnection conector = new DBConnection();
     SQL sql = new SQL();
     PreparedStatement ps;
@@ -27,18 +27,18 @@ public class VentaImp implements IVenta{
 
     @Override
     public boolean hacerVenta(ModeloVenta modelo) {
-        
+
         boolean resultado = true;
-        
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String fechaFormateada = LocalDateTime.now().format(formatter);
-        
+
         conector.conectar();
         try {
             ps = conector.preparar(sql.getHACER_VENTA());
             ps.setInt(1, 1);
             ps.setInt(2, 0);
-            ps.setString(3,fechaFormateada);
+            ps.setString(3, fechaFormateada);
             ps.setBigDecimal(4, modelo.getSubTotal());
             ps.setBigDecimal(5, modelo.getDescuento());
             ps.setBigDecimal(6, modelo.getTotal());
@@ -46,7 +46,7 @@ public class VentaImp implements IVenta{
             ps.setBoolean(8, modelo.isSubsidio());
             ps.setString(9, modelo.getInstitucion());
             ps.setString(10, modelo.getObservaciones());
-            
+
         } catch (Exception e) {
         }
         return resultado;
@@ -54,24 +54,23 @@ public class VentaImp implements IVenta{
 
     @Override
     public boolean guardarDetalleVenta(ModeloVenta modelo) {
-        
+
         conector.conectar();
         boolean resultado = false;
-        
+
         try {
             ps = conector.preparar(sql.getINSERTAR_DETALLE_VENTA());
             ps.setInt(1, 0);
-            
+
         } catch (Exception e) {
         }
-        
         return resultado;
     }
 
     @Override
     public ModeloProducto buscarProducto(String nombreP, String codigoB) {
-    
-    //CAMBIAR EL MODELO
+
+        //CAMBIAR EL MODELO
         ModeloProducto modelo = null;
         String sqlEjecutar;
         boolean buscarPorNombre = !nombreP.isEmpty();
@@ -88,7 +87,7 @@ public class VentaImp implements IVenta{
             ps = conector.preparar(sqlEjecutar);
 
             if (buscarPorNombre) {
-                ps.setString(1,  nombreP );
+                ps.setString(1, nombreP);
             } else {
                 ps.setString(1, codigoB);
             }
@@ -107,17 +106,11 @@ public class VentaImp implements IVenta{
             } catch (SQLException ex) {
                 Logger.getLogger(ProductoImp.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(ProductoImp.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             conector.desconectar();
         }
         return modelo;
-    
     }
-
-    
-    
-    
 }

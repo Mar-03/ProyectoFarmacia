@@ -27,17 +27,14 @@ public class ControladorRegistroUsuario implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
         if (e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)) {
             inputisEmptyRegistrar();
-        } else if (e.getComponent().equals(modelo .getVistaRegistro().btnBuscar)){
-            
+        } else if (e.getComponent().equals(modelo.getVistaRegistro().btnBuscar)) {
         }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
     }
 
     @Override
@@ -55,13 +52,11 @@ public class ControladorRegistroUsuario implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-
         if (e.getComponent().equals(modelo.getVistaRegistro().btnRegistrar)) {
             modelo.getVistaRegistro().btnRegistrar.setBackground(new Color(75, 128, 146));
         } else if (e.getComponent().equals(modelo.getVistaRegistro().btnBorrar)) {
             modelo.getVistaRegistro().btnBorrar.setBackground(new Color(75, 128, 146));
         }
-
     }
 
     public void inputisEmptyRegistrar() {
@@ -77,11 +72,10 @@ public class ControladorRegistroUsuario implements MouseListener {
             JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ADVERTENCIA \"DATOS VACIOS\"", JOptionPane.WARNING_MESSAGE);
         } else {
             capturaDeDatos();
-
             limpiarDatos();
         }
-
     }
+
     public void inputisEmptyBuscar() {
 
         if (modelo.getVistaRegistro().txtNombrePersonal.getText().isEmpty()
@@ -95,10 +89,8 @@ public class ControladorRegistroUsuario implements MouseListener {
             JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ADVERTENCIA \"DATOS VACIOS\"", JOptionPane.WARNING_MESSAGE);
         } else {
             capturaDeDatos();
-
             limpiarDatos();
         }
-
     }
 
     public void capturaDeDatos() {
@@ -112,10 +104,10 @@ public class ControladorRegistroUsuario implements MouseListener {
         //String usuarioActivo = String.valueOf(modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem());
         String tipoUsuario = String.valueOf(modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem());
         String nombreUsuarioInicio = modelo.getVistaRegistro().txtNombreUsuario.getText();
-        creacionDeUsuario(nombreIngresado, apellidoIngresado, telefonoIngresado, emailIngresado,nombreUsuarioInicio,contraseniaIngresada,tipoUsuario,usuarioActivo);
+        creacionDeUsuario(nombreIngresado, apellidoIngresado, telefonoIngresado, emailIngresado, nombreUsuarioInicio, contraseniaIngresada, tipoUsuario, usuarioActivo);
     }
 
-    public void creacionDeUsuario(String nombreIngre, String apellidoIngre, String telefonoIngre,String emailIngre,String nombreUsuario,String contraIngre, String tipoUsuario ,boolean usuarioActivo) {
+    public void creacionDeUsuario(String nombreIngre, String apellidoIngre, String telefonoIngre, String emailIngre, String nombreUsuario, String contraIngre, String tipoUsuario, boolean usuarioActivo) {
 
         ModeloRegistroUsuario model = new ModeloRegistroUsuario();
 
@@ -130,13 +122,12 @@ public class ControladorRegistroUsuario implements MouseListener {
 
         System.out.println(nombreIngre + apellidoIngre + telefonoIngre + emailIngre + nombreUsuario + contraIngre + tipoUsuario + usuarioActivo);
         boolean creacionUsuario = implementacion.guardarUsuario(model);
-        
+
         if (creacionUsuario == true) {
             JOptionPane.showInternalMessageDialog(null, "Usuario creado con éxito", "\"CREACIÓN DE USUARIOS\"", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showInternalMessageDialog(null, "Error en la creación del usuario", "ERROR \"ERROR AL CREAR USUARIO\"", JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
     public void limpiarDatos() {
@@ -149,20 +140,17 @@ public class ControladorRegistroUsuario implements MouseListener {
         modelo.getVistaRegistro().boxUsuarioActivo.setSelectedIndex(0);
         modelo.getVistaRegistro().boxTipoUsuario.setSelectedIndex(0);
         modelo.getVistaRegistro().txtNombreUsuario.setText("");
-
     }
 
-    public boolean validarUsuarioActivo (String usuarioActivo){
-        
+    public boolean validarUsuarioActivo(String usuarioActivo) {
+
         boolean estaActivo = true;
-        
-        if(usuarioActivo.equals("SI")){
+
+        if (usuarioActivo.equals("SI")) {
             estaActivo = true;
         } else {
             estaActivo = false;
         }
-        
-       return estaActivo;
+        return estaActivo;
     }
-    
 }

@@ -4,7 +4,6 @@
  */
 package Implementacion;
 
-
 import Modelo.ModeloRegistroCliente;
 import Conector.DBConnection;
 import Interfaces.IRegistroCliente;
@@ -56,7 +55,6 @@ public class RegistroClienteImpl implements IRegistroCliente {
         } finally {
             conector.desconectar();
         }
-
         return modelo;
     }
 
@@ -75,7 +73,6 @@ public class RegistroClienteImpl implements IRegistroCliente {
         } finally {
             conector.desconectar();
         }
-
         return eliminado;
     }
 
@@ -103,7 +100,6 @@ public class RegistroClienteImpl implements IRegistroCliente {
         } finally {
             conector.desconectar();
         }
-
         return actualizado;
     }
 
@@ -130,7 +126,6 @@ public class RegistroClienteImpl implements IRegistroCliente {
         } finally {
             conector.desconectar();
         }
-
         return insertado;
     }
 
@@ -141,7 +136,6 @@ public class RegistroClienteImpl implements IRegistroCliente {
         modeloTabla.setColumnIdentifiers(new Object[]{
             "ID", "Nombre", "Apellido", "Teléfono", "NIT", "Dirección", "Identificación", "Subsidio", "Fecha Registro"
         });
-
         try {
             conector.conectar();
             String sql = "SELECT * FROM clientes";
@@ -166,7 +160,6 @@ public class RegistroClienteImpl implements IRegistroCliente {
         } finally {
             conector.desconectar();
         }
-
         return modeloTabla;
     }
 }

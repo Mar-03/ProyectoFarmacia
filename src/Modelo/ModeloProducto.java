@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 public class ModeloProducto {
 
     PanelProducto vistaProducto;
-
+    
     private int idProducto;
     private String nombreOficialP;
     private String descripcionP;
@@ -14,7 +14,6 @@ public class ModeloProducto {
     private boolean requiereRecetaP;
     private boolean activoP;
     private String fechaRegistro;
-    
     private String numeroLote;
     private String fechaVencimiento;
     private String fechaFabricación;
@@ -22,10 +21,9 @@ public class ModeloProducto {
     private BigDecimal precioCompra;
     private BigDecimal precioVenta;
     private boolean activo;
-    private String fechaRegistroLotes; 
+    private String fechaRegistroLotes;
     private String nombreAlternativo;
-    
-    
+
     public ModeloProducto() {
     }
 
@@ -168,6 +166,4 @@ public class ModeloProducto {
     public void setNombreAlternativo(String nombreAlternativo) {
         this.nombreAlternativo = nombreAlternativo;
     }
-
-    
 }

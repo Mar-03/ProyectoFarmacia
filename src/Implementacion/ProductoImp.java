@@ -30,7 +30,7 @@ public class ProductoImp implements IProducto {
         boolean resultado = false;
         conector.conectar();
         System.out.println("Hola desde implementacion");
-
+        
         try {
             ps = conector.preparar(sql.getAGREGAR_PRODUCTO());
             System.out.println("nombre " + modelo.getNombreOficialP());
@@ -43,7 +43,6 @@ public class ProductoImp implements IProducto {
 
             int filasAfectadas = ps.executeUpdate();
             resultado = (filasAfectadas > 0);
-
         } catch (SQLException e) {
             System.out.println("Error al en Imp guardarP" + e);
             resultado = false;
@@ -173,7 +172,6 @@ public class ProductoImp implements IProducto {
             } catch (SQLException ex) {
                 Logger.getLogger(ProductoImp.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(ProductoImp.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -211,7 +209,6 @@ public class ProductoImp implements IProducto {
             System.out.println("Error al guardar lote: " + e);
         }
         return resultado;
-
     }
 
     @Override
@@ -231,7 +228,6 @@ public class ProductoImp implements IProducto {
             System.out.println("Error al guardar nombre alternativo: " + e);
         }
         return resultado;
-
     }
 
     public int obtenerUltimoIDProducto() {
@@ -248,7 +244,6 @@ public class ProductoImp implements IProducto {
         }
         return id;
     }
-
 }
 
 //while (rs.next()) {

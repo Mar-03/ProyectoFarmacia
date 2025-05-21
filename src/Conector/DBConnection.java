@@ -20,7 +20,6 @@ public class DBConnection {
     private final String CLAVE = "bnRB@krf4&bB#72";
     private final String BASEDATOS = "freedb_FarmaciaSocial";
     private final String URL;
-
     private Connection link;
     private PreparedStatement ps;
 

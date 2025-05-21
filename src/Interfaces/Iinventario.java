@@ -8,18 +8,11 @@ import Modelo.ModeloInventario;
 import Modelo.ModeloProducto;
 import java.util.List;
 
-
 /**
  *
  * @author jhosu
  */
 public interface Iinventario {
-  
 
-   
-    
-    List<ModeloInventario> mostrarLotesActivos(); 
-
+    List<ModeloInventario> mostrarLotesActivos();
 }
-    
-

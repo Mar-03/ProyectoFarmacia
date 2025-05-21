@@ -20,7 +20,7 @@ public class PanelReportes extends javax.swing.JPanel {
         initComponents();
         ModeloReporte modelo = new ModeloReporte();
         ControladorReportes controlador = new ControladorReportes(modelo);
-        
+
     }
 
     /**
@@ -42,7 +42,7 @@ public class PanelReportes extends javax.swing.JPanel {
         btnMostrarVentas = new javax.swing.JPanel();
         mostrarVentas = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblReportesVentas = new javax.swing.JTable();
         btnExportarPDF = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -61,7 +61,13 @@ public class PanelReportes extends javax.swing.JPanel {
         marcaAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         marcaAgua.setText("FARMACIA");
         fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 850, -1));
+
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 850, -1));
+
+        separador2.setBackground(new java.awt.Color(255, 255, 255));
+        separador2.setForeground(new java.awt.Color(255, 255, 255));
         fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 850, -1));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
@@ -95,7 +101,7 @@ public class PanelReportes extends javax.swing.JPanel {
 
         fondoPanel.add(btnMostrarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 210, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblReportesVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,7 +112,7 @@ public class PanelReportes extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblReportesVentas);
 
         fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 280, 670, 260));
 
@@ -148,20 +154,16 @@ public class PanelReportes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JLabel mostrarVentas;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
+    private javax.swing.JTable tblReportesVentas;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 
-public void setControlador(ControladorReportes controlador){
-    
-    btnExportarPDF.addMouseListener(controlador);
-    btnMostrarVentas.addMouseListener(controlador);
-   
-}
-
-
+    public void setControlador(ControladorReportes controlador) {
+        btnExportarPDF.addMouseListener(controlador);
+        btnMostrarVentas.addMouseListener(controlador);
+    }
 }

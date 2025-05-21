@@ -1,6 +1,5 @@
 package Implementacion;
 
-
 import Conector.DBConnection;
 import Interfaces.*;
 import Conector.SQL;
@@ -13,20 +12,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class InventarioImp implements Iinventario {
+
     private DBConnection conector = new DBConnection();
     private PreparedStatement ps;
     private ResultSet rs;
 
     @Override
-    public List<ModeloInventario> mostrarLotesActivos() { 
+    public List<ModeloInventario> mostrarLotesActivos() {
         List<ModeloInventario> lotes = new ArrayList<>();
-        String sql = "SELECT l.*, p.nombre_oficial AS nombre_producto " +
-                     "FROM lotes l " +
-                     "INNER JOIN productos p ON l.id_producto = p.id_producto " +
-                     "WHERE l.activo = true";
-
+        String sql = "SELECT l.*, p.nombre_oficial AS nombre_producto "
+                + "FROM lotes l "
+                + "INNER JOIN productos p ON l.id_producto = p.id_producto "
+                + "WHERE l.activo = true";
         try {
             conector.conectar();
             ps = conector.preparar(sql);
@@ -50,6 +48,6 @@ public class InventarioImp implements Iinventario {
         } finally {
             conector.desconectar();
         }
-        return lotes; 
+        return lotes;
     }
 }

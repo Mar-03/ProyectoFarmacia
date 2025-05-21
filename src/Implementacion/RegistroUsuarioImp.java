@@ -25,7 +25,6 @@ public class RegistroUsuarioImp implements IRegistroUsuario {
         boolean resultado = false;
 
         conector.conectar();
-
         try {
 
             ps = conector.preparar(sql.getAGREGAR_USUARIO());
@@ -41,9 +40,9 @@ public class RegistroUsuarioImp implements IRegistroUsuario {
 
             int filasAfectadas = ps.executeUpdate();
             resultado = (filasAfectadas > 0);
-            
+
         } catch (SQLException e) {
-             resultado = false;
+            resultado = false;
             System.out.println("Error metodo GuardarUsuario " + e);
         }
         return resultado;
@@ -62,6 +61,5 @@ public class RegistroUsuarioImp implements IRegistroUsuario {
     @Override
     public ModeloRegistroUsuario validarUsuario(String nombreU, String contraU) {
         return null;
-    
     }
 }

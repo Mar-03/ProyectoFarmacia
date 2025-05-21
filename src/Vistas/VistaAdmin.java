@@ -6,6 +6,7 @@ package Vistas;
 
 import Controlador.ControladorVistaAdmin;
 import Modelo.ModeloVistaAdmin;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -20,10 +21,10 @@ public class VistaAdmin extends javax.swing.JFrame {
      */
     public VistaAdmin() {
         initComponents();
-        
+
         Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagen/Pill Icon MT 1-100.png"));
         setIconImage(icono);
-        
+
         ModeloVistaAdmin modelo = new ModeloVistaAdmin(this);
         ControladorVistaAdmin controlador = new ControladorVistaAdmin(modelo);
 
@@ -67,6 +68,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         contenedorFondo = new javax.swing.JPanel();
         btnSalir = new javax.swing.JPanel();
         salir = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -101,7 +103,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 310, -1));
 
         btnProductos.setBackground(new java.awt.Color(75, 128, 146));
-        btnProductos.setForeground(new java.awt.Color(255, 255, 255));
+        btnProductos.setForeground(new java.awt.Color(51, 51, 51));
         btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProductos.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -114,16 +116,17 @@ public class VistaAdmin extends javax.swing.JFrame {
         });
         btnProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        productos.setBackground(new java.awt.Color(255, 255, 255));
         productos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         productos.setForeground(new java.awt.Color(255, 255, 255));
         productos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         productos.setText("   Productos");
-        btnProductos.add(productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+        btnProductos.add(productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 100, 30));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("📦");
         jLabel2.setToolTipText("");
-        btnProductos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 30, 30));
+        btnProductos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 20, 30));
 
         fondoPanel.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 210, 30));
 
@@ -176,12 +179,14 @@ public class VistaAdmin extends javax.swing.JFrame {
         fondoPanel.add(btnRegistroUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 210, 30));
 
         btnComponentesProductos.setBackground(new java.awt.Color(75, 128, 146));
+        btnComponentesProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnComponentesProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("   Componentes Productos");
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnComponentesProductos.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -247,6 +252,19 @@ public class VistaAdmin extends javax.swing.JFrame {
         );
 
         fondoPanel.add(contenedorFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 860, 700));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+        );
+
+        fondoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -326,6 +344,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JLabel productos;
     private javax.swing.JLabel regresar;
@@ -337,14 +356,11 @@ public class VistaAdmin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void setControlador(ControladorVistaAdmin controlador) {
-
         btnRegresar.addMouseListener(controlador);
         btnProductos.addMouseListener(controlador);
         btnGestionInventario.addMouseListener(controlador);
         btnReportes.addMouseListener(controlador);
         btnRegistroUsuarios.addMouseListener(controlador);
         btnComponentesProductos.addMouseListener(controlador);
-
     }
-
 }

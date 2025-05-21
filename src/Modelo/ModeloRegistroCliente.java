@@ -8,20 +8,19 @@ import Vistas.PanelClientes;
 import java.util.logging.Logger;
 import Vistas.*;
 
-        
-
 /**
  *
  * @author anyi4
  */
 public class ModeloRegistroCliente {
+
     PanelClientes panelCliente;
     
     private int id_clientes;
     private String nombre;
-    private String apellido; 
-    private int telefono; 
-    private String direccion; 
+    private String apellido;
+    private int telefono;
+    private String direccion;
     private int identificacion;
     private String nit;
     private String subsidio;

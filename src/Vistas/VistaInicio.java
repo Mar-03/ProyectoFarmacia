@@ -102,8 +102,13 @@ public class VistaInicio extends javax.swing.JFrame {
         fondoPanel.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 290, 40));
 
         txtPassword.setBackground(new java.awt.Color(75, 128, 146));
-        txtPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtPassword.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtPassword.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtPassword.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txtPassword.setSelectionColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 290, 40));
 
         btnAcceder.setBackground(new java.awt.Color(75, 128, 146));
@@ -242,9 +247,6 @@ public class VistaInicio extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void setControlador(ControladorVistaInicio controlador) {
-
         btnAcceder.addMouseListener(controlador);
-
     }
-
 }

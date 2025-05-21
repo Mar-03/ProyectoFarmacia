@@ -4,8 +4,6 @@
  */
 package Controlador;
 
-
-
 import Implementacion.ProductoImp;
 import Interfaces.Iinventario;
 import Modelo.ModeloInventario;
@@ -28,25 +26,17 @@ public class ControladorInventario implements MouseListener {
         this.modelo = modelo;
     }
 
-    
-
-   
-
-    
-
     @Override
     public void mouseClicked(MouseEvent e) {
-        
-        if (e.getSource() instanceof JTable) { 
+        if (e.getSource() instanceof JTable) {
             cargarLotesEnTabla();
         }
     }
 
-    
     private void cargarLotesEnTabla() {
         List<ModeloInventario> lotes = inventarioService.mostrarLotesActivos();
         DefaultTableModel modeloTabla = (DefaultTableModel) tablaInventario.getModel();
-        modeloTabla.setRowCount(0); 
+        modeloTabla.setRowCount(0);
 
         for (ModeloInventario lote : lotes) {
             modeloTabla.addRow(new Object[]{
@@ -62,9 +52,19 @@ public class ControladorInventario implements MouseListener {
         }
     }
 
-    
-    @Override public void mousePressed(MouseEvent e) {}
-    @Override public void mouseReleased(MouseEvent e) {}
-    @Override public void mouseEntered(MouseEvent e) {}
-    @Override public void mouseExited(MouseEvent e) {}
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
 }

@@ -23,7 +23,7 @@ public class VistaVendedor extends javax.swing.JFrame {
 
         Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagen/Pill Icon MT 1-100.png"));
         setIconImage(icono);
-        
+
         ModeloVistaVendedor modelo = new ModeloVistaVendedor(this);
         ControladorVistaVendedor controlador = new ControladorVistaVendedor(modelo);
 
@@ -97,6 +97,7 @@ public class VistaVendedor extends javax.swing.JFrame {
         ventas.setForeground(new java.awt.Color(255, 255, 255));
         ventas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ventas.setText("   Ventas");
+        ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVentas.add(ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,11 +254,8 @@ public class VistaVendedor extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void setControlador(ControladorVistaVendedor controlador) {
-
         btnRegresar.addMouseListener(controlador);
         btnClientes.addMouseListener(controlador);
         btnVentas.addMouseListener(controlador);
-
     }
-
 }

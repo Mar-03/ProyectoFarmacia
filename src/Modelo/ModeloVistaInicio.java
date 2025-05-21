@@ -5,6 +5,7 @@ import Vistas.VistaInicio;
 public class ModeloVistaInicio {
 
     VistaInicio vistaInicio;
+    
     private String usuario;
     private String contrasenia;
     private static String tipoUsuario;
@@ -83,5 +84,4 @@ public class ModeloVistaInicio {
     public void setUsuarioActivo(boolean usuarioActivo) {
         this.usuarioActivo = usuarioActivo;
     }
-    
 }

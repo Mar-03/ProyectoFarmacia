@@ -14,37 +14,35 @@ public class SQL {
     private final String AGREGAR_PRODUCTO = "INSERT INTO productos (nombre_oficial, descripcion, codigo_barras, requiere_receta, activo) VALUES (?,?,?,?,?)";
     private final String AGREGAR_LOTE_PRODUCTO = "INSERT INTO lotes (id_producto, numero_lote, fecha_vencimiento, fecha_fabricacion, cantidad_disponible, precio_compra, precio_venta, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private final String AGREGAR_NOMBRE_ALTERNATIVO = "INSERT INTO nombres_alternativos (id_producto, nombre_alternativo) VALUES (?, ?)";
-    
-    
+
     //Metodos de productos (posible actualización de más funcionalidades)
     private final String CONSULTA_PRODUCTO_NOMBRE = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE nombre_oficial = ?";
     private final String ELIMINAR_PRODUCTO = "DELETE FROM ProductoS WHERE id_producto = ?";
     private final String ACTUALIZAR_PRODUCTO = "UPDATE productos SET nombre_oficial = ?,descripcion = ?,codigo_barras = ?,requiere_receta = ?,activo = ?,WHERE id_producto = ?";
     private final String CONSULTA_PRODUCTO_CODIGO = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE codigo_barras = ?";
     // CONSULTA SOBRE LOTES
-     private final String AGREGAR_LOTE = 
-        "INSERT INTO lotes (id_producto, numero_lote, fecha_vencimiento, fecha_fabricacion, " +
-        "cantidad_disponible, precio_compra, precio_venta, activo) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private final String AGREGAR_LOTE
+            = "INSERT INTO lotes (id_producto, numero_lote, fecha_vencimiento, fecha_fabricacion, "
+            + "cantidad_disponible, precio_compra, precio_venta, activo) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    private final String ACTUALIZAR_LOTE = 
-        "UPDATE lotes SET id_producto = ?, numero_lote = ?, fecha_vencimiento = ?, " +
-        "fecha_fabricacion = ?, cantidad_disponible = ?, precio_compra = ?, " +
-        "precio_venta = ?, activo = ? WHERE id_lote = ?";
+    private final String ACTUALIZAR_LOTE
+            = "UPDATE lotes SET id_producto = ?, numero_lote = ?, fecha_vencimiento = ?, "
+            + "fecha_fabricacion = ?, cantidad_disponible = ?, precio_compra = ?, "
+            + "precio_venta = ?, activo = ? WHERE id_lote = ?";
 
-    private final String ELIMINAR_LOTE = 
-        "UPDATE lotes SET activo = false WHERE id_lote = ?";  
+    private final String ELIMINAR_LOTE
+            = "UPDATE lotes SET activo = false WHERE id_lote = ?";
 
-    private final String OBTENER_LOTES_ACTIVOS = 
-        "SELECT * FROM lotes WHERE activo = true";
+    private final String OBTENER_LOTES_ACTIVOS
+            = "SELECT * FROM lotes WHERE activo = true";
 
-    private final String BUSCAR_LOTE_POR_NUMERO = 
-        "SELECT * FROM lotes WHERE numero_lote LIKE ? AND activo = true";
+    private final String BUSCAR_LOTE_POR_NUMERO
+            = "SELECT * FROM lotes WHERE numero_lote LIKE ? AND activo = true";
 
-    private final String OBTENER_LOTES_POR_PRODUCTO = 
-        "SELECT * FROM lotes WHERE id_producto = ? AND activo = true";
+    private final String OBTENER_LOTES_POR_PRODUCTO
+            = "SELECT * FROM lotes WHERE id_producto = ? AND activo = true";
 
-   
     public String getAGREGAR_LOTE() {
         return AGREGAR_LOTE;
     }
@@ -69,41 +67,40 @@ public class SQL {
         return OBTENER_LOTES_POR_PRODUCTO;
     }
 
-
 // COSULRA PARA CLIENTES USUSARIOS
-    private final String INSERT = 
-        "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private final String INSERT
+            = "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    private  final String UPDATE = 
-        "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, identificacion=?, " +
-        "subsidio=?, fecha=? WHERE id_cliente=?";
+    private final String UPDATE
+            = "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, identificacion=?, "
+            + "subsidio=?, fecha=? WHERE id_cliente=?";
 
-    private final String DELETE = 
-        "DELETE FROM clientes WHERE id_cliente=?";
+    private final String DELETE
+            = "DELETE FROM clientes WHERE id_cliente=?";
 
-    private final String SELECT_ALL = 
-        "SELECT * FROM clientes";
+    private final String SELECT_ALL
+            = "SELECT * FROM clientes";
 
-    private final String SELECT_BY_ID = 
-        "SELECT * FROM clientes WHERE id_cliente=?";
+    private final String SELECT_BY_ID
+            = "SELECT * FROM clientes WHERE id_cliente=?";
 
-    private final String SELECT_BY_PARAMS = 
-        "SELECT * FROM clientes WHERE nombre LIKE ? AND apellido LIKE ? AND telefono = ? " +
-        "AND direccion LIKE ? AND identificacion = ? AND nit LIKE ? AND subsidio LIKE ? AND fecha LIKE ?";
+    private final String SELECT_BY_PARAMS
+            = "SELECT * FROM clientes WHERE nombre LIKE ? AND apellido LIKE ? AND telefono = ? "
+            + "AND direccion LIKE ? AND identificacion = ? AND nit LIKE ? AND subsidio LIKE ? AND fecha LIKE ?";
 
-     //CONSULTA PARA LOS USUARIOS
+    //CONSULTA PARA LOS USUARIOS
     private final String AGREGAR_USUARIO = "INSERT INTO usuarios (nombre, apellido, telefono, email, usuario, contrasena, tipo_usuario, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    
+
     //CONSULTA PARA LAS VENTAS
-    private final String HACER_VENTA ="INSERT INTO ventas (id_usuario,id_cliente,fecha, subtotal, descuento_subsidio, total, tipo_pago, con_subsidio, id_institucion_subsidio, observaciones) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?);";
+    private final String HACER_VENTA = "INSERT INTO ventas (id_usuario,id_cliente,fecha, subtotal, descuento_subsidio, total, tipo_pago, con_subsidio, id_institucion_subsidio, observaciones) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?);";
     private final String INSERTAR_DETALLE_VENTA = "INSERT INTO detalle_ventas (id_venta, id_lote, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
     private final String ACTUALIZAR_STOCK = "UPDATE lotes SET cantidad_disponible = cantidad_disponible - ? WHERE id_lote = ?";
     private final String BUSCAR_CLIENTE = "";
-    private final String BUSCAR_PRODUCTOS ="";
+    private final String BUSCAR_PRODUCTOS = "";
     private final String GENERAR_COMPROBANTE = "";
     private final String CONSULTAR_USUARIO = "";
-    
+
     public String getCONSULTA_USUARIO() {
         return CONSULTA_USUARIO;
     }
@@ -123,10 +120,12 @@ public class SQL {
     public String getAGREGAR_USUARIO() {
         return AGREGAR_USUARIO;
     }
-     public String getAtualizar_USUARIO() {
+
+    public String getAtualizar_USUARIO() {
         return AGREGAR_USUARIO;
     }
-     public String geteiminar_USUARIO() {
+
+    public String geteiminar_USUARIO() {
         return AGREGAR_USUARIO;
     }
 
@@ -173,8 +172,4 @@ public class SQL {
     public String getCONSULTAR_USUARIO() {
         return CONSULTAR_USUARIO;
     }
-    
-    
-    
-       
 }

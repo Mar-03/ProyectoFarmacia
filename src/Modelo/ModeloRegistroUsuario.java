@@ -13,6 +13,7 @@ import Vistas.PanelRegistroUsuario;
 public class ModeloRegistroUsuario {
 
     PanelRegistroUsuario vistaRegistro;
+    
     private String nombreUsuario;
     private String apellidoUsuario;
     private String contraseniaUsuario;
@@ -100,7 +101,4 @@ public class ModeloRegistroUsuario {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-
-    
-    
 }

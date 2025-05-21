@@ -12,11 +12,10 @@ import Modelo.ModeloVenta;
  * @author jhosu
  */
 public interface IVenta {
-    
+
     public boolean hacerVenta(ModeloVenta modelo);
+
     public ModeloProducto buscarProducto(String nombreP, String codigoB);
+
     public boolean guardarDetalleVenta(ModeloVenta modelo);
-    
-    
-    
 }

@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class ModeloVenta {
 
     PanelVentas vistaVentas;
+    
     private String nombreProducto;
     private String codigoBarras;
     private int idProducto;
@@ -30,7 +31,6 @@ public class ModeloVenta {
     private String nitCliente;
     private String observaciones;
     private DefaultTableModel tablaProductos;
-    
 
     public ModeloVenta() {
     }
@@ -166,5 +166,4 @@ public class ModeloVenta {
     public void setTablaProductos(DefaultTableModel tablaProductos) {
         this.tablaProductos = tablaProductos;
     }
-
 }

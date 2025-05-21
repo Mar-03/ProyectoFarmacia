@@ -18,10 +18,10 @@ public class PanelInventario extends javax.swing.JPanel {
      */
     public PanelInventario() {
         initComponents();
-        
+
         ModeloInventario modelo = new ModeloInventario(this);
         ControladorInventario controlador = new ControladorInventario(modelo);
-        
+
         setControlador(controlador);
     }
 
@@ -44,7 +44,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnRegistroVenta = new javax.swing.JPanel();
         registroVenta = new javax.swing.JLabel();
         tblTablaInventario = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblInventario = new javax.swing.JTable();
         separador = new javax.swing.JSeparator();
         separador2 = new javax.swing.JSeparator();
 
@@ -110,8 +110,8 @@ public class PanelInventario extends javax.swing.JPanel {
 
         fondoPanel.add(btnRegistroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 210, 30));
 
-        jTable1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblInventario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        tblInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -122,9 +122,9 @@ public class PanelInventario extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(23, 75, 93));
-        jTable1.setShowGrid(false);
-        tblTablaInventario.setViewportView(jTable1);
+        tblInventario.setGridColor(new java.awt.Color(23, 75, 93));
+        tblInventario.setShowGrid(false);
+        tblTablaInventario.setViewportView(tblInventario);
 
         fondoPanel.add(tblTablaInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 670, 260));
 
@@ -158,19 +158,19 @@ public class PanelInventario extends javax.swing.JPanel {
     public javax.swing.JPanel btnRegistroVenta;
     private javax.swing.JPanel btnSalir;
     private javax.swing.JPanel fondoPanel;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JLabel registroInventario;
     private javax.swing.JLabel registroVenta;
     private javax.swing.JLabel salir;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
+    private javax.swing.JTable tblInventario;
     private javax.swing.JScrollPane tblTablaInventario;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 
-public void setControlador(ControladorInventario controlador){
-    btnRegistroInventario.addMouseListener(controlador);
-    btnRegistroVenta.addMouseListener(controlador);
-}
+    public void setControlador(ControladorInventario controlador) {
+        btnRegistroInventario.addMouseListener(controlador);
+        btnRegistroVenta.addMouseListener(controlador);
+    }
 }
