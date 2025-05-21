@@ -75,7 +75,8 @@ public class ControladorVistaInicio implements MouseListener {
         }
         
         redirigirTipoUsuario(tipoUsuario);
-        
+        modelo.setUsuario(usuarioEncontrado);
+        modelo.setTipoUsuario(tipoUsuario);
     }
   
     

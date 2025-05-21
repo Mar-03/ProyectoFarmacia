@@ -297,6 +297,9 @@ public class PanelVentas extends javax.swing.JPanel {
 
         fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 90, 30));
 
+        ScrollPane.setForeground(new java.awt.Color(204, 204, 204));
+
+        jTableProductos.setBackground(new java.awt.Color(204, 204, 204));
         jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -313,7 +316,8 @@ public class PanelVentas extends javax.swing.JPanel {
 
         fondoPanel.add(ScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 770, 180));
 
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setBackground(new java.awt.Color(204, 204, 204));
+        jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
         jCheckBox1.setText("Venta Sin Cliente registrado");
         fondoPanel.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
 

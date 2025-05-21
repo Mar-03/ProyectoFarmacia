@@ -88,7 +88,7 @@ public class VentaImp implements IVenta{
             ps = conector.preparar(sqlEjecutar);
 
             if (buscarPorNombre) {
-                ps.setString(1, "%" + nombreP + "%");
+                ps.setString(1,  nombreP );
             } else {
                 ps.setString(1, codigoB);
             }
@@ -102,7 +102,7 @@ public class VentaImp implements IVenta{
                     modelo.setCodigoBarrasP(rs.getString("codigo_barras"));
                     modelo.setRequiereRecetaP(rs.getBoolean("requiere_receta")); // Corregido
                     modelo.setActivoP(rs.getBoolean("activo")); // Añadido si existe
-                    modelo.setFechaRegistro(rs.getString("fecha_registro"));
+//                    modelo.setFechaRegistro(rs.getString("fecha_registro"));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ProductoImp.class.getName()).log(Level.SEVERE, null, ex);
