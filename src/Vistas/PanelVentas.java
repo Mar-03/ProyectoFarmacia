@@ -77,7 +77,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         ScrollPane = new javax.swing.JScrollPane();
         jTableProductos = new javax.swing.JTable();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        checkBoxVentaSinClienteR = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -364,16 +364,16 @@ public class PanelVentas extends javax.swing.JPanel {
 
         fondoPanel.add(ScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 750, 150));
 
-        jCheckBox1.setBackground(new java.awt.Color(75, 128, 146));
-        jCheckBox1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Venta Sin Cliente registrado");
-        fondoPanel.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 190, -1));
+        checkBoxVentaSinClienteR.setBackground(new java.awt.Color(75, 128, 146));
+        checkBoxVentaSinClienteR.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        checkBoxVentaSinClienteR.setForeground(new java.awt.Color(255, 255, 255));
+        checkBoxVentaSinClienteR.setText("Venta Sin Cliente registrado");
+        fondoPanel.add(checkBoxVentaSinClienteR, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 190, -1));
 
         jPanel1.setBackground(new java.awt.Color(75, 128, 146));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Hacer Venta");
@@ -431,10 +431,10 @@ public class PanelVentas extends javax.swing.JPanel {
     public javax.swing.JPanel btnBuscar;
     public javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnSalir;
+    public javax.swing.JCheckBox checkBoxVentaSinClienteR;
     public javax.swing.JComboBox<String> cmbMetodoPago;
     public javax.swing.JComboBox<String> cmbSubsidio;
     private javax.swing.JPanel fondoPanel;
-    public javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

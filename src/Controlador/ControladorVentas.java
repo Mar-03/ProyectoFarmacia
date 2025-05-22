@@ -8,9 +8,13 @@ import Implementacion.VentaImp;
 import Modelo.ModeloProducto;
 import Modelo.ModeloVenta;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -65,14 +69,44 @@ public class ControladorVentas implements MouseListener {
         }
     }
 
-    public void capturaDatosBuscarP() {
+    private void capturaDatosBuscarP() {
         String nombreIngresado = modelo.getVistaVentas().txtNombreProducto.getText();
         String codigoIngresadoP = modelo.getVistaVentas().txtCodigoBarras.getText();
 
         consultarProducto(nombreIngresado, codigoIngresadoP);
     }
-
-    public void limpiarDatos() {
+    
+    private void capturaDatosAgregarP(){
+        
+        String nombreP = modelo.getVistaVentas().txtNombreProducto.getText();
+        String precioP = modelo.getVistaVentas().txtPrecio.getText();
+        
+        
+        
+    }
+    
+    private String calcularPrecioP(String precio){
+        
+        modelo.getVistaVentas().cmbSubsidio.getItemAt(1);
+        
+        
+        
+        return "";
+    }
+    
+    
+    private String calcularSubTotal(){
+        
+        return "";
+    }
+    
+    private String calcularTotal(){
+        
+        
+        return "";
+    }
+    
+    private void limpiarDatos() {
     }
 
     public void datosVaciosBuscarP() {
@@ -95,7 +129,7 @@ public class ControladorVentas implements MouseListener {
 
     public void consultarProducto(String nombreP, String codigoB) {
 
-        ModeloVenta modeloV = new ModeloVenta();
+//        ModeloVenta modeloV = new ModeloVenta();
         ModeloProducto modeloP = new ModeloProducto();
 
         modeloP = implementacion.buscarProducto(nombreP, codigoB);
@@ -107,17 +141,44 @@ public class ControladorVentas implements MouseListener {
 //        agregarDatosTabla();
     }
 
-    public void agregarDatosTabla() {
+    public void agregarDatosTabla(String nombreP, String precio, String cantidad, String subtotal, String total) {
 
         Object[][] data = {
-            {"Aspirina", "5.50", "1", "5.50", "5.50"},};
+            {nombreP, precio, cantidad, subtotal, total},};
 
         String[] nombreColumnas = {"Nombre Producto", "Precio", "Cantidad", "SubTotal", "Total"};
         DefaultTableModel modeloTabla = new DefaultTableModel(data, nombreColumnas);
 
-        modelo.getVistaVentas().jTableProductos.setModel(modeloTabla);
+        agregarTabla(modeloTabla);
     }
 
+    
+    //METODOS PARA DEFINIR LA TABLA DENTRO DEL JSCROLL
+    public void tableSize(JTable tabla) {
+        int rowHeight = tabla.getRowHeight();
+        int rowCount = tabla.getRowCount();
+        int headerHeight = tabla.getTableHeader().getPreferredSize().height;
+
+        int alturaTotal = (rowHeight * rowCount) + headerHeight;
+        tabla.setPreferredScrollableViewportSize(new Dimension(tabla.getPreferredSize().width, alturaTotal));
+    }
+    
+    
+    public void agregarTabla(DefaultTableModel modeloTabla){
+        JTable nuevaTabla = new JTable(modeloTabla);
+        tableSize(nuevaTabla);
+
+        System.out.println(nuevaTabla.getRowCount());
+
+        JScrollPane tableScroll = new JScrollPane(nuevaTabla);
+        tableScroll.setBorder(BorderFactory.createTitledBorder("Carrito de Compras" + (modelo.getVistaVentas().jTableProductos.getComponentCount() + 1)));
+
+        modelo.getVistaVentas().jTableProductos.add(tableScroll);
+        modelo.getVistaVentas().jTableProductos.revalidate();
+        modelo.getVistaVentas().jTableProductos.repaint();
+    }
+    
+    
     private void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, "ERROR", JOptionPane.ERROR_MESSAGE);
     }
