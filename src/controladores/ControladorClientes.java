@@ -4,34 +4,33 @@
  */
 package controladores;
 
-import Conector.DBConnection;
+
 import Modelo.ModeloRegistroCliente;
-import Implementacion.*;
+import Implementacion.RegistroClienteImpl;
 import Vistas.PanelClientes;
+
 import java.awt.Color;
 import java.awt.event.MouseEvent;
-import javax.swing.JOptionPane;
 import java.awt.event.MouseListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author anyi4
- */
 public class ControladorClientes implements MouseListener {
 
     private ModeloRegistroCliente modelo;
     private RegistroClienteImpl dao;
-    private RegistroClienteImpl impl;
-
-    public ControladorClientes() {
-        impl = new RegistroClienteImpl();
-    }
 
     public ControladorClientes(ModeloRegistroCliente modelo, PanelClientes vista) {
         this.modelo = modelo;
+        this.dao = new RegistroClienteImpl();
+        this.modelo.setPanelCliente(vista);
+        vista.setControlador(this);
+        mostrarClientesEnTabla(vista.tblclientes);
     }
 
     public void limpiar() {
@@ -48,154 +47,168 @@ public class ControladorClientes implements MouseListener {
     }
 
     public void agregarCliente() {
-
         ModeloRegistroCliente nuevo = new ModeloRegistroCliente();
 
-        nuevo.setNombre(this.modelo.getPanelCliente().txtNombreCliente.getText());
-        nuevo.setApellido(this.modelo.getPanelCliente().txtApellidoCliente.getText());
-        nuevo.setNit(this.modelo.getPanelCliente().txtNIT.getText());
-        nuevo.setDireccion(this.modelo.getPanelCliente().txtDireccion.getText());
-
-        try {
-            nuevo.setIdentificacion(Integer.parseInt(this.modelo.getPanelCliente().txtIdentificacion.getText()));
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Identificación no válida. Debe ser un número.");
+        nuevo.setNombre(modelo.getPanelCliente().txtNombreCliente.getText().trim());
+        nuevo.setApellido(modelo.getPanelCliente().txtApellidoCliente.getText().trim());
+        nuevo.setNit(modelo.getPanelCliente().txtNIT.getText().trim());
+        nuevo.setDireccion(modelo.getPanelCliente().txtDireccion.getText().trim());
+        nuevo.setSubsidio(modelo.getPanelCliente().Subsidio.isSelected()); 
+        
+        String textoIdentificacion = modelo.getPanelCliente().txtIdentificacion.getText().trim();
+        if (!textoIdentificacion.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Identificación inválida. Solo se permiten números.");
             return;
         }
+        nuevo.setIdentificacion(Integer.parseInt(textoIdentificacion));
 
-        nuevo.setSubsidio(this.modelo.getPanelCliente().txtSubsidio.getText());
-        nuevo.setFecha(this.modelo.getPanelCliente().txtFechaRegistro.getText());
-
-        String textoTelefono = modelo.getPanelCliente().txtTelefono.getText().trim();
-        if (textoTelefono.matches("\\d+")) {
-            nuevo.setTelefono(Integer.parseInt(textoTelefono));
-        } else {
-            JOptionPane.showMessageDialog(null, "Teléfono no válido. Ingresa solo números.");
+        String fecha = modelo.getPanelCliente().txtFechaRegistro.getText().trim();
+        if (!fecha.matches("^\\d{4}-\\d{2}-\\d{2}$") || !esFechaValida(fecha)) {
+            JOptionPane.showMessageDialog(null, "Formato de fecha inválido. Use yyyy-MM-dd.");
             return;
         }
+     
+
+        String textoTelefono = modelo.getPanelCliente().txtTelefono.getText().trim().replaceAll("\\s+", "");
+        if (!textoTelefono.matches("\\d{8,15}")) {
+            JOptionPane.showMessageDialog(null, "Teléfono inválido. Use solo números (8 a 15 dígitos).");
+            return;
+        }
+        nuevo.setTelefono(Integer.parseInt(textoTelefono));
 
         boolean exito = dao.insertarCliente(nuevo);
-
         if (exito) {
             JOptionPane.showMessageDialog(null, "Cliente agregado exitosamente.");
             limpiar();
+            mostrarClientesEnTabla(modelo.getPanelCliente().tblclientes);
         } else {
             JOptionPane.showMessageDialog(null, "Error al agregar cliente.");
         }
     }
 
+    private boolean esFechaValida(String fecha) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setLenient(false);
+        try {
+            sdf.parse(fecha);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
     private void actualizarCliente() {
         ModeloRegistroCliente actualizado = new ModeloRegistroCliente();
-        actualizado.setId_clientes(Integer.parseInt(this.modelo.getPanelCliente().txtIdCliente.getText()));
-        actualizado.setNombre(this.modelo.getPanelCliente().txtNombreCliente.getText());
-        actualizado.setApellido(this.modelo.getPanelCliente().txtApellidoCliente.getText());
-        actualizado.setTelefono(Integer.parseInt(this.modelo.getPanelCliente().txtTelefono.getText()));
-        actualizado.setNit(this.modelo.getPanelCliente().txtNIT.getText());
-        actualizado.setDireccion(this.modelo.getPanelCliente().txtDireccion.getText());
-        actualizado.setIdentificacion(Integer.parseInt(this.modelo.getPanelCliente().txtIdentificacion.getText()));
-        actualizado.setSubsidio(this.modelo.getPanelCliente().txtSubsidio.getText());
-        actualizado.setFecha(this.modelo.getPanelCliente().txtFechaRegistro.getText());
 
+        try {
+            actualizado.setId_clientes(Integer.parseInt(modelo.getPanelCliente().txtIdCliente.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID no válido.");
+            return;
+        }
+
+        String textoTelefono = modelo.getPanelCliente().txtTelefono.getText().trim().replaceAll("\\s+", "");
+        if (!textoTelefono.matches("\\d{8,15}")) {
+            JOptionPane.showMessageDialog(null, "Teléfono inválido.");
+            return;
+        }
+        actualizado.setTelefono(Integer.parseInt(textoTelefono));
+
+        String textoIdentificacion = modelo.getPanelCliente().txtIdentificacion.getText().trim();
+        if (!textoIdentificacion.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Identificación inválida.");
+            return;
+        }
+        actualizado.setIdentificacion(Integer.parseInt(textoIdentificacion));
+
+        String textoFecha = modelo.getPanelCliente().txtFechaRegistro.getText().trim();
+        if (!textoFecha.matches("^\\d{4}-\\d{2}-\\d{2}$") || !esFechaValida(textoFecha)) {
+        JOptionPane.showMessageDialog(null, "Formato de fecha inválido.");
+     return;
+            }
+        LocalDate fecha = LocalDate.parse(textoFecha);
+        actualizado.setFecha(fecha);
+
+
+        actualizado.setFecha(fecha);
+
+        actualizado.setNombre(modelo.getPanelCliente().txtNombreCliente.getText().trim());
+        actualizado.setApellido(modelo.getPanelCliente().txtApellidoCliente.getText().trim());
+        actualizado.setNit(modelo.getPanelCliente().txtNIT.getText().trim());
+        actualizado.setDireccion(modelo.getPanelCliente().txtDireccion.getText().trim());
+        actualizado.setSubsidio(modelo.getPanelCliente().Subsidio.isSelected());
+
+
+        boolean exito = dao.actualizarCliente(actualizado);
+        if (exito) {
+            JOptionPane.showMessageDialog(null, "Cliente actualizado correctamente.");
+            limpiar();
+            mostrarClientesEnTabla(modelo.getPanelCliente().tblclientes);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar cliente.");
+        }
     }
 
     private void eliminarCliente() {
-        int id = Integer.parseInt(this.modelo.getPanelCliente().txtIdCliente.getText());
+        int id;
+        try {
+            id = Integer.parseInt(modelo.getPanelCliente().txtIdCliente.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID no válido.");
+            return;
+        }
 
         int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar este cliente?", "Confirmar", JOptionPane.YES_NO_OPTION);
-
         if (confirmacion == JOptionPane.YES_OPTION) {
-            if (dao.eliminarCliente(id)) {
+            boolean exito = dao.eliminarCliente(id);
+            if (exito) {
                 JOptionPane.showMessageDialog(null, "Cliente eliminado correctamente.");
+                limpiar();
+                mostrarClientesEnTabla(modelo.getPanelCliente().tblclientes);
             } else {
                 JOptionPane.showMessageDialog(null, "Error al eliminar cliente.");
             }
         }
     }
 
-    public void consultarCliente(JTextField txtNombre, JTextField txtApellido, JTextField txtTelefono,
-            JTextField txtDireccion, JTextField txtIdentificacion, JTextField txtNit,
-            JTextField txtSubsidio, JTextField txtFecha, JTextField txtID) {
-
-        ModeloRegistroCliente cliente = impl.ConsultaCliente(
-                txtNombre.getText(),
-                txtApellido.getText(),
-                Integer.parseInt(txtTelefono.getText()),
-                txtDireccion.getText(),
-                Integer.parseInt(txtIdentificacion.getText()),
-                txtNit.getText(),
-                txtSubsidio.getText(),
-                txtFecha.getText()
-        );
-        if (cliente.getId_clientes() != 0) {
-            txtID.setText(String.valueOf(cliente.getId_clientes()));
-            txtNombre.setText(cliente.getNombre());
-            txtApellido.setText(cliente.getApellido());
-            txtTelefono.setText(String.valueOf(cliente.getTelefono()));
-            txtDireccion.setText(cliente.getDireccion());
-            txtIdentificacion.setText(String.valueOf(cliente.getIdentificacion()));
-            txtNit.setText(cliente.getNit());
-            txtSubsidio.setText(cliente.getSubsidio());
-            txtFecha.setText(cliente.getFecha());
-        } else {
-            JOptionPane.showMessageDialog(null, "Cliente no encontrado.");
-        }
-    }
-
     public void mostrarClientesEnTabla(JTable tablaClientes) {
-        DefaultTableModel modelo = impl.listarClientes();
-        tablaClientes.setModel(modelo);
+        DefaultTableModel modeloTabla = dao.listarClientes();
+        tablaClientes.setModel(modeloTabla);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getComponent().equals(modelo.getPanelCliente().btnAgregar)) {
-            if (modelo.getPanelCliente().txtNombreCliente.getText().isEmpty()
-                    || modelo.getPanelCliente().txtApellidoCliente.getText().isEmpty()
-                    || modelo.getPanelCliente().txtTelefono.getText().isEmpty()
-                    || modelo.getPanelCliente().txtNIT.getText().isEmpty()
-                    || modelo.getPanelCliente().txtDireccion.getText().isEmpty()
-                    || modelo.getPanelCliente().txtIdentificacion.getText().isEmpty()
-                    || modelo.getPanelCliente().txtSubsidio.getText().isEmpty()
-                    || modelo.getPanelCliente().txtFechaRegistro.getText().isEmpty()) {
-
-                JOptionPane.showMessageDialog(null, "Debe de ingresar todos los campos", "ERROR AL AGREGAR CLIENTE", JOptionPane.ERROR_MESSAGE);
+            if (modelo.getPanelCliente().txtNombreCliente.getText().isEmpty() ||
+                modelo.getPanelCliente().txtApellidoCliente.getText().isEmpty() ||
+                modelo.getPanelCliente().txtTelefono.getText().isEmpty() ||
+                modelo.getPanelCliente().txtNIT.getText().isEmpty() ||
+                modelo.getPanelCliente().txtDireccion.getText().isEmpty() ||
+                modelo.getPanelCliente().txtIdentificacion.getText().isEmpty() ||
+                modelo.getPanelCliente().txtInsSubsidio.getText().isEmpty() ||
+                modelo.getPanelCliente().txtFechaRegistro.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar todos los campos.");
             } else {
                 agregarCliente();
-                limpiar();
-                JOptionPane.showMessageDialog(null, "Cliente agregado con éxito", "CLIENTE AGREGADO", JOptionPane.INFORMATION_MESSAGE);
             }
         } else if (e.getComponent().equals(modelo.getPanelCliente().btnEliminar)) {
-            if (modelo.getPanelCliente().txtIdCliente.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Debe ingresar el ID del cliente", "ERROR AL ELIMINAR CLIENTE", JOptionPane.ERROR_MESSAGE);
-            } else {
-                eliminarCliente();
-            }
+            eliminarCliente();
+        } else if (e.getComponent().equals(modelo.getPanelCliente().btnActualizar)) {
+            actualizarCliente();
         }
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        if (e.getComponent().equals(modelo.getPanelCliente().btnAgregar)) {
-            modelo.getPanelCliente().btnAgregar.setBackground(new Color(83, 134, 134));
-        } else if (e.getComponent().equals(modelo.getPanelCliente().btnEliminar)) {
-            modelo.getPanelCliente().btnEliminar.setBackground(new Color(83, 134, 134));
+    @Override public void mousePressed(MouseEvent e) {}
+    @Override public void mouseReleased(MouseEvent e) {}
+    @Override public void mouseEntered(MouseEvent e) {
+        if (e.getComponent() instanceof JTextField) {
+            ((JTextField) e.getComponent()).setBackground(Color.WHITE);
         }
     }
 
-    @Override
-    public void mouseExited(MouseEvent e) {
-        if (e.getComponent().equals(modelo.getPanelCliente().btnAgregar)) {
-            modelo.getPanelCliente().btnAgregar.setBackground(new Color(48, 99, 99));
-        } else if (e.getComponent().equals(modelo.getPanelCliente().btnEliminar)) {
-            modelo.getPanelCliente().btnEliminar.setBackground(new Color(48, 99, 99));
+    @Override public void mouseExited(MouseEvent e) {
+        if (e.getComponent() instanceof JTextField) {
+            ((JTextField) e.getComponent()).setBackground(new Color(204, 204, 204));
         }
     }
 }

@@ -7,24 +7,25 @@ package Modelo;
 import Vistas.PanelClientes;
 import java.util.logging.Logger;
 import Vistas.*;
+import java.time.LocalDate;
 
 /**
  *
  * @author anyi4
  */
 public class ModeloRegistroCliente {
-
     PanelClientes panelCliente;
     
+
     private int id_clientes;
     private String nombre;
-    private String apellido;
-    private int telefono;
-    private String direccion;
+    private String apellido; 
+    private int telefono; 
+    private String direccion; 
     private int identificacion;
     private String nit;
-    private String subsidio;
-    private String fecha;
+    private boolean subsidio;
+    private LocalDate fecha;
 
     public ModeloRegistroCliente() {
     }
@@ -97,19 +98,20 @@ public class ModeloRegistroCliente {
         this.nit = nit;
     }
 
-    public String getSubsidio() {
+    public boolean isSubsidio() {
         return subsidio;
     }
 
-    public void setSubsidio(String subsidio) {
+    public void setSubsidio(boolean subsidio) {
         this.subsidio = subsidio;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+  public LocalDate getFecha() {
+    return fecha;
 }
+
+public void setFecha(LocalDate fecha) {
+    this.fecha = fecha;
+}}
+
+   

@@ -46,8 +46,10 @@ public class RegistroClienteImpl implements IRegistroCliente {
                 modelo.setDireccion(rs.getString("direccion"));
                 modelo.setIdentificacion(rs.getInt("identificacion"));
                 modelo.setNit(rs.getString("nit"));
-                modelo.setSubsidio(rs.getString("subsidio"));
-                modelo.setFecha(rs.getString("fecha"));
+                modelo.setSubsidio(rs.getBoolean("subsidio"));
+                modelo.setFecha(rs.getDate("fecha").toLocalDate());
+
+
                 System.out.println("Cliente encontrado: " + modelo.getNombre() + " " + modelo.getApellido());
             }
         } catch (SQLException e) {
@@ -90,8 +92,8 @@ public class RegistroClienteImpl implements IRegistroCliente {
             ps.setString(4, cliente.getNit());
             ps.setString(5, cliente.getDireccion());
             ps.setInt(6, cliente.getIdentificacion());
-            ps.setString(7, cliente.getSubsidio());
-            ps.setString(8, cliente.getFecha());
+           ps.setBoolean(7, cliente.isSubsidio());
+           ps.setDate(8, java.sql.Date.valueOf(cliente.getFecha()));
             ps.setInt(9, cliente.getId_clientes());
 
             actualizado = ps.executeUpdate() > 0;
@@ -117,8 +119,9 @@ public class RegistroClienteImpl implements IRegistroCliente {
             ps.setString(4, cliente.getNit());
             ps.setString(5, cliente.getDireccion());
             ps.setInt(6, cliente.getIdentificacion());
-            ps.setString(7, cliente.getSubsidio());
-            ps.setString(8, cliente.getFecha());
+            ps.setBoolean(7, cliente.isSubsidio());
+            ps.setDate(8, java.sql.Date.valueOf(cliente.getFecha()));
+
 
             insertado = ps.executeUpdate() > 0;
         } catch (SQLException e) {

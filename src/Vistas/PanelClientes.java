@@ -73,8 +73,8 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         telefono = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtSubsidio = new javax.swing.JTextField();
         txtActivo = new javax.swing.JTextField();
+        Subsidio = new javax.swing.JCheckBox();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -312,17 +312,14 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel2.setText("Dirección:");
         fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 120, -1));
 
-        txtSubsidio.setBackground(new java.awt.Color(75, 128, 146));
-        txtSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtSubsidio.setForeground(new java.awt.Color(255, 255, 255));
-        txtSubsidio.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 160, -1));
-
         txtActivo.setBackground(new java.awt.Color(75, 128, 146));
         txtActivo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtActivo.setForeground(new java.awt.Color(255, 255, 255));
         txtActivo.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 140, -1));
+
+        Subsidio.setText("jCheckBox1");
+        fondoPanel.add(Subsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 150, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -348,6 +345,7 @@ public class PanelClientes extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDCliente;
     private javax.swing.JLabel NIT;
+    public javax.swing.JCheckBox Subsidio;
     public javax.swing.JLabel actualizar;
     public javax.swing.JLabel agregar;
     public javax.swing.JPanel btnActualizar;
@@ -382,7 +380,6 @@ public class PanelClientes extends javax.swing.JPanel {
     public javax.swing.JTextField txtInsSubsidio;
     public javax.swing.JTextField txtNIT;
     public javax.swing.JTextField txtNombreCliente;
-    public javax.swing.JTextField txtSubsidio;
     public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 
