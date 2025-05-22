@@ -68,19 +68,17 @@ public class SQL {
     }
 
 // COSULRA PARA CLIENTES USUSARIOS
-    private final String INSERT
-            = "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha) "
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    
+private final String INSERT = "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha_registro) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    private final String UPDATE
-            = "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, identificacion=?, "
-            + "subsidio=?, fecha=? WHERE id_cliente=?";
 
+private final String UPDATE = "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, identificacion=?, subsidio=?, fecha_registro=? WHERE id_cliente=?";
+
+
+private final String SELECT_ALL = "SELECT * FROM clientes";
     private final String DELETE
             = "DELETE FROM clientes WHERE id_cliente=?";
 
-    private final String SELECT_ALL
-            = "SELECT * FROM clientes";
 
     private final String SELECT_BY_ID
             = "SELECT * FROM clientes WHERE id_cliente=?";

@@ -84,8 +84,8 @@ public class RegistroClienteImpl implements IRegistroCliente {
 
         try {
             conector.conectar();
-            String sql = "UPDATE clientes SET nombre = ?, apellido = ?, telefono = ?, nit = ?, direccion = ?, identificacion = ?, subsidio = ?, fecha = ? WHERE id_cliente = ?";
-            ps = conector.preparar(sql);
+            String sql = "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, "
+                       + "identificacion=?, subsidio=?, fecha_registro=? WHERE id_cliente=?"; ps = conector.preparar(sql);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getApellido());
             ps.setInt(3, cliente.getTelefono());
@@ -93,6 +93,7 @@ public class RegistroClienteImpl implements IRegistroCliente {
             ps.setString(5, cliente.getDireccion());
             ps.setInt(6, cliente.getIdentificacion());
            ps.setBoolean(7, cliente.isSubsidio());
+
            ps.setDate(8, java.sql.Date.valueOf(cliente.getFecha()));
             ps.setInt(9, cliente.getId_clientes());
 
@@ -111,7 +112,8 @@ public class RegistroClienteImpl implements IRegistroCliente {
 
         try {
             conector.conectar();
-            String sql = "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+             String sql = "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha_registro) "
+                       + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             ps = conector.preparar(sql);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getApellido());
