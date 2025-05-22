@@ -53,29 +53,30 @@ public class DBConnection {
         }
         return ps;
     }
-//    public class ConexionBD {
-//    private static final String URL = "jdbc:mysql://localhost:3306/farmacia_social?serverTimezone=UTC";
-//    private static final String USUARIO = "root"; 
-//    private static final String CONTRASENA = "umg$123456"; 
-//
-//    
-//     // ESTABLECER LA CONEXIÓN
-//    public static Connection getConnection() {
-//    
-//        Connection conn = null;
-//        
-//        try {
-//            conn = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
-//        } catch (SQLException e) {
-//            System.out.println("Error en la conexión de BD: " + e.getMessage());
-//        }
-//        
-//        return conn;
-//        
-//    }
-//}
 
-    public PreparedStatement preparar(int UPDATE) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    //---- MÉTODOS PARA TRANSACCIONES ----
+    public void comenzarTransaccion() throws SQLException {
+        if (this.link != null) {
+            this.link.setAutoCommit(false);
+        }
     }
+
+    public void confirmarTransaccion() throws SQLException {
+        if (this.link != null && !this.link.getAutoCommit()) {
+            this.link.commit();
+            this.link.setAutoCommit(true);
+        }
+    }
+
+    public void revertirTransaccion() {
+        try {
+            if (this.link != null && !this.link.getAutoCommit()) {
+                this.link.rollback();
+                this.link.setAutoCommit(true);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al revertir transacción: " + ex.getMessage());
+        }
+    }
+
 }

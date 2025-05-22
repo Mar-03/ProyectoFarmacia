@@ -85,17 +85,13 @@ public class ControladorProducto implements MouseListener {
 
     public void capturaDeDatosAgregarP() {
 
-//        ModeloProducto model = new ModeloProducto();
         String nombreIngresado = modelo.getVistaProducto().txtNombreProducto.getText();
         String descripcionIngresada = modelo.getVistaProducto().txtDescripcion.getText();
         String codigoIngresado = modelo.getVistaProducto().txtCodigoBarras.getText();
         String receta = String.valueOf(modelo.getVistaProducto().boxReceta.getSelectedItem());
         String activo = String.valueOf(modelo.getVistaProducto().boxActivo.getSelectedItem());
-        registrarProducto(nombreIngresado, descripcionIngresada, codigoIngresado, receta, activo);
-
         String nombreAlternativo = modelo.getVistaProducto().txtNombreAlterno.getText();
-        registrarNombreAlternativo(nombreAlternativo);
-
+ 
         String numeroLote = modelo.getVistaProducto().txtNumeroLote.getText();
         String fechaVencimiento = modelo.getVistaProducto().txtFechaVencimiento.getText();
         String fechaFabricacion = modelo.getVistaProducto().txtFechaFabricacion.getText();
@@ -103,35 +99,59 @@ public class ControladorProducto implements MouseListener {
         BigDecimal precioCompra = new BigDecimal(modelo.getVistaProducto().txtPrecioCompra.getText());
         BigDecimal precioVenta = new BigDecimal(modelo.getVistaProducto().txtPrecioVenta.getText());
 
-        registrarLoteProducto(numeroLote, fechaVencimiento, fechaFabricacion, cantidad, precioCompra, precioVenta);
-        //Lote activo por defecto true
+        registrarProducto(nombreIngresado, descripcionIngresada, codigoIngresado, receta, activo, numeroLote, fechaVencimiento, fechaFabricacion, cantidad, precioCompra, precioVenta, nombreAlternativo);
+
     }
 
-    public void registrarProducto(String nombre, String descripcion, String codigo, String receta, String activo) {
-        boolean recetaIngresada, productoActivo;
+    public void registrarProducto(String nombre, String descripcion, String codigo, String receta, String activo, String numeroLote, String fechaVencimiento, String fechaFabricacion,String cantidad, BigDecimal precioCompra, BigDecimal precioVenta, String nombreAlterna) {
         
-        if (receta.equals("SI")) {
-            recetaIngresada = true;
-        } else {
-            recetaIngresada = false;
-        }
-        if (activo.equals("SI")) {
-            productoActivo = true;
-        } else {
-            productoActivo = false;
-        }
-
         ModeloProducto modeloRegistroProducto = new ModeloProducto();
 
         modeloRegistroProducto.setNombreOficialP(nombre);
         modeloRegistroProducto.setDescripcionP(descripcion);
         modeloRegistroProducto.setCodigoBarrasP(codigo);
-        modeloRegistroProducto.setRequiereRecetaP(recetaIngresada);
-        modeloRegistroProducto.setActivoP(productoActivo);
-
-        boolean guardarP = implementacion.guardarProducto(modeloRegistroProducto);
+        modeloRegistroProducto.setRequiereRecetaP(validarReceta(receta));
+        modeloRegistroProducto.setActivoP(validarActivoP(activo));
+        modeloRegistroProducto.setNumeroLote(numeroLote);
+        modeloRegistroProducto.setFechaVencimiento(fechaVencimiento);
+        modeloRegistroProducto.setFechaFabricación(validarFechaFab(fechaFabricacion));
+        //Terminar de poner los demás datos para pasarlos a la implementación
+        boolean guardarP = implementacion.guardarProductoCompleto(modeloRegistroProducto);
 
         notificarProductoGuardado(guardarP);
+    }
+    
+    
+    private boolean validarReceta(String receta){
+        boolean recetaIngresada = false;
+       
+        if (receta.equals("SI")) {
+            recetaIngresada = true;
+        } else {
+            recetaIngresada = false;
+        }
+        return recetaIngresada;
+    }
+    
+    private boolean validarActivoP(String activoP){
+        boolean productoActivo;
+       
+        if (activoP.equals("SI")) {
+            productoActivo = true;
+        } else {
+            productoActivo = false;
+        }
+        return productoActivo;
+    }
+    
+    private String validarFechaFab(String fecha){
+        String fechaFabriValidacion = "";
+        if(fecha.equals("")){
+            fechaFabriValidacion = null;
+        } else {
+            fechaFabriValidacion = fecha;
+        }
+        return fechaFabriValidacion;
     }
 
     public void registrarNombreAlternativo(String nombre) {

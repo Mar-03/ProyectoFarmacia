@@ -108,32 +108,6 @@ public class ProductoImp implements IProducto {
         return resultado;
     }
 
-//    @Override
-//    public ModeloProducto mostrarProducto(int idProducto) {
-//
-//        ModeloProducto modelo = new ModeloProducto();
-//        conector.conectar();
-//
-//        try {
-//            ps = conector.preparar(sql.getCONSULTA_PRODUCTO_NOMBRE());
-//            ps.setInt(1, idProducto);
-//
-//            rs = ps.executeQuery();
-//
-//            while (rs.next()) {
-//                modelo.setIdProducto(rs.getInt("id_producto"));
-//                modelo.setNombreOficialP(rs.getString("nombre_oficial"));
-//                modelo.setDescripcionP(rs.getString("descripcion"));
-//                modelo.setCodigoBarrasP(rs.getString("codigo_barras"));
-//                modelo.setRequiereRecetaP(rs.getBoolean("activo"));
-//                modelo.setFechaRegistro(rs.getString("fecha_registro"));
-//            }
-//            conector.desconectar();
-//        } catch (SQLException e) {
-//            System.out.println("Error al realizar la consulta " + e);
-//        }
-//        return modelo;
-//    }
     @Override
     public ModeloProducto mostrarProducto(String nombreP, String codigoP) {
 
@@ -244,13 +218,44 @@ public class ProductoImp implements IProducto {
         }
         return id;
     }
+    
+    
+    public boolean guardarProductoCompleto(ModeloProducto modelo){
+        boolean exito = false;
+        try {
+            
+            conector.comenzarTransaccion();
+            
+            if(guardarProducto(modelo)){
+                int idProducto = obtenerUltimoIDProducto();
+                
+                if(idProducto != -1){
+                    //GUARDAR LOTE (SI APLICA)
+                    if(modelo.getFechaVencimiento() != null){
+                        guardarLote(modelo, idProducto);
+                    }
+                    
+                    if(modelo.getNombreAlternativo() != null){
+                        guardarNombreAlternativo(modelo, idProducto);
+                    }
+                    
+                    conector.confirmarTransaccion();
+                    exito = true;
+                    
+                }
+                
+                
+                
+            }
+            
+            
+        } catch (SQLException e) {
+            System.out.println("Error en la transacción " + e.getMessage());
+            conector.revertirTransaccion();
+        } finally {
+            conector.desconectar();
+        }
+        return exito;
+    }
+   
 }
-
-//while (rs.next()) {
-//                modelo.setIdProducto(rs.getInt("id_producto"));
-//                modelo.setNombreOficialP(rs.getString("nombre_oficial"));
-//                modelo.setDescripcionP(rs.getString("descripcion"));
-//                modelo.setCodigoBarrasP(rs.getString("codigo_barras"));
-//                modelo.setRequiereRecetaP(rs.getBoolean("activo"));
-//                modelo.setFechaRegistro(rs.getString("fecha_registro"));
-//            }

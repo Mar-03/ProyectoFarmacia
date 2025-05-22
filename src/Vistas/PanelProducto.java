@@ -249,7 +249,7 @@ public class PanelProducto extends javax.swing.JPanel {
         boxReceta.setBackground(new java.awt.Color(75, 128, 146));
         boxReceta.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         boxReceta.setForeground(new java.awt.Color(255, 255, 255));
-        boxReceta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        boxReceta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "SI", "NO" }));
         boxReceta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         fondoPanel.add(boxReceta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 80, -1));
 
