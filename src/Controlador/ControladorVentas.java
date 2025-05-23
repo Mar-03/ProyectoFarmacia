@@ -36,6 +36,10 @@ public class ControladorVentas implements MouseListener {
         if (e.getComponent().equals(modelo.getVistaVentas().btnAgregar)) {
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnBuscar)) {
             datosVaciosBuscarP();
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnEliminar)) {
+
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnHacerVenta)) {
+
         }
     }
 
@@ -75,37 +79,31 @@ public class ControladorVentas implements MouseListener {
 
         consultarProducto(nombreIngresado, codigoIngresadoP);
     }
-    
-    private void capturaDatosAgregarP(){
-        
+
+    private void capturaDatosAgregarP() {
+
         String nombreP = modelo.getVistaVentas().txtNombreProducto.getText();
         String precioP = modelo.getVistaVentas().txtPrecio.getText();
-        
-        
-        
+
     }
-    
-    private String calcularPrecioP(String precio){
-        
+
+    private String calcularPrecioP(String precio) {
+
         modelo.getVistaVentas().cmbSubsidio.getItemAt(1);
-        
-        
-        
+
         return "";
     }
-    
-    
-    private String calcularSubTotal(){
-        
+
+    private String calcularSubTotal() {
+
         return "";
     }
-    
-    private String calcularTotal(){
-        
-        
+
+    private String calcularTotal() {
+
         return "";
     }
-    
+
     private void limpiarDatos() {
     }
 
@@ -121,6 +119,21 @@ public class ControladorVentas implements MouseListener {
         if (modelo.getVistaVentas().txtNombreProducto.getText().isEmpty() || modelo.getVistaVentas().txtCodigoBarras.getText().isEmpty()) {
             mostrarError("No se pudo agregar el producto, por favor busque un producto para agregarlo");
         } else {
+        }
+    }
+
+    private void datosVaciosHacerVentas() {
+        if (modelo.getVistaVentas().txtNombreProducto.getText().isEmpty()
+                || modelo.getVistaVentas().txtCodigoBarras.getText().isEmpty()
+                || modelo.getVistaVentas().txtCantidad.getText().isEmpty()
+                || modelo.getVistaVentas().txtSubtotal.getText().isEmpty()
+                || modelo.getVistaVentas().txtDescuentoSubsidio.getText().isEmpty()
+                || modelo.getVistaVentas().txtTotal.getText().isEmpty()) {
+
+        } else {
+            //Llamar al método que registre la venta
+            //En ese mismo método añadir la opción de generar o no PDF (Comprobante)
+            hacerVenta();
         }
     }
 
@@ -152,7 +165,6 @@ public class ControladorVentas implements MouseListener {
         agregarTabla(modeloTabla);
     }
 
-    
     //METODOS PARA DEFINIR LA TABLA DENTRO DEL JSCROLL
     public void tableSize(JTable tabla) {
         int rowHeight = tabla.getRowHeight();
@@ -162,9 +174,8 @@ public class ControladorVentas implements MouseListener {
         int alturaTotal = (rowHeight * rowCount) + headerHeight;
         tabla.setPreferredScrollableViewportSize(new Dimension(tabla.getPreferredSize().width, alturaTotal));
     }
-    
-    
-    public void agregarTabla(DefaultTableModel modeloTabla){
+
+    public void agregarTabla(DefaultTableModel modeloTabla) {
         JTable nuevaTabla = new JTable(modeloTabla);
         tableSize(nuevaTabla);
 
@@ -177,9 +188,29 @@ public class ControladorVentas implements MouseListener {
         modelo.getVistaVentas().jTableProductos.revalidate();
         modelo.getVistaVentas().jTableProductos.repaint();
     }
-    
-    
+
     private void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, "ERROR", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private void hacerVenta() {
+
+        ModeloVenta modeloVenta = new ModeloVenta();
+
+        //Llamar al método de implementación para la venta
+        if (modeloVenta != null) {
+            int mensajeHacerComprobante = JOptionPane.showConfirmDialog(null, "¿Desea generar comprobante de esta venta?", "VENTA", JOptionPane.YES_NO_OPTION);
+            if (mensajeHacerComprobante == JOptionPane.YES_OPTION) {
+                generarComprobante();
+            } else {
+                JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
+                //Tal vez llamar aquí el método para limpiar todo
+            }
+        }
+
+    }
+
+    private void generarComprobante() {
+
     }
 }

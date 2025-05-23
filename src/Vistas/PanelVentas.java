@@ -78,7 +78,7 @@ public class PanelVentas extends javax.swing.JPanel {
         ScrollPane = new javax.swing.JScrollPane();
         jTableProductos = new javax.swing.JTable();
         checkBoxVentaSinClienteR = new javax.swing.JCheckBox();
-        jPanel1 = new javax.swing.JPanel();
+        btnHacerVenta = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(850, 700));
@@ -370,8 +370,8 @@ public class PanelVentas extends javax.swing.JPanel {
         checkBoxVentaSinClienteR.setText("Venta Sin Cliente registrado");
         fondoPanel.add(checkBoxVentaSinClienteR, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 190, -1));
 
-        jPanel1.setBackground(new java.awt.Color(75, 128, 146));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnHacerVenta.setBackground(new java.awt.Color(75, 128, 146));
+        btnHacerVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -379,18 +379,18 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel5.setText("Hacer Venta");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout btnHacerVentaLayout = new javax.swing.GroupLayout(btnHacerVenta);
+        btnHacerVenta.setLayout(btnHacerVentaLayout);
+        btnHacerVentaLayout.setHorizontalGroup(
+            btnHacerVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnHacerVentaLayout.setVerticalGroup(
+            btnHacerVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
         );
 
-        fondoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 570, 90, 30));
+        fondoPanel.add(btnHacerVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 570, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -430,6 +430,7 @@ public class PanelVentas extends javax.swing.JPanel {
     public javax.swing.JPanel btnAgregar;
     public javax.swing.JPanel btnBuscar;
     public javax.swing.JPanel btnEliminar;
+    public javax.swing.JPanel btnHacerVenta;
     private javax.swing.JPanel btnSalir;
     public javax.swing.JCheckBox checkBoxVentaSinClienteR;
     public javax.swing.JComboBox<String> cmbMetodoPago;
@@ -453,7 +454,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     public javax.swing.JTable jTableProductos;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JScrollPane scrollPanel;
