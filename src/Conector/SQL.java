@@ -20,6 +20,7 @@ public class SQL {
     private final String ELIMINAR_PRODUCTO = "DELETE FROM ProductoS WHERE id_producto = ?";
     private final String ACTUALIZAR_PRODUCTO = "UPDATE productos SET nombre_oficial = ?,descripcion = ?,codigo_barras = ?,requiere_receta = ?,activo = ?,WHERE id_producto = ?";
     private final String CONSULTA_PRODUCTO_CODIGO = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE codigo_barras = ?";
+    
     // CONSULTA SOBRE LOTES
     private final String AGREGAR_LOTE
             = "INSERT INTO lotes (id_producto, numero_lote, fecha_vencimiento, fecha_fabricacion, "

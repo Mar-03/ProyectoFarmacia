@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 
 /**
  *
@@ -53,7 +54,21 @@ public class DBConnection {
         }
         return ps;
     }
-
+    
+    public PreparedStatement preparar(String sql, boolean retornarId) throws SQLException{
+        if(this.link == null || this.link.isClosed()){
+            throw new SQLException("Conexión no establecida");
+        }
+        return retornarId
+                ? this.link.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
+                : this.link.prepareStatement(sql);
+    }
+    
+    public Connection getConnection(){
+        return this.link;
+    }
+    
+    
     //---- MÉTODOS PARA TRANSACCIONES ----
     public void comenzarTransaccion() throws SQLException {
         if (this.link != null) {

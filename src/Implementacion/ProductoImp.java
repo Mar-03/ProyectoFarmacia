@@ -4,6 +4,7 @@ import Conector.DBConnection;
 import Conector.SQL;
 import Interfaces.IProducto;
 import Modelo.ModeloProducto;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,32 +26,31 @@ public class ProductoImp implements IProducto {
     PreparedStatement ps;
     ResultSet rs;
 
-    @Override
-    public boolean guardarProducto(ModeloProducto modelo) {
-        boolean resultado = false;
-        conector.conectar();
-        System.out.println("Hola desde implementacion");
-        
-        try {
-            ps = conector.preparar(sql.getAGREGAR_PRODUCTO());
-            System.out.println("nombre " + modelo.getNombreOficialP());
-            System.out.println("descripcion " + modelo.getDescripcionP());
-            ps.setString(1, modelo.getNombreOficialP());
-            ps.setString(2, modelo.getDescripcionP());
-            ps.setString(3, modelo.getCodigoBarrasP());
-            ps.setBoolean(4, modelo.isRequiereRecetaP());
-            ps.setBoolean(5, modelo.isActivoP());
-
-            int filasAfectadas = ps.executeUpdate();
-            resultado = (filasAfectadas > 0);
-        } catch (SQLException e) {
-            System.out.println("Error al en Imp guardarP" + e);
-            resultado = false;
-        }
-        System.out.println(resultado);
-        return resultado;
-    }
-
+//    @Override
+//    public boolean guardarProducto(ModeloProducto modelo) throws SQLException {
+//        boolean resultado = false;
+//        conector.conectar();
+//        System.out.println("Hola desde implementacion");
+//        
+//        try {
+//            ps = conector.preparar(sql.getAGREGAR_PRODUCTO());
+//            System.out.println("nombre " + modelo.getNombreOficialP());
+//            System.out.println("descripcion " + modelo.getDescripcionP());
+//            ps.setString(1, modelo.getNombreOficialP());
+//            ps.setString(2, modelo.getDescripcionP());
+//            ps.setString(3, modelo.getCodigoBarrasP());
+//            ps.setBoolean(4, modelo.isRequiereRecetaP());
+//            ps.setBoolean(5, modelo.isActivoP());
+//
+//            int filasAfectadas = ps.executeUpdate();
+//            resultado = (filasAfectadas > 0);
+//        } catch (SQLException e) {
+//            System.out.println("Error al en Imp guardarP" + e);
+//            resultado = false;
+//        }
+//        System.out.println(resultado);
+//        return resultado;
+//    }
     @Override
     public boolean actualizarProducto(ModeloProducto modelo) {
 
@@ -155,12 +155,10 @@ public class ProductoImp implements IProducto {
     }
 
     @Override
-    public boolean guardarLote(ModeloProducto modelo, int idProducto) {
+    public boolean guardarLote(ModeloProducto modelo, int idProducto, Connection conn) throws SQLException {
 
-        boolean resultado = false;
-        conector.conectar();
-        try {
-            ps = conector.preparar(sql.getAGREGAR_LOTE_PRODUCTO());
+        String sqlU = sql.getAGREGAR_LOTE_PRODUCTO();
+        try (PreparedStatement ps = conn.prepareStatement(sqlU)) {
 
             //Formatear la fecha papu
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -177,82 +175,86 @@ public class ProductoImp implements IProducto {
             ps.setBigDecimal(7, modelo.getPrecioVenta());
             ps.setBoolean(8, true); // o lote.isActivo()
 
-            resultado = ps.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            System.out.println("Error al guardar lote: " + e);
+            return ps.executeUpdate() > 0;
         }
-        return resultado;
+
     }
 
     @Override
-    public boolean guardarNombreAlternativo(ModeloProducto modelo, int idProducto) {
+    public boolean guardarNombreAlternativo(ModeloProducto modelo, int idProducto, Connection conn) throws SQLException {
 
-        boolean resultado = false;
-        conector.conectar();
-        try {
-            ps = conector.preparar(sql.getAGREGAR_NOMBRE_ALTERNATIVO());
+        String sqlU = sql.getAGREGAR_NOMBRE_ALTERNATIVO();
+        try (PreparedStatement ps = conn.prepareStatement(sqlU)) {
 
             ps.setInt(1, idProducto);
             ps.setString(2, modelo.getNombreAlternativo());
 
-            resultado = ps.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            System.out.println("Error al guardar nombre alternativo: " + e);
+            return ps.executeUpdate() > 0;
         }
-        return resultado;
+
     }
 
-    public int obtenerUltimoIDProducto() {
-        int id = -1;
-        conector.conectar();
-        try {
-            ps = conector.preparar("SELECT LAST_INSERT_ID()");
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                id = rs.getInt(1);
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al obtener último ID: " + e);
-        }
-        return id;
-    }
-    
-    
-    public boolean guardarProductoCompleto(ModeloProducto modelo){
+    public boolean guardarProductoCompleto(ModeloProducto modelo) {
         boolean exito = false;
         try {
-            
+            conector.conectar();
             conector.comenzarTransaccion();
+            Connection conn = conector.getConnection();
             
-            if(guardarProducto(modelo)){
-                int idProducto = obtenerUltimoIDProducto();
-                
-                if(idProducto != -1){
-                    //GUARDAR LOTE (SI APLICA)
-                    if(modelo.getFechaVencimiento() != null){
-                        guardarLote(modelo, idProducto);
-                    }
-                    
-                    if(modelo.getNombreAlternativo() != null){
-                        guardarNombreAlternativo(modelo, idProducto);
-                    }
-                    
-                    conector.confirmarTransaccion();
-                    exito = true;
-                    
-                }
-                      
+            
+            int idProducto = guardarProducto(modelo);
+
+            if (idProducto == -1) {
+                throw new SQLException("No se pudo insertar el producto");
             }
-            
+
+            //Guardar lote
+            if (modelo.getFechaVencimiento() != null && !guardarLote(modelo, idProducto, conn)) {
+                throw new SQLException("Error al guardar lote");
+            }
+
+            if (modelo.getNombreAlternativo() != null && !guardarNombreAlternativo(modelo, idProducto, conn)) {
+                throw new SQLException("Error al nombre alternativo");
+            }
+
+            conector.confirmarTransaccion();
+            exito = true;
+
         } catch (SQLException e) {
-            System.out.println("Error en la transacción " + e.getMessage());
             conector.revertirTransaccion();
+            System.out.println("Error en la transacción " + e.getMessage());
         } finally {
             conector.desconectar();
         }
         return exito;
     }
-   
+
+    @Override
+    public int guardarProducto(ModeloProducto modelo) throws SQLException {
+
+        int idGenerado = -1;
+
+        try {
+            ps = conector.preparar(sql.getAGREGAR_PRODUCTO(), true);
+            System.out.println("nombre " + modelo.getNombreOficialP());
+            System.out.println("descripcion " + modelo.getDescripcionP());
+            ps.setString(1, modelo.getNombreOficialP());
+            ps.setString(2, modelo.getDescripcionP());
+            ps.setString(3, modelo.getCodigoBarrasP());
+            ps.setBoolean(4, modelo.isRequiereRecetaP());
+            ps.setBoolean(5, modelo.isActivoP());
+            ps.execute();
+
+            //Obtener ID 
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                idGenerado = generatedKeys.getInt(1);
+            }
+
+        } finally {
+        }
+
+        return idGenerado;
+    }
+
 }
