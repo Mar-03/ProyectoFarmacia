@@ -1,51 +1,8 @@
-=======================================================================
-JCalendar - v1.4 - 07/09/2011 - Readme File  - 
-=======================================================================
+--- PROYECTO FARMACIA SOCIAL---
+--- Java (JDK 21) con Swing ---
+--- Adaptado para DB MySQL ---
+--- Uso de librerias externas---
 
-(C) 1999 - 2011 Kai Toedter
-Released under GNU Lesser General Public License (see jcalendar-license.txt)
-kai@toedter.com
-www.toedter.com
-
-=======================================================================
-THANKS
-
-I would like to thank all the people who have sent e-mails and
-provided bug fixes and suggestions.
-
-=======================================================================
-UPDATES
-
-JCalendar is updated from time to time.
-Check the web site to stay informed about the updates:
-  http://www.toedter.com
-  https://max-server.myftp.org/trac/jcalendar
-
-=======================================================================
-CONTENTS
-
-At the top level you find this file and a text version of the LGPL
-license. Please read the file "index.html" in the doc directory.
-
-This distribution contains several sub-directories.
-They are listed and described below:
-
-  bin\             contains a launch script for the JCalendar
-                   demo application for Windows 7/Vista/XP/2000/NT/98.
-  lib\             contains the software binaries (jar files) for
-                   JCalendar, JUnit and the JGoodies Looks Look & Feel.
-  doc              contains HTML documentation (start with index.html).
-  doc\api          contains JavaDoc documentation.
-  src\             contains all the sources to create a distribution.
-               
-
-=======================================================================
-Plastic Look & Feel
-
-Plastic Look & Feel is part of JGoodies Looks Look & Feel, (C) JGoodies,
-published under the BSD License.
-
-The official web site is:
-	http://www.jgoodies.com
-
-=======================================================================
+En el presente repositorio se presenta "ProyectoFarmacia", este proyecto se desarrolló con el objetivo de ofrecer un sistema para la gestión de una farmacia. El proyecto presenta vistas como añadir Productos, Ventas,
+registro de usuarios, clientes etc. El proyecto se llevo a cabo utilizando la plataforma JDK 21 y librerias como: mysql connector e Itext (créditos a quien correspondan). El proyecto presenta una interfaz diseñada con
+java Swing para las vistas, la lógica al igual que la interfaz se desarrolló en java utilizando el patrón MVC.
