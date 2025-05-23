@@ -26,6 +26,7 @@ public class PanelClientes extends javax.swing.JPanel {
         ControladorClientes controlador = new ControladorClientes(modelo, this);
 
         setControlador(controlador);
+            
     }
 
     /**
@@ -159,6 +160,11 @@ public class PanelClientes extends javax.swing.JPanel {
         txtFechaRegistro.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtFechaRegistro.setForeground(new java.awt.Color(255, 255, 255));
         txtFechaRegistro.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtFechaRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaRegistroActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 470, 140, -1));
 
         tblclientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -325,7 +331,7 @@ public class PanelClientes extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,6 +346,10 @@ public class PanelClientes extends javax.swing.JPanel {
     private void txtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdClienteActionPerformed
+
+    private void txtFechaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaRegistroActionPerformed
+       txtFechaRegistro.setText(ModeloRegistroCliente.fechaActual());
+    }//GEN-LAST:event_txtFechaRegistroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

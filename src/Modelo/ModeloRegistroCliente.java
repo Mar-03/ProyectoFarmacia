@@ -7,7 +7,11 @@ package Modelo;
 import Vistas.PanelClientes;
 import java.util.logging.Logger;
 import Vistas.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  *
@@ -20,12 +24,21 @@ public class ModeloRegistroCliente {
     private int id_clientes;
     private String nombre;
     private String apellido; 
-    private int telefono; 
+     private String telefono; 
+    private String identificacion; 
     private String direccion; 
-    private int identificacion;
+
     private String nit;
     private boolean subsidio;
-    private LocalDate fecha;
+  
+      
+
+    public static String fechaActual() {
+        LocalDate fecha = LocalDate.now(); 
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return fecha.format(formateador);     }
+
+
 
     public ModeloRegistroCliente() {
     }
@@ -66,13 +79,24 @@ public class ModeloRegistroCliente {
         this.apellido = apellido;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+   
 
     public String getDireccion() {
         return direccion;
@@ -82,13 +106,7 @@ public class ModeloRegistroCliente {
         this.direccion = direccion;
     }
 
-    public int getIdentificacion() {
-        return identificacion;
-    }
-
-    public void setIdentificacion(int identificacion) {
-        this.identificacion = identificacion;
-    }
+   
 
     public String getNit() {
         return nit;
@@ -106,12 +124,6 @@ public class ModeloRegistroCliente {
         this.subsidio = subsidio;
     }
 
-  public LocalDate getFecha() {
-    return fecha;
 }
-
-public void setFecha(LocalDate fecha) {
-    this.fecha = fecha;
-}}
 
    

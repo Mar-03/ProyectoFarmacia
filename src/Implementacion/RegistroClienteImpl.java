@@ -25,7 +25,7 @@ public class RegistroClienteImpl implements IRegistroCliente {
 
         try {
             conector.conectar();
-            String sql = "SELECT * FROM clientes WHERE nombre LIKE ? AND apellido LIKE ? AND telefono = ? AND direccion LIKE ? AND identificacion = ? AND nit LIKE ? AND subsidio LIKE ? AND fecha LIKE ?";
+            String sql = "SELECT * FROM clientes WHERE nombre LIKE ? AND apellido LIKE ? AND telefono = ? AND direccion LIKE ? AND identificacion = ? AND nit LIKE ? AND tiene_subsidio LIKE ? AND fecha LIKE ?";
             ps = conector.preparar(sql);
             ps.setString(1, "%" + nombre + "%");
             ps.setString(2, "%" + apellido + "%");
@@ -42,13 +42,12 @@ public class RegistroClienteImpl implements IRegistroCliente {
                 modelo.setId_clientes(rs.getInt("id_cliente"));
                 modelo.setNombre(rs.getString("nombre"));
                 modelo.setApellido(rs.getString("apellido"));
-                modelo.setTelefono(rs.getInt("telefono"));
+                modelo.setTelefono(rs.getString("telefono"));
                 modelo.setDireccion(rs.getString("direccion"));
-                modelo.setIdentificacion(rs.getInt("identificacion"));
+                modelo.setIdentificacion(rs.getString("identificacion"));
                 modelo.setNit(rs.getString("nit"));
                 modelo.setSubsidio(rs.getBoolean("subsidio"));
-                modelo.setFecha(rs.getDate("fecha").toLocalDate());
-
+                
 
                 System.out.println("Cliente encontrado: " + modelo.getNombre() + " " + modelo.getApellido());
             }
@@ -85,16 +84,18 @@ public class RegistroClienteImpl implements IRegistroCliente {
         try {
             conector.conectar();
             String sql = "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, "
-                       + "identificacion=?, subsidio=?, fecha_registro=? WHERE id_cliente=?"; ps = conector.preparar(sql);
+                       + "identificacion=?, subsidio=?, fecha_registro=? WHERE id_cliente=?";
+            
+            ps = conector.preparar(sql);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getApellido());
-            ps.setInt(3, cliente.getTelefono());
+            ps.setString(3, cliente.getTelefono());
             ps.setString(4, cliente.getNit());
             ps.setString(5, cliente.getDireccion());
-            ps.setInt(6, cliente.getIdentificacion());
+            ps.setString(6, cliente.getIdentificacion());
            ps.setBoolean(7, cliente.isSubsidio());
 
-           ps.setDate(8, java.sql.Date.valueOf(cliente.getFecha()));
+          // ps.setDate(8, java.sql.Date.valueOf(cliente.getFecha()));
             ps.setInt(9, cliente.getId_clientes());
 
             actualizado = ps.executeUpdate() > 0;
@@ -112,17 +113,17 @@ public class RegistroClienteImpl implements IRegistroCliente {
 
         try {
             conector.conectar();
-             String sql = "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha_registro) "
-                       + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+             String sql = "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, tiene_subsidio) "
+                       + "VALUES (?, ?, ?, ?, ?, ?, ?)";
             ps = conector.preparar(sql);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getApellido());
-            ps.setInt(3, cliente.getTelefono());
+            ps.setString(3, cliente.getTelefono());
             ps.setString(4, cliente.getNit());
             ps.setString(5, cliente.getDireccion());
-            ps.setInt(6, cliente.getIdentificacion());
+            ps.setString(6, cliente.getIdentificacion());
             ps.setBoolean(7, cliente.isSubsidio());
-            ps.setDate(8, java.sql.Date.valueOf(cliente.getFecha()));
+            
 
 
             insertado = ps.executeUpdate() > 0;
@@ -139,7 +140,7 @@ public class RegistroClienteImpl implements IRegistroCliente {
         DefaultTableModel modeloTabla = new DefaultTableModel();
 
         modeloTabla.setColumnIdentifiers(new Object[]{
-            "ID", "Nombre", "Apellido", "Teléfono", "NIT", "Dirección", "Identificación", "Subsidio", "Fecha Registro"
+            "ID", "Nombre", "Apellido", "Teléfono", "NIT", "Dirección", "Identificación", "tiene_subsidio", "Fecha Registro"
         });
         try {
             conector.conectar();

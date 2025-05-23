@@ -56,30 +56,28 @@ public class ControladorClientes implements MouseListener {
         nuevo.setDireccion(modelo.getPanelCliente().txtDireccion.getText().trim());
         nuevo.setSubsidio(modelo.getPanelCliente().Subsidio.isSelected());
 
-        // Validación identificación
+       
         String textoIdentificacion = modelo.getPanelCliente().txtIdentificacion.getText().trim();
         if (!textoIdentificacion.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Identificación inválida. Solo números permitidos.");
             return;
         }
-        nuevo.setIdentificacion(Integer.parseInt(textoIdentificacion));
+        nuevo.setIdentificacion(textoIdentificacion);
 
-        // Validación y parseo de fecha
+        
         String fechaStr = modelo.getPanelCliente().txtFechaRegistro.getText().trim();
         if (!fechaStr.matches("^\\d{4}-\\d{2}-\\d{2}$") || !esFechaValida(fechaStr)) {
             JOptionPane.showMessageDialog(null, "Formato de fecha inválido. Use yyyy-MM-dd.");
             return;
         }
         LocalDate fecha = LocalDate.parse(fechaStr);
-        nuevo.setFecha(fecha);
-
-        // Validación teléfono
-        String textoTelefono = modelo.getPanelCliente().txtTelefono.getText().trim().replaceAll("\\s+", "");
-        if (!textoTelefono.matches("\\d{8,15}")) {
-            JOptionPane.showMessageDialog(null, "Teléfono inválido. 8-15 dígitos requeridos.");
-            return;
-        }
-        nuevo.setTelefono(Integer.parseInt(textoTelefono));
+        
+          String textoTelefono = modelo.getPanelCliente().txtTelefono.getText().trim();
+            if (!textoTelefono.matches("\\d{8,15}")) { 
+             JOptionPane.showMessageDialog(null, "Teléfono inválido.");
+        return;
+            }
+            nuevo.setTelefono(textoTelefono);
 
         if (dao.insertarCliente(nuevo)) {
             JOptionPane.showMessageDialog(null, "Cliente registrado exitosamente");
@@ -118,14 +116,14 @@ public class ControladorClientes implements MouseListener {
             JOptionPane.showMessageDialog(null, "Teléfono inválido.");
             return;
         }
-        actualizado.setTelefono(Integer.parseInt(textoTelefono));
+        actualizado.setTelefono(textoTelefono);
 
         String textoIdentificacion = modelo.getPanelCliente().txtIdentificacion.getText().trim();
         if (!textoIdentificacion.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Identificación inválida.");
             return;
         }
-        actualizado.setIdentificacion(Integer.parseInt(textoIdentificacion));
+        actualizado.setIdentificacion(textoIdentificacion);
 
         String textoFecha = modelo.getPanelCliente().txtFechaRegistro.getText().trim();
         if (!textoFecha.matches("^\\d{4}-\\d{2}-\\d{2}$") || !esFechaValida(textoFecha)) {
@@ -133,10 +131,10 @@ public class ControladorClientes implements MouseListener {
      return;
             }
         LocalDate fecha = LocalDate.parse(textoFecha);
-        actualizado.setFecha(fecha);
+        //actualizado.setFecha(fecha);
 
 
-        actualizado.setFecha(fecha);
+       // actualizado.setFecha(fecha);
 
         actualizado.setNombre(modelo.getPanelCliente().txtNombreCliente.getText().trim());
         actualizado.setApellido(modelo.getPanelCliente().txtApellidoCliente.getText().trim());

@@ -69,8 +69,8 @@ public class SQL {
 
 // COSULRA PARA CLIENTES USUSARIOS
     
-private final String INSERT = "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, subsidio, fecha_registro) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
+String sql = "INSERT INTO clientes (nombre, apellido, telefono, direccion, identificacion, nit, tiene_subsidio, id_institucion_subsidio, "
+        + "fecha_registro, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 private final String UPDATE = "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, identificacion=?, subsidio=?, fecha_registro=? WHERE id_cliente=?";
 
