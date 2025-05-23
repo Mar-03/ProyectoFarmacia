@@ -24,7 +24,9 @@ public class ControladorProducto implements MouseListener {
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnAgregar)) {
             inputIsEmptyAgregarP();
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnActualizar)) {
+            actualizarProducto();
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnEliminar)) {
+            cambiarElementosLimpiar();
         }
     }
 
@@ -82,6 +84,22 @@ public class ControladorProducto implements MouseListener {
             buscarProducto();
         }
     }
+    
+    
+    private void inputIsEmptyActualizar(){
+        if(modelo.getVistaProducto().txtNombreProducto.getText().isEmpty()
+                || modelo.getVistaProducto().txtNombreAlterno.getText().isEmpty()
+                || modelo.getVistaProducto().txtNumeroLote.getText().isEmpty()
+                || modelo.getVistaProducto().txtCantidad.getText().isEmpty()
+                || modelo.getVistaProducto().txtPrecioCompra.getText().isEmpty()
+                || modelo.getVistaProducto().txtPrecioVenta.getText().isEmpty()
+                || modelo.getVistaProducto().txtFechaVencimiento.getText().isEmpty()
+                || modelo.getVistaProducto().txtCodigoBarras.getText().isEmpty()){
+            
+        } else {
+            actualizarProducto();
+        }
+    }
 
     public void capturaDeDatosAgregarP() {
 
@@ -115,6 +133,10 @@ public class ControladorProducto implements MouseListener {
         modeloRegistroProducto.setNumeroLote(numeroLote);
         modeloRegistroProducto.setFechaVencimiento(fechaVencimiento);
         modeloRegistroProducto.setFechaFabricación(validarFechaFab(fechaFabricacion));
+        modeloRegistroProducto.setCantidadDisponible(Integer.parseInt(cantidad));
+        modeloRegistroProducto.setPrecioCompra(precioCompra);
+        modeloRegistroProducto.setPrecioVenta(precioVenta);
+        modeloRegistroProducto.setNombreAlternativo(nombreAlterna);
         //Terminar de poner los demás datos para pasarlos a la implementación
         boolean guardarP = implementacion.guardarProductoCompleto(modeloRegistroProducto);
 
@@ -154,25 +176,30 @@ public class ControladorProducto implements MouseListener {
         return fechaFabriValidacion;
     }
 
-    public void registrarNombreAlternativo(String nombre) {
-        ModeloProducto modeloNombreAlternativo = new ModeloProducto();
-        modeloNombreAlternativo.setNombreAlternativo(nombre);
-        int idObtenido = implementacion.obtenerUltimoIDProducto();
-        implementacion.guardarNombreAlternativo(modeloNombreAlternativo, idObtenido);
+    private void actualizarProducto(){
+        
     }
+    
+    
+//    public void registrarNombreAlternativo(String nombre) {
+//        ModeloProducto modeloNombreAlternativo = new ModeloProducto();
+//        modeloNombreAlternativo.setNombreAlternativo(nombre);
+//        int idObtenido = implementacion.obtenerUltimoIDProducto();
+//        implementacion.guardarNombreAlternativo(modeloNombreAlternativo, idObtenido);
+//    }
 
-    public void registrarLoteProducto(String numeroLote, String fechaVencimiento, String fechaFabrica, String cantidad, BigDecimal precioCompra, BigDecimal precioVenta) {
-        ModeloProducto modeloLote = new ModeloProducto();
-        modeloLote.setNumeroLote(numeroLote);
-        modeloLote.setFechaVencimiento(fechaVencimiento);
-        modeloLote.setFechaFabricación(fechaFabrica);
-        modeloLote.setCantidadDisponible(Integer.parseInt(cantidad));
-        modeloLote.setPrecioCompra(precioCompra);
-        modeloLote.setPrecioVenta(precioVenta);
-
-        int idObtenido = implementacion.obtenerUltimoIDProducto();
-        implementacion.guardarLote(modelo, idObtenido);
-    }
+//    public void registrarLoteProducto(String numeroLote, String fechaVencimiento, String fechaFabrica, String cantidad, BigDecimal precioCompra, BigDecimal precioVenta) {
+//        ModeloProducto modeloLote = new ModeloProducto();
+//        modeloLote.setNumeroLote(numeroLote);
+//        modeloLote.setFechaVencimiento(fechaVencimiento);
+//        modeloLote.setFechaFabricación(fechaFabrica);
+//        modeloLote.setCantidadDisponible(Integer.parseInt(cantidad));
+//        modeloLote.setPrecioCompra(precioCompra);
+//        modeloLote.setPrecioVenta(precioVenta);
+//
+//        int idObtenido = implementacion.obtenerUltimoIDProducto();
+//        implementacion.guardarLote(modelo, idObtenido);
+//    }
 
     public void notificarProductoGuardado(boolean productoGuardado) {
         if (productoGuardado == true) {
@@ -185,8 +212,8 @@ public class ControladorProducto implements MouseListener {
     }
 
     public void buscarProducto() {
-        String nombreB = modelo.getVistaProducto().txtCodigoBarrasP.getText();
-        String codigoB = modelo.getVistaProducto().txtNombreProductoB.getText();
+        String codigoB = modelo.getVistaProducto().txtCodigoBarrasP.getText();
+        String nombreB = modelo.getVistaProducto().txtNombreProductoB.getText();
 
         ModeloProducto modeloBuscar = implementacion.mostrarProducto(nombreB, codigoB);
         if (modeloBuscar == null) {
@@ -207,12 +234,14 @@ public class ControladorProducto implements MouseListener {
     public void limpiarDatos() {
     }
 
+    
+    
     public void agregarDatos(ModeloProducto modeloB) {
         modelo.getVistaProducto().txtNombreProducto.setText(modeloB.getNombreOficialP());
         modelo.getVistaProducto().txtCodigoBarras.setText(modeloB.getCodigoBarrasP());
         modelo.getVistaProducto().txtDescripcion.setText(modeloB.getDescripcionP());
         modelo.getVistaProducto().txtCodigoBarras.setText(modeloB.getCodigoBarrasP());
-
+        modelo.getVistaProducto().txtIdProducto.setText(String.valueOf(modeloB.getIdProducto()));
         boolean usuarioActivo = modeloB.isActivoP();
 
         if (usuarioActivo == true) {
@@ -229,5 +258,37 @@ public class ControladorProducto implements MouseListener {
             modelo.getVistaProducto().boxReceta.setSelectedIndex(1);
         }
         modelo.getVistaProducto().txtFechaFabricacion.setText(modeloB.getFechaRegistro());
+        cambiarElementosB();
+    }
+    
+    private void cambiarElementosB(){
+        modelo.getVistaProducto().btnActualizar.setVisible(true);
+        modelo.getVistaProducto().txtIdProducto.setVisible(true);
+        modelo.getVistaProducto().labelIDProducto.setVisible(true);
+        modelo.getVistaProducto().txtIdProducto.setEditable(false);
+        modelo.getVistaProducto().btnAgregar.setVisible(false);
+        modelo.getVistaProducto().btnEliminar.setVisible(true);
+        modelo.getVistaProducto().btnBuscar.setVisible(false);
+    }
+    
+    private void cambiarElementosLimpiar(){
+        modelo.getVistaProducto().txtNombreProducto.setText("");
+        modelo.getVistaProducto().txtNombreAlterno.setText("");
+        modelo.getVistaProducto().txtNumeroLote.setText("");
+        modelo.getVistaProducto().txtCantidad.setText("");
+        modelo.getVistaProducto().txtPrecioCompra.setText("");
+        modelo.getVistaProducto().txtPrecioVenta.setText("");
+        modelo.getVistaProducto().boxReceta.setSelectedIndex(0);
+        modelo.getVistaProducto().boxActivo.setSelectedIndex(0);
+        modelo.getVistaProducto().txtCodigoBarras.setText("");
+        modelo.getVistaProducto().txtFechaVencimiento.setText("");
+        modelo.getVistaProducto().txtFechaFabricacion.setText("");
+        modelo.getVistaProducto().btnActualizar.setVisible(false);
+        modelo.getVistaProducto().btnEliminar.setVisible(false);
+        modelo.getVistaProducto().btnAgregar.setVisible(true);
+        modelo.getVistaProducto().txtIdProducto.setText("");
+        modelo.getVistaProducto().txtNombreProductoB.setText("");
+        modelo.getVistaProducto().txtCodigoBarrasP.setText("");
+        modelo.getVistaProducto().txtDescripcion.setText("");
     }
 }

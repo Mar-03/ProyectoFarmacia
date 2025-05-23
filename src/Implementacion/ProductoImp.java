@@ -127,7 +127,7 @@ public class ProductoImp implements IProducto {
             ps = conector.preparar(sqlEjecutar);
 
             if (buscarPorNombre) {
-                ps.setString(1, "%" + nombreP + "%");
+                ps.setString(1, nombreP);
             } else {
                 ps.setString(1, codigoP);
             }
@@ -141,7 +141,7 @@ public class ProductoImp implements IProducto {
                     modelo.setCodigoBarrasP(rs.getString("codigo_barras"));
                     modelo.setRequiereRecetaP(rs.getBoolean("requiere_receta")); // Corregido
                     modelo.setActivoP(rs.getBoolean("activo")); // Añadido si existe
-                    modelo.setFechaRegistro(rs.getString("fecha_registro"));
+//                    modelo.setFechaRegistro(rs.getString("fecha_registro"));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ProductoImp.class.getName()).log(Level.SEVERE, null, ex);
@@ -243,11 +243,8 @@ public class ProductoImp implements IProducto {
                     exito = true;
                     
                 }
-                
-                
-                
+                      
             }
-            
             
         } catch (SQLException e) {
             System.out.println("Error en la transacción " + e.getMessage());

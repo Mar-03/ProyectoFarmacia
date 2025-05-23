@@ -93,7 +93,7 @@ public class PanelProducto extends javax.swing.JPanel {
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("REGISTRO PRODUCTO");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 850, -1));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 850, -1));
 
         marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,7 +227,7 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Eliminar");
+        jLabel13.setText("Limpiar");
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
@@ -374,7 +374,7 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("BUSCAR PRODUCTO");
-        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, 20));
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, -1, 20));
 
         txtIdProducto.setBackground(new java.awt.Color(75, 128, 146));
         txtIdProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -440,7 +440,7 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel labelIDProducto;
+    public javax.swing.JLabel labelIDProducto;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
