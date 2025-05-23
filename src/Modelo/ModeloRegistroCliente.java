@@ -30,6 +30,7 @@ public class ModeloRegistroCliente {
 
     private String nit;
     private boolean subsidio;
+    private LocalDate fecha;
   
       
 
@@ -37,6 +38,14 @@ public class ModeloRegistroCliente {
         LocalDate fecha = LocalDate.now(); 
         DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return fecha.format(formateador);     }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 
 
 

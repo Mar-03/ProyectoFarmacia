@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ControladorClientes implements MouseListener {
 
+
     private ModeloRegistroCliente modelo;
     private RegistroClienteImpl dao;
 
@@ -44,12 +45,12 @@ public class ControladorClientes implements MouseListener {
         modelo.getPanelCliente().txtInsSubsidio.setText("");
         modelo.getPanelCliente().txtNIT.setText("");
         modelo.getPanelCliente().txtTelefono.setText("");
+        
     }
 
      public void agregarCliente() {
         ModeloRegistroCliente nuevo = new ModeloRegistroCliente();
 
-        // Validación de campos
         nuevo.setNombre(modelo.getPanelCliente().txtNombreCliente.getText().trim());
         nuevo.setApellido(modelo.getPanelCliente().txtApellidoCliente.getText().trim());
         nuevo.setNit(modelo.getPanelCliente().txtNIT.getText().trim());
@@ -131,10 +132,10 @@ public class ControladorClientes implements MouseListener {
      return;
             }
         LocalDate fecha = LocalDate.parse(textoFecha);
-        //actualizado.setFecha(fecha);
+        actualizado.setFecha(fecha);
 
 
-       // actualizado.setFecha(fecha);
+       
 
         actualizado.setNombre(modelo.getPanelCliente().txtNombreCliente.getText().trim());
         actualizado.setApellido(modelo.getPanelCliente().txtApellidoCliente.getText().trim());
@@ -215,4 +216,4 @@ public class ControladorClientes implements MouseListener {
             ((JTextField) e.getComponent()).setBackground(new Color(204, 204, 204));
         }
     }
-}
+    }

@@ -16,7 +16,7 @@ import Modelo.ModeloRegistroCliente;
 public interface IRegistroCliente {
 
     public ModeloRegistroCliente ConsultaCliente(String nombre, String apellido,
-            int telefono, String direccion, int identificacion, String nit, String subsidio, String fecha);
+            String telefono, String direccion, String identificacion, String nit, String subsidio, String fecha);
 
     public boolean insertarCliente(ModeloRegistroCliente cliente);
 

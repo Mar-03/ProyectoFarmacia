@@ -24,7 +24,7 @@ public class PanelClientes extends javax.swing.JPanel {
 
         ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
         ControladorClientes controlador = new ControladorClientes(modelo, this);
-
+txtFechaRegistro.setText(ModeloRegistroCliente.fechaActual());
         setControlador(controlador);
             
     }
@@ -348,7 +348,7 @@ public class PanelClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_txtIdClienteActionPerformed
 
     private void txtFechaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaRegistroActionPerformed
-       txtFechaRegistro.setText(ModeloRegistroCliente.fechaActual());
+       
     }//GEN-LAST:event_txtFechaRegistroActionPerformed
 
 
