@@ -91,7 +91,7 @@ public class PanelVentas extends javax.swing.JPanel {
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("VENTAS");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 850, -1));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 850, -1));
 
         marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,7 +129,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("No. Codigo barras:");
-        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 140, -1));
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 140, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,19 +182,19 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("ID Producto:");
-        fondoPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 90, -1));
+        fondoPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 90, -1));
 
         jLabel14.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Nombre Producto:");
-        fondoPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 140, -1));
+        fondoPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 140, -1));
 
         jLabel15.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Precio:");
-        fondoPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 60, -1));
+        fondoPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 60, -1));
 
         jLabel16.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,7 +206,7 @@ public class PanelVentas extends javax.swing.JPanel {
         txtCodigoBarras.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtCodigoBarras.setForeground(new java.awt.Color(255, 255, 255));
         txtCodigoBarras.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 220, -1));
+        fondoPanel.add(txtCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 220, -1));
 
         txtCantidad.setBackground(new java.awt.Color(75, 128, 146));
         txtCantidad.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -253,7 +253,7 @@ public class PanelVentas extends javax.swing.JPanel {
         txtIdProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIdProducto.setForeground(new java.awt.Color(255, 255, 255));
         txtIdProducto.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 100, -1));
+        fondoPanel.add(txtIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 100, -1));
 
         txtNombreProducto.setBackground(new java.awt.Color(75, 128, 146));
         txtNombreProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -264,13 +264,13 @@ public class PanelVentas extends javax.swing.JPanel {
                 txtNombreProductoActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 220, -1));
+        fondoPanel.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 220, -1));
 
         txtPrecio.setBackground(new java.awt.Color(75, 128, 146));
         txtPrecio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtPrecio.setForeground(new java.awt.Color(255, 255, 255));
         txtPrecio.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 100, -1));
+        fondoPanel.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 100, -1));
 
         cmbMetodoPago.setBackground(new java.awt.Color(75, 128, 146));
         cmbMetodoPago.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -343,7 +343,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel19.setText("Buscar");
         btnBuscar.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 90, 30));
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 90, 30));
 
         ScrollPane.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -362,7 +362,7 @@ public class PanelVentas extends javax.swing.JPanel {
         ));
         ScrollPane.setViewportView(jTableProductos);
 
-        fondoPanel.add(ScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 750, 150));
+        fondoPanel.add(ScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 750, 180));
 
         checkBoxVentaSinClienteR.setBackground(new java.awt.Color(75, 128, 146));
         checkBoxVentaSinClienteR.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N

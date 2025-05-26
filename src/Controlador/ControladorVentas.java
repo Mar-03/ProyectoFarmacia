@@ -34,6 +34,7 @@ public class ControladorVentas implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getComponent().equals(modelo.getVistaVentas().btnAgregar)) {
+            
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnBuscar)) {
             datosVaciosBuscarP();
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnEliminar)) {
