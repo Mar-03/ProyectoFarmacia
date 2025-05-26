@@ -229,6 +229,14 @@ public class ControladorProducto implements MouseListener {
         modelo.getVistaProducto().txtCodigoBarras.setText("");
         modelo.getVistaProducto().boxActivo.setSelectedIndex(0);
         modelo.getVistaProducto().boxReceta.setSelectedIndex(0);
+        modelo.getVistaProducto().txtNumeroLote.setText("");
+        modelo.getVistaProducto().txtCantidad.setText("");
+        modelo.getVistaProducto().txtPrecioCompra.setText("");
+        modelo.getVistaProducto().txtPrecioVenta.setText("");
+        modelo.getVistaProducto().txtFechaVencimiento.setText("");
+        modelo.getVistaProducto().txtFechaFabricacion.setText("");
+        
+        
     }
     
     public void limpiarDatos() {
@@ -290,5 +298,7 @@ public class ControladorProducto implements MouseListener {
         modelo.getVistaProducto().txtNombreProductoB.setText("");
         modelo.getVistaProducto().txtCodigoBarrasP.setText("");
         modelo.getVistaProducto().txtDescripcion.setText("");
+        modelo.getVistaProducto().txtIdProducto.setVisible(false);
+        modelo.getVistaProducto().btnBuscar.setVisible(true);
     }
 }
