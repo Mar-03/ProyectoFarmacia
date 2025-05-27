@@ -70,7 +70,7 @@ public class VentaImp implements IVenta {
     @Override
     public ModeloProducto buscarProducto(String nombreP, String codigoB) {
 
-        //CAMBIAR EL MODELO
+      
         ModeloProducto modelo = null;
         String sqlEjecutar;
         boolean buscarPorNombre = !nombreP.isEmpty();

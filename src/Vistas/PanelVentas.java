@@ -200,7 +200,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel16.setText("Método de Pago:");
-        fondoPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, -1, -1));
+        fondoPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
 
         txtCodigoBarras.setBackground(new java.awt.Color(75, 128, 146));
         txtCodigoBarras.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -282,7 +282,7 @@ public class PanelVentas extends javax.swing.JPanel {
                 cmbMetodoPagoActionPerformed(evt);
             }
         });
-        fondoPanel.add(cmbMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 100, -1));
+        fondoPanel.add(cmbMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 100, -1));
 
         cmbSubsidio.setBackground(new java.awt.Color(75, 128, 146));
         cmbSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -365,10 +365,10 @@ public class PanelVentas extends javax.swing.JPanel {
         fondoPanel.add(ScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 750, 180));
 
         checkBoxVentaSinClienteR.setBackground(new java.awt.Color(75, 128, 146));
-        checkBoxVentaSinClienteR.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        checkBoxVentaSinClienteR.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         checkBoxVentaSinClienteR.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxVentaSinClienteR.setText("Venta Sin Cliente registrado");
-        fondoPanel.add(checkBoxVentaSinClienteR, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 190, -1));
+        fondoPanel.add(checkBoxVentaSinClienteR, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, 220, -1));
 
         btnHacerVenta.setBackground(new java.awt.Color(75, 128, 146));
         btnHacerVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -402,7 +402,7 @@ public class PanelVentas extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

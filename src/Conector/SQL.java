@@ -97,7 +97,15 @@ private final String SELECT_ALL = "SELECT * FROM clientes";
     private final String INSERTAR_DETALLE_VENTA = "INSERT INTO detalle_ventas (id_venta, id_lote, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
     private final String ACTUALIZAR_STOCK = "UPDATE lotes SET cantidad_disponible = cantidad_disponible - ? WHERE id_lote = ?";
     private final String BUSCAR_CLIENTE = "";
-    private final String BUSCAR_PRODUCTOS = "";
+    private final String BUSCAR_PRODUCTOS = "SELECT p.id_producto, p.nombre_oficial, l.precio_venta AS precio, " + 
+                       "SUM(l.cantidad_disponible) AS cantidad_disponible " +
+                       "FROM productos p " +
+                       "LEFT JOIN nombres_alternativos na ON p.id_producto = na.id_producto " +
+                       "LEFT JOIN lotes l ON p.id_producto = l.id_producto " +
+                       "WHERE (p.nombre_oficial LIKE ? OR na.nombre_alternativo LIKE ?) " +
+                       "AND l.activo = TRUE " + 
+                       "GROUP BY p.id_producto, p.nombre_oficial, l.precio_venta " +
+                       "ORDER BY p.nombre_oficial";
     private final String GENERAR_COMPROBANTE = "";
     private final String CONSULTAR_USUARIO = "";
 
