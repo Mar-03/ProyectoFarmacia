@@ -135,13 +135,13 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Cantidad:");
-        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 70, 20));
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 80, 20));
 
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("NIT Cliente:");
-        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 80, -1));
+        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 90, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,7 +212,7 @@ public class PanelVentas extends javax.swing.JPanel {
         txtCantidad.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtCantidad.setForeground(new java.awt.Color(255, 255, 255));
         txtCantidad.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 90, -1));
+        fondoPanel.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 90, -1));
 
         txtNITCliente.setBackground(new java.awt.Color(75, 128, 146));
         txtNITCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -223,7 +223,7 @@ public class PanelVentas extends javax.swing.JPanel {
                 txtNITClienteActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtNITCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 120, -1));
+        fondoPanel.add(txtNITCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 140, -1));
 
         txtTotal.setBackground(new java.awt.Color(75, 128, 146));
         txtTotal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -368,12 +368,12 @@ public class PanelVentas extends javax.swing.JPanel {
         checkBoxVentaSinClienteR.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         checkBoxVentaSinClienteR.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxVentaSinClienteR.setText("Venta Sin Cliente registrado");
-        fondoPanel.add(checkBoxVentaSinClienteR, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, 220, -1));
+        fondoPanel.add(checkBoxVentaSinClienteR, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 550, 230, -1));
 
         btnHacerVenta.setBackground(new java.awt.Color(75, 128, 146));
         btnHacerVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Hacer Venta");
@@ -383,7 +383,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnHacerVenta.setLayout(btnHacerVentaLayout);
         btnHacerVentaLayout.setHorizontalGroup(
             btnHacerVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         btnHacerVentaLayout.setVerticalGroup(
             btnHacerVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
