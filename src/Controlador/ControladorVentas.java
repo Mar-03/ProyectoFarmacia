@@ -6,6 +6,7 @@ package Controlador;
 
 import Implementacion.VentaImp;
 import Modelo.ModeloProducto;
+import Modelo.ModeloRegistroCliente;
 import Modelo.ModeloVenta;
 import java.awt.Color;
 import java.awt.Dimension;

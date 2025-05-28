@@ -8,10 +8,12 @@ package Vistas;
  *
  * @author cindy
  */
-import Modelo.ModeloRegistroCliente;
+import Modelo.*;
+
 import Conector.*;
-import Controlador.ControladorVistaInicio;
+import Controlador.*;
 import controladores.ControladorClientes;
+
 import java.awt.event.MouseListener;
 
 public class PanelClientes extends javax.swing.JPanel {
@@ -21,7 +23,10 @@ public class PanelClientes extends javax.swing.JPanel {
      */
     public PanelClientes() {
         initComponents();
+        ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
+         ControladorClientes controlador = new ControladorClientes(modelo);
 
+        setControlador(controlador);
             
     }
 

@@ -19,6 +19,9 @@ import java.util.Date;
  * @author anyi4
  */
 public class ModeloRegistroCliente {
+
+    public ModeloRegistroCliente(PanelClientes aThis) {
+    }
       public static class Cliente { 
     private int idCliente;
     private String nombre;

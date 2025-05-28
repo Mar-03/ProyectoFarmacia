@@ -7,6 +7,7 @@ package controladores;
 
 
 import Interfaces.IRegistroCliente;
+import Modelo.ModeloRegistroCliente;
 
 import Vistas.PanelClientes;
 
@@ -28,14 +29,21 @@ public class ControladorClientes implements MouseListener {
     private final IRegistroCliente modelo;
     private final DefaultTableModel tableModel;
     
-        
+    
+    
+    
 
-    public ControladorClientes(PanelClientes vista, IRegistroCliente modelo) {
+    public ControladorClientes(PanelClientes vista, IRegistroCliente modelo, DefaultTableModel tableModel, ModeloRegistroCliente modelos) {
         this.vista = vista;
         this.modelo = modelo;
-        this.tableModel = (DefaultTableModel) vista.tblclientes.getModel();
-        cargarClientes();
+        this.tableModel = tableModel;
+      
+        
     }
+
+   
+    
+      
 
     @Override
     public void mouseClicked(MouseEvent e) {
