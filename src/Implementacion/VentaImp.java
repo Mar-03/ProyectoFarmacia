@@ -69,16 +69,16 @@ public class VentaImp implements IVenta {
 
     @Override
     public ModeloProducto buscarProducto(String nombreP, String codigoB) {
-
-      
+        
+        System.out.println("HOLA DESDE IMP");
         ModeloProducto modelo = null;
         String sqlEjecutar;
         boolean buscarPorNombre = !nombreP.isEmpty();
 
         if (buscarPorNombre) {
-            sqlEjecutar = sql.getCONSULTA_PRODUCTO_NOMBRE();
+            sqlEjecutar = sql.getBUSCAR_PRODUCTOS_NOMBRES();
         } else {
-            sqlEjecutar = sql.getCONSULTA_PRODUCTO_CODIGO();
+            sqlEjecutar = sql.getBUSCAR_PRODUCTO_CODIGO();
         }
 
         conector.conectar();
@@ -87,7 +87,8 @@ public class VentaImp implements IVenta {
             ps = conector.preparar(sqlEjecutar);
 
             if (buscarPorNombre) {
-                ps.setString(1, nombreP);
+                ps.setString(1, "%" + nombreP + "%");
+                ps.setString(2, "%" + nombreP + "%");
             } else {
                 ps.setString(1, codigoB);
             }
@@ -101,7 +102,8 @@ public class VentaImp implements IVenta {
                     modelo.setCodigoBarrasP(rs.getString("codigo_barras"));
                     modelo.setRequiereRecetaP(rs.getBoolean("requiere_receta")); // Corregido
                     modelo.setActivoP(rs.getBoolean("activo")); // Añadido si existe
-//                    modelo.setFechaRegistro(rs.getString("fecha_registro"));
+                    modelo.setPrecioVenta(rs.getBigDecimal("precio"));
+                    modelo.setCantidadDisponible(rs.getInt("cantidad_disponible"));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ProductoImp.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,6 +113,7 @@ public class VentaImp implements IVenta {
         } finally {
             conector.desconectar();
         }
+        System.out.println("Nombre " + modelo.getNombreOficialP());
         return modelo;
     }
 }

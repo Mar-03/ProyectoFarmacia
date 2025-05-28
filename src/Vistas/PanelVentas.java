@@ -22,6 +22,10 @@ public class PanelVentas extends javax.swing.JPanel {
 
         ModeloVenta modelo = new ModeloVenta(this);
         ControladorVentas controlador = new ControladorVentas(modelo);
+        labelDescuentoSubsidio.setVisible(false);
+        txtDescuentoSubsidio.setVisible(false);
+        labelInstitucionSubsidio.setVisible(false);
+        txtIdInsSubsidio.setVisible(false);
 
         setControlador(controlador);
     }
@@ -35,6 +39,7 @@ public class PanelVentas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         fondoPanel = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         marcaAgua = new javax.swing.JLabel();
@@ -46,10 +51,10 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        labelDescuentoSubsidio = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        labelInstitucionSubsidio = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -76,10 +81,21 @@ public class PanelVentas extends javax.swing.JPanel {
         btnBuscar = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         ScrollPane = new javax.swing.JScrollPane();
-        jTableProductos = new javax.swing.JTable();
+        contenedorTablaVentas = new javax.swing.JPanel();
         checkBoxVentaSinClienteR = new javax.swing.JCheckBox();
         btnHacerVenta = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setPreferredSize(new java.awt.Dimension(850, 700));
 
@@ -149,11 +165,11 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel6.setText("Subtotal");
         fondoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 70, 20));
 
-        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Descuento Subsidio:");
-        fondoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 166, -1));
+        labelDescuentoSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelDescuentoSubsidio.setForeground(new java.awt.Color(255, 255, 255));
+        labelDescuentoSubsidio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelDescuentoSubsidio.setText("Descuento Subsidio:");
+        fondoPanel.add(labelDescuentoSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 166, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,11 +183,11 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel10.setText("Subsidio:");
         fondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 70, -1));
 
-        jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Institución de Subsidio:");
-        fondoPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 166, -1));
+        labelInstitucionSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelInstitucionSubsidio.setForeground(new java.awt.Color(255, 255, 255));
+        labelInstitucionSubsidio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelInstitucionSubsidio.setText("Institución de Subsidio:");
+        fondoPanel.add(labelInstitucionSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 166, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -287,7 +303,7 @@ public class PanelVentas extends javax.swing.JPanel {
         cmbSubsidio.setBackground(new java.awt.Color(75, 128, 146));
         cmbSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         cmbSubsidio.setForeground(new java.awt.Color(255, 255, 255));
-        cmbSubsidio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "SI" }));
+        cmbSubsidio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-----", "NO", "SI" }));
         cmbSubsidio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbSubsidio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,20 +363,9 @@ public class PanelVentas extends javax.swing.JPanel {
 
         ScrollPane.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTableProductos.setBackground(new java.awt.Color(204, 204, 204));
-        jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        ScrollPane.setViewportView(jTableProductos);
+        contenedorTablaVentas.setBackground(new java.awt.Color(204, 204, 204));
+        contenedorTablaVentas.setLayout(new javax.swing.BoxLayout(contenedorTablaVentas, javax.swing.BoxLayout.LINE_AXIS));
+        ScrollPane.setViewportView(contenedorTablaVentas);
 
         fondoPanel.add(ScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 750, 180));
 
@@ -437,10 +442,10 @@ public class PanelVentas extends javax.swing.JPanel {
     public javax.swing.JCheckBox checkBoxVentaSinClienteR;
     public javax.swing.JComboBox<String> cmbMetodoPago;
     public javax.swing.JComboBox<String> cmbSubsidio;
+    public javax.swing.JPanel contenedorTablaVentas;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -454,9 +459,10 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    public javax.swing.JTable jTableProductos;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelDescuentoSubsidio;
+    public javax.swing.JLabel labelInstitucionSubsidio;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JSeparator separador;

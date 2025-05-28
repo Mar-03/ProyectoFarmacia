@@ -34,7 +34,7 @@ public class ControladorVentas implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getComponent().equals(modelo.getVistaVentas().btnAgregar)) {
-            
+            datosVaciosAgregarP();
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnBuscar)) {
             datosVaciosBuscarP();
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnEliminar)) {
@@ -85,14 +85,30 @@ public class ControladorVentas implements MouseListener {
 
         String nombreP = modelo.getVistaVentas().txtNombreProducto.getText();
         String precioP = modelo.getVistaVentas().txtPrecio.getText();
-
+        String cantidadIngresada = modelo.getVistaVentas().txtCantidad.getText();
+        String descuentoSubsidio = modelo.getVistaVentas().txtDescuentoSubsidio.getText();
+        String subtotal = calcularPrecioP(precioP, descuentoSubsidio);
+        String precioTotal = calcularTotal(subtotal,cantidadIngresada);
+        agregarDatosTabla(nombreP, precioP, cantidadIngresada, subtotal, precioTotal);
     }
 
-    private String calcularPrecioP(String precio) {
-
-        modelo.getVistaVentas().cmbSubsidio.getItemAt(1);
-
-        return "";
+    private String calcularPrecioP(String precio, String descuento) {
+            double precioDescuento;
+            String precioFinal = "";
+            double descuentoObtenido;
+            if(descuento.equals("")){
+                precioDescuento = 0.00;
+            } else {
+                precioDescuento = (Double.parseDouble(descuento))/100;
+            }
+        
+        if(modelo.getVistaVentas().cmbSubsidio.getItemAt(2).equals("SI")){
+            double precioInt = Double.parseDouble(precio);
+            descuentoObtenido = precioInt * precioDescuento;
+            precioFinal = String.valueOf(precioInt - descuentoObtenido);
+        }
+        
+        return precioFinal;
     }
 
     private String calcularSubTotal() {
@@ -100,9 +116,14 @@ public class ControladorVentas implements MouseListener {
         return "";
     }
 
-    private String calcularTotal() {
-
-        return "";
+    private String calcularTotal(String precioFinal, String cantidad) {
+        
+        double precioCalculado = Double.parseDouble(precioFinal);
+        double cantidadIngresada = Double.parseDouble(cantidad);
+        
+        double totalCalculado = precioCalculado * cantidadIngresada;
+        String precioTotalCalculado = String.valueOf(totalCalculado);
+        return precioTotalCalculado;
     }
 
     private void limpiarDatos() {
@@ -117,9 +138,12 @@ public class ControladorVentas implements MouseListener {
     }
 
     public void datosVaciosAgregarP() {
-        if (modelo.getVistaVentas().txtNombreProducto.getText().isEmpty() || modelo.getVistaVentas().txtCodigoBarras.getText().isEmpty()) {
+        if (modelo.getVistaVentas().txtNombreProducto.getText().isEmpty() 
+                || modelo.getVistaVentas().txtCodigoBarras.getText().isEmpty()
+                || modelo.getVistaVentas().txtPrecio.getText().isEmpty()) {
             mostrarError("No se pudo agregar el producto, por favor busque un producto para agregarlo");
         } else {
+            capturaDatosAgregarP();
         }
     }
 
@@ -143,25 +167,44 @@ public class ControladorVentas implements MouseListener {
 
     public void consultarProducto(String nombreP, String codigoB) {
 
-//        ModeloVenta modeloV = new ModeloVenta();
-        ModeloProducto modeloP = new ModeloProducto();
+        ModeloProducto modeloP;
 
         modeloP = implementacion.buscarProducto(nombreP, codigoB);
+        
+        if (modeloP == null){
+            mostrarError("Producto no encontrado");
+            return;
+        }
+        
+        boolean estaActivo = modeloP.isActivoP();
+        int cantidadDisponible = modeloP.getCantidadDisponible();
 
-        modelo.getVistaVentas().txtIdProducto.setText(String.valueOf(modeloP.getIdProducto()));
-        modelo.getVistaVentas().txtCodigoBarras.setText(modeloP.getCodigoBarrasP());
-        modelo.getVistaVentas().txtNombreProducto.setText(modeloP.getNombreOficialP());
-        modelo.getVistaVentas().txtArea.setText(modeloP.getDescripcionP());
-//        agregarDatosTabla();
+        if (!estaActivo == true) {
+            mostrarError("El producto no se encuentra activo");
+        } else if (cantidadDisponible < 1) {
+            mostrarError("El Producto no tiene suficiente stock");
+        } else {
+            modelo.getVistaVentas().txtIdProducto.setText(String.valueOf(modeloP.getIdProducto()));
+            modelo.getVistaVentas().txtCodigoBarras.setText(modeloP.getCodigoBarrasP());
+            modelo.getVistaVentas().txtNombreProducto.setText(modeloP.getNombreOficialP());
+            modelo.getVistaVentas().txtArea.setText(modeloP.getDescripcionP());
+            modelo.getVistaVentas().txtPrecio.setText(String.valueOf(modeloP.getPrecioVenta()));
+        }
+
     }
 
     public void agregarDatosTabla(String nombreP, String precio, String cantidad, String subtotal, String total) {
-
-        Object[][] data = {
-            {nombreP, precio, cantidad, subtotal, total},};
-
-        String[] nombreColumnas = {"Nombre Producto", "Precio", "Cantidad", "SubTotal", "Total"};
-        DefaultTableModel modeloTabla = new DefaultTableModel(data, nombreColumnas);
+        
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+       
+        modeloTabla.setColumnIdentifiers(new Object [] {"Nombre Producto", "Precio", "Cantidad", "SubTotal", "Total"});
+       
+        modeloTabla.addRow(new Object[]{
+            nombreP, 
+            precio, 
+            cantidad, 
+            subtotal, 
+            total});
 
         agregarTabla(modeloTabla);
     }
@@ -183,11 +226,11 @@ public class ControladorVentas implements MouseListener {
         System.out.println(nuevaTabla.getRowCount());
 
         JScrollPane tableScroll = new JScrollPane(nuevaTabla);
-        tableScroll.setBorder(BorderFactory.createTitledBorder("Carrito de Compras" + (modelo.getVistaVentas().jTableProductos.getComponentCount() + 1)));
+        tableScroll.setBorder(BorderFactory.createTitledBorder("Carrito de Compras" + (modelo.getVistaVentas().contenedorTablaVentas.getComponentCount() + 1)));
 
-        modelo.getVistaVentas().jTableProductos.add(tableScroll);
-        modelo.getVistaVentas().jTableProductos.revalidate();
-        modelo.getVistaVentas().jTableProductos.repaint();
+        modelo.getVistaVentas().contenedorTablaVentas.add(tableScroll);
+        modelo.getVistaVentas().contenedorTablaVentas.revalidate();
+        modelo.getVistaVentas().contenedorTablaVentas.repaint();
     }
 
     private void mostrarError(String mensaje) {
