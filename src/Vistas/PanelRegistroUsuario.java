@@ -252,6 +252,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         boxUsuarioActivo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         boxUsuarioActivo.setForeground(new java.awt.Color(255, 255, 255));
         boxUsuarioActivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        boxUsuarioActivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         fondoPanel.add(boxUsuarioActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 130, -1));
 
         btnBuscar.setBackground(new java.awt.Color(75, 128, 146));
@@ -261,6 +262,7 @@ public class PanelRegistroUsuario extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Buscar");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout btnBuscarLayout = new javax.swing.GroupLayout(btnBuscar);
         btnBuscar.setLayout(btnBuscarLayout);
