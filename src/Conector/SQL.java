@@ -71,23 +71,47 @@ public class SQL {
 
 // COSULRA PARA CLIENTES USUSARIOS
     
-String sql = "INSERT INTO clientes (nombre, apellido, telefono, direccion, identificacion, nit, tiene_subsidio, id_institucion_subsidio, "
-        + "fecha_registro, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  private final String INSERTAR_CLIENTE = 
+        "INSERT INTO clientes (nombre, apellido, telefono, direccion, identificacion, nit, tiene_subsidio, id_institucion_subsidio) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-private final String UPDATE = "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, identificacion=?, subsidio=?, fecha_registro=? WHERE id_cliente=?";
+    private final String ACTUALIZAR_CLIENTE = 
+        "UPDATE clientes SET nombre = ?, apellido = ?, telefono = ?, direccion = ?, identificacion = ?, nit = ?, tiene_subsidio = ?, id_institucion_subsidio = ?, activo = ? WHERE id_cliente = ?";
 
+    private final String ELIMINAR_CLIENTE = 
+        "UPDATE clientes SET activo = FALSE WHERE id_cliente = ?";
 
-private final String SELECT_ALL = "SELECT * FROM clientes";
-    private final String DELETE
-            = "DELETE FROM clientes WHERE id_cliente=?";
+    private final String LISTAR_CLIENTES = 
+        "SELECT * FROM clientes WHERE activo = TRUE";
 
+    private final String OBTENER_CLIENTE_POR_ID = 
+        "SELECT * FROM clientes WHERE id_cliente = ?";
 
-    private final String SELECT_BY_ID
-            = "SELECT * FROM clientes WHERE id_cliente=?";
+   
 
-    private final String SELECT_BY_PARAMS
-            = "SELECT * FROM clientes WHERE nombre LIKE ? AND apellido LIKE ? AND telefono = ? "
-            + "AND direccion LIKE ? AND identificacion = ? AND nit LIKE ? AND subsidio LIKE ? AND fecha LIKE ?";
+    public String getCONSULTA_AMBOS_NC() {
+        return CONSULTA_AMBOS_NC;
+    }
+
+    public String getINSERTAR_CLIENTE() {
+        return INSERTAR_CLIENTE;
+    }
+
+    public String getACTUALIZAR_CLIENTE() {
+        return ACTUALIZAR_CLIENTE;
+    }
+
+    public String getELIMINAR_CLIENTE() {
+        return ELIMINAR_CLIENTE;
+    }
+
+    public String getLISTAR_CLIENTES() {
+        return LISTAR_CLIENTES;
+    }
+
+    public String getOBTENER_CLIENTE_POR_ID() {
+        return OBTENER_CLIENTE_POR_ID;
+    }
+
 
     //CONSULTA PARA LOS USUARIOS
     private final String AGREGAR_USUARIO = "INSERT INTO usuarios (nombre, apellido, telefono, email, usuario, contrasena, tipo_usuario, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";

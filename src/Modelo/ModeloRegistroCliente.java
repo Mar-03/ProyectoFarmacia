@@ -7,6 +7,7 @@ package Modelo;
 import Vistas.PanelClientes;
 import java.util.logging.Logger;
 import Vistas.*;
+import java.sql.Timestamp; 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,58 +19,26 @@ import java.util.Date;
  * @author anyi4
  */
 public class ModeloRegistroCliente {
-    PanelClientes panelCliente;
-    
-
-    private int id_clientes;
+      public static class Cliente { 
+    private int idCliente;
     private String nombre;
-    private String apellido; 
-     private String telefono; 
-    private String identificacion; 
-    private String direccion; 
-
+    private String apellido;
+    private String telefono;
+    private String direccion;
+    private String identificacion;
     private String nit;
-    private boolean subsidio;
-    private LocalDate fecha;
-  
-      
+    private boolean tieneSubsidio;
+    private Integer idInstitucionSubsidio;
+    private Timestamp fecha_registro;
+    private boolean activo;
 
-    public static String fechaActual() {
-        LocalDate fecha = LocalDate.now(); 
-        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return fecha.format(formateador);     }
-
-    public LocalDate getFecha() {
-        return fecha;
+    // Getters y Setters
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
-
-
-
-    public ModeloRegistroCliente() {
-    }
-
-    public ModeloRegistroCliente(PanelClientes panelCliente) {
-        this.panelCliente = panelCliente;
-    }
-
-    public PanelClientes getPanelCliente() {
-        return panelCliente;
-    }
-
-    public void setPanelCliente(PanelClientes panelCliente) {
-        this.panelCliente = panelCliente;
-    }
-
-    public int getId_clientes() {
-        return id_clientes;
-    }
-
-    public void setId_clientes(int id_clientes) {
-        this.id_clientes = id_clientes;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNombre() {
@@ -95,17 +64,6 @@ public class ModeloRegistroCliente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-
-    public String getIdentificacion() {
-        return identificacion;
-    }
-
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
-    }
-
-   
 
     public String getDireccion() {
         return direccion;
@@ -115,7 +73,13 @@ public class ModeloRegistroCliente {
         this.direccion = direccion;
     }
 
-   
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
 
     public String getNit() {
         return nit;
@@ -125,14 +89,38 @@ public class ModeloRegistroCliente {
         this.nit = nit;
     }
 
-    public boolean isSubsidio() {
-        return subsidio;
+    public boolean isTieneSubsidio() {
+        return tieneSubsidio;
     }
 
-    public void setSubsidio(boolean subsidio) {
-        this.subsidio = subsidio;
+    public void setTieneSubsidio(boolean tieneSubsidio) {
+        this.tieneSubsidio = tieneSubsidio;
     }
 
+    public Integer getIdInstitucionSubsidio() {
+        return idInstitucionSubsidio;
+    }
+
+    public void setIdInstitucionSubsidio(Integer idInstitucionSubsidio) {
+        this.idInstitucionSubsidio = idInstitucionSubsidio;
+    }
+
+    public Timestamp getFechaRegistro() {
+        return fecha_registro;
+    }
+
+    public void setFechaRegistro(Timestamp fechaRegistro) {
+        this.fecha_registro = fechaRegistro;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+}
 }
 
    

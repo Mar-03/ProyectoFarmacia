@@ -22,10 +22,6 @@ public class PanelClientes extends javax.swing.JPanel {
     public PanelClientes() {
         initComponents();
 
-        ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
-        ControladorClientes controlador = new ControladorClientes(modelo, this);
-txtFechaRegistro.setText(ModeloRegistroCliente.fechaActual());
-        setControlador(controlador);
             
     }
 

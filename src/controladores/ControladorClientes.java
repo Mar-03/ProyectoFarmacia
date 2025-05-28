@@ -5,215 +5,187 @@
 package controladores;
 
 
-import Modelo.ModeloRegistroCliente;
-import Implementacion.RegistroClienteImpl;
+
+import Interfaces.IRegistroCliente;
+
 import Vistas.PanelClientes;
 
-import java.awt.Color;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+
+import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+
 import javax.swing.table.DefaultTableModel;
+import Modelo.ModeloRegistroCliente.Cliente;
+
 
 public class ControladorClientes implements MouseListener {
 
 
-    private ModeloRegistroCliente modelo;
-    private RegistroClienteImpl dao;
+    private final PanelClientes vista;
+    private final IRegistroCliente modelo;
+    private final DefaultTableModel tableModel;
+    
+        
 
-    public ControladorClientes(ModeloRegistroCliente modelo, PanelClientes vista) {
+    public ControladorClientes(PanelClientes vista, IRegistroCliente modelo) {
+        this.vista = vista;
         this.modelo = modelo;
-        this.dao = new RegistroClienteImpl();
-        this.modelo.setPanelCliente(vista);
-        vista.setControlador(this);
-        mostrarClientesEnTabla(vista.tblclientes);
-    }
-
-    public void limpiar() {
-        modelo.getPanelCliente().txtActivo.setText("");
-        modelo.getPanelCliente().txtNombreCliente.setText("");
-        modelo.getPanelCliente().txtApellidoCliente.setText("");
-        modelo.getPanelCliente().txtDireccion.setText("");
-        modelo.getPanelCliente().txtFechaRegistro.setText("");
-        modelo.getPanelCliente().txtIdCliente.setText("");
-        modelo.getPanelCliente().txtIdentificacion.setText("");
-        modelo.getPanelCliente().txtInsSubsidio.setText("");
-        modelo.getPanelCliente().txtNIT.setText("");
-        modelo.getPanelCliente().txtTelefono.setText("");
-        
-    }
-
-     public void agregarCliente() {
-        ModeloRegistroCliente nuevo = new ModeloRegistroCliente();
-
-        nuevo.setNombre(modelo.getPanelCliente().txtNombreCliente.getText().trim());
-        nuevo.setApellido(modelo.getPanelCliente().txtApellidoCliente.getText().trim());
-        nuevo.setNit(modelo.getPanelCliente().txtNIT.getText().trim());
-        nuevo.setDireccion(modelo.getPanelCliente().txtDireccion.getText().trim());
-        nuevo.setSubsidio(modelo.getPanelCliente().Subsidio.isSelected());
-
-       
-        String textoIdentificacion = modelo.getPanelCliente().txtIdentificacion.getText().trim();
-        if (!textoIdentificacion.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Identificación inválida. Solo números permitidos.");
-            return;
-        }
-        nuevo.setIdentificacion(textoIdentificacion);
-
-        
-        String fechaStr = modelo.getPanelCliente().txtFechaRegistro.getText().trim();
-        if (!fechaStr.matches("^\\d{4}-\\d{2}-\\d{2}$") || !esFechaValida(fechaStr)) {
-            JOptionPane.showMessageDialog(null, "Formato de fecha inválido. Use yyyy-MM-dd.");
-            return;
-        }
-        LocalDate fecha = LocalDate.parse(fechaStr);
-        
-          String textoTelefono = modelo.getPanelCliente().txtTelefono.getText().trim();
-            if (!textoTelefono.matches("\\d{8,15}")) { 
-             JOptionPane.showMessageDialog(null, "Teléfono inválido.");
-        return;
-            }
-            nuevo.setTelefono(textoTelefono);
-
-        if (dao.insertarCliente(nuevo)) {
-            JOptionPane.showMessageDialog(null, "Cliente registrado exitosamente");
-            limpiar();
-            mostrarClientesEnTabla(modelo.getPanelCliente().tblclientes);
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al registrar cliente");
-        }
-    }
-
-   
-
-    private boolean esFechaValida(String fecha) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        sdf.setLenient(false);
-        try {
-            sdf.parse(fecha);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
-    }
-
-    private void actualizarCliente() {
-        ModeloRegistroCliente actualizado = new ModeloRegistroCliente();
-
-        try {
-            actualizado.setId_clientes(Integer.parseInt(modelo.getPanelCliente().txtIdCliente.getText()));
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ID no válido.");
-            return;
-        }
-
-        String textoTelefono = modelo.getPanelCliente().txtTelefono.getText().trim().replaceAll("\\s+", "");
-        if (!textoTelefono.matches("\\d{8,15}")) {
-            JOptionPane.showMessageDialog(null, "Teléfono inválido.");
-            return;
-        }
-        actualizado.setTelefono(textoTelefono);
-
-        String textoIdentificacion = modelo.getPanelCliente().txtIdentificacion.getText().trim();
-        if (!textoIdentificacion.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Identificación inválida.");
-            return;
-        }
-        actualizado.setIdentificacion(textoIdentificacion);
-
-        String textoFecha = modelo.getPanelCliente().txtFechaRegistro.getText().trim();
-        if (!textoFecha.matches("^\\d{4}-\\d{2}-\\d{2}$") || !esFechaValida(textoFecha)) {
-        JOptionPane.showMessageDialog(null, "Formato de fecha inválido.");
-     return;
-            }
-        LocalDate fecha = LocalDate.parse(textoFecha);
-        actualizado.setFecha(fecha);
-
-
-       
-
-        actualizado.setNombre(modelo.getPanelCliente().txtNombreCliente.getText().trim());
-        actualizado.setApellido(modelo.getPanelCliente().txtApellidoCliente.getText().trim());
-        actualizado.setNit(modelo.getPanelCliente().txtNIT.getText().trim());
-        actualizado.setDireccion(modelo.getPanelCliente().txtDireccion.getText().trim());
-        actualizado.setSubsidio(modelo.getPanelCliente().Subsidio.isSelected());
-
-
-        boolean exito = dao.actualizarCliente(actualizado);
-        if (exito) {
-            JOptionPane.showMessageDialog(null, "Cliente actualizado correctamente.");
-            limpiar();
-            mostrarClientesEnTabla(modelo.getPanelCliente().tblclientes);
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al actualizar cliente.");
-        }
-    }
-
-    private void eliminarCliente() {
-        int id;
-        try {
-            id = Integer.parseInt(modelo.getPanelCliente().txtIdCliente.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ID no válido.");
-            return;
-        }
-
-        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar este cliente?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        if (confirmacion == JOptionPane.YES_OPTION) {
-            boolean exito = dao.eliminarCliente(id);
-            if (exito) {
-                JOptionPane.showMessageDialog(null, "Cliente eliminado correctamente.");
-                limpiar();
-                mostrarClientesEnTabla(modelo.getPanelCliente().tblclientes);
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al eliminar cliente.");
-            }
-        }
-    }
-
-    public void mostrarClientesEnTabla(JTable tablaClientes) {
-        DefaultTableModel modeloTabla = dao.listarClientes();
-        tablaClientes.setModel(modeloTabla);
+        this.tableModel = (DefaultTableModel) vista.tblclientes.getModel();
+        cargarClientes();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getComponent().equals(modelo.getPanelCliente().btnAgregar)) {
-            if (modelo.getPanelCliente().txtNombreCliente.getText().isEmpty() ||
-                modelo.getPanelCliente().txtApellidoCliente.getText().isEmpty() ||
-                modelo.getPanelCliente().txtTelefono.getText().isEmpty() ||
-                modelo.getPanelCliente().txtNIT.getText().isEmpty() ||
-                modelo.getPanelCliente().txtDireccion.getText().isEmpty() ||
-                modelo.getPanelCliente().txtIdentificacion.getText().isEmpty() ||
-                modelo.getPanelCliente().txtInsSubsidio.getText().isEmpty() ||
-                modelo.getPanelCliente().txtFechaRegistro.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Debe ingresar todos los campos.");
-            } else {
-                agregarCliente();
-            }
-        } else if (e.getComponent().equals(modelo.getPanelCliente().btnEliminar)) {
-            eliminarCliente();
-        } else if (e.getComponent().equals(modelo.getPanelCliente().btnActualizar)) {
+        if (e.getSource() == vista.btnAgregar) {
+            agregarCliente();
+        } else if (e.getSource() == vista.btnActualizar ){
             actualizarCliente();
+        } else if (e.getSource() == vista.btnEliminar) {
+            eliminarCliente();
+        } else if (e.getSource() == vista.tblclientes) {
+            seleccionarClienteDeTabla();
         }
     }
 
-    @Override public void mousePressed(MouseEvent e) {}
-    @Override public void mouseReleased(MouseEvent e) {}
-    @Override public void mouseEntered(MouseEvent e) {
-        if (e.getComponent() instanceof JTextField) {
-            ((JTextField) e.getComponent()).setBackground(Color.WHITE);
+    private void agregarCliente() {
+        Cliente cliente = obtenerClienteDesdeFormulario();
+        if (cliente != null && modelo.insertarCliente(cliente)) {
+            JOptionPane.showMessageDialog(vista, "Cliente agregado exitosamente");
+            limpiarFormulario();
+            cargarClientes();
+        } else {
+            JOptionPane.showMessageDialog(vista, "Error al agregar cliente", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    @Override public void mouseExited(MouseEvent e) {
-        if (e.getComponent() instanceof JTextField) {
-            ((JTextField) e.getComponent()).setBackground(new Color(204, 204, 204));
+    private void actualizarCliente() {
+        int idCliente = obtenerIdClienteSeleccionado();
+        if (idCliente == -1) {
+            JOptionPane.showMessageDialog(vista, "Seleccione un cliente primero", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Cliente cliente = obtenerClienteDesdeFormulario();
+        if (cliente != null) {
+            cliente.setIdCliente(idCliente);
+            if (modelo.actualizarCliente(cliente)) {
+                JOptionPane.showMessageDialog(vista, "Cliente actualizado exitosamente");
+                cargarClientes();
+            } else {
+                JOptionPane.showMessageDialog(vista, "Error al actualizar cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
+
+    private void eliminarCliente() {
+        int idCliente = obtenerIdClienteSeleccionado();
+        if (idCliente == -1) {
+            JOptionPane.showMessageDialog(vista, "Seleccione un cliente primero", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int confirmacion = JOptionPane.showConfirmDialog(vista, "¿Está seguro de eliminar este cliente?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if (confirmacion == JOptionPane.YES_OPTION && modelo.eliminarCliente(idCliente)) {
+            JOptionPane.showMessageDialog(vista, "Cliente eliminado exitosamente");
+            limpiarFormulario();
+            cargarClientes();
+        }
     }
+
+    private void seleccionarClienteDeTabla() {
+        int filaSeleccionada = vista.tblclientes.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            int idCliente = (int) tableModel.getValueAt(filaSeleccionada, 0);
+            Cliente cliente = modelo.obtenerClientePorId(idCliente);
+            if (cliente != null) {
+                llenarFormulario(cliente);
+            }
+        }
+    }
+
+    private void cargarClientes() {
+        tableModel.setRowCount(0);
+        List<Cliente> clientes = modelo.listarClientes();
+        for (Cliente cliente : clientes) {
+            tableModel.addRow(new Object[]{
+                cliente.getIdCliente(),
+                cliente.getNombre(),
+                cliente.getApellido(),
+                cliente.getTelefono(),
+                cliente.getIdentificacion(),
+                cliente.getNit(),
+                cliente.isTieneSubsidio() ? "Sí" : "No"
+            });
+        }
+    }
+
+    
+    @Override
+    public void mousePressed(MouseEvent e) {}
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+    @Override
+    public void mouseExited(MouseEvent e) {}
+
+    private void llenarFormulario(Cliente cliente) {
+    vista.txtNombreCliente.setText(cliente.getNombre());
+    vista.txtApellidoCliente.setText(cliente.getApellido());
+    vista.txtTelefono.setText(cliente.getTelefono());
+    vista.txtIdentificacion.setText(cliente.getIdentificacion());
+    vista.txtNIT.setText(cliente.getNit());
+    vista.Subsidio.setSelected(cliente.isTieneSubsidio());
+}
+
+private void limpiarFormulario() {
+    vista.txtNombreCliente.setText("");
+    vista.txtApellidoCliente.setText("");
+    vista.txtTelefono.setText("");
+    vista.txtIdentificacion.setText("");
+    vista.txtNIT.setText("");
+    vista.Subsidio.setSelected(false);
+    vista.tblclientes.clearSelection();
+}
+
+private int obtenerIdClienteSeleccionado() {
+    int fila = vista.tblclientes.getSelectedRow();
+    if (fila != -1) {
+        return (int) tableModel.getValueAt(fila, 0);
+    }
+    return -1;
+}
+
+private Cliente obtenerClienteDesdeFormulario() {
+    String nombre = vista.txtNombreCliente.getText().trim();
+    String apellido = vista.txtApellidoCliente.getText().trim();
+    String telefono = vista.txtTelefono.getText().trim();
+    String identificacion = vista.txtIdentificacion.getText().trim();
+    String nit = vista.txtNIT.getText().trim();
+    boolean tieneSubsidio = vista.Subsidio.isSelected();
+
+    
+    if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || identificacion.isEmpty() || nit.isEmpty()) {
+        JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return null;
+    }
+
+    Cliente cliente = new Cliente();
+    cliente.setNombre(nombre);
+    cliente.setApellido(apellido);
+    cliente.setTelefono(telefono);
+    cliente.setIdentificacion(identificacion);
+    cliente.setNit(nit);
+    cliente.setTieneSubsidio(tieneSubsidio);
+
+    return cliente;
+}
+
+
+    
+
+   
+}

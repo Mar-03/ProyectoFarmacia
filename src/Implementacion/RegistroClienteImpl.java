@@ -6,150 +6,140 @@ package Implementacion;
 
 import Modelo.ModeloRegistroCliente;
 import Conector.DBConnection;
+import Conector.SQL;
 import Interfaces.IRegistroCliente;
-
+import Modelo.ModeloRegistroCliente.Cliente;
+import controladores.ControladorClientes;
+import java.sql.Timestamp; 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 
 
 public class RegistroClienteImpl implements IRegistroCliente {
+    private final DBConnection conexion;
+    private final ControladorClientes controlador;
+    private final SQL sql;
 
-    private final DBConnection conector = new DBConnection();
-    private PreparedStatement ps;
-    private ResultSet rs;
-
-    @Override
-    public ModeloRegistroCliente ConsultaCliente(String nombre, String apellido, String telefono, String direccion, String identificacion, String nit, String subsidio, String fecha) {
-        ModeloRegistroCliente modelo = new ModeloRegistroCliente();
-        try {
-            conector.conectar();
-            String sql = "SELECT * FROM clientes WHERE nombre LIKE ? AND apellido LIKE ? AND telefono = ? AND direccion LIKE ? AND identificacion = ? AND nit LIKE ? AND tiene_subsidio LIKE ? AND fecha_registro LIKE ?";
-            ps = conector.preparar(sql);
-            ps.setString(1, "%" + nombre + "%");
-            ps.setString(2, "%" + apellido + "%");
-            ps.setString(3, telefono);
-            ps.setString(4, "%" + direccion + "%");
-            ps.setString(5, identificacion);
-            ps.setString(6, "%" + nit + "%");
-            ps.setString(7, "%" + subsidio + "%");
-            ps.setString(8, "%" + fecha + "%");
-
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                modelo.setId_clientes(rs.getInt("id_cliente"));
-                modelo.setNombre(rs.getString("nombre"));
-                modelo.setApellido(rs.getString("apellido"));
-                modelo.setTelefono(rs.getString("telefono"));
-                modelo.setDireccion(rs.getString("direccion"));
-                modelo.setIdentificacion(rs.getString("identificacion"));
-                modelo.setNit(rs.getString("nit"));
-                modelo.setSubsidio(rs.getBoolean("tiene_subsidio"));
-                modelo.setFecha(rs.getDate("fecha_registro").toLocalDate());
-            }
-        } catch (SQLException e) {
-            System.out.println("Error en la consulta de cliente: " + e.getMessage());
-        } finally {
-            conector.desconectar();
-        }
-        return modelo;
+    public RegistroClienteImpl(DBConnection conexion, ControladorClientes controlador, SQL sql) {
+        this.conexion = conexion;
+        this.controlador = controlador;
+        this.sql = sql;
     }
-
-    @Override
-    public boolean eliminarCliente(int id_cliente) {
-        boolean eliminado = false;
-        try {
-            conector.conectar();
-            String sql = "DELETE FROM clientes WHERE id_cliente = ?";
-            ps = conector.preparar(sql);
-            ps.setInt(1, id_cliente);
-            eliminado = ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            System.out.println("Error al eliminar cliente: " + e.getMessage());
-        } finally {
-            conector.desconectar();
-        }
-        return eliminado;
-    }
-
-    @Override
-    public boolean actualizarCliente(ModeloRegistroCliente cliente) {
-        boolean actualizado = false;
-        try {
-            conector.conectar();
-            String sql = "UPDATE clientes SET nombre=?, apellido=?, telefono=?, nit=?, direccion=?, identificacion=?, tiene_subsidio=?, fecha_registro=? WHERE id_cliente=?";
-            ps = conector.preparar(sql);
-            ps.setString(1, cliente.getNombre());
-            ps.setString(2, cliente.getApellido());
-            ps.setString(3, cliente.getTelefono());
-            ps.setString(4, cliente.getNit());
-            ps.setString(5, cliente.getDireccion());
-            ps.setString(6, cliente.getIdentificacion());
-            ps.setBoolean(7, cliente.isSubsidio());
-            ps.setDate(8, java.sql.Date.valueOf(cliente.getFecha()));
-            ps.setInt(9, cliente.getId_clientes());
-            actualizado = ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            System.out.println("Error al actualizar cliente: " + e.getMessage());
-        } finally {
-            conector.desconectar();
-        }
-        return actualizado;
-    }
-
-    @Override
-    public boolean insertarCliente(ModeloRegistroCliente cliente) {
-        boolean insertado = false;
-        try {
-            conector.conectar();
-            String sql = "INSERT INTO clientes (nombre, apellido, telefono, nit, direccion, identificacion, tiene_subsidio, fecha_registro) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            ps = conector.preparar(sql);
-            ps.setString(1, cliente.getNombre());
-            ps.setString(2, cliente.getApellido());
-            ps.setString(3, cliente.getTelefono());
-            ps.setString(4, cliente.getNit());
-            ps.setString(5, cliente.getDireccion());
-            ps.setString(6, cliente.getIdentificacion());
-            ps.setBoolean(7, cliente.isSubsidio());
-            ps.setDate(8, java.sql.Date.valueOf(cliente.getFecha()));
-            insertado = ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            System.out.println("Error al insertar cliente: " + e.getMessage());
-        } finally {
-            conector.desconectar();
-        }
-        return insertado;
-    }
-
-    @Override
-    public DefaultTableModel listarClientes() {
-        DefaultTableModel modeloTabla = new DefaultTableModel();
-        modeloTabla.setColumnIdentifiers(new Object[]{"ID", "Nombre", "Apellido", "Teléfono", "NIT", "Dirección", "Identificación", "Subsidio", "Fecha Registro"});
-        try {
-            conector.conectar();
-            String sql = "SELECT * FROM clientes";
-            ps = conector.preparar(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                modeloTabla.addRow(new Object[]{
-                    rs.getInt("id_cliente"),
-                    rs.getString("nombre"),
-                    rs.getString("apellido"),
-                    rs.getString("telefono"),
-                    rs.getString("nit"),
-                    rs.getString("direccion"),
-                    rs.getString("identificacion"),
-                    rs.getBoolean("tiene_subsidio") ? "Sí" : "No",
-                    rs.getString("fecha_registro")
-                });
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al listar clientes: " + e.getMessage());
-        } finally {
-            conector.desconectar();
-        }
-        return modeloTabla;
-    }
-
    
+   
+
+    @Override
+public boolean insertarCliente(Cliente cliente) {
+    try (Connection conn = conexion.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql.getINSERTAR_CLIENTE())) {
+        
+        ps.setString(1, cliente.getNombre());
+        ps.setString(2, cliente.getApellido());
+        ps.setString(3, cliente.getTelefono());
+        ps.setString(4, cliente.getDireccion());
+        ps.setString(5, cliente.getIdentificacion());
+        ps.setString(6, cliente.getNit());
+        ps.setBoolean(7, cliente.isTieneSubsidio());
+        ps.setObject(8, cliente.getIdInstitucionSubsidio(), Types.INTEGER);
+        
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+@Override
+public boolean actualizarCliente(Cliente cliente) {
+    try (Connection conn = conexion.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql.getACTUALIZAR_CLIENTE())) {
+        
+        ps.setString(1, cliente.getNombre());
+        ps.setString(2, cliente.getApellido());
+        ps.setString(3, cliente.getTelefono());
+        ps.setString(4, cliente.getDireccion());
+        ps.setString(5, cliente.getIdentificacion());
+        ps.setString(6, cliente.getNit());
+        ps.setBoolean(7, cliente.isTieneSubsidio());
+        ps.setObject(8, cliente.getIdInstitucionSubsidio(), Types.INTEGER);
+        ps.setBoolean(9, cliente.isActivo());
+        ps.setInt(10, cliente.getIdCliente());
+        
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+@Override
+public boolean eliminarCliente(int idCliente) {
+    try (Connection conn = conexion.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql.getELIMINAR_CLIENTE())) {
+        
+        ps.setInt(1, idCliente);
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+@Override
+public List<Cliente> listarClientes() {
+    List<Cliente> clientes = new ArrayList<>();
+    
+    try (Connection conn = conexion.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql.getLISTAR_CLIENTES());
+         ResultSet rs = ps.executeQuery()) {
+        
+        while (rs.next()) {
+            clientes.add(mapearCliente(rs));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
+    return clientes;
+}
+
+@Override
+public Cliente obtenerClientePorId(int idCliente) {
+    try (Connection conn = conexion.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql.getOBTENER_CLIENTE_POR_ID())) {
+        
+        ps.setInt(1, idCliente);
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return mapearCliente(rs);
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
+    return null;
+}
+
+    
+
+    private Cliente mapearCliente(ResultSet rs) throws SQLException {
+    Cliente cliente = new Cliente();
+    cliente.setIdCliente(rs.getInt("id_cliente"));
+    cliente.setNombre(rs.getString("nombre"));
+    cliente.setApellido(rs.getString("apellido"));
+    cliente.setTelefono(rs.getString("telefono"));
+    cliente.setDireccion(rs.getString("direccion"));
+    cliente.setIdentificacion(rs.getString("identificacion"));
+    cliente.setNit(rs.getString("nit"));
+    cliente.setTieneSubsidio(rs.getBoolean("tiene_subsidio"));
+    cliente.setIdInstitucionSubsidio(rs.getInt("id_institucion_subsidio"));
+    cliente.setFechaRegistro(rs.getTimestamp("fecha_registro")); 
+    cliente.setActivo(rs.getBoolean("activo")); 
+    
+    return cliente;
+}
 }
