@@ -117,7 +117,7 @@ public class PanelProducto extends javax.swing.JPanel {
         labelIDProducto.setForeground(new java.awt.Color(255, 255, 255));
         labelIDProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelIDProducto.setText("ID Producto");
-        fondoPanel.add(labelIDProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, 100, -1));
+        fondoPanel.add(labelIDProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, 100, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -379,7 +379,6 @@ public class PanelProducto extends javax.swing.JPanel {
         txtIdProducto.setBackground(new java.awt.Color(75, 128, 146));
         txtIdProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIdProducto.setForeground(new java.awt.Color(255, 255, 255));
-        txtIdProducto.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
