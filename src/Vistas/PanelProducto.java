@@ -93,7 +93,7 @@ public class PanelProducto extends javax.swing.JPanel {
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("REGISTRO PRODUCTO");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 850, -1));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 850, -1));
 
         marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
