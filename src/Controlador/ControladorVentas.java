@@ -60,7 +60,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnEliminar)) {
             EliminarP();
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnHacerVenta)) {
-
+            datosVaciosHacerVenta();
         } else if (e.getComponent().equals(modelo.getVistaVentas().checkBoxVentaSinClienteR)) {
             clienteNoRegistrado();
         }
@@ -167,6 +167,16 @@ public class ControladorVentas implements MouseListener, ActionListener {
         }
     }
     
+    public void datosVaciosHacerVenta(){
+        
+        if(modeloTablaVentas.getRowCount() == 0
+                || !modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()
+                || modelo.getVistaVentas().txtNITCliente.getText().isEmpty()){
+            mostrarError("No se puede realizar la venta, debe de llenar todos los campos");
+        }
+        
+    }
+    
     private void datosVaciosHacerVentas() {
         if (modelo.getVistaVentas().txtNombreProducto.getText().isEmpty()
                 || modelo.getVistaVentas().txtCodigoBarras.getText().isEmpty()
@@ -185,7 +195,19 @@ public class ControladorVentas implements MouseListener, ActionListener {
     public void elementosVisibles() {
     }
 
-    
+    private void limpiarElementos(){
+                modelo.getVistaVentas().txtNombreProducto.setText("");
+                modelo.getVistaVentas().txtCodigoBarras.setText("");
+                modelo.getVistaVentas().txtCantidad.setText("");
+                modelo.getVistaVentas().txtDescuentoSubsidio.setText("");
+                modelo.getVistaVentas().txtIdProducto.setText("");
+                modelo.getVistaVentas().cmbSubsidio.setSelectedIndex(0);
+                modelo.getVistaVentas().labelInstitucionSubsidio.setText("");
+                modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
+                modelo.getVistaVentas().labelDescuentoSubsidio.setText("");
+                modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
+                modelo.getVistaVentas().txtPrecio.setText("");
+    }
     
     public void consultarProducto(String nombreP, String codigoB) {
 
@@ -227,35 +249,10 @@ public class ControladorVentas implements MouseListener, ActionListener {
             subtotal,
             total});
 
-        //agregarTabla(modeloTabla);
+        limpiarElementos();
     }
 
     
-    //METODOS PARA DEFINIR LA TABLA DENTRO DEL JSCROLL
-    public void tableSize(JTable tabla) {
-        int rowHeight = tabla.getRowHeight();
-        int rowCount = tabla.getRowCount();
-        int headerHeight = tabla.getTableHeader().getPreferredSize().height;
-
-        int alturaTotal = (rowHeight * rowCount) + headerHeight;
-        tabla.setPreferredScrollableViewportSize(new Dimension(tabla.getPreferredSize().width, alturaTotal));
-    }
-
-    public void agregarTabla(DefaultTableModel modeloTabla) {
-        JTable nuevaTabla = new JTable(modeloTabla);
-        tableSize(nuevaTabla);
-//        nuevaTabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        System.out.println(nuevaTabla.getRowCount());
-
-        JScrollPane tableScroll = new JScrollPane(nuevaTabla);
-        tableScroll.setBorder(BorderFactory.createTitledBorder("Carrito de Compras" + (modelo.getVistaVentas().contenedorTablaVentas.getComponentCount() + 1)));
-
-        modelo.getVistaVentas().contenedorTablaVentas.add(tableScroll);
-        modelo.getVistaVentas().contenedorTablaVentas.revalidate();
-        modelo.getVistaVentas().contenedorTablaVentas.repaint();
-    }
-
     private void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, "¡ADVERTENCIA!", JOptionPane.WARNING_MESSAGE);
     }
@@ -323,6 +320,11 @@ public class ControladorVentas implements MouseListener, ActionListener {
           }   
     }
 
+    public void consultarClienteNit(){
+        
+    }
+     
+     
     @Override
     public void actionPerformed(ActionEvent e) {
 

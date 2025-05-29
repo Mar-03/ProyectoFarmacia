@@ -120,7 +120,8 @@ public class SQL {
     private final String HACER_VENTA = "INSERT INTO ventas (id_usuario,id_cliente,fecha, subtotal, descuento_subsidio, total, tipo_pago, con_subsidio, id_institucion_subsidio, observaciones) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?);";
     private final String INSERTAR_DETALLE_VENTA = "INSERT INTO detalle_ventas (id_venta, id_lote, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
     private final String ACTUALIZAR_STOCK = "UPDATE lotes SET cantidad_disponible = cantidad_disponible - ? WHERE id_lote = ?";
-    private final String BUSCAR_CLIENTE = "";
+    private final String BUSCAR_CLIENTE_NIT_IDENTIFICACION = "SELECT id_cliente, nombre, apellido, direccion, nit, identificacion," + "telefono, tiene_subsidio, id_institucion_subsidio" + "FROM clientes" +
+                                                             "WHERE (nit = ? OR identificacion = ?) AND activo = TRUE";
     private final String BUSCAR_PRODUCTOS_NOMBRES = "SELECT p.id_producto, p.nombre_oficial, p.descripcion, " +
                                       "p.codigo_barras, p.requiere_receta, p.activo, " +
                                       "l.precio_venta AS precio, SUM(l.cantidad_disponible) AS cantidad_disponible " +
@@ -206,10 +207,6 @@ public class SQL {
         return ACTUALIZAR_STOCK;
     }
 
-    public String getBUSCAR_CLIENTE() {
-        return BUSCAR_CLIENTE;
-    }
-
     public String getCONSULTAR_USUARIO() {
         return CONSULTAR_USUARIO;
     }
@@ -220,6 +217,10 @@ public class SQL {
 
     public String getBUSCAR_PRODUCTO_CODIGO() {
         return BUSCAR_PRODUCTO_CODIGO;
+    }
+
+    public String getBUSCAR_CLIENTE_NIT_IDENTIFICACION() {
+        return BUSCAR_CLIENTE_NIT_IDENTIFICACION;
     }
     
     

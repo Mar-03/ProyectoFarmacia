@@ -3,7 +3,9 @@ package Implementacion;
 import Conector.DBConnection;
 import Conector.SQL;
 import Interfaces.IVenta;
+import Modelo.ModeloClientesVentas;
 import Modelo.ModeloProducto;
+import Modelo.ModeloRegistroCliente;
 import Modelo.ModeloVenta;
 import Modelo.ModeloVistaInicio;
 import java.sql.PreparedStatement;
@@ -69,7 +71,7 @@ public class VentaImp implements IVenta {
 
     @Override
     public ModeloProducto buscarProducto(String nombreP, String codigoB) {
-        
+
         System.out.println("HOLA DESDE IMP");
         ModeloProducto modelo = null;
         String sqlEjecutar;
@@ -114,6 +116,63 @@ public class VentaImp implements IVenta {
             conector.desconectar();
         }
         System.out.println("Nombre " + modelo.getNombreOficialP());
+        return modelo;
+    }
+
+    public ModeloClientesVentas consultarCliente(String criterioNitId) {
+
+        ModeloClientesVentas modelo = null;
+
+        conector.conectar();
+
+        try {
+            ps = conector.preparar(sql.getBUSCAR_CLIENTE_NIT_IDENTIFICACION());
+            ps.setString(1, criterioNitId);
+            ps.setString(2, criterioNitId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    modelo = new ModeloClientesVentas();
+                    modelo.setIdCliente(rs.getInt("id_cliente"));
+                    modelo.setNombre(rs.getString("nombre"));
+                    modelo.setApellido(rs.getString("apellido"));
+                    modelo.setDireccion(rs.getString("direccion"));
+                    modelo.setNit(rs.getString("nit"));
+                    modelo.setIdentificacion(rs.getString("identificacion"));
+                    modelo.setTelefono(rs.getString("telefono"));
+                    modelo.setTieneSubsidio(rs.getBoolean("tiene_subsidio"));
+
+                    int idInstitucion = rs.getInt("id_institucion_subsidio");
+                    if (!rs.wasNull()) {
+                        modelo.setIdInstitucionSubsidio(idInstitucion);
+                    }
+                }
+            } catch (Exception e) {
+                Logger.getLogger(this.getClass().getName()).log(
+                        Level.SEVERE,
+                        "Error al procesar resultados de la consulta para cliente: " + criterioNitId,
+                        e
+                );
+            }
+
+        } catch (SQLException e) {
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                conector.desconectar();
+            } catch (SQLException e) {
+
+                Logger.getLogger(this.getClass().getName()).log(
+                        Level.WARNING,
+                        "Error al cerrar recursos de conexión",
+                        e
+                );
+
+            }
+        }
+
         return modelo;
     }
 }
