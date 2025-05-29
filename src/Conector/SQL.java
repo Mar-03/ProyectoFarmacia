@@ -70,7 +70,7 @@ public class SQL {
     }
 
 // COSULRA PARA CLIENTES USUSARIOS
-    
+   
   private final String INSERTAR_CLIENTE = 
         "INSERT INTO clientes (nombre, apellido, telefono, direccion, identificacion, nit, tiene_subsidio, id_institucion_subsidio) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 

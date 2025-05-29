@@ -6,45 +6,44 @@ package controladores;
 
 
 
+
 import Interfaces.IRegistroCliente;
 import Modelo.ModeloRegistroCliente;
 
 import Vistas.PanelClientes;
 
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import java.util.List;
 import javax.swing.JOptionPane;
 
-import javax.swing.table.DefaultTableModel;
+
 import Modelo.ModeloRegistroCliente.Cliente;
 
 
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.List;
+
 public class ControladorClientes implements MouseListener {
 
+        PanelClientes vista;
+        IRegistroCliente modelo;
+         DefaultTableModel tableModel;
+        ModeloRegistroCliente Modelo;
 
-    private final PanelClientes vista;
-    private final IRegistroCliente modelo;
-    private final DefaultTableModel tableModel;
-    
-    
-    
-    
-
-    public ControladorClientes(PanelClientes vista, IRegistroCliente modelo, DefaultTableModel tableModel, ModeloRegistroCliente modelos) {
-        this.vista = vista;
-        this.modelo = modelo;
-        this.tableModel = tableModel;
-      
-        
+    public ControladorClientes(ModeloRegistroCliente Modelo) {
+        this.Modelo = Modelo;
     }
 
    
-    
-      
 
+   
+
+   
+  
+
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == vista.btnAgregar) {

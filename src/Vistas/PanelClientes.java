@@ -23,10 +23,10 @@ public class PanelClientes extends javax.swing.JPanel {
      */
     public PanelClientes() {
         initComponents();
-        ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
-         ControladorClientes controlador = new ControladorClientes(modelo);
+        //ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
+       // ControladorClientes controlador = new ControladorClientes(modelo);
 
-        setControlador(controlador);
+      //  setControlador(controlador);
             
     }
 

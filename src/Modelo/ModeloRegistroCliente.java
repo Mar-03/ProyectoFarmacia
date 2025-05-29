@@ -22,6 +22,10 @@ public class ModeloRegistroCliente {
 
     public ModeloRegistroCliente(PanelClientes aThis) {
     }
+
+    public boolean insertarCliente(Cliente cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
       public static class Cliente { 
     private int idCliente;
     private String nombre;
