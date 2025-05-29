@@ -8,6 +8,7 @@ import Implementacion.VentaImp;
 import Modelo.ModeloProducto;
 import Modelo.ModeloRegistroCliente;
 import Modelo.ModeloVenta;
+import Modelo.ModeloVistaInicio;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -168,29 +169,17 @@ public class ControladorVentas implements MouseListener, ActionListener {
     }
     
     public void datosVaciosHacerVenta(){
-        
         if(modeloTablaVentas.getRowCount() == 0
-                || !modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()
-                || modelo.getVistaVentas().txtNITCliente.getText().isEmpty()){
+                ||(!modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()
+                && modelo.getVistaVentas().txtNITCliente.getText().isEmpty())){
             mostrarError("No se puede realizar la venta, debe de llenar todos los campos");
+        } else {
+            validarVenta();
         }
         
     }
     
-    private void datosVaciosHacerVentas() {
-        if (modelo.getVistaVentas().txtNombreProducto.getText().isEmpty()
-                || modelo.getVistaVentas().txtCodigoBarras.getText().isEmpty()
-                || modelo.getVistaVentas().txtCantidad.getText().isEmpty()
-                || modelo.getVistaVentas().txtSubtotal.getText().isEmpty()
-                || modelo.getVistaVentas().txtDescuentoSubsidio.getText().isEmpty()
-                || modelo.getVistaVentas().txtTotal.getText().isEmpty()) {
-
-        } else {
-            //Llamar al método que registre la venta
-            //En ese mismo método añadir la opción de generar o no PDF (Comprobante)
-            hacerVenta();
-        }
-    }
+    
 
     public void elementosVisibles() {
     }
@@ -257,12 +246,9 @@ public class ControladorVentas implements MouseListener, ActionListener {
         JOptionPane.showMessageDialog(null, mensaje, "¡ADVERTENCIA!", JOptionPane.WARNING_MESSAGE);
     }
 
-    private void hacerVenta() {
-
-        ModeloVenta modeloVenta = new ModeloVenta();
+    private void validarVenta() {
 
         //Llamar al método de implementación para la venta
-        if (modeloVenta != null) {
             int mensajeHacerComprobante = JOptionPane.showConfirmDialog(null, "¿Desea generar comprobante de esta venta?", "VENTA", JOptionPane.YES_NO_OPTION);
             if (mensajeHacerComprobante == JOptionPane.YES_OPTION) {
                 generarComprobante();
@@ -270,12 +256,14 @@ public class ControladorVentas implements MouseListener, ActionListener {
                 JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
                 //Tal vez llamar aquí el método para limpiar todo
             }
-        }
-
+        
     }
 
     private void generarComprobante() {
-
+        ModeloVistaInicio modeloInicio = new ModeloVistaInicio();
+        String usuarioObtenido = modeloInicio.getUsuario();
+        
+        System.out.println("Usuario obtenido " + usuarioObtenido);
     }
     
     //METODO PARA MOSTRAR CAMPOS, DEPENDIENDO SI SE DESEA INGRESAR SUBSIDIO
