@@ -49,7 +49,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        labelNIT = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         labelDescuentoSubsidio = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -153,11 +153,11 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel3.setText("Cantidad:");
         fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 80, 20));
 
-        jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("NIT Cliente:");
-        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 90, -1));
+        labelNIT.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelNIT.setForeground(new java.awt.Color(255, 255, 255));
+        labelNIT.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelNIT.setText("NIT Cliente:");
+        fondoPanel.add(labelNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 90, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -303,7 +303,7 @@ public class PanelVentas extends javax.swing.JPanel {
         cmbSubsidio.setBackground(new java.awt.Color(75, 128, 146));
         cmbSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         cmbSubsidio.setForeground(new java.awt.Color(255, 255, 255));
-        cmbSubsidio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-----", "NO", "SI" }));
+        cmbSubsidio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NO", "SI" }));
         cmbSubsidio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbSubsidio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,13 +456,13 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel labelDescuentoSubsidio;
+    public javax.swing.JLabel labelDescuentoSubsidio;
     public javax.swing.JLabel labelInstitucionSubsidio;
+    public javax.swing.JLabel labelNIT;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JSeparator separador;
@@ -485,5 +485,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnAgregar.addMouseListener(controlador);
         btnBuscar.addMouseListener(controlador);
         btnEliminar.addMouseListener(controlador);
+        cmbSubsidio.addActionListener(controlador);
+        checkBoxVentaSinClienteR.addMouseListener(controlador);
     }
 }
