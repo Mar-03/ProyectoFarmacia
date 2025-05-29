@@ -5,6 +5,7 @@
 package Controlador;
 
 import Implementacion.VentaImp;
+import Modelo.ModeloInicioUsuario;
 import Modelo.ModeloProducto;
 import Modelo.ModeloRegistroCliente;
 import Modelo.ModeloVenta;
@@ -260,8 +261,8 @@ public class ControladorVentas implements MouseListener, ActionListener {
     }
 
     private void generarComprobante() {
-        ModeloVistaInicio modeloInicio = new ModeloVistaInicio();
-        String usuarioObtenido = modeloInicio.getUsuario();
+        ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
+        String usuarioObtenido = modeloUsuarioActivo.getUsuarioActivo();
         
         System.out.println("Usuario obtenido " + usuarioObtenido);
     }

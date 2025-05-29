@@ -1,6 +1,7 @@
 package Controlador;
 
 import Implementacion.SesionInicioImp;
+import Modelo.ModeloInicioUsuario;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -70,7 +71,9 @@ public class ControladorVistaInicio implements MouseListener {
             mostrarError("Error al Iniciar Sesión, el usuario dado de baja");
             return;
         }
+        ModeloInicioUsuario modeloInicioUsuarioActivo = new ModeloInicioUsuario();
         redirigirTipoUsuario(tipoUsuario);
+        modeloInicioUsuarioActivo.setUsuarioActual(usuarioEncontrado);
         modelo.setUsuario(usuarioEncontrado);
         modelo.setTipoUsuario(tipoUsuario);
     }
