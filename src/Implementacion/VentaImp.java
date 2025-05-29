@@ -175,4 +175,20 @@ public class VentaImp implements IVenta {
 
         return modelo;
     }
+    
+    public boolean hacerVentaCompleta(){
+        
+        
+        
+        return false;
+    }
+    
+    
+    
+    
+    public void generarComprobante(ModeloVenta modelo){
+        
+    }
+    
+    
 }
