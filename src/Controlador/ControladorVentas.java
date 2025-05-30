@@ -5,6 +5,7 @@
 package Controlador;
 
 import Implementacion.VentaImp;
+import Modelo.ModeloClientesVentas;
 import Modelo.ModeloInicioUsuario;
 import Modelo.ModeloProducto;
 import Modelo.ModeloRegistroCliente;
@@ -35,22 +36,22 @@ public class ControladorVentas implements MouseListener, ActionListener {
 
     public ControladorVentas(ModeloVenta modelo) {
         this.modelo = modelo;
-        
+
         modeloTablaVentas = new DefaultTableModel();
         modeloTablaVentas.setColumnIdentifiers(new Object[]{"Nombre Producto", "Precio", "Cantidad", "SubTotal", "Total"});
-    
+
         tablaVentas = new JTable(modeloTablaVentas);
         tablaVentas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+
         JScrollPane tableScroll = new JScrollPane(tablaVentas);
         tableScroll.setBorder(BorderFactory.createTitledBorder("Carrito de Compras"));
-        
+
         modelo.getVistaVentas().contenedorTablaVentas.add(tableScroll);
         modelo.getVistaVentas().contenedorTablaVentas.revalidate();
         modelo.getVistaVentas().contenedorTablaVentas.repaint();
-        
+
     }
-    
+
     VentaImp implementacion = new VentaImp();
 
     @Override
@@ -136,7 +137,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
     }
 
     private String calcularSubTotal() {
-        
+
         return "";
     }
 
@@ -150,7 +151,6 @@ public class ControladorVentas implements MouseListener, ActionListener {
         return precioTotalCalculado;
     }
 
-    
     public void datosVaciosBuscarP() {
         if (modelo.getVistaVentas().txtNombreProducto.getText().isEmpty() && modelo.getVistaVentas().txtCodigoBarras.getText().isEmpty()) {
             mostrarError("Debe de ingresar al menos el nombre o código del producto");
@@ -168,37 +168,35 @@ public class ControladorVentas implements MouseListener, ActionListener {
             capturaDatosAgregarP();
         }
     }
-    
-    public void datosVaciosHacerVenta(){
-        if(modeloTablaVentas.getRowCount() == 0
-                ||(!modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()
-                && modelo.getVistaVentas().txtNITCliente.getText().isEmpty())){
+
+    public void datosVaciosHacerVenta() {
+        if (modeloTablaVentas.getRowCount() == 0
+                || (!modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()
+                && modelo.getVistaVentas().txtNITCliente.getText().isEmpty())) {
             mostrarError("No se puede realizar la venta, debe de llenar todos los campos");
         } else {
-            validarVenta();
+            hacerVenta();
         }
-        
+
     }
-    
-    
 
     public void elementosVisibles() {
     }
 
-    private void limpiarElementos(){
-                modelo.getVistaVentas().txtNombreProducto.setText("");
-                modelo.getVistaVentas().txtCodigoBarras.setText("");
-                modelo.getVistaVentas().txtCantidad.setText("");
-                modelo.getVistaVentas().txtDescuentoSubsidio.setText("");
-                modelo.getVistaVentas().txtIdProducto.setText("");
-                modelo.getVistaVentas().cmbSubsidio.setSelectedIndex(0);
-                modelo.getVistaVentas().labelInstitucionSubsidio.setText("");
-                modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
-                modelo.getVistaVentas().labelDescuentoSubsidio.setText("");
-                modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
-                modelo.getVistaVentas().txtPrecio.setText("");
+    private void limpiarElementos() {
+        modelo.getVistaVentas().txtNombreProducto.setText("");
+        modelo.getVistaVentas().txtCodigoBarras.setText("");
+        modelo.getVistaVentas().txtCantidad.setText("");
+        modelo.getVistaVentas().txtDescuentoSubsidio.setText("");
+        modelo.getVistaVentas().txtIdProducto.setText("");
+        modelo.getVistaVentas().cmbSubsidio.setSelectedIndex(0);
+        modelo.getVistaVentas().labelInstitucionSubsidio.setText("");
+        modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
+        modelo.getVistaVentas().labelDescuentoSubsidio.setText("");
+        modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
+        modelo.getVistaVentas().txtPrecio.setText("");
     }
-    
+
     public void consultarProducto(String nombreP, String codigoB) {
 
         ModeloProducto modeloP;
@@ -226,12 +224,10 @@ public class ControladorVentas implements MouseListener, ActionListener {
         }
 
     }
-    
-    
 
     //METODOS PARA GENERAR LA TABLA DE LOS PRODUCTOS PARA LA VENTA
     public void agregarDatosTabla(String nombreP, String precio, String cantidad, String subtotal, String total) {
-      
+
         modeloTablaVentas.addRow(new Object[]{
             nombreP,
             precio,
@@ -242,31 +238,41 @@ public class ControladorVentas implements MouseListener, ActionListener {
         limpiarElementos();
     }
 
-    
     private void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, "¡ADVERTENCIA!", JOptionPane.WARNING_MESSAGE);
     }
 
-    private void validarVenta() {
+    private void hacerVenta() {
+        
+        if(modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()){
+            
+        }
+        
+        
+        
+    }
+
+    private void validarVentaComprobante() {
 
         //Llamar al método de implementación para la venta
-            int mensajeHacerComprobante = JOptionPane.showConfirmDialog(null, "¿Desea generar comprobante de esta venta?", "VENTA", JOptionPane.YES_NO_OPTION);
-            if (mensajeHacerComprobante == JOptionPane.YES_OPTION) {
-                generarComprobante();
-            } else {
-                JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
-                //Tal vez llamar aquí el método para limpiar todo
-            }
-        
+        int mensajeHacerComprobante = JOptionPane.showConfirmDialog(null, "¿Desea generar comprobante de esta venta?", "VENTA", JOptionPane.YES_NO_OPTION);
+        if (mensajeHacerComprobante == JOptionPane.YES_OPTION) {
+            generarComprobante();
+            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
+            //Tal vez llamar aquí el método para limpiar todo
+        }
+
     }
 
     private void generarComprobante() {
         ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
         String usuarioObtenido = modeloUsuarioActivo.getUsuarioActivo();
-        
+
         System.out.println("Usuario obtenido " + usuarioObtenido);
     }
-    
+
     //METODO PARA MOSTRAR CAMPOS, DEPENDIENDO SI SE DESEA INGRESAR SUBSIDIO
     private void comboBoxSubsidio() {
         int itemSeleccionado = modelo.getVistaVentas().cmbSubsidio.getSelectedIndex();
@@ -285,7 +291,6 @@ public class ControladorVentas implements MouseListener, ActionListener {
         }
     }
 
-    
     //METODO PARA MOSTRAR CAMPOS SI EL CLIENTE ESTA REGISTRADO (No NIT)
     private void clienteNoRegistrado() {
         if (modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()) {
@@ -298,26 +303,44 @@ public class ControladorVentas implements MouseListener, ActionListener {
         }
 
     }
-    
-    
-     private void EliminarP(){
-          int filasSeleccionada = tablaVentas.getSelectedRow();
-          if(filasSeleccionada != -1){
-              modeloTablaVentas.removeRow(filasSeleccionada);
-          } else {
-              mostrarError("Selecciona un producto agregado para eliminarlo");
-          }   
+
+    private void EliminarP() {
+        int filasSeleccionada = tablaVentas.getSelectedRow();
+        if (filasSeleccionada != -1) {
+            modeloTablaVentas.removeRow(filasSeleccionada);
+        } else {
+            mostrarError("Selecciona un producto agregado para eliminarlo");
+        }
     }
 
-    public void consultarClienteNit(){
+    public ModeloClientesVentas consultarClienteNit(String nit) {
+
+        ModeloClientesVentas modeloClienteV;
+        modeloClienteV = implementacion.consultarCliente(nit);
+        if (modeloClienteV == null) {
+            mostrarError("El cliente no fue encontrado, por favor ingrese un cliente válido");
+        } else {
+//            int idClienteEncontrado = modeloClienteV.getIdCliente();
+            String nombreCliente = modeloClienteV.getNombre();
+            String apellido = modeloClienteV.getApellido();
+            String direccionCliente = modeloClienteV.getDireccion();
+            String nitCliente = String.valueOf(modeloClienteV.getNit());
+            boolean tieneSubsidio = modeloClienteV.isTieneSubsidio();
+        }
         
+        return modeloClienteV;
+
     }
-     
-     
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         comboBoxSubsidio();
 
     }
+
+    private void generarComprobantePDF() {
+
+    }
+
 }
