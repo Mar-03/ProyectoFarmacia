@@ -12,6 +12,8 @@ import Modelo.*;
 
 import Conector.*;
 import Controlador.*;
+import Implementacion.RegistroClienteImpl;
+import Interfaces.IRegistroCliente;
 import controladores.ControladorClientes;
 
 import java.awt.event.MouseListener;
@@ -21,14 +23,17 @@ public class PanelClientes extends javax.swing.JPanel {
     /**
      * Creates new form PanelClientes
      */
-    public PanelClientes() {
-        initComponents();
-        //ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
-       // ControladorClientes controlador = new ControladorClientes(modelo);
+  public PanelClientes() {
+    initComponents();
+     
+PanelClientes panelClientes = new PanelClientes();
 
-      //  setControlador(controlador);
-            
-    }
+    
+    ControladorClientes controlador = new ControladorClientes(this, modelo);
+
+    setControlador(controlador);
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.

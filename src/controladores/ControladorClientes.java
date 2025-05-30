@@ -9,46 +9,48 @@ package controladores;
 
 import Interfaces.IRegistroCliente;
 import Modelo.ModeloRegistroCliente;
-
 import Vistas.PanelClientes;
-
-
-
-import javax.swing.JOptionPane;
-
 
 import Modelo.ModeloRegistroCliente.Cliente;
 
-
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorClientes implements MouseListener {
 
         PanelClientes vista;
-        IRegistroCliente modelo;
-         DefaultTableModel tableModel;
-        ModeloRegistroCliente Modelo;
-
-    public ControladorClientes(ModeloRegistroCliente Modelo) {
-        this.Modelo = Modelo;
-    }
+    
+     ModeloRegistroCliente modelo;
+     
+     IRegistroCliente interfaz;
+     DefaultTableModel tableModel;
 
    
-
-   
-
-   
-  
 
     
+    public ControladorClientes(PanelClientes vista, IRegistroCliente modelo) {
+    this.vista = vista;
+    this.interfaz = modelo;
+    this.tableModel = (DefaultTableModel) vista.tblclientes.getModel();
+    
+    // Asignar listeners
+    this.vista.btnAgregar.addMouseListener(this);
+    this.vista.btnActualizar.addMouseListener(this);
+    this.vista.btnEliminar.addMouseListener(this);
+    this.vista.tblclientes.addMouseListener(this);
+
+    // Cargar datos al iniciar
+    cargarClientes();
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == vista.btnAgregar) {
             agregarCliente();
-        } else if (e.getSource() == vista.btnActualizar ){
+        } else if (e.getSource() == vista.btnActualizar) {
             actualizarCliente();
         } else if (e.getSource() == vista.btnEliminar) {
             eliminarCliente();
@@ -59,7 +61,7 @@ public class ControladorClientes implements MouseListener {
 
     private void agregarCliente() {
         Cliente cliente = obtenerClienteDesdeFormulario();
-        if (cliente != null && modelo.insertarCliente(cliente)) {
+        if (cliente != null && interfaz.insertarCliente(cliente)) {
             JOptionPane.showMessageDialog(vista, "Cliente agregado exitosamente");
             limpiarFormulario();
             cargarClientes();
@@ -74,12 +76,13 @@ public class ControladorClientes implements MouseListener {
             JOptionPane.showMessageDialog(vista, "Seleccione un cliente primero", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         Cliente cliente = obtenerClienteDesdeFormulario();
         if (cliente != null) {
             cliente.setIdCliente(idCliente);
-            if (modelo.actualizarCliente(cliente)) {
+            if (interfaz.actualizarCliente(cliente)) {
                 JOptionPane.showMessageDialog(vista, "Cliente actualizado exitosamente");
+                limpiarFormulario();
                 cargarClientes();
             } else {
                 JOptionPane.showMessageDialog(vista, "Error al actualizar cliente", "Error", JOptionPane.ERROR_MESSAGE);
@@ -93,9 +96,9 @@ public class ControladorClientes implements MouseListener {
             JOptionPane.showMessageDialog(vista, "Seleccione un cliente primero", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         int confirmacion = JOptionPane.showConfirmDialog(vista, "¿Está seguro de eliminar este cliente?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
-        if (confirmacion == JOptionPane.YES_OPTION && modelo.eliminarCliente(idCliente)) {
+        if (confirmacion == JOptionPane.YES_OPTION && interfaz.eliminarCliente(idCliente)) {
             JOptionPane.showMessageDialog(vista, "Cliente eliminado exitosamente");
             limpiarFormulario();
             cargarClientes();
@@ -106,7 +109,7 @@ public class ControladorClientes implements MouseListener {
         int filaSeleccionada = vista.tblclientes.getSelectedRow();
         if (filaSeleccionada != -1) {
             int idCliente = (int) tableModel.getValueAt(filaSeleccionada, 0);
-            Cliente cliente = modelo.obtenerClientePorId(idCliente);
+            Cliente cliente = interfaz.obtenerClientePorId(idCliente);
             if (cliente != null) {
                 llenarFormulario(cliente);
             }
@@ -115,7 +118,7 @@ public class ControladorClientes implements MouseListener {
 
     private void cargarClientes() {
         tableModel.setRowCount(0);
-        List<Cliente> clientes = modelo.listarClientes();
+        List<Cliente> clientes = interfaz.listarClientes();
         for (Cliente cliente : clientes) {
             tableModel.addRow(new Object[]{
                 cliente.getIdCliente(),
@@ -129,7 +132,57 @@ public class ControladorClientes implements MouseListener {
         }
     }
 
-    
+    private void llenarFormulario(Cliente cliente) {
+        vista.txtNombreCliente.setText(cliente.getNombre());
+        vista.txtApellidoCliente.setText(cliente.getApellido());
+        vista.txtTelefono.setText(cliente.getTelefono());
+        vista.txtIdentificacion.setText(cliente.getIdentificacion());
+        vista.txtNIT.setText(cliente.getNit());
+        vista.Subsidio.setSelected(cliente.isTieneSubsidio());
+    }
+
+    private void limpiarFormulario() {
+        vista.txtNombreCliente.setText("");
+        vista.txtApellidoCliente.setText("");
+        vista.txtTelefono.setText("");
+        vista.txtIdentificacion.setText("");
+        vista.txtNIT.setText("");
+        vista.Subsidio.setSelected(false);
+        vista.tblclientes.clearSelection();
+    }
+
+    private int obtenerIdClienteSeleccionado() {
+        int fila = vista.tblclientes.getSelectedRow();
+        if (fila != -1) {
+            return (int) tableModel.getValueAt(fila, 0);
+        }
+        return -1;
+    }
+
+    private Cliente obtenerClienteDesdeFormulario() {
+        String nombre = vista.txtNombreCliente.getText().trim();
+        String apellido = vista.txtApellidoCliente.getText().trim();
+        String telefono = vista.txtTelefono.getText().trim();
+        String identificacion = vista.txtIdentificacion.getText().trim();
+        String nit = vista.txtNIT.getText().trim();
+        boolean tieneSubsidio = vista.Subsidio.isSelected();
+
+        if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || identificacion.isEmpty() || nit.isEmpty()) {
+            JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return null;
+        }
+
+        Cliente cliente = new Cliente();
+        cliente.setNombre(nombre);
+        cliente.setApellido(apellido);
+        cliente.setTelefono(telefono);
+        cliente.setIdentificacion(identificacion);
+        cliente.setNit(nit);
+        cliente.setTieneSubsidio(tieneSubsidio);
+
+        return cliente;
+    }
+
     @Override
     public void mousePressed(MouseEvent e) {}
     @Override
@@ -138,61 +191,4 @@ public class ControladorClientes implements MouseListener {
     public void mouseEntered(MouseEvent e) {}
     @Override
     public void mouseExited(MouseEvent e) {}
-
-    private void llenarFormulario(Cliente cliente) {
-    vista.txtNombreCliente.setText(cliente.getNombre());
-    vista.txtApellidoCliente.setText(cliente.getApellido());
-    vista.txtTelefono.setText(cliente.getTelefono());
-    vista.txtIdentificacion.setText(cliente.getIdentificacion());
-    vista.txtNIT.setText(cliente.getNit());
-    vista.Subsidio.setSelected(cliente.isTieneSubsidio());
-}
-
-private void limpiarFormulario() {
-    vista.txtNombreCliente.setText("");
-    vista.txtApellidoCliente.setText("");
-    vista.txtTelefono.setText("");
-    vista.txtIdentificacion.setText("");
-    vista.txtNIT.setText("");
-    vista.Subsidio.setSelected(false);
-    vista.tblclientes.clearSelection();
-}
-
-private int obtenerIdClienteSeleccionado() {
-    int fila = vista.tblclientes.getSelectedRow();
-    if (fila != -1) {
-        return (int) tableModel.getValueAt(fila, 0);
-    }
-    return -1;
-}
-
-private Cliente obtenerClienteDesdeFormulario() {
-    String nombre = vista.txtNombreCliente.getText().trim();
-    String apellido = vista.txtApellidoCliente.getText().trim();
-    String telefono = vista.txtTelefono.getText().trim();
-    String identificacion = vista.txtIdentificacion.getText().trim();
-    String nit = vista.txtNIT.getText().trim();
-    boolean tieneSubsidio = vista.Subsidio.isSelected();
-
-    
-    if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || identificacion.isEmpty() || nit.isEmpty()) {
-        JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        return null;
-    }
-
-    Cliente cliente = new Cliente();
-    cliente.setNombre(nombre);
-    cliente.setApellido(apellido);
-    cliente.setTelefono(telefono);
-    cliente.setIdentificacion(identificacion);
-    cliente.setNit(nit);
-    cliente.setTieneSubsidio(tieneSubsidio);
-
-    return cliente;
-}
-
-
-    
-
-   
 }
