@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Conector.DBConnection;
 import Implementacion.ProductoImp;
 import Interfaces.Iinventario;
 import Modelo.ModeloInventario;
@@ -13,14 +14,13 @@ import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ControladorInventario implements MouseListener {
 
-    private JTable tablaInventario;
-    private Iinventario inventarioService;
-    ModeloInventario modelo;
-
-    ProductoImp implementacion = new ProductoImp();
+ 
+    private final ModeloInventario modelo;
 
     public ControladorInventario(ModeloInventario modelo) {
         this.modelo = modelo;
@@ -28,43 +28,20 @@ public class ControladorInventario implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource() instanceof JTable) {
-            cargarLotesEnTabla();
+        Object source = e.getSource();
+        
+        if (source == modelo.vista.btnRegistroInventario) {
+            modelo.cargarLotesEnTabla();
+        } 
+        else if (source == modelo.vista.btnRegistroVenta) {
+            modelo.cargarVentasDelDiaEnTabla();
         }
     }
 
-    private void cargarLotesEnTabla() {
-        List<ModeloInventario> lotes = inventarioService.mostrarLotesActivos();
-        DefaultTableModel modeloTabla = (DefaultTableModel) tablaInventario.getModel();
-        modeloTabla.setRowCount(0);
-
-        for (ModeloInventario lote : lotes) {
-            modeloTabla.addRow(new Object[]{
-                lote.getIdProducto(),
-                lote.getNombreProducto(),
-                lote.getNumeroLote(),
-                lote.getFechaFabricacion(),
-                lote.getFechaVencimiento(),
-                lote.getCantidadDisponible(),
-                lote.getPrecioCompra(),
-                lote.getPrecioVenta()
-            });
-        }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
+    
+    @Override public void mousePressed(MouseEvent e) {}
+    @Override public void mouseReleased(MouseEvent e) {}
+    @Override public void mouseEntered(MouseEvent e) {}
+    @Override public void mouseExited(MouseEvent e) {}
 }
+

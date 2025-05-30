@@ -1,55 +1,56 @@
 package Implementacion;
 
 import Conector.DBConnection;
-import Interfaces.*;
+import Interfaces.Iinventario;
 import Conector.SQL;
-import Modelo.ModeloInventario;
-import Modelo.ModeloProducto;
-import java.sql.*;
-import java.time.DateTimeException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class InventarioImp implements Iinventario {
-
-    private DBConnection conector = new DBConnection();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private final DBConnection conector = new DBConnection();
+    private final SQL sql = new SQL();
+    private Connection con;  
 
     @Override
-public List<ModeloInventario> mostrarLotesActivos() {
-    List<ModeloInventario> lotes = new ArrayList<>();
-    String sql = "SELECT l.*, p.nombre_oficial AS nombre_producto "
-               + "FROM lotes l "
-               + "INNER JOIN productos p ON l.id_producto = p.id_producto "
-               + "WHERE l.activo = true";
-
-    try (Connection conn = conector.conectar();
-         PreparedStatement ps = conn.prepareStatement(sql);
-         ResultSet rs = ps.executeQuery()) {
-
-        while (rs.next()) {
-            ModeloInventario lote = new ModeloInventario();
-            lote.setIdLote(rs.getInt("id_lote"));
-            lote.setIdProducto(rs.getInt("id_producto"));
-            lote.setNumeroLote(rs.getString("numero_lote"));
-            lote.setFechaVencimiento(rs.getDate("fecha_vencimiento"));
-            lote.setFechaFabricacion(rs.getDate("fecha_fabricacion"));
-            lote.setCantidadDisponible(rs.getInt("cantidad_disponible"));
-            lote.setPrecioCompra(rs.getBigDecimal("precio_compra"));
-            lote.setPrecioVenta(rs.getBigDecimal("precio_venta"));
-            lote.setActivo(rs.getBoolean("activo"));
-            lote.setNombreProducto(rs.getString("nombre_producto"));
-            lotes.add(lote);
-        }
-
-    } catch (SQLException e) {
-        System.err.println("Error al mostrar los lotes activos: " + e.getMessage());
+    public ResultSet obtenerRegistroLotes() throws SQLException {
+        conectarBD();  
+        return ejecutarConsulta(sql.getOBTENER_LOTES_ACTIVOS());
     }
 
-    return lotes;
-}
+    @Override
+    public ResultSet obtenerRegistroVentasDelDia() throws SQLException {
+        conectarBD();  
+        return ejecutarConsulta("SELECT * FROM ventas WHERE DATE(fecha) = CURDATE()");
+    }
 
+    private void conectarBD() throws SQLException {
+        if (con == null || con.isClosed()) {
+            conector.conectar();  
+            con = conector.getConnection(); 
+        }
+    }
+
+    private ResultSet ejecutarConsulta(String query) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try {
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            throw e;
+        }
+    }
+    
+    
+    public void cerrarConexion() throws SQLException {
+        if (con != null && !con.isClosed()) {
+            con.close();
+        }
+    }
 }

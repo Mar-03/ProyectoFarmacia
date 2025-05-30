@@ -164,7 +164,7 @@ public class PanelInventario extends javax.swing.JPanel {
     private javax.swing.JLabel salir;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
-    private javax.swing.JTable tblInventario;
+    public javax.swing.JTable tblInventario;
     private javax.swing.JScrollPane tblTablaInventario;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables

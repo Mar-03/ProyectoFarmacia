@@ -7,12 +7,13 @@ package Interfaces;
 import Modelo.ModeloInventario;
 import Modelo.ModeloProducto;
 import java.util.List;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  *
  * @author jhosu
  */
 public interface Iinventario {
-
-    List<ModeloInventario> mostrarLotesActivos();
+    ResultSet obtenerRegistroLotes() throws SQLException;
+    ResultSet obtenerRegistroVentasDelDia() throws SQLException;  
 }
