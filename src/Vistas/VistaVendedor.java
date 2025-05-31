@@ -29,6 +29,8 @@ public class VistaVendedor extends javax.swing.JFrame {
 
         setControlador(controlador);
 
+                btnClientes.setVisible(false);
+
     }
 
     /**
