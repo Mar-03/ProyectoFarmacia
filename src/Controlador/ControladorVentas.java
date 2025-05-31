@@ -108,13 +108,18 @@ public class ControladorVentas implements MouseListener, ActionListener {
 
     private void capturaDatosAgregarP() {
 
-        String nombreP = modelo.getVistaVentas().txtNombreProducto.getText();
-        String precioP = modelo.getVistaVentas().txtPrecio.getText();
-        String cantidadIngresada = modelo.getVistaVentas().txtCantidad.getText();
-        String descuentoSubsidio = modelo.getVistaVentas().txtDescuentoSubsidio.getText();
-        String subtotal = calcularPrecioP(precioP, descuentoSubsidio);
-        String precioTotal = calcularTotal(subtotal, cantidadIngresada);
-        agregarDatosTabla(nombreP, precioP, cantidadIngresada, subtotal, precioTotal);
+        if (modelo.getVistaVentas().txtCantidad.getText().isEmpty()) {
+            mostrarError("No se pudo agregar el producto, por favor ingresa una cantidad válidad de productos");
+        } else {
+            String nombreP = modelo.getVistaVentas().txtNombreProducto.getText();
+            String precioP = modelo.getVistaVentas().txtPrecio.getText();
+            String cantidadIngresada = modelo.getVistaVentas().txtCantidad.getText();
+            String descuentoSubsidio = modelo.getVistaVentas().txtDescuentoSubsidio.getText();
+            String subtotal = calcularPrecioP(precioP, descuentoSubsidio);
+            String precioTotal = calcularTotal(subtotal, cantidadIngresada);
+            agregarDatosTabla(nombreP, precioP, cantidadIngresada, subtotal, precioTotal);
+        }
+
     }
 
     private String calcularPrecioP(String precio, String descuento) {
@@ -195,32 +200,37 @@ public class ControladorVentas implements MouseListener, ActionListener {
         modelo.getVistaVentas().labelDescuentoSubsidio.setText("");
         modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
         modelo.getVistaVentas().txtPrecio.setText("");
+        modelo.getVistaVentas().txtArea.setText("");
+
     }
 
     public void consultarProducto(String nombreP, String codigoB) {
+        //Validar esta parte creo un error y no salta el jpaneOption
+        try {
+            
+            ModeloProducto modeloP = implementacion.buscarProducto(nombreP, codigoB);
 
-        ModeloProducto modeloP;
+            if (modeloP == null) {
+                mostrarError("Producto no encontrado");
+                return;
+            }
 
-        modeloP = implementacion.buscarProducto(nombreP, codigoB);
+            boolean estaActivo = modeloP.isActivoP();
+            int cantidadDisponible = modeloP.getCantidadDisponible();
 
-        if (modeloP == null) {
+            if (!estaActivo == true) {
+                mostrarError("El producto no se encuentra activo");
+            } else if (cantidadDisponible < 1) {
+                mostrarError("El Producto no tiene suficiente stock");
+            } else {
+                modelo.getVistaVentas().txtIdProducto.setText(String.valueOf(modeloP.getIdProducto()));
+                modelo.getVistaVentas().txtCodigoBarras.setText(modeloP.getCodigoBarrasP());
+                modelo.getVistaVentas().txtNombreProducto.setText(modeloP.getNombreOficialP());
+                modelo.getVistaVentas().txtArea.setText(modeloP.getDescripcionP());
+                modelo.getVistaVentas().txtPrecio.setText(String.valueOf(modeloP.getPrecioVenta()));
+            }
+        } catch (Exception e) {
             mostrarError("Producto no encontrado");
-            return;
-        }
-
-        boolean estaActivo = modeloP.isActivoP();
-        int cantidadDisponible = modeloP.getCantidadDisponible();
-
-        if (!estaActivo == true) {
-            mostrarError("El producto no se encuentra activo");
-        } else if (cantidadDisponible < 1) {
-            mostrarError("El Producto no tiene suficiente stock");
-        } else {
-            modelo.getVistaVentas().txtIdProducto.setText(String.valueOf(modeloP.getIdProducto()));
-            modelo.getVistaVentas().txtCodigoBarras.setText(modeloP.getCodigoBarrasP());
-            modelo.getVistaVentas().txtNombreProducto.setText(modeloP.getNombreOficialP());
-            modelo.getVistaVentas().txtArea.setText(modeloP.getDescripcionP());
-            modelo.getVistaVentas().txtPrecio.setText(String.valueOf(modeloP.getPrecioVenta()));
         }
 
     }
@@ -243,13 +253,15 @@ public class ControladorVentas implements MouseListener, ActionListener {
     }
 
     private void hacerVenta() {
-        
-        if(modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()){
+
+        if (modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()) {
+            modelo.setNitCliente("CF");
+        } else {
+            
+            ModeloClientesVentas modeloClienteVenta = consultarClienteNit(modelo.getVistaVentas().txtNITCliente.getText());
             
         }
-        
-        
-        
+
     }
 
     private void validarVentaComprobante() {
@@ -269,6 +281,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
     private void generarComprobante() {
         ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
         String usuarioObtenido = modeloUsuarioActivo.getUsuarioActivo();
+        
 
         System.out.println("Usuario obtenido " + usuarioObtenido);
     }
@@ -321,13 +334,13 @@ public class ControladorVentas implements MouseListener, ActionListener {
             mostrarError("El cliente no fue encontrado, por favor ingrese un cliente válido");
         } else {
 //            int idClienteEncontrado = modeloClienteV.getIdCliente();
-            String nombreCliente = modeloClienteV.getNombre();
-            String apellido = modeloClienteV.getApellido();
-            String direccionCliente = modeloClienteV.getDireccion();
-            String nitCliente = String.valueOf(modeloClienteV.getNit());
-            boolean tieneSubsidio = modeloClienteV.isTieneSubsidio();
+            modeloClienteV.getNombre();
+            modeloClienteV.getApellido();
+            modeloClienteV.getDireccion();
+            modeloClienteV.getNit();
+            modeloClienteV.isTieneSubsidio();
         }
-        
+
         return modeloClienteV;
 
     }

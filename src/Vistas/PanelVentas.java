@@ -50,9 +50,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         labelNIT = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         labelDescuentoSubsidio = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         labelInstitucionSubsidio = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -63,8 +61,6 @@ public class PanelVentas extends javax.swing.JPanel {
         txtCodigoBarras = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         txtNITCliente = new javax.swing.JTextField();
-        txtTotal = new javax.swing.JTextField();
-        txtSubtotal = new javax.swing.JTextField();
         txtDescuentoSubsidio = new javax.swing.JTextField();
         txtIdInsSubsidio = new javax.swing.JTextField();
         txtIdProducto = new javax.swing.JTextField();
@@ -159,23 +155,11 @@ public class PanelVentas extends javax.swing.JPanel {
         labelNIT.setText("NIT Cliente:");
         fondoPanel.add(labelNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Subtotal");
-        fondoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 70, 20));
-
         labelDescuentoSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         labelDescuentoSubsidio.setForeground(new java.awt.Color(255, 255, 255));
         labelDescuentoSubsidio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelDescuentoSubsidio.setText("Descuento Subsidio:");
         fondoPanel.add(labelDescuentoSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 140, -1));
-
-        jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Total");
-        fondoPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 70, -1));
 
         jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,18 +224,6 @@ public class PanelVentas extends javax.swing.JPanel {
             }
         });
         fondoPanel.add(txtNITCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 140, -1));
-
-        txtTotal.setBackground(new java.awt.Color(75, 128, 146));
-        txtTotal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtTotal.setForeground(new java.awt.Color(255, 255, 255));
-        txtTotal.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 70, -1));
-
-        txtSubtotal.setBackground(new java.awt.Color(75, 128, 146));
-        txtSubtotal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtSubtotal.setForeground(new java.awt.Color(255, 255, 255));
-        txtSubtotal.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 660, 70, -1));
 
         txtDescuentoSubsidio.setBackground(new java.awt.Color(75, 128, 146));
         txtDescuentoSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -461,8 +433,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel labelDescuentoSubsidio;
     public javax.swing.JLabel labelInstitucionSubsidio;
@@ -481,8 +451,6 @@ public class PanelVentas extends javax.swing.JPanel {
     public javax.swing.JTextField txtNITCliente;
     public javax.swing.JTextField txtNombreProducto;
     public javax.swing.JTextField txtPrecio;
-    public javax.swing.JTextField txtSubtotal;
-    public javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
     public void setControlador(ControladorVentas controlador) {

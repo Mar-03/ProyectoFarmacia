@@ -14,7 +14,7 @@ public class ModeloDetalleVenta {
     private int cantidad;
     private double precioUnitario;
     private double subtotal;
-
+   
     public int getIdLote() {
         return idLote;
     }
@@ -46,9 +46,5 @@ public class ModeloDetalleVenta {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
-    
-    
-    
-    
-    
+ 
 }

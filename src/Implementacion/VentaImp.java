@@ -4,6 +4,7 @@ import Conector.DBConnection;
 import Conector.SQL;
 import Interfaces.IVenta;
 import Modelo.ModeloClientesVentas;
+import Modelo.ModeloDetalleVenta;
 import Modelo.ModeloProducto;
 import Modelo.ModeloRegistroCliente;
 import Modelo.ModeloVenta;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.Connection;
 
 /**
  *
@@ -175,20 +177,76 @@ public class VentaImp implements IVenta {
 
         return modelo;
     }
-    
-    public boolean hacerVentaCompleta(){
+
+    public boolean hacerVentaCompleta(ModeloClientesVentas venta, String UsuarioObtenido, int idUsuarioObtenido) throws SQLException {
+
+        DBConnection db = new DBConnection();
+        PreparedStatement psVenta = null;
+        PreparedStatement psDetalle = null;
+        PreparedStatement psUpdateLote = null;
+        PreparedStatement psComprobante = null;
+        ResultSet rs = null;
         
-        
-        
+
+        try {
+
+            db.conectar();
+            db.comenzarTransaccion(); // Iniciar transacción
+
+            // 1. Insertar en ventas
+            String sqlVenta = "INSERT INTO ventas (id_usuario, id_cliente, subtotal, descuento_subsidio, total, tipo_pago, con_subsidio, id_institucion_subsidio, observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            psVenta = db.preparar(sqlVenta, true); // Usamos el método que permite retornar IDs
+            psVenta.setInt(1, idUsuarioObtenido);
+            psVenta.setObject(2, venta.getIdCliente() != 0 ? venta.getIdCliente() : null);
+            psVenta.setDouble(3, venta.getSubtotal());
+            psVenta.setDouble(4, venta.getDescuento());
+            psVenta.setDouble(5, venta.getTotal());
+            psVenta.setString(6, venta.getTipoPago());
+            psVenta.setBoolean(7, venta.isConSubsidio());
+            psVenta.setObject(8, venta.getIdInstitucionSubsidio() != 0 ? venta.getIdInstitucionSubsidio() : null);
+            psVenta.setString(9, venta.getObservaciones());
+            psVenta.executeUpdate();
+
+            rs = psVenta.getGeneratedKeys();
+            if (rs.next()) {
+                int idVenta = rs.getInt(1);
+
+               // 2. Insertar detalles de venta y actualizar lotes
+            String sqlDetalle = "INSERT INTO detalle_ventas (id_venta, id_lote, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
+            psDetalle = db.preparar(sqlDetalle);
+
+            String sqlUpdateLote = "UPDATE lotes SET cantidad_disponible = cantidad_disponible - ? WHERE id_lote = ?";
+            psUpdateLote = db.preparar(sqlUpdateLote);
+
+            for (ModeloDetalleVenta det : venta.getCarrito()) {
+                // Insertar detalle
+                psDetalle.setInt(1, idVenta);
+                psDetalle.setInt(2, det.getIdLote());
+                psDetalle.setInt(3, det.getCantidad());
+                psDetalle.setDouble(4, det.getPrecioUnitario());
+                psDetalle.setDouble(5, det.getSubtotal());
+                psDetalle.addBatch();
+
+                // Actualizar lote
+                psUpdateLote.setInt(1, det.getCantidad());
+                psUpdateLote.setInt(2, det.getIdLote());
+                psUpdateLote.addBatch();
+            }
+
+            psDetalle.executeBatch();
+            psUpdateLote.executeBatch();    
+                
+ 
+            }
+
+        } catch (Exception e) {
+        }
+
         return false;
     }
-    
-    
-    
-    
-    public void generarComprobante(ModeloVenta modelo){
-        
+
+    public void generarComprobante(ModeloVenta modelo) {
+
     }
-    
-    
+
 }

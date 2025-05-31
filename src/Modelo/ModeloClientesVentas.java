@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.List;
+
 /**
  *
  * @author jhosu
@@ -14,7 +16,17 @@ public class ModeloClientesVentas {
     private String identificacion;
     private String telefono;
     private boolean tieneSubsidio;
-    private Integer idInstitucionSubsidio; 
+    private Integer idInstitucionSubsidio;
+    private String nombreEncontradoNit;
+    private String apellidoEncontradoNit;
+    private String direccionEncontradaNit;
+    private double subtotal;
+    private double total;
+    private double descuento;
+    private String tipoPago;
+    private boolean conSubsidio;
+    private String observaciones;
+    private List<ModeloDetalleVenta> carrito;
 
     public ModeloClientesVentas() {
     }
@@ -89,6 +101,86 @@ public class ModeloClientesVentas {
 
     public void setIdInstitucionSubsidio(Integer idInstitucionSubsidio) {
         this.idInstitucionSubsidio = idInstitucionSubsidio;
+    }
+
+    public String getNombreEncontradoNit() {
+        return nombreEncontradoNit;
+    }
+
+    public void setNombreEncontradoNit(String nombreEncontradoNit) {
+        this.nombreEncontradoNit = nombreEncontradoNit;
+    }
+
+    public String getApellidoEncontradoNit() {
+        return apellidoEncontradoNit;
+    }
+
+    public void setApellidoEncontradoNit(String apellidoEncontradoNit) {
+        this.apellidoEncontradoNit = apellidoEncontradoNit;
+    }
+
+    public String getDireccionEncontradaNit() {
+        return direccionEncontradaNit;
+    }
+
+    public void setDireccionEncontradaNit(String direccionEncontradaNit) {
+        this.direccionEncontradaNit = direccionEncontradaNit;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
+
+    public String getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
+    }
+
+    public boolean isConSubsidio() {
+        return conSubsidio;
+    }
+
+    public void setConSubsidio(boolean conSubsidio) {
+        this.conSubsidio = conSubsidio;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public List<ModeloDetalleVenta> getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(List<ModeloDetalleVenta> carrito) {
+        this.carrito = carrito;
     }
     
     

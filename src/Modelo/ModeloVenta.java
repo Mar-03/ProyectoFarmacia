@@ -31,13 +31,9 @@ public class ModeloVenta {
     private String nitCliente;
     private String observaciones;
     private DefaultTableModel tablaProductos;
-    private String nombreEncontradoNit;
-    private String apellidoEncontradoNit;
-    private String direccionEncontradaNit;
     private String usuarioActivo;
-    
-    
-    
+
+   
     public ModeloVenta() {
     }
 
