@@ -26,6 +26,12 @@ public class PanelProducto extends javax.swing.JPanel {
         txtIdProducto.setVisible(false);
         btnActualizar.setVisible(false);
         btnEliminar.setVisible(false);
+        labelBuscarP.setVisible(false);
+        txtCodigoBarrasP.setVisible(false);
+        txtNombreProductoB.setVisible(false);
+        labelNombreP.setVisible(false);
+        btnBuscar.setVisible(false);
+        labelCodigoBar.setVisible(false);
 
         setControlador(controlador);
     }
@@ -67,9 +73,9 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         boxReceta = new javax.swing.JComboBox<>();
         boxActivo = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
+        labelNombreP = new javax.swing.JLabel();
         txtNombreProductoB = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        labelCodigoBar = new javax.swing.JLabel();
         txtCodigoBarrasP = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txtNombreAlterno = new javax.swing.JTextField();
@@ -83,7 +89,7 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         txtFechaVencimiento = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        labelBuscarP = new javax.swing.JLabel();
         txtIdProducto = new javax.swing.JTextField();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
@@ -265,11 +271,11 @@ public class PanelProducto extends javax.swing.JPanel {
         });
         fondoPanel.add(boxActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 80, -1));
 
-        jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Nombre Producto");
-        fondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 210, 20));
+        labelNombreP.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelNombreP.setForeground(new java.awt.Color(255, 255, 255));
+        labelNombreP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNombreP.setText("Nombre Producto");
+        fondoPanel.add(labelNombreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 210, 20));
 
         txtNombreProductoB.setBackground(new java.awt.Color(75, 128, 146));
         txtNombreProductoB.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -277,11 +283,11 @@ public class PanelProducto extends javax.swing.JPanel {
         txtNombreProductoB.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtNombreProductoB, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 210, -1));
 
-        jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Código de Barras");
-        fondoPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, 190, -1));
+        labelCodigoBar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelCodigoBar.setForeground(new java.awt.Color(255, 255, 255));
+        labelCodigoBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelCodigoBar.setText("Código de Barras");
+        fondoPanel.add(labelCodigoBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, 190, -1));
 
         txtCodigoBarrasP.setBackground(new java.awt.Color(75, 128, 146));
         txtCodigoBarrasP.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -371,10 +377,10 @@ public class PanelProducto extends javax.swing.JPanel {
         txtFechaVencimiento.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 120, -1));
 
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("BUSCAR PRODUCTO");
-        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, -1, 20));
+        labelBuscarP.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        labelBuscarP.setForeground(new java.awt.Color(255, 255, 255));
+        labelBuscarP.setText("BUSCAR PRODUCTO");
+        fondoPanel.add(labelBuscarP, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, -1, 20));
 
         txtIdProducto.setBackground(new java.awt.Color(75, 128, 146));
         txtIdProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -420,8 +426,6 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JPanel btnSalir;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -430,7 +434,6 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
@@ -439,7 +442,10 @@ public class PanelProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel labelBuscarP;
+    private javax.swing.JLabel labelCodigoBar;
     public javax.swing.JLabel labelIDProducto;
+    private javax.swing.JLabel labelNombreP;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
