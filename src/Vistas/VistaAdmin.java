@@ -29,6 +29,8 @@ public class VistaAdmin extends javax.swing.JFrame {
         ControladorVistaAdmin controlador = new ControladorVistaAdmin(modelo);
 
         setControlador(controlador);
+        
+        btnComponentesProductos.setVisible(false);
 
     }
 
