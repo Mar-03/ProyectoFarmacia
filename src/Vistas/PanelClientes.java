@@ -26,11 +26,11 @@ public class PanelClientes extends javax.swing.JPanel {
   public PanelClientes() {
     initComponents();
      
-    PanelClientes panelClientes = new PanelClientes();
+//    PanelClientes panelClientes = new PanelClientes();
 //    ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
-    
+//    
 //    ControladorClientes controlador = new ControladorClientes(this, modelo);
-
+//
 //    setControlador(controlador);
 }
 
@@ -349,13 +349,13 @@ public class PanelClientes extends javax.swing.JPanel {
         System.exit(0);
     }//GEN-LAST:event_btnSalirMouseClicked
 
-    private void txtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdClienteActionPerformed
-
     private void txtFechaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaRegistroActionPerformed
        
     }//GEN-LAST:event_txtFechaRegistroActionPerformed
+
+    private void txtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -391,7 +391,7 @@ public class PanelClientes extends javax.swing.JPanel {
     public javax.swing.JTextField txtApellidoCliente;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtFechaRegistro;
-    public javax.swing.JTextField txtIdCliente;
+    private javax.swing.JTextField txtIdCliente;
     public javax.swing.JTextField txtIdentificacion;
     public javax.swing.JTextField txtInsSubsidio;
     public javax.swing.JTextField txtNIT;

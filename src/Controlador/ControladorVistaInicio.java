@@ -8,7 +8,16 @@ import java.awt.event.MouseListener;
 import Modelo.ModeloVistaInicio;
 import Vistas.VistaAdmin;
 import Vistas.VistaVendedor;
+import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -20,6 +29,8 @@ public class ControladorVistaInicio implements MouseListener {
 
     public ControladorVistaInicio(ModeloVistaInicio modelo) {
         this.modelo = modelo;
+        
+        configurarEnter();
     }
 
     SesionInicioImp implementacion = new SesionInicioImp();
@@ -73,6 +84,8 @@ public class ControladorVistaInicio implements MouseListener {
         }
         ModeloInicioUsuario modeloInicioUsuarioActivo = new ModeloInicioUsuario();
         redirigirTipoUsuario(tipoUsuario);
+        
+        
         modeloInicioUsuarioActivo.setUsuarioActual(usuarioEncontrado);
         modelo.setUsuario(usuarioEncontrado);
         modelo.setTipoUsuario(tipoUsuario);
@@ -129,7 +142,25 @@ public class ControladorVistaInicio implements MouseListener {
             JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage(), "ERROR CRÍTICO", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    
+    public void configurarEnter(){
+        JFrame frame = modelo.getVistaInicio();
+        JPanel contentPanel = (JPanel) frame.getContentPane();
+        
+        InputMap inputMap = contentPanel.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = contentPanel.getActionMap();
+        
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "validarInput");
+        actionMap.put("validarInput", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inputIsEmpty();
+            }
+        }
+        
+        );
+    }
+ 
     public void limpiarDatos() {
         modelo.getVistaInicio().txtUsuario.setText("");
         modelo.getVistaInicio().txtPassword.setText("");

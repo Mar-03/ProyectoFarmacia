@@ -212,6 +212,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
 
             if (modeloP == null) {
                 mostrarError("Producto no encontrado");
+                System.out.println("Hola no hay nada");
                 return;
             }
 
@@ -223,6 +224,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
             } else if (cantidadDisponible < 1) {
                 mostrarError("El Producto no tiene suficiente stock");
             } else {
+                System.out.println("hola desde else");
                 modelo.getVistaVentas().txtIdProducto.setText(String.valueOf(modeloP.getIdProducto()));
                 modelo.getVistaVentas().txtCodigoBarras.setText(modeloP.getCodigoBarrasP());
                 modelo.getVistaVentas().txtNombreProducto.setText(modeloP.getNombreOficialP());
