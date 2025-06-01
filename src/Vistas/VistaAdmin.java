@@ -30,7 +30,7 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         setControlador(controlador);
         
-        btnComponentesProductos.setVisible(false);
+       
 
     }
 

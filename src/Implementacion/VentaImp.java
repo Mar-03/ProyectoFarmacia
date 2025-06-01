@@ -9,6 +9,7 @@ import Modelo.ModeloProducto;
 import Modelo.ModeloRegistroCliente;
 import Modelo.ModeloVenta;
 import Modelo.ModeloVistaInicio;
+import Utilities.GeneradorPDF;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -235,8 +237,13 @@ public class VentaImp implements IVenta {
 
             psDetalle.executeBatch();
             psUpdateLote.executeBatch();    
-                
- 
+            
+            GeneradorPDF comprobante = new GeneradorPDF();
+            
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Desea generar el comprobante en PDF?", "Comprobante",JOptionPane.YES_NO_OPTION);
+                if(opcion == JOptionPane.YES_NO_OPTION ){
+//                    comprobante.generarFacturaPDF(venta, idVenta, venta, UsuarioObtenido, idVenta);
+                }
             }
 
         } catch (Exception e) {
