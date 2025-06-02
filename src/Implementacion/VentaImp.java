@@ -263,9 +263,8 @@ public class VentaImp implements IVenta {
                     
                     db.confirmarTransaccion();
                     
-                    
                     //Crear comprobante Agregar Ruta y TOTAL
-                    comprobante.generarFacturaPDF(carrito, nombreArchivo,codigo, venta, UsuarioObtenido, idVenta);
+                    comprobante.generarFacturaPDF(venta.getCarrito(), nombreArchivo,codigo, venta, UsuarioObtenido, idVenta);
 
                  return true;
                 } else {
