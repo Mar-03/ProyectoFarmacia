@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import Controlador.ControladorComponentes;
+import Modelo.ModeloComponentes;
+
 /**
  *
  * @author cindy
@@ -15,6 +18,11 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
      */
     public PanelComponentesProducto() {
         initComponents();
+        
+          ModeloComponentes modelo = new ModeloComponentes(this);
+    
+        ControladorComponentes controlador = new ControladorComponentes(modelo);
+        setControlador(controlador);
     }
 
     /**
@@ -43,11 +51,11 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
         txtCodigoBarras = new javax.swing.JTextField();
         cmbReceta = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        btnguardar = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        btncancelar = new javax.swing.JLabel();
         btnGenerar = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        Generador = new javax.swing.JLabel();
         txtInfBasica = new javax.swing.JTextField();
         txtComponentes = new javax.swing.JTextField();
         txtNombreAlt = new javax.swing.JTextField();
@@ -55,7 +63,7 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CActivo = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(850, 655));
 
@@ -168,11 +176,11 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Guardar");
-        btnGuardar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+        btnguardar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnguardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnguardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnguardar.setText("Guardar");
+        btnGuardar.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
 
         fondoPanel.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, 110, 30));
 
@@ -181,11 +189,11 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Cancelar");
-        btnCancelar.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+        btncancelar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btncancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btncancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btncancelar.setText("Cancelar");
+        btnCancelar.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
 
         fondoPanel.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 110, 30));
 
@@ -194,12 +202,12 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
         btnGenerar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGenerar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setLabelFor(btnSalir);
-        jLabel11.setText("Generar");
-        btnGenerar.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+        Generador.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        Generador.setForeground(new java.awt.Color(255, 255, 255));
+        Generador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Generador.setLabelFor(btnSalir);
+        Generador.setText("Generar");
+        btnGenerar.add(Generador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
 
         fondoPanel.add(btnGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 385, 110, 30));
 
@@ -255,11 +263,11 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
         jLabel15.setText("(*) Campos Obligatorios");
         fondoPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 840, 20));
 
-        jComboBox1.setBackground(new java.awt.Color(75, 128, 146));
-        jComboBox1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
-        fondoPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 110, -1));
+        CActivo.setBackground(new java.awt.Color(75, 128, 146));
+        CActivo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        CActivo.setForeground(new java.awt.Color(255, 255, 255));
+        CActivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        fondoPanel.add(CActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -295,16 +303,17 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> CActivo;
+    public javax.swing.JLabel Generador;
     private javax.swing.JPanel btnCancelar;
     private javax.swing.JPanel btnGenerar;
     private javax.swing.JPanel btnGuardar;
     private javax.swing.JPanel btnSalir;
+    public javax.swing.JLabel btncancelar;
+    public javax.swing.JLabel btnguardar;
     public javax.swing.JComboBox<String> cmbReceta;
     private javax.swing.JPanel fondoPanel;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -316,7 +325,6 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     public javax.swing.JTextField txtCodigoBarras;
@@ -326,4 +334,9 @@ public class PanelComponentesProducto extends javax.swing.JPanel {
     public javax.swing.JTextField txtInfBasica;
     public javax.swing.JTextField txtNombreAlt;
     // End of variables declaration//GEN-END:variables
+
+public void setControlador(ControladorComponentes controlador) {
+        btnCancelar.addMouseListener(controlador);
+        btnguardar.addMouseListener(controlador);
+    }
 }

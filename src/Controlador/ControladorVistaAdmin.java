@@ -6,11 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 import Modelo.ModeloVistaAdmin;
-import Vistas.PanelInventario;
-import Vistas.PanelProducto;
-import Vistas.PanelRegistroUsuario;
-import Vistas.VistaReporte;
-import Vistas.VistaInicio;
+import Vistas.*;
+
 
 public class ControladorVistaAdmin implements MouseListener {
 
@@ -39,9 +36,11 @@ public class ControladorVistaAdmin implements MouseListener {
         } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)) {
             PanelRegistroUsuario vistaPanelRegistro = new PanelRegistroUsuario();
             mostrarPaneles(vistaPanelRegistro);
-        }
+        }else if (e.getComponent().equals(modelo.getVistaAdmin().btnComponentesProductos)) {
+            PanelComponentesProducto vistaComponentes = new PanelComponentesProducto();
+            mostrarPaneles(vistaComponentes);
     }
-
+    }
     @Override
     public void mousePressed(MouseEvent e) {
     }

@@ -246,6 +246,13 @@ public class SQL {
     public String getINSERTAR_REPORTE() {
         return INSERTAR_REPORTE;
     }
+    // sql de componentes
     
+    private final String AGREGAR_COMPONENTE_PRODUCTO = 
+    "INSERT INTO componentes_producto (id_producto, id_componente, concentracion) VALUES (?, ?, ?)";
+
+public String getAGREGAR_COMPONENTE_PRODUCTO() {
+    return AGREGAR_COMPONENTE_PRODUCTO;
+}
     
 }
