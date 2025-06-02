@@ -21,20 +21,42 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
  public class ReporteImp implements IReportes {
-    private final DBConnection conector = new DBConnection();
-    
+      private final DBConnection conector = new DBConnection();
+    private final SQL sql = new SQL();
+    private Connection con;
+
     @Override
-    public ResultSet obtenerRegistroVentasDelDia() throws SQLException {
-        Connection con = conector.conectar().getConnection();
-        String query = "SELECT v.id_venta, DATE_FORMAT(v.fecha, '%d/%m/%Y %H:%i') AS fecha, "
-                + "CONCAT(c.nombre, ' ', c.apellido) AS cliente, v.subtotal, "
-                + "v.descuento_subsidio AS descuento, v.total, v.tipo_pago "
-                + "FROM ventas v "
-                + "JOIN clientes c ON v.id_cliente = c.id_cliente "
-                + "WHERE DATE(v.fecha) = CURDATE() "
-                + "ORDER BY v.fecha DESC";
-        
-        return con.prepareStatement(query).executeQuery();
+    public ResultSet obtenerVentasDelDia() throws SQLException {
+        conectarBD();
+        return ejecutarConsulta(sql.getOBTENER_VENTAS_DIA());
+    }
+
+    private void conectarBD() throws SQLException {
+        if (con == null || con.isClosed()) {
+            conector.conectar();
+            con = conector.getConnection();
+        }
+    }
+
+    private ResultSet ejecutarConsulta(String query) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (SQLException e) {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            throw e;
+        }
+    }
+
+    public void cerrarConexion() throws SQLException {
+        if (con != null && !con.isClosed()) {
+            con.close();
+        }
     }
 
 }

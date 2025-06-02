@@ -17,6 +17,6 @@ import java.util.Map;
 import java.sql.Connection;
 
 public interface IReportes {
-     ResultSet obtenerRegistroVentasDelDia() throws SQLException;
+      ResultSet obtenerVentasDelDia() throws SQLException;
    // void generarReportePDF(VistaReporte vista, int idUsuario);
 }

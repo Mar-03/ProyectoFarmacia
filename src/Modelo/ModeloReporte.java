@@ -18,38 +18,44 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSetMetaData; 
 
 public class ModeloReporte {
-  
-    private final IReportes reportes;
-    public VistaReporte vista;
-    private final GeneradorPDFreporte generadorPDF = new GeneradorPDFreporte();
+private final IReportes reportes;
+    public final VistaReporte vista;
 
     public ModeloReporte(VistaReporte vista) {
         this.vista = vista;
         this.reportes = new ReporteImp();
     }
 
-    public void cargarVentasDelDia() {
-        DefaultTableModel modelo = (DefaultTableModel) vista.tblReportesVentas.getModel();
-        modelo.setRowCount(0);
-        
-        try (ResultSet rs = reportes.obtenerRegistroVentasDelDia()) {
-            while (rs.next()) {
-                modelo.addRow(new Object[]{
-                    rs.getInt("id_venta"),
-                    rs.getString("fecha"),
-                    rs.getString("cliente"),
-                    rs.getDouble("subtotal"),
-                    rs.getDouble("descuento"),
-                    rs.getDouble("total"),
-                    rs.getString("tipo_pago")
-                });
-            }
+    public void cargarVentasDelDiaEnTabla() {
+        try {
+            ResultSet rs = reportes.obtenerVentasDelDia();
+            actualizarTabla(rs);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(vista, "Error al cargar ventas: " + ex.getMessage());
+            JOptionPane.showMessageDialog(vista, "Error al cargar reportes: " + ex.getMessage());
         }
     }
 
-    public void generarReportePDF() {
+    private void actualizarTabla(ResultSet rs) throws SQLException {
+        DefaultTableModel model = new DefaultTableModel();
+        ResultSetMetaData metaData = rs.getMetaData();
+
+        int columnCount = metaData.getColumnCount();
+        for (int i = 1; i <= columnCount; i++) {
+            model.addColumn(metaData.getColumnName(i));
+        }
+
+        while (rs.next()) {
+            Object[] row = new Object[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                row[i - 1] = rs.getObject(i);
+            }
+            model.addRow(row);
+        }
+
+        vista.tblReportesVentas.setModel(model);
+    }
+
+   /* public void generarReportePDF() {
         try {
             String carpetaBase = System.getProperty("user.home") + File.separator + "ReportesFarmacia" + File.separator;
             new File(carpetaBase).mkdirs();
@@ -70,19 +76,5 @@ public class ModeloReporte {
         }
     }
 
-    private void registrarReporteEnBD(String ruta, String nombreArchivo) {
-        try (Connection conexion = DBConnection.conectar().getConnection()) {
-            String query = "INSERT INTO reportes (tipo_reporte, parametros, nombre_archivo, ruta_archivo) "
-                         + "VALUES (?, ?, ?, ?)";
-            
-            try (PreparedStatement ps = conexion.prepareStatement(query)) {
-                ps.setString(1, "VENTAS_DIARIAS");
-                ps.setString(2, "Reporte diario automático");
-                ps.setString(3, nombreArchivo);
-                ps.setString(4, ruta);
-                ps.executeUpdate();
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(vista, "Error al registrar reporte: " + ex.getMessage());
-        }
-    }}
+  */
+}

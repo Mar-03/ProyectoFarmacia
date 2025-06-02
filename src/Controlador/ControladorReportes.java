@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class ControladorReportes implements MouseListener {
+   
     private final ModeloReporte modelo;
 
     public ControladorReportes(ModeloReporte modelo) {
@@ -13,13 +14,15 @@ public class ControladorReportes implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource() == modelo.vista.btnMostrarVentas) {
-            modelo.cargarVentasDelDia();
-        } 
-        else if (e.getSource() == modelo.vista.btnExportarPDF) {
-            modelo.generarReportePDF();
+        Object fuente = e.getSource();
+
+        if (fuente == modelo.vista.btnMostrarVentas) {
+            modelo.cargarVentasDelDiaEnTabla();
         }
+
+        // Aquí puedes agregar lógica futura para btnExportarPDF, si deseas
     }
+
 
     
     @Override public void mousePressed(MouseEvent e) {}
