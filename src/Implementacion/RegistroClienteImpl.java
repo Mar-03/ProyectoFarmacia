@@ -28,15 +28,19 @@ public class RegistroClienteImpl implements IRegistroCliente {
     private final DBConnection conexion;
     private final SQL sql;
 
-//import java.sql.*;
+    public RegistroClienteImpl(DBConnection conexion, SQL sql) {
         this.conexion = conexion;
         this.sql = sql;
     }
-
+        
+   
+//import java.sql.*;
     @Override
     public boolean insertarCliente(Cliente cliente) {
         try (Connection conn = conexion.getConnection()) {
-            if (conn == null) throw new SQLException("Conexión nula.");
+            if (conn == null) {
+                throw new SQLException("Conexión nula.");
+            }
             try (PreparedStatement ps = conn.prepareStatement(sql.getINSERTAR_CLIENTE())) {
                 ps.setString(1, cliente.getNombre());
                 ps.setString(2, cliente.getApellido());
@@ -45,10 +49,11 @@ public class RegistroClienteImpl implements IRegistroCliente {
                 ps.setString(5, cliente.getIdentificacion());
                 ps.setString(6, cliente.getNit());
                 ps.setBoolean(7, cliente.isTieneSubsidio());
-                if (cliente.getIdInstitucionSubsidio() != null)
+                if (cliente.getIdInstitucionSubsidio() != null) {
                     ps.setObject(8, cliente.getIdInstitucionSubsidio(), Types.INTEGER);
-                else
+                } else {
                     ps.setNull(8, Types.INTEGER);
+                }
                 ps.setTimestamp(9, cliente.getFechaRegistro());
                 ps.setBoolean(10, cliente.isActivo());
                 return ps.executeUpdate() > 0;
@@ -58,8 +63,6 @@ public class RegistroClienteImpl implements IRegistroCliente {
             return false;
         }
     }
-
-    
 
     @Override
     public boolean actualizarCliente(Cliente cliente) {
@@ -106,7 +109,6 @@ public class RegistroClienteImpl implements IRegistroCliente {
 
     @Override
     public boolean eliminarCliente(int idCliente) {
-//        try (Connection conn = conexion.getConnection(); PreparedStatement ps = conn.prepareStatement(sql.getELIMINAR_CLIENTE())) {
         try (Connection conn = conexion.getConnection()) {
             if (conn == null) {
                 throw new SQLException("Conexión nula. No se pudo conectar a la base de datos.");
@@ -224,10 +226,5 @@ public class RegistroClienteImpl implements IRegistroCliente {
 
         return cliente;
     }
-//        cliente.setIdInstitucionSubsidio(rs.getInt("id_institucion_subsidio"));
-//        cliente.setFechaRegistro(rs.getTimestamp("fecha_registro"));
-//        cliente.setActivo(rs.getBoolean("activo"));
-
-//        return cliente;
 }
-    private final controladores.ControladorClientes controlador;
+

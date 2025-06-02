@@ -12,7 +12,7 @@ import Modelo.*;
 
 import Conector.*;
 import Controlador.*;
-import Implementacion.RegistroClienteImpl;
+
 import Interfaces.IRegistroCliente;
 import controladores.ControladorClientes;
 
@@ -29,8 +29,8 @@ public class PanelClientes extends javax.swing.JPanel {
         SQL sql = new SQL(); 
 
 //        IRegistroCliente registro = new RegistroClienteImpl();
-        ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
-        ControladorClientes controlador = new ControladorClientes(this, modelo);
+//        ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
+//        ControladorClientes controlador = new ControladorClientes(this, modelo);
 
 //        IRegistroCliente registro = new RegistroClienteImpl(conexion, null, sql);
 //        ControladorClientes controlador = new ControladorClientes(this, registro);
