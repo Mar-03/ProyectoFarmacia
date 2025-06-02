@@ -10,10 +10,10 @@ package Utilities;
  */
 
 
-import Modelo.ModeloDetalleVenta;
-import Modelo.ModeloVenta;
+import Modelo.ModeloClientesVentas;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -21,9 +21,9 @@ import java.util.List;
 import javax.swing.JTable;
 
 
-public class GeneradorPDF {
+public class GeneradorPDFVentas {
     
-    public void generarFacturaPDF(JTable tablaCarrito, String nombreArchivo, ModeloVenta venta,String usuarioActivo, int idVenta){
+    public void generarFacturaPDF(JTable tablaCarrito, String nombreArchivo, String codigoArchivo, ModeloClientesVentas venta,String usuarioActivo, int idVenta){
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(nombreArchivo));
@@ -37,16 +37,21 @@ public class GeneradorPDF {
             document.add(logo);
             
             
-            document.add(new Paragraph("Farmacia Social", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 20)));
+            document.add(new Paragraph("FARMACIA SOCIAL", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 20)));
             document.add(new Paragraph("Dirección: Calle principal,Guastatoya"));
             
             //Fecha y número de venta
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd&/MM/yyyy HH:mm");
-            document.add(new Paragraph("Fecha: " + LocalDateTime.now().format(formatter)));
             document.add(new Paragraph("No. de Venta: " + idVenta));
-            document.add(new Paragraph("Código Comprobante: " + generarCodigoComprobante()));
-            
-            
+            document.add(new Paragraph("Tipo Pago: " + venta.getTipoPago()));
+            document.add(new Paragraph("Fecha: " + LocalDateTime.now().format(formatter)));
+            document.add(new Paragraph("Código Comprobante: " + codigoArchivo));
+            document.add(new Paragraph("Vendedor: " + usuarioActivo));
+            document.add(new Paragraph(""));
+            document.add(new Paragraph("Cliente: " + venta.getNombre() + venta.getApellido()));
+            document.add(new Paragraph("NIT: " + venta.getNit()));
+            document.add(new Paragraph("Dirección: " + venta.getDireccion()));
+           
             //Tabla del Carrito
             PdfPTable tablaPDF  = new PdfPTable(5);
             tablaPDF.setWidthPercentage(100);
@@ -66,6 +71,12 @@ public class GeneradorPDF {
             }
             
             document.add(tablaPDF);
+            document.add(new Paragraph(""));
+            Paragraph paragraphTotal = new Paragraph("Total:");
+            paragraphTotal.setAlignment(Element.ALIGN_RIGHT);
+            document.add(paragraphTotal);
+            
+            //document.add(new Paragraph("Total: " + venta));
             
             //Totales
             document.add(new Paragraph(" "));
@@ -80,11 +91,18 @@ public class GeneradorPDF {
             e.printStackTrace();
         }
     }
+
     
-    private static String generarCodigoComprobante(){
-        // Generar codigo
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmSS");
-        return "CMP-" + LocalDateTime.now().format(formatter);
+    public static String obtenerRutaComprobantes(){
+        String escritorio = System.getProperty("user.home") + File.separator + "Desktop";
+        String carpetaComprobantes = escritorio + File.separator + "comprobantesVentas";
+        
+        //Crear carpeta si no existe
+        File directorio = new File(carpetaComprobantes);
+        if(!directorio.exists()){
+            directorio.mkdir();
+        }
+        return carpetaComprobantes;
     }
     
     

@@ -9,7 +9,9 @@ import Modelo.ModeloProducto;
 import Modelo.ModeloRegistroCliente;
 import Modelo.ModeloVenta;
 import Modelo.ModeloVistaInicio;
-import Utilities.GeneradorPDF;
+import Utilities.GeneradorPDFVentas;
+import Utilities.generadorCodigo;
+import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -180,7 +182,7 @@ public class VentaImp implements IVenta {
         return modelo;
     }
 
-    public boolean hacerVentaCompleta(ModeloClientesVentas venta, String UsuarioObtenido, int idUsuarioObtenido) throws SQLException {
+    public boolean hacerVentaCompleta(ModeloClientesVentas venta, String UsuarioObtenido, int idUsuarioObtenido) {
 
         DBConnection db = new DBConnection();
         PreparedStatement psVenta = null;
@@ -238,22 +240,56 @@ public class VentaImp implements IVenta {
             psDetalle.executeBatch();
             psUpdateLote.executeBatch();    
             
-            GeneradorPDF comprobante = new GeneradorPDF();
+            GeneradorPDFVentas comprobante = new GeneradorPDFVentas();
             
             int opcion = JOptionPane.showConfirmDialog(null, "¿Desea generar el comprobante en PDF?", "Comprobante",JOptionPane.YES_NO_OPTION);
-                if(opcion == JOptionPane.YES_NO_OPTION ){
-//                    comprobante.generarFacturaPDF(venta, idVenta, venta, UsuarioObtenido, idVenta);
+                if(opcion == JOptionPane.YES_OPTION ){  
+                    System.out.println("Comprobante");
+                   
+                    String tipoDoc = "Venta";
+                    //Insertar Comprobante
+                    String codigo = generadorCodigo.generarCodigoCompleto(idVenta, tipoDoc);
+                    String nombreArchivo = generadorCodigo.generarNombrePDF(idVenta, tipoDoc);
+                    String rutaArchivo = GeneradorPDFVentas.obtenerRutaComprobantes();
+                    
+                    
+                    String sqlComprobante = "INSERT INTO comprobantes (id_venta, codigo_comprobante, nombre_archivo,ruta) VALUES (?,?,?,?)";
+                    psComprobante = db.preparar(sqlComprobante);
+                    psComprobante.setInt(1, idVenta);
+                    psComprobante.setString(2, codigo);
+                    psComprobante.setString(3, nombreArchivo);
+                    psComprobante.setString(4, rutaArchivo);
+                    psComprobante.executeUpdate();
+                    
+                    db.confirmarTransaccion();
+                    
+                    
+                    //Crear comprobante Agregar Ruta y TOTAL
+                    comprobante.generarFacturaPDF(carrito, nombreArchivo,codigo, venta, UsuarioObtenido, idVenta);
+
+                 return true;
+                } else {
+                    db.revertirTransaccion();
+                    return false;
                 }
             }
 
-        } catch (Exception e) {
-        }
-
-        return false;
+        } catch (HeadlessException | SQLException e) {
+            db.revertirTransaccion();
+            return false;
+        } finally {
+            //Cerrar recursos
+        try { if (rs != null) rs.close(); } catch (SQLException e) {}
+        try { if (psVenta != null) psVenta.close(); } catch (SQLException e) {}
+        try { if (psDetalle != null) psDetalle.close(); } catch (SQLException e) {}
+        try { if (psUpdateLote != null) psUpdateLote.close(); } catch (SQLException e) {}
+        try { if (psComprobante != null) psComprobante.close(); } catch (SQLException e) {}
+        
+        db.desconectar();
+            
+        }       
     }
 
-    public void generarComprobante(ModeloVenta modelo) {
-
-    }
+  
 
 }

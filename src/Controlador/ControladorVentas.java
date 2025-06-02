@@ -207,7 +207,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
     public void consultarProducto(String nombreP, String codigoB) {
         //Validar esta parte creo un error y no salta el jpaneOption
         try {
-            
+
             ModeloProducto modeloP = implementacion.buscarProducto(nombreP, codigoB);
 
             if (modeloP == null) {
@@ -259,34 +259,37 @@ public class ControladorVentas implements MouseListener, ActionListener {
         if (modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()) {
             modelo.setNitCliente("CF");
         } else {
-            
+
             ModeloClientesVentas modeloClienteVenta = consultarClienteNit(modelo.getVistaVentas().txtNITCliente.getText());
+           
+            ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
+            String usuarioObtenido = modeloUsuarioActivo.getUsuarioActivo();
+            int idUsuarioObtenido = modeloUsuarioActivo.getIdUsuario();
+            
+            implementacion.hacerVentaCompleta(modeloClienteVenta, usuarioObtenido, idUsuarioObtenido);
             
         }
 
     }
 
-    private void validarVentaComprobante() {
-
-        //Llamar al método de implementación para la venta
-        int mensajeHacerComprobante = JOptionPane.showConfirmDialog(null, "¿Desea generar comprobante de esta venta?", "VENTA", JOptionPane.YES_NO_OPTION);
-        if (mensajeHacerComprobante == JOptionPane.YES_OPTION) {
-            generarComprobante();
-            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
-            //Tal vez llamar aquí el método para limpiar todo
-        }
-
-    }
-
-    private void generarComprobante() {
-        ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
-        String usuarioObtenido = modeloUsuarioActivo.getUsuarioActivo();
-        
-
-        System.out.println("Usuario obtenido " + usuarioObtenido);
-    }
+//    private void validarVentaComprobante() {
+//
+//        //Llamar al método de implementación para la venta
+//        int mensajeHacerComprobante = JOptionPane.showConfirmDialog(null, "¿Desea generar comprobante de esta venta?", "VENTA", JOptionPane.YES_NO_OPTION);
+//        if (mensajeHacerComprobante == JOptionPane.YES_OPTION) {
+//            generarComprobante();
+//            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
+//            //Tal vez llamar aquí el método para limpiar todo
+//        }
+////    }
+//    private void generarComprobante() {
+//        ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
+//        String usuarioObtenido = modeloUsuarioActivo.getUsuarioActivo();
+//
+//        System.out.println("Usuario obtenido " + usuarioObtenido);
+//    }
 
     //METODO PARA MOSTRAR CAMPOS, DEPENDIENDO SI SE DESEA INGRESAR SUBSIDIO
     private void comboBoxSubsidio() {
