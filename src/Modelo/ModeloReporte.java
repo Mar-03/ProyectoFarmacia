@@ -16,6 +16,11 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSetMetaData; 
+import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import java.io.File;
 
 public class ModeloReporte {
 private final IReportes reportes;
@@ -55,26 +60,22 @@ private final IReportes reportes;
         vista.tblReportesVentas.setModel(model);
     }
 
-   /* public void generarReportePDF() {
-        try {
-            String carpetaBase = System.getProperty("user.home") + File.separator + "ReportesFarmacia" + File.separator;
-            new File(carpetaBase).mkdirs();
-            
-            String nombreArchivo = "VentasDiarias_" + 
-                                  new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + 
-                                  ".pdf";
-            String rutaCompleta = carpetaBase + nombreArchivo;
-          
-            generadorPDF.generarReporteDia(vista.tblReportesVentas, rutaCompleta);
-            
-            registrarReporteEnBD(rutaCompleta, nombreArchivo);
-            
-            JOptionPane.showMessageDialog(vista, "Reporte generado en:\n" + rutaCompleta);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(vista, "Error al generar PDF: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
+ public void exportarReporteADiaPDF(int idUsuario) {
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Guardar Reporte Diario");
+    fileChooser.setSelectedFile(new File("Reporte_Ventas_Dia.pdf"));
+    int seleccion = fileChooser.showSaveDialog(vista);
 
-  */
+    if (seleccion == JFileChooser.APPROVE_OPTION) {
+        String ruta = fileChooser.getSelectedFile().getAbsolutePath();
+
+        if (!ruta.toLowerCase().endsWith(".pdf")) {
+            ruta += ".pdf";
+        }
+
+        GeneradorPDFreporte generador = new GeneradorPDFreporte();
+        JTable tabla = vista.tblReportesVentas;
+        generador.generarReporteDia(tabla, ruta, idUsuario);
+    }
+}
 }

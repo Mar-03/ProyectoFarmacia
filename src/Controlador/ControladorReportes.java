@@ -12,16 +12,18 @@ public class ControladorReportes implements MouseListener {
         this.modelo = modelo;
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        Object fuente = e.getSource();
+   @Override
+public void mouseClicked(MouseEvent e) {
+    Object fuente = e.getSource();
 
-        if (fuente == modelo.vista.btnMostrarVentas) {
-            modelo.cargarVentasDelDiaEnTabla();
-        }
-
-        // Aquí puedes agregar lógica futura para btnExportarPDF, si deseas
+    if (fuente == modelo.vista.btnMostrarVentas) {
+        modelo.cargarVentasDelDiaEnTabla();
     }
+
+    if (fuente == modelo.vista.btnExportarPDF) {
+        modelo.exportarReporteADiaPDF(1); // Aquí colocas el ID real del usuario
+    }
+}
 
 
     
