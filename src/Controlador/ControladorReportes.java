@@ -21,7 +21,7 @@ public void mouseClicked(MouseEvent e) {
     }
 
     if (fuente == modelo.vista.btnExportarPDF) {
-        modelo.exportarReporteADiaPDF(1); // Aquí colocas el ID real del usuario
+        modelo.exportarReporteADiaPDF(1);
     }
 }
 
