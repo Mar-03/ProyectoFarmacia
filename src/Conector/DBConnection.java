@@ -67,7 +67,15 @@ public class DBConnection {
     public Connection getConnection(){
         return this.link;
     }
-    
+    public Connection getConexion() {
+        try {
+            conectar(); 
+            return getConnection();
+        } catch (Exception e) {
+            System.err.println("Error al obtener conexión: " + e.getMessage());
+            return null;
+        }
+    }
     
     //---- MÉTODOS PARA TRANSACCIONES ----
     public void comenzarTransaccion() throws SQLException {
@@ -94,8 +102,5 @@ public class DBConnection {
         }
     }
 
-    public Connection getConexion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 }
