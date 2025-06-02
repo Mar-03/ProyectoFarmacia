@@ -24,7 +24,10 @@ public class GeneradorPDFVentas {
     public void generarFacturaPDF(List<ModeloDetalleVenta> carrito, String nombreArchivo, String codigoArchivo, ModeloClientesVentas venta, String usuarioActivo, int idVenta, String subTotal, String total, String descuento, String ruta) {
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(nombreArchivo));
+            
+            String rutaCompleta = ruta + File.separator + nombreArchivo;
+            
+            PdfWriter.getInstance(document, new FileOutputStream(rutaCompleta));
             document.open();
 
             //Encabezado para PDF
@@ -77,7 +80,8 @@ public class GeneradorPDFVentas {
 
             document.add(tablaPDF);
             document.add(new Paragraph(""));
-            Paragraph paragraphTotal = new Paragraph("Total:");
+            document.add(new Paragraph("SubTotal: Q" + subTotal));
+            Paragraph paragraphTotal = new Paragraph("Total: Q" + total);
             paragraphTotal.setAlignment(Element.ALIGN_RIGHT);
             document.add(paragraphTotal);
 
