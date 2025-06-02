@@ -210,7 +210,10 @@ public class VentaImp implements IVenta {
             psVenta.setObject(8, venta.getIdInstitucionSubsidio() != 0 ? venta.getIdInstitucionSubsidio() : null);
             psVenta.setString(9, venta.getObservaciones());
             psVenta.executeUpdate();
-
+            
+            String descuento = String.valueOf(venta.getDescuento());
+            String subTotal = String.valueOf(venta.getSubtotal());
+            String total = String.valueOf(venta.getTotal());
             rs = psVenta.getGeneratedKeys();
             if (rs.next()) {
                 int idVenta = rs.getInt(1);
@@ -264,7 +267,7 @@ public class VentaImp implements IVenta {
                     db.confirmarTransaccion();
                     
                     //Crear comprobante Agregar Ruta y TOTAL
-                    comprobante.generarFacturaPDF(venta.getCarrito(), nombreArchivo,codigo, venta, UsuarioObtenido, idVenta);
+                    comprobante.generarFacturaPDF(venta.getCarrito(), nombreArchivo,codigo, venta, UsuarioObtenido, idVenta, subTotal, total, descuento, rutaArchivo);
 
                  return true;
                 } else {

@@ -21,7 +21,7 @@ import javax.swing.JTable;
 
 public class GeneradorPDFVentas {
 
-    public void generarFacturaPDF(List<ModeloDetalleVenta> carrito, String nombreArchivo, String codigoArchivo, ModeloClientesVentas venta, String usuarioActivo, int idVenta) {
+    public void generarFacturaPDF(List<ModeloDetalleVenta> carrito, String nombreArchivo, String codigoArchivo, ModeloClientesVentas venta, String usuarioActivo, int idVenta, String subTotal, String total, String descuento, String ruta) {
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(nombreArchivo));
@@ -85,7 +85,7 @@ public class GeneradorPDFVentas {
             //Totales
             document.add(new Paragraph(" "));
             document.add(new Paragraph("Descuento: Q" + venta.getDescuento()));
-            document.add(new Paragraph("Total: $" + venta.getTotal()));
+            document.add(new Paragraph("Total: Q" + venta.getTotal()));
             document.add(new Paragraph(" "));
             document.add(new Paragraph("¡Gracias por su compra!", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
 

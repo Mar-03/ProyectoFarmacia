@@ -22,12 +22,26 @@ public class PanelVentas extends javax.swing.JPanel {
 
         ModeloVenta modelo = new ModeloVenta(this);
         ControladorVentas controlador = new ControladorVentas(modelo);
-        labelDescuentoSubsidio.setVisible(false);
-        txtDescuentoSubsidio.setVisible(false);
-        labelInstitucionSubsidio.setVisible(false);
-        txtIdInsSubsidio.setVisible(false);
-
+             
         setControlador(controlador);
+        
+        modelo.getVistaVentas().checkBoxVentaSinClienteR.setSelected(false);
+        modelo.getVistaVentas().labelTipoPago.setVisible(false);
+        modelo.getVistaVentas().cmbMetodoPago.setVisible(false);
+        modelo.getVistaVentas().checkBoxVentaSinClienteR.setVisible(false);
+        modelo.getVistaVentas().labelNIT.setVisible(false);
+        modelo.getVistaVentas().txtNITCliente.setVisible(false);
+        modelo.getVistaVentas().labelSubsidio.setVisible(false);
+        modelo.getVistaVentas().cmbSubsidio.setVisible(false);
+        modelo.getVistaVentas().labelDescuentoSubsidio.setVisible(false);
+        modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
+        modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
+        modelo.getVistaVentas().txtIdInsSubsidio.setVisible(false);
+        modelo.getVistaVentas().labelObservaciones.setVisible(false);
+        modelo.getVistaVentas().txtArea.setVisible(false);
+        modelo.getVistaVentas().btnCancelarVenta.setVisible(false);
+        modelo.getVistaVentas().btnConfirmarVenta.setVisible(false);
+        
     }
 
     /**
@@ -51,13 +65,13 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         labelNIT = new javax.swing.JLabel();
         labelDescuentoSubsidio = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        labelSubsidio = new javax.swing.JLabel();
         labelInstitucionSubsidio = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        labelObservaciones = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        labelTipoPago = new javax.swing.JLabel();
         txtCodigoBarras = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         txtNITCliente = new javax.swing.JTextField();
@@ -81,6 +95,16 @@ public class PanelVentas extends javax.swing.JPanel {
         checkBoxVentaSinClienteR = new javax.swing.JCheckBox();
         btnHacerVenta = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        labelSubtotal = new javax.swing.JLabel();
+        labelTotal = new javax.swing.JLabel();
+        txtSubTotal = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
+        btnAceptar = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        btnConfirmarVenta = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        btnCancelarVenta = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,15 +133,15 @@ public class PanelVentas extends javax.swing.JPanel {
         marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
         marcaAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         marcaAgua.setText("FARMACIA");
-        fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 850, -1));
+        fondoPanel.add(marcaAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 850, -1));
 
         separador.setBackground(new java.awt.Color(255, 255, 255));
         separador.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 850, 20));
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 850, 20));
 
         separador2.setBackground(new java.awt.Color(255, 255, 255));
         separador2.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 850, 10));
+        fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 850, 10));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -153,30 +177,30 @@ public class PanelVentas extends javax.swing.JPanel {
         labelNIT.setForeground(new java.awt.Color(255, 255, 255));
         labelNIT.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelNIT.setText("NIT Cliente:");
-        fondoPanel.add(labelNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, -1, -1));
+        fondoPanel.add(labelNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, -1, -1));
 
         labelDescuentoSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         labelDescuentoSubsidio.setForeground(new java.awt.Color(255, 255, 255));
         labelDescuentoSubsidio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelDescuentoSubsidio.setText("Descuento Subsidio:");
-        fondoPanel.add(labelDescuentoSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 140, -1));
+        fondoPanel.add(labelDescuentoSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 140, -1));
 
-        jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Subsidio:");
-        fondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 70, -1));
+        labelSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelSubsidio.setForeground(new java.awt.Color(255, 255, 255));
+        labelSubsidio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelSubsidio.setText("Subsidio:");
+        fondoPanel.add(labelSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, -1, -1));
 
         labelInstitucionSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         labelInstitucionSubsidio.setForeground(new java.awt.Color(255, 255, 255));
         labelInstitucionSubsidio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelInstitucionSubsidio.setText("Institución de Subsidio:");
-        fondoPanel.add(labelInstitucionSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, 166, -1));
+        fondoPanel.add(labelInstitucionSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 440, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Observaciones:");
-        fondoPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, -1, -1));
+        labelObservaciones.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelObservaciones.setForeground(new java.awt.Color(255, 255, 255));
+        labelObservaciones.setText("Observaciones:");
+        fondoPanel.add(labelObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -196,11 +220,11 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel15.setText("Precio:");
         fondoPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 60, -1));
 
-        jLabel16.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel16.setText("Método de Pago:");
-        fondoPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, -1, 20));
+        labelTipoPago.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        labelTipoPago.setForeground(new java.awt.Color(255, 255, 255));
+        labelTipoPago.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelTipoPago.setText("Método de Pago:");
+        fondoPanel.add(labelTipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, -1, 20));
 
         txtCodigoBarras.setBackground(new java.awt.Color(75, 128, 146));
         txtCodigoBarras.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -223,19 +247,19 @@ public class PanelVentas extends javax.swing.JPanel {
                 txtNITClienteActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtNITCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 140, -1));
+        fondoPanel.add(txtNITCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 590, 140, -1));
 
         txtDescuentoSubsidio.setBackground(new java.awt.Color(75, 128, 146));
         txtDescuentoSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtDescuentoSubsidio.setForeground(new java.awt.Color(255, 255, 255));
         txtDescuentoSubsidio.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtDescuentoSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 110, -1));
+        fondoPanel.add(txtDescuentoSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 110, -1));
 
         txtIdInsSubsidio.setBackground(new java.awt.Color(75, 128, 146));
         txtIdInsSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIdInsSubsidio.setForeground(new java.awt.Color(255, 255, 255));
         txtIdInsSubsidio.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtIdInsSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 160, -1));
+        fondoPanel.add(txtIdInsSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, 160, -1));
 
         txtIdProducto.setBackground(new java.awt.Color(75, 128, 146));
         txtIdProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -270,7 +294,7 @@ public class PanelVentas extends javax.swing.JPanel {
                 cmbMetodoPagoActionPerformed(evt);
             }
         });
-        fondoPanel.add(cmbMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, 100, -1));
+        fondoPanel.add(cmbMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 100, -1));
 
         cmbSubsidio.setBackground(new java.awt.Color(75, 128, 146));
         cmbSubsidio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -282,7 +306,7 @@ public class PanelVentas extends javax.swing.JPanel {
                 cmbSubsidioActionPerformed(evt);
             }
         });
-        fondoPanel.add(cmbSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 90, -1));
+        fondoPanel.add(cmbSubsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 90, -1));
 
         txtArea.setBackground(new java.awt.Color(75, 128, 146));
         txtArea.setColumns(20);
@@ -292,7 +316,7 @@ public class PanelVentas extends javax.swing.JPanel {
         txtArea.setCaretColor(new java.awt.Color(255, 255, 255));
         scrollPanel.setViewportView(txtArea);
 
-        fondoPanel.add(scrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, 340, 120));
+        fondoPanel.add(scrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, 260, 120));
 
         btnAgregar.setBackground(new java.awt.Color(75, 128, 146));
         btnAgregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -305,7 +329,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel17.setText("Agregar");
         btnAgregar.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 90, 30));
+        fondoPanel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 90, 30));
 
         btnEliminar.setBackground(new java.awt.Color(75, 128, 146));
         btnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -318,7 +342,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel18.setText("Eliminar");
         btnEliminar.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        fondoPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 90, 30));
+        fondoPanel.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 90, 30));
 
         btnBuscar.setBackground(new java.awt.Color(75, 128, 146));
         btnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -345,7 +369,7 @@ public class PanelVentas extends javax.swing.JPanel {
         checkBoxVentaSinClienteR.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         checkBoxVentaSinClienteR.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxVentaSinClienteR.setText("Venta Sin Cliente registrado");
-        fondoPanel.add(checkBoxVentaSinClienteR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 230, -1));
+        fondoPanel.add(checkBoxVentaSinClienteR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 230, -1));
 
         btnHacerVenta.setBackground(new java.awt.Color(75, 128, 146));
         btnHacerVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -368,10 +392,78 @@ public class PanelVentas extends javax.swing.JPanel {
             btnHacerVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnHacerVentaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        fondoPanel.add(btnHacerVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, 90, 30));
+        fondoPanel.add(btnHacerVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, 90, 40));
+
+        labelSubtotal.setText("SubTotal");
+        fondoPanel.add(labelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, -1, 20));
+
+        labelTotal.setText("Total");
+        fondoPanel.add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, -1));
+
+        txtSubTotal.setBackground(new java.awt.Color(75, 128, 146));
+        fondoPanel.add(txtSubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 70, -1));
+
+        txtTotal.setBackground(new java.awt.Color(75, 128, 146));
+        fondoPanel.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, -1, -1));
+
+        btnAceptar.setBackground(new java.awt.Color(75, 128, 146));
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Aceptar");
+
+        javax.swing.GroupLayout btnAceptarLayout = new javax.swing.GroupLayout(btnAceptar);
+        btnAceptar.setLayout(btnAceptarLayout);
+        btnAceptarLayout.setHorizontalGroup(
+            btnAceptarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+        );
+        btnAceptarLayout.setVerticalGroup(
+            btnAceptarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        fondoPanel.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 90, 30));
+
+        btnConfirmarVenta.setBackground(new java.awt.Color(75, 128, 146));
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Confirmar Venta");
+
+        javax.swing.GroupLayout btnConfirmarVentaLayout = new javax.swing.GroupLayout(btnConfirmarVenta);
+        btnConfirmarVenta.setLayout(btnConfirmarVentaLayout);
+        btnConfirmarVentaLayout.setHorizontalGroup(
+            btnConfirmarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+        );
+        btnConfirmarVentaLayout.setVerticalGroup(
+            btnConfirmarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        fondoPanel.add(btnConfirmarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 90, 40));
+
+        btnCancelarVenta.setBackground(new java.awt.Color(75, 128, 146));
+
+        jLabel7.setText("Cancelar Venta");
+
+        javax.swing.GroupLayout btnCancelarVentaLayout = new javax.swing.GroupLayout(btnCancelarVenta);
+        btnCancelarVenta.setLayout(btnCancelarVentaLayout);
+        btnCancelarVentaLayout.setHorizontalGroup(
+            btnCancelarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+        );
+        btnCancelarVentaLayout.setVerticalGroup(
+            btnCancelarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCancelarVentaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        fondoPanel.add(btnCancelarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -410,8 +502,11 @@ public class PanelVentas extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane;
+    public javax.swing.JPanel btnAceptar;
     public javax.swing.JPanel btnAgregar;
     public javax.swing.JPanel btnBuscar;
+    public javax.swing.JPanel btnCancelarVenta;
+    public javax.swing.JPanel btnConfirmarVenta;
     public javax.swing.JPanel btnEliminar;
     public javax.swing.JPanel btnHacerVenta;
     private javax.swing.JPanel btnSalir;
@@ -421,22 +516,27 @@ public class PanelVentas extends javax.swing.JPanel {
     public javax.swing.JPanel contenedorTablaVentas;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel labelDescuentoSubsidio;
     public javax.swing.JLabel labelInstitucionSubsidio;
     public javax.swing.JLabel labelNIT;
+    public javax.swing.JLabel labelObservaciones;
+    public javax.swing.JLabel labelSubsidio;
+    public javax.swing.JLabel labelSubtotal;
+    public javax.swing.JLabel labelTipoPago;
+    public javax.swing.JLabel labelTotal;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JSeparator separador;
@@ -451,6 +551,8 @@ public class PanelVentas extends javax.swing.JPanel {
     public javax.swing.JTextField txtNITCliente;
     public javax.swing.JTextField txtNombreProducto;
     public javax.swing.JTextField txtPrecio;
+    public javax.swing.JTextField txtSubTotal;
+    public javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
     public void setControlador(ControladorVentas controlador) {
@@ -460,5 +562,9 @@ public class PanelVentas extends javax.swing.JPanel {
         cmbSubsidio.addActionListener(controlador);
         checkBoxVentaSinClienteR.addMouseListener(controlador);
         btnHacerVenta.addMouseListener(controlador);
+        btnAceptar.addMouseListener(controlador);
+        btnConfirmarVenta.addMouseListener(controlador);
+        btnCancelarVenta.addMouseListener(controlador);
+       
     }
 }

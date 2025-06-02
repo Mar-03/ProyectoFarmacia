@@ -31,7 +31,6 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author jhosu
  */
-
 public class ControladorVentas implements MouseListener, ActionListener {
 
     ModeloVenta modelo;
@@ -42,7 +41,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
         this.modelo = modelo;
 
         modeloTablaVentas = new DefaultTableModel();
-        modeloTablaVentas.setColumnIdentifiers(new Object[]{"Nombre Producto", "Precio", "Cantidad", "SubTotal", "Total"});
+        modeloTablaVentas.setColumnIdentifiers(new Object[]{"Nombre Producto", "Precio", "Cantidad", "SubTotal"});
 
         tablaVentas = new JTable(modeloTablaVentas);
         tablaVentas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -70,6 +69,10 @@ public class ControladorVentas implements MouseListener, ActionListener {
             datosVaciosHacerVenta();
         } else if (e.getComponent().equals(modelo.getVistaVentas().checkBoxVentaSinClienteR)) {
             clienteNoRegistrado();
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnAceptar)) {
+            elementosInvisibles();
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnConfirmarVenta)) {
+
         }
     }
 
@@ -118,10 +121,10 @@ public class ControladorVentas implements MouseListener, ActionListener {
             String nombreP = modelo.getVistaVentas().txtNombreProducto.getText();
             String precioP = modelo.getVistaVentas().txtPrecio.getText();
             String cantidadIngresada = modelo.getVistaVentas().txtCantidad.getText();
-            String descuentoSubsidio = modelo.getVistaVentas().txtDescuentoSubsidio.getText();
-            String subtotal = calcularPrecioP(precioP, descuentoSubsidio);
-            String precioTotal = calcularTotal(subtotal, cantidadIngresada);
-            agregarDatosTabla(nombreP, precioP, cantidadIngresada, subtotal, precioTotal);
+//            String descuentoSubsidio = modelo.getVistaVentas().txtDescuentoSubsidio.getText();
+            String subtotal = calcularTotal(precioP, cantidadIngresada);;
+
+            agregarDatosTabla(nombreP, precioP, cantidadIngresada, subtotal);
         }
 
     }
@@ -189,7 +192,57 @@ public class ControladorVentas implements MouseListener, ActionListener {
 
     }
 
+    public void datosVaciosAceptar() {
+        if (modeloTablaVentas.getRowCount() == 0) {
+            mostrarError("No se puede realizar la acción, debe de llenar todos los campos");
+        } else {
+            elementosVisibles();
+        }
+    }
+
     public void elementosVisibles() {
+        modelo.getVistaVentas().labelTipoPago.setVisible(true);
+        modelo.getVistaVentas().cmbMetodoPago.setVisible(true);
+        modelo.getVistaVentas().checkBoxVentaSinClienteR.setVisible(true);
+        modelo.getVistaVentas().labelNIT.setVisible(true);
+        modelo.getVistaVentas().txtNITCliente.setVisible(true);
+        modelo.getVistaVentas().labelSubsidio.setVisible(true);
+        modelo.getVistaVentas().cmbSubsidio.setVisible(true);
+//        modelo.getVistaVentas().labelDescuentoSubsidio.setVisible(true);
+//        modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(true);
+//        modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(true);
+//        modelo.getVistaVentas().txtIdInsSubsidio.setVisible(true);
+//        modelo.getVistaVentas().labelObservaciones.setVisible(true);
+        modelo.getVistaVentas().txtArea.setVisible(true);
+        modelo.getVistaVentas().btnCancelarVenta.setVisible(true);
+        modelo.getVistaVentas().btnConfirmarVenta.setVisible(true);
+
+    }
+
+    public void elementosInvisibles() {
+        modelo.getVistaVentas().txtNITCliente.setText("");
+        modelo.getVistaVentas().txtDescuentoSubsidio.setText("");
+        modelo.getVistaVentas().txtIdInsSubsidio.setText("");
+        modelo.getVistaVentas().txtArea.setText("");
+        modelo.getVistaVentas().cmbSubsidio.setSelectedIndex(0);
+        modelo.getVistaVentas().cmbMetodoPago.setSelectedIndex(0);
+        modelo.getVistaVentas().checkBoxVentaSinClienteR.setSelected(false);
+        modelo.getVistaVentas().labelTipoPago.setVisible(false);
+        modelo.getVistaVentas().cmbMetodoPago.setVisible(false);
+        modelo.getVistaVentas().checkBoxVentaSinClienteR.setVisible(false);
+        modelo.getVistaVentas().labelNIT.setVisible(false);
+        modelo.getVistaVentas().txtNITCliente.setVisible(false);
+        modelo.getVistaVentas().labelSubsidio.setVisible(false);
+        modelo.getVistaVentas().cmbSubsidio.setVisible(false);
+        modelo.getVistaVentas().labelDescuentoSubsidio.setVisible(false);
+        modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
+        modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
+        modelo.getVistaVentas().txtIdInsSubsidio.setVisible(false);
+        modelo.getVistaVentas().labelObservaciones.setVisible(false);
+        modelo.getVistaVentas().txtArea.setVisible(false);
+        modelo.getVistaVentas().btnCancelarVenta.setVisible(false);
+        modelo.getVistaVentas().btnConfirmarVenta.setVisible(false);
+
     }
 
     private void limpiarElementos() {
@@ -206,6 +259,47 @@ public class ControladorVentas implements MouseListener, ActionListener {
         modelo.getVistaVentas().txtPrecio.setText("");
         modelo.getVistaVentas().txtArea.setText("");
 
+    }
+
+    public void confirmarVenta() {
+        modelo.getVistaVentas().labelSubtotal.setVisible(true);
+        modelo.getVistaVentas().labelTotal.setVisible(true);
+        modelo.getVistaVentas().txtSubTotal.setVisible(true);
+        modelo.getVistaVentas().txtTotal.setVisible(true);
+        modelo.getVistaVentas().btnHacerVenta.setVisible(true);
+
+        double totalSubCalculado = calcularSubtotal(modeloTablaVentas);
+        modelo.getVistaVentas().txtSubTotal.setText(String.valueOf(totalSubCalculado));
+        modelo.getVistaVentas().txtSubTotal.setText(String.valueOf(calcularTotal(totalSubCalculado)));
+        
+    }
+
+    private double calcularSubtotal(DefaultTableModel tabla) {
+        double suma = 0.0;
+        int indiceColumna = 3;
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+            Object valor = tabla.getValueAt(i, indiceColumna);
+            try {
+                suma += Double.parseDouble(valor.toString());
+            } catch (NumberFormatException e) {
+                // Manejar error si el valor no es numérico
+                System.err.println("Valor no numérico en la fila " + i);
+            }
+        }
+
+        return suma;
+    }
+    
+    private double calcularTotal(double subtotal){
+        double descuento = 0;
+        double calcularTotal = 0;
+        if(modelo.getVistaVentas().cmbSubsidio.getSelectedIndex() == 0){
+            calcularTotal = subtotal - descuento;
+        } else {
+            descuento = Double.parseDouble(modelo.getVistaVentas().txtDescuentoSubsidio.getText());
+            calcularTotal = subtotal - descuento;
+        }
+        return calcularTotal;
     }
 
     public void consultarProducto(String nombreP, String codigoB) {
@@ -242,14 +336,13 @@ public class ControladorVentas implements MouseListener, ActionListener {
     }
 
     //METODOS PARA GENERAR LA TABLA DE LOS PRODUCTOS PARA LA VENTA
-    public void agregarDatosTabla(String nombreP, String precio, String cantidad, String subtotal, String total) {
+    public void agregarDatosTabla(String nombreP, String precio, String cantidad, String subtotal) {
 
         modeloTablaVentas.addRow(new Object[]{
             nombreP,
             precio,
             cantidad,
-            subtotal,
-            total});
+            subtotal});
 
         limpiarElementos();
     }
@@ -262,7 +355,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
         try {
             ModeloClientesVentas modeloClientesVentas = new ModeloClientesVentas();
             if (modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()) {
-                modelo.setNitCliente("CF");
+                modeloClientesVentas.setNombre("CF");
                 modeloClientesVentas.setNombre("CONSUMIDOR FINAL");
             } else {
                 ModeloClientesVentas cliente = consultarClienteNit(modelo.getVistaVentas().txtNITCliente.getText());
@@ -282,43 +375,42 @@ public class ControladorVentas implements MouseListener, ActionListener {
             ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
             String usuarioObtenido = modeloUsuarioActivo.getUsuarioActivo();
             int idUsuarioObtenido = modeloUsuarioActivo.getIdUsuario();
-            
-            
+
             //Configurar datos de la venta
             modeloClientesVentas.setTipoPago(modelo.getVistaVentas().cmbMetodoPago.getSelectedItem().toString());
-            modeloClientesVentas.setSubtotal(Double.parseDouble(calcularSubTotal()));
-            modeloClientesVentas.setDescuento(0);
+            modeloClientesVentas.setSubtotal(Double.parseDouble(modelo.getVistaVentas().txtSubTotal.getText()));
+            modeloClientesVentas.setDescuento(Double.parseDouble(modelo.getVistaVentas().txtDescuentoSubsidio.getText()));
+            modeloClientesVentas.setTotal(Double.parseDouble(modelo.getVistaVentas().txtTotal.getText()));
+            
             
             //Crear y llenar al carrito Jtable
             List<ModeloDetalleVenta> carrito = new ArrayList<>();
             for (int i = 0; i < tablaVentas.getRowCount(); i++) {
-            ModeloDetalleVenta detalle = new ModeloDetalleVenta();
-            detalle.setNombreProducto(tablaVentas.getValueAt(i, 0).toString());
-            detalle.setPrecioUnitario(Double.parseDouble(tablaVentas.getValueAt(i, 1).toString()));
-            detalle.setCantidad(Integer.parseInt(tablaVentas.getValueAt(i, 2).toString()));
-            detalle.setSubtotal(Double.parseDouble(tablaVentas.getValueAt(i, 3).toString()));
-            carrito.add(detalle);
-        }
-        modeloClientesVentas.setCarrito(carrito);
+                ModeloDetalleVenta detalle = new ModeloDetalleVenta();
+                detalle.setNombreProducto(tablaVentas.getValueAt(i, 0).toString());
+                detalle.setPrecioUnitario(Double.parseDouble(tablaVentas.getValueAt(i, 1).toString()));
+                detalle.setCantidad(Integer.parseInt(tablaVentas.getValueAt(i, 2).toString()));
+                detalle.setSubtotal(Double.parseDouble(tablaVentas.getValueAt(i, 3).toString()));
+                carrito.add(detalle);
+            }
+            modeloClientesVentas.setCarrito(carrito);
 
-        // Realizar la venta
-        boolean ventaExitosa = implementacion.hacerVentaCompleta(modeloClientesVentas, usuarioObtenido, idUsuarioObtenido);
-        
-        if (ventaExitosa) {
-            limpiarTablaYCampos();
-            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            // Realizar la venta
+            boolean ventaExitosa = implementacion.hacerVentaCompleta(modeloClientesVentas, usuarioObtenido, idUsuarioObtenido);
+
+            if (ventaExitosa) {
+                limpiarTablaYCampos();
+                JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            mostrarError("Error al procesar la venta: " + e.getMessage());
         }
-    } catch (Exception e) {
-        mostrarError("Error al procesar la venta: " + e.getMessage());
-    }
 //            implementacion.hacerVentaCompleta(modeloClienteVenta, usuarioObtenido, idUsuarioObtenido);
 
-        
     }
 
-    
-    public void limpiarTablaYCampos(){
-        
+    public void limpiarTablaYCampos() {
+
     }
 //    private void validarVentaComprobante() {
 //
@@ -331,6 +423,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
 //            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
 //            //Tal vez llamar aquí el método para limpiar todo
 //        }
+
     ////    }
 //    private void generarComprobante() {
 //        ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
