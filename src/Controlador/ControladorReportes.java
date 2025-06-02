@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 
 public class ControladorReportes implements MouseListener {
    
-    private final ModeloReporte modelo;
+     private final ModeloReporte modelo;
 
     public ControladorReportes(ModeloReporte modelo) {
         this.modelo = modelo;
@@ -24,6 +24,7 @@ public void mouseClicked(MouseEvent e) {
         modelo.exportarReporteADiaPDF(1); // Aquí colocas el ID real del usuario
     }
 }
+
 
 
     

@@ -20,7 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
- public class ReporteImp implements IReportes {
+public class ReporteImp implements IReportes {
       private final DBConnection conector = new DBConnection();
     private final SQL sql = new SQL();
     private Connection con;

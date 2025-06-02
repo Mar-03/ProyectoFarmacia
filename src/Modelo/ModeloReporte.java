@@ -1,27 +1,20 @@
 package Modelo;
 
-import Conector.DBConnection;
 import Implementacion.ReporteImp;
 import Interfaces.IReportes;
 import Utilities.GeneradorPDFreporte;
 import Vistas.VistaReporte;
 
-import java.io.File;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSetMetaData; 
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
-import javax.swing.JFileChooser;
-import javax.swing.JTable;
 import java.io.File;
-
 public class ModeloReporte {
 private final IReportes reportes;
     public final VistaReporte vista;
