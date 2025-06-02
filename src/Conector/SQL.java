@@ -223,5 +223,29 @@ public class SQL {
         return BUSCAR_CLIENTE_NIT_IDENTIFICACION;
     }
     
+    // reportes sql 
+    
+     private final String OBTENER_VENTAS_DIA = 
+        "SELECT v.id_venta, DATE_FORMAT(v.fecha, '%d/%m/%Y %H:%i') AS fecha, " +
+        "CONCAT(c.nombre, ' ', c.apellido) AS cliente, v.subtotal, " +
+        "v.descuento_subsidio AS descuento, v.total, v.tipo_pago " +
+        "FROM ventas v " +
+        "JOIN clientes c ON v.id_cliente = c.id_cliente " +
+        "WHERE DATE(v.fecha) = CURDATE() " +
+        "ORDER BY v.fecha DESC";
+    
+    private final String INSERTAR_REPORTE = 
+        "INSERT INTO reportes (tipo_reporte, id_usuario_generador, " +
+        "parametros, nombre_archivo, ruta_archivo) " +
+        "VALUES (?, ?, ?, ?, ?)";
+
+    public String getOBTENER_VENTAS_DIA() {
+        return OBTENER_VENTAS_DIA;
+    }
+
+    public String getINSERTAR_REPORTE() {
+        return INSERTAR_REPORTE;
+    }
+    
     
 }

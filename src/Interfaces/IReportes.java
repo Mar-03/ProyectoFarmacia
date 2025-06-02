@@ -4,10 +4,19 @@
  */
 package Interfaces;
 
+import Vistas.VistaReporte;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * @author jhosu
  */
-public interface IReportes {
+import java.sql.Connection;
 
+public interface IReportes {
+     ResultSet obtenerRegistroVentasDelDia() throws SQLException;
+   // void generarReportePDF(VistaReporte vista, int idUsuario);
 }

@@ -9,7 +9,7 @@ import Modelo.ModeloVistaAdmin;
 import Vistas.PanelInventario;
 import Vistas.PanelProducto;
 import Vistas.PanelRegistroUsuario;
-import Vistas.PanelReportes;
+import Vistas.VistaReporte;
 import Vistas.VistaInicio;
 
 public class ControladorVistaAdmin implements MouseListener {
@@ -34,7 +34,7 @@ public class ControladorVistaAdmin implements MouseListener {
             PanelInventario vistaPanelInvent = new PanelInventario();
             mostrarPaneles(vistaPanelInvent);
         } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)) {
-            PanelReportes vistaPanelReport = new PanelReportes();
+            VistaReporte vistaPanelReport = new VistaReporte();
             mostrarPaneles(vistaPanelReport);
         } else if (e.getComponent().equals(modelo.getVistaAdmin().btnRegistroUsuarios)) {
             PanelRegistroUsuario vistaPanelRegistro = new PanelRegistroUsuario();
