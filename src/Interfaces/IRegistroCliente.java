@@ -13,15 +13,12 @@ import java.util.List;
  *
  * @author anyi4
  */
+import java.util.List;
+
 public interface IRegistroCliente {
-
-    public boolean insertarCliente(Cliente cliente);
-
-    public boolean actualizarCliente(Cliente cliente);
-
-    public boolean eliminarCliente(int idCliente);
-
-    public List<Cliente> listarClientes();
-
-    public Cliente obtenerClientePorId(int idCliente);
+    boolean insertarCliente(ModeloRegistroCliente.Cliente cliente);
+    boolean actualizarCliente(ModeloRegistroCliente.Cliente cliente);
+    boolean eliminarCliente(int idCliente);
+    List<ModeloRegistroCliente.Cliente> listarClientes();
+    ModeloRegistroCliente.Cliente obtenerClientePorId(int idCliente);
 }

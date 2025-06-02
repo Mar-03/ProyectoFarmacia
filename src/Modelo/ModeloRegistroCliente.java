@@ -4,6 +4,7 @@
  */
 package Modelo;
 
+import Interfaces.IRegistroCliente;
 import Vistas.PanelClientes;
 import java.util.logging.Logger;
 import Vistas.*;
@@ -18,116 +19,124 @@ import java.util.Date;
  *
  * @author anyi4
  */
+import java.sql.Timestamp;
+
+import java.sql.Timestamp;
+
 public class ModeloRegistroCliente {
 
-    public ModeloRegistroCliente(PanelClientes aThis) {
+    private final PanelClientes vista;
+    private final IRegistroCliente implementacion;
+
+    public ModeloRegistroCliente(PanelClientes vista, IRegistroCliente implementacion) {
+        this.vista = vista;
+        this.implementacion = implementacion;
     }
 
     public boolean insertarCliente(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-      public static class Cliente { 
-    private int idCliente;
-    private String nombre;
-    private String apellido;
-    private String telefono;
-    private String direccion;
-    private String identificacion;
-    private String nit;
-    private boolean tieneSubsidio;
-    private Integer idInstitucionSubsidio;
-    private Timestamp fecha_registro;
-    private boolean activo;
-
-    // Getters y Setters
-    public int getIdCliente() {
-        return idCliente;
+        return implementacion.insertarCliente(cliente);
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
+    public static class Cliente {
+        private int idCliente;
+        private String nombre;
+        private String apellido;
+        private String telefono;
+        private String direccion;
+        private String identificacion;
+        private String nit;
+        private boolean tieneSubsidio;
+        private Integer idInstitucionSubsidio;
+        private Timestamp fecha_registro;
+        private boolean activo;
 
-    public String getNombre() {
-        return nombre;
-    }
+        // Getters y Setters
+        public int getIdCliente() {
+            return idCliente;
+        }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+        public void setIdCliente(int idCliente) {
+            this.idCliente = idCliente;
+        }
 
-    public String getApellido() {
-        return apellido;
-    }
+        public String getNombre() {
+            return nombre;
+        }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
 
-    public String getTelefono() {
-        return telefono;
-    }
+        public String getApellido() {
+            return apellido;
+        }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+        public void setApellido(String apellido) {
+            this.apellido = apellido;
+        }
 
-    public String getDireccion() {
-        return direccion;
-    }
+        public String getTelefono() {
+            return telefono;
+        }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+        public void setTelefono(String telefono) {
+            this.telefono = telefono;
+        }
 
-    public String getIdentificacion() {
-        return identificacion;
-    }
+        public String getDireccion() {
+            return direccion;
+        }
 
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
-    }
+        public void setDireccion(String direccion) {
+            this.direccion = direccion;
+        }
 
-    public String getNit() {
-        return nit;
-    }
+        public String getIdentificacion() {
+            return identificacion;
+        }
 
-    public void setNit(String nit) {
-        this.nit = nit;
-    }
+        public void setIdentificacion(String identificacion) {
+            this.identificacion = identificacion;
+        }
 
-    public boolean isTieneSubsidio() {
-        return tieneSubsidio;
-    }
+        public String getNit() {
+            return nit;
+        }
 
-    public void setTieneSubsidio(boolean tieneSubsidio) {
-        this.tieneSubsidio = tieneSubsidio;
-    }
+        public void setNit(String nit) {
+            this.nit = nit;
+        }
 
-    public Integer getIdInstitucionSubsidio() {
-        return idInstitucionSubsidio;
-    }
+        public boolean isTieneSubsidio() {
+            return tieneSubsidio;
+        }
 
-    public void setIdInstitucionSubsidio(Integer idInstitucionSubsidio) {
-        this.idInstitucionSubsidio = idInstitucionSubsidio;
-    }
+        public void setTieneSubsidio(boolean tieneSubsidio) {
+            this.tieneSubsidio = tieneSubsidio;
+        }
 
-    public Timestamp getFechaRegistro() {
-        return fecha_registro;
-    }
+        public Integer getIdInstitucionSubsidio() {
+            return idInstitucionSubsidio;
+        }
 
-    public void setFechaRegistro(Timestamp fechaRegistro) {
-        this.fecha_registro = fechaRegistro;
-    }
+        public void setIdInstitucionSubsidio(Integer idInstitucionSubsidio) {
+            this.idInstitucionSubsidio = idInstitucionSubsidio;
+        }
 
-    public boolean isActivo() {
-        return activo;
-    }
+        public Timestamp getFechaRegistro() {
+            return fecha_registro;
+        }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+        public void setFechaRegistro(Timestamp fecha_registro) {
+            this.fecha_registro = fecha_registro;
+        }
+
+        public boolean isActivo() {
+            return activo;
+        }
+
+        public void setActivo(boolean activo) {
+            this.activo = activo;
+        }
     }
 }
-}
-
-   

@@ -4,22 +4,16 @@
  */
 package Implementacion;
 
-import Modelo.ModeloRegistroCliente;
-import Conector.DBConnection;
-import Conector.SQL;
-import Interfaces.IRegistroCliente;
 import Modelo.ModeloRegistroCliente.Cliente;
-import controladores.ControladorClientes;
-import java.sql.Timestamp;
+
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
+
 
 import Interfaces.IRegistroCliente;
 //import Modelo.Cliente;
 import Conector.DBConnection;
 import Conector.SQL;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,25 +22,18 @@ import java.util.List;
 public class RegistroClienteImpl implements IRegistroCliente {
 
     private final DBConnection conexion;
-    private final Controlador.ControladorCliente controlador;
     private final SQL sql;
 
-    public RegistroClienteImpl(DBConnection conexion, Controlador.ControladorCliente controlador, SQL sql) {
+    public RegistroClienteImpl(DBConnection conexion, SQL sql) {
         this.conexion = conexion;
-        this.controlador = controlador;
         this.sql = sql;
     }
 
     @Override
     public boolean insertarCliente(Cliente cliente) {
-
         try (Connection conn = conexion.getConnection()) {
-            if (conn == null) {
-                throw new SQLException("Conexión nula. No se pudo conectar a la base de datos.");
-            }
-
+            if (conn == null) throw new SQLException("Conexión nula.");
             try (PreparedStatement ps = conn.prepareStatement(sql.getINSERTAR_CLIENTE())) {
-//        try (Connection conn = conexion.getConnection(); PreparedStatement ps = conn.prepareStatement(sql.getINSERTAR_CLIENTE())) {
                 ps.setString(1, cliente.getNombre());
                 ps.setString(2, cliente.getApellido());
                 ps.setString(3, cliente.getTelefono());
@@ -54,28 +41,21 @@ public class RegistroClienteImpl implements IRegistroCliente {
                 ps.setString(5, cliente.getIdentificacion());
                 ps.setString(6, cliente.getNit());
                 ps.setBoolean(7, cliente.isTieneSubsidio());
-//                ps.setObject(8, cliente.getIdInstitucionSubsidio(), Types.INTEGER);
-//
-//                return ps.executeUpdate() > 0;
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//                return false;
-//            }
-//        }
-                if (cliente.getIdInstitucionSubsidio() != null) {
+                if (cliente.getIdInstitucionSubsidio() != null)
                     ps.setObject(8, cliente.getIdInstitucionSubsidio(), Types.INTEGER);
-                } else {
+                else
                     ps.setNull(8, Types.INTEGER);
-                }
+                ps.setTimestamp(9, cliente.getFechaRegistro());
+                ps.setBoolean(10, cliente.isActivo());
                 return ps.executeUpdate() > 0;
             }
-
         } catch (SQLException e) {
-            System.err.println("Error al insertar cliente: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
     }
+
+    
 
     @Override
     public boolean actualizarCliente(Cliente cliente) {

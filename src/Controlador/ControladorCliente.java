@@ -8,6 +8,38 @@ package Controlador;
  *
  * @author cindy
  */
-public class ControladorCliente {
+import Interfaces.IRegistroCliente;
+import Modelo.ModeloRegistroCliente;
+import Vistas.PanelClientes;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
+
+public class ControladorCliente implements MouseListener {
+    private final PanelClientes vista;
+    private final IRegistroCliente impl;
+
+    public ControladorCliente(PanelClientes vista, IRegistroCliente impl) {
+        this.vista = vista;
+        this.impl = impl;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
     
+    }
+
+   
+    public void mousePressed(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
 }
+
