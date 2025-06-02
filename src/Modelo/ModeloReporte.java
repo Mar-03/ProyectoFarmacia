@@ -18,63 +18,71 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSetMetaData; 
 
 public class ModeloReporte {
-    private VistaReporte vista;
-    private IReportes reportes;
-    private Connection conexion;
-    private int idUsuario;
+  
+    private final IReportes reportes;
+    public VistaReporte vista;
+    private final GeneradorPDFreporte generadorPDF = new GeneradorPDFreporte();
 
     public ModeloReporte(VistaReporte vista) {
         this.vista = vista;
-
-        DBConnection conector = new DBConnection();
-        conector.conectar();
-        this.conexion = conector.getConexion();
-
-        this.reportes = new ReporteImp(conexion);
-        this.idUsuario = 1; 
+        this.reportes = new ReporteImp();
     }
 
     public void cargarVentasDelDia() {
-        try {
-            ResultSet rs = reportes.obtenerVentasDelDia(idUsuario);
-            actualizarTabla(rs);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(vista, "Error al cargar ventas del día: " + ex.getMessage());
-        }
-    }
-
-    public void generarPDFVentasDelDia() {
-        try {
-            GeneradorPDFreporte pdf = new GeneradorPDFreporte();
-            String ruta = "ReporteVentasDelDia_" + System.currentTimeMillis() + ".pdf";
-            pdf.generarReporteDia(vista.tblReportesVentas, ruta, idUsuario);
-            JOptionPane.showMessageDialog(vista, "¡PDF generado exitosamente!");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(vista, "Error al generar PDF: " + ex.getMessage());
-        }
-    }
-
-    private void actualizarTabla(ResultSet rs) throws SQLException {
-        DefaultTableModel model = new DefaultTableModel();
-        ResultSetMetaData metaData = rs.getMetaData();
-        int columnCount = metaData.getColumnCount();
-
-        for (int i = 1; i <= columnCount; i++) {
-            model.addColumn(metaData.getColumnName(i));
-        }
-
-        while (rs.next()) {
-            Object[] row = new Object[columnCount];
-            for (int i = 1; i <= columnCount; i++) {
-                row[i - 1] = rs.getObject(i);
+        DefaultTableModel modelo = (DefaultTableModel) vista.tblReportesVentas.getModel();
+        modelo.setRowCount(0);
+        
+        try (ResultSet rs = reportes.obtenerRegistroVentasDelDia()) {
+            while (rs.next()) {
+                modelo.addRow(new Object[]{
+                    rs.getInt("id_venta"),
+                    rs.getString("fecha"),
+                    rs.getString("cliente"),
+                    rs.getDouble("subtotal"),
+                    rs.getDouble("descuento"),
+                    rs.getDouble("total"),
+                    rs.getString("tipo_pago")
+                });
             }
-            model.addRow(row);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(vista, "Error al cargar ventas: " + ex.getMessage());
         }
-
-        vista.tblReportesVentas.setModel(model);
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void generarReportePDF() {
+        try {
+            String carpetaBase = System.getProperty("user.home") + File.separator + "ReportesFarmacia" + File.separator;
+            new File(carpetaBase).mkdirs();
+            
+            String nombreArchivo = "VentasDiarias_" + 
+                                  new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + 
+                                  ".pdf";
+            String rutaCompleta = carpetaBase + nombreArchivo;
+          
+            generadorPDF.generarReporteDia(vista.tblReportesVentas, rutaCompleta);
+            
+            registrarReporteEnBD(rutaCompleta, nombreArchivo);
+            
+            JOptionPane.showMessageDialog(vista, "Reporte generado en:\n" + rutaCompleta);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(vista, "Error al generar PDF: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
-}
+
+    private void registrarReporteEnBD(String ruta, String nombreArchivo) {
+        try (Connection conexion = DBConnection.conectar().getConnection()) {
+            String query = "INSERT INTO reportes (tipo_reporte, parametros, nombre_archivo, ruta_archivo) "
+                         + "VALUES (?, ?, ?, ?)";
+            
+            try (PreparedStatement ps = conexion.prepareStatement(query)) {
+                ps.setString(1, "VENTAS_DIARIAS");
+                ps.setString(2, "Reporte diario automático");
+                ps.setString(3, nombreArchivo);
+                ps.setString(4, ruta);
+                ps.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(vista, "Error al registrar reporte: " + ex.getMessage());
+        }
+    }}
