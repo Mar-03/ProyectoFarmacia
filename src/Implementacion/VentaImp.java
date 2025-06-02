@@ -273,6 +273,8 @@ public class VentaImp implements IVenta {
                     return false;
                 }
             }
+            db.revertirTransaccion();
+            return false;
 
         } catch (HeadlessException | SQLException e) {
             db.revertirTransaccion();
@@ -286,10 +288,8 @@ public class VentaImp implements IVenta {
         try { if (psComprobante != null) psComprobante.close(); } catch (SQLException e) {}
         
         db.desconectar();
-            
+        
         }       
     }
-
-  
 
 }

@@ -6,6 +6,7 @@ package Controlador;
 
 import Implementacion.VentaImp;
 import Modelo.ModeloClientesVentas;
+import Modelo.ModeloDetalleVenta;
 import Modelo.ModeloInicioUsuario;
 import Modelo.ModeloProducto;
 import Modelo.ModeloRegistroCliente;
@@ -17,6 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -28,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author jhosu
  */
+
 public class ControladorVentas implements MouseListener, ActionListener {
 
     ModeloVenta modelo;
@@ -255,23 +259,67 @@ public class ControladorVentas implements MouseListener, ActionListener {
     }
 
     private void hacerVenta() {
+        try {
+            ModeloClientesVentas modeloClientesVentas = new ModeloClientesVentas();
+            if (modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()) {
+                modelo.setNitCliente("CF");
+                modeloClientesVentas.setNombre("CONSUMIDOR FINAL");
+            } else {
+                ModeloClientesVentas cliente = consultarClienteNit(modelo.getVistaVentas().txtNITCliente.getText());
+                if (cliente == null) {
+                    return;
+                }
 
-        if (modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()) {
-            modelo.setNitCliente("CF");
-        } else {
+                modeloClientesVentas.setIdCliente(cliente.getIdCliente());
+                modeloClientesVentas.setNombre(cliente.getNombre());
+                modeloClientesVentas.setApellido(cliente.getApellido());
+                modeloClientesVentas.setNit(cliente.getNit());
+                modeloClientesVentas.setDireccion(cliente.getDireccion());
+                modeloClientesVentas.setTieneSubsidio(cliente.isTieneSubsidio());
+            }
 
-            ModeloClientesVentas modeloClienteVenta = consultarClienteNit(modelo.getVistaVentas().txtNITCliente.getText());
-           
+            //Obtener datos del usuario activo
             ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
             String usuarioObtenido = modeloUsuarioActivo.getUsuarioActivo();
             int idUsuarioObtenido = modeloUsuarioActivo.getIdUsuario();
             
-            implementacion.hacerVentaCompleta(modeloClienteVenta, usuarioObtenido, idUsuarioObtenido);
             
+            //Configurar datos de la venta
+            modeloClientesVentas.setTipoPago(modelo.getVistaVentas().cmbMetodoPago.getSelectedItem().toString());
+            modeloClientesVentas.setSubtotal(Double.parseDouble(calcularSubTotal()));
+            modeloClientesVentas.setDescuento(0);
+            
+            //Crear y llenar al carrito Jtable
+            List<ModeloDetalleVenta> carrito = new ArrayList<>();
+            for (int i = 0; i < tablaVentas.getRowCount(); i++) {
+            ModeloDetalleVenta detalle = new ModeloDetalleVenta();
+            detalle.setNombreProducto(tablaVentas.getValueAt(i, 0).toString());
+            detalle.setPrecioUnitario(Double.parseDouble(tablaVentas.getValueAt(i, 1).toString()));
+            detalle.setCantidad(Integer.parseInt(tablaVentas.getValueAt(i, 2).toString()));
+            detalle.setSubtotal(Double.parseDouble(tablaVentas.getValueAt(i, 3).toString()));
+            carrito.add(detalle);
         }
+        modeloClientesVentas.setCarrito(carrito);
 
+        // Realizar la venta
+        boolean ventaExitosa = implementacion.hacerVentaCompleta(modeloClientesVentas, usuarioObtenido, idUsuarioObtenido);
+        
+        if (ventaExitosa) {
+            limpiarTablaYCampos();
+            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
+    } catch (Exception e) {
+        mostrarError("Error al procesar la venta: " + e.getMessage());
+    }
+//            implementacion.hacerVentaCompleta(modeloClienteVenta, usuarioObtenido, idUsuarioObtenido);
+
+        
     }
 
+    
+    public void limpiarTablaYCampos(){
+        
+    }
 //    private void validarVentaComprobante() {
 //
 //        //Llamar al método de implementación para la venta
@@ -283,7 +331,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
 //            JOptionPane.showMessageDialog(null, "Venta realizada con éxito", "VENTA", JOptionPane.WARNING_MESSAGE);
 //            //Tal vez llamar aquí el método para limpiar todo
 //        }
-////    }
+    ////    }
 //    private void generarComprobante() {
 //        ModeloInicioUsuario modeloUsuarioActivo = new ModeloInicioUsuario();
 //        String usuarioObtenido = modeloUsuarioActivo.getUsuarioActivo();

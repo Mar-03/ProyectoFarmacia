@@ -13,6 +13,7 @@ public class ModeloDetalleVenta {
     private int idLote;
     private int cantidad;
     private double precioUnitario;
+    private String nombreProducto;
     private double subtotal;
    
     public int getIdLote() {
@@ -46,5 +47,16 @@ public class ModeloDetalleVenta {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
  
+    
+    
+    
 }
