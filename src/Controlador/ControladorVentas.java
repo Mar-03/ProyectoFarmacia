@@ -70,9 +70,11 @@ public class ControladorVentas implements MouseListener, ActionListener {
         } else if (e.getComponent().equals(modelo.getVistaVentas().checkBoxVentaSinClienteR)) {
             clienteNoRegistrado();
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnAceptar)) {
-            elementosInvisibles();
+            elementosVisibles();
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnConfirmarVenta)) {
-
+            confirmarVenta();
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnCancelarVenta)) {
+            elementosInvisibles();
         }
     }
 
@@ -92,6 +94,14 @@ public class ControladorVentas implements MouseListener, ActionListener {
             modelo.getVistaVentas().btnAgregar.setBackground(new Color(50, 95, 110));
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnEliminar)) {
             modelo.getVistaVentas().btnEliminar.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnAceptar)) {
+            modelo.getVistaVentas().btnAceptar.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnConfirmarVenta)) {
+            modelo.getVistaVentas().btnConfirmarVenta.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnCancelarVenta)) {
+            modelo.getVistaVentas().btnCancelarVenta.setBackground(new Color(50, 95, 110));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnHacerVenta)) {
+            modelo.getVistaVentas().btnHacerVenta.setBackground(new Color(50, 95, 110));
         }
     }
 
@@ -103,7 +113,16 @@ public class ControladorVentas implements MouseListener, ActionListener {
             modelo.getVistaVentas().btnAgregar.setBackground(new Color(75, 128, 146));
         } else if (e.getComponent().equals(modelo.getVistaVentas().btnEliminar)) {
             modelo.getVistaVentas().btnEliminar.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnAceptar)) {
+            modelo.getVistaVentas().btnAceptar.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnConfirmarVenta)) {
+            modelo.getVistaVentas().btnConfirmarVenta.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnCancelarVenta)) {
+            modelo.getVistaVentas().btnCancelarVenta.setBackground(new Color(75, 128, 146));
+        } else if (e.getComponent().equals(modelo.getVistaVentas().btnHacerVenta)) {
+            modelo.getVistaVentas().btnHacerVenta.setBackground(new Color(75, 128, 146));
         }
+
     }
 
     private void capturaDatosBuscarP() {
@@ -206,14 +225,14 @@ public class ControladorVentas implements MouseListener, ActionListener {
         modelo.getVistaVentas().checkBoxVentaSinClienteR.setVisible(true);
         modelo.getVistaVentas().labelNIT.setVisible(true);
         modelo.getVistaVentas().txtNITCliente.setVisible(true);
-        modelo.getVistaVentas().labelSubsidio.setVisible(true);
+//        modelo.getVistaVentas().labelSubsidio.setVisible(true);
         modelo.getVistaVentas().cmbSubsidio.setVisible(true);
 //        modelo.getVistaVentas().labelDescuentoSubsidio.setVisible(true);
 //        modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(true);
 //        modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(true);
 //        modelo.getVistaVentas().txtIdInsSubsidio.setVisible(true);
-//        modelo.getVistaVentas().labelObservaciones.setVisible(true);
-        modelo.getVistaVentas().txtArea.setVisible(true);
+        modelo.getVistaVentas().labelObservaciones.setVisible(true);
+        modelo.getVistaVentas().scrollPanel.setVisible(true);
         modelo.getVistaVentas().btnCancelarVenta.setVisible(true);
         modelo.getVistaVentas().btnConfirmarVenta.setVisible(true);
 
@@ -242,6 +261,11 @@ public class ControladorVentas implements MouseListener, ActionListener {
         modelo.getVistaVentas().txtArea.setVisible(false);
         modelo.getVistaVentas().btnCancelarVenta.setVisible(false);
         modelo.getVistaVentas().btnConfirmarVenta.setVisible(false);
+        modelo.getVistaVentas().labelSubtotal.setVisible(false);
+        modelo.getVistaVentas().labelTotal.setVisible(false);
+        modelo.getVistaVentas().txtSubTotal.setVisible(false);
+        modelo.getVistaVentas().txtTotal.setVisible(false);
+        modelo.getVistaVentas().btnHacerVenta.setVisible(false);
 
     }
 
@@ -251,27 +275,34 @@ public class ControladorVentas implements MouseListener, ActionListener {
         modelo.getVistaVentas().txtCantidad.setText("");
         modelo.getVistaVentas().txtDescuentoSubsidio.setText("");
         modelo.getVistaVentas().txtIdProducto.setText("");
-        modelo.getVistaVentas().cmbSubsidio.setSelectedIndex(0);
-        modelo.getVistaVentas().labelInstitucionSubsidio.setText("");
-        modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
-        modelo.getVistaVentas().labelDescuentoSubsidio.setText("");
-        modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
+//        modelo.getVistaVentas().cmbSubsidio.setSelectedIndex(0);
+//        modelo.getVistaVentas().labelInstitucionSubsidio.setText("");
+//        modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
+//        modelo.getVistaVentas().labelDescuentoSubsidio.setText("");
+//        modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
         modelo.getVistaVentas().txtPrecio.setText("");
         modelo.getVistaVentas().txtArea.setText("");
 
     }
+//Metodos para botón confirmar
 
     public void confirmarVenta() {
-        modelo.getVistaVentas().labelSubtotal.setVisible(true);
-        modelo.getVistaVentas().labelTotal.setVisible(true);
-        modelo.getVistaVentas().txtSubTotal.setVisible(true);
-        modelo.getVistaVentas().txtTotal.setVisible(true);
-        modelo.getVistaVentas().btnHacerVenta.setVisible(true);
+        if (modeloTablaVentas.getRowCount() == 0
+                || (!modelo.getVistaVentas().checkBoxVentaSinClienteR.isSelected()
+                && modelo.getVistaVentas().txtNITCliente.getText().isEmpty())) {
+            mostrarError("No se puede confirmar la venta, debe de llenar todos los campos");
+        } else {
+            modelo.getVistaVentas().labelSubtotal.setVisible(true);
+            modelo.getVistaVentas().labelTotal.setVisible(true);
+            modelo.getVistaVentas().txtSubTotal.setVisible(true);
+            modelo.getVistaVentas().txtTotal.setVisible(true);
+            modelo.getVistaVentas().btnHacerVenta.setVisible(true);
 
-        double totalSubCalculado = calcularSubtotal(modeloTablaVentas);
-        modelo.getVistaVentas().txtSubTotal.setText(String.valueOf(totalSubCalculado));
-        modelo.getVistaVentas().txtSubTotal.setText(String.valueOf(calcularTotal(totalSubCalculado)));
-        
+            double totalSubCalculado = calcularSubtotal(modeloTablaVentas);
+            modelo.getVistaVentas().txtSubTotal.setText(String.valueOf(totalSubCalculado));
+            modelo.getVistaVentas().txtTotal.setText(String.valueOf(calcularTotal(totalSubCalculado)));
+        }
+
     }
 
     private double calcularSubtotal(DefaultTableModel tabla) {
@@ -289,11 +320,11 @@ public class ControladorVentas implements MouseListener, ActionListener {
 
         return suma;
     }
-    
-    private double calcularTotal(double subtotal){
+
+    private double calcularTotal(double subtotal) {
         double descuento = 0;
         double calcularTotal = 0;
-        if(modelo.getVistaVentas().cmbSubsidio.getSelectedIndex() == 0){
+        if (modelo.getVistaVentas().cmbSubsidio.getSelectedIndex() == 0) {
             calcularTotal = subtotal - descuento;
         } else {
             descuento = Double.parseDouble(modelo.getVistaVentas().txtDescuentoSubsidio.getText());
@@ -381,8 +412,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
             modeloClientesVentas.setSubtotal(Double.parseDouble(modelo.getVistaVentas().txtSubTotal.getText()));
             modeloClientesVentas.setDescuento(Double.parseDouble(modelo.getVistaVentas().txtDescuentoSubsidio.getText()));
             modeloClientesVentas.setTotal(Double.parseDouble(modelo.getVistaVentas().txtTotal.getText()));
-            
-            
+
             //Crear y llenar al carrito Jtable
             List<ModeloDetalleVenta> carrito = new ArrayList<>();
             for (int i = 0; i < tablaVentas.getRowCount(); i++) {

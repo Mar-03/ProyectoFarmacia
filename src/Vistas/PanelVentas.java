@@ -38,9 +38,14 @@ public class PanelVentas extends javax.swing.JPanel {
         modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
         modelo.getVistaVentas().txtIdInsSubsidio.setVisible(false);
         modelo.getVistaVentas().labelObservaciones.setVisible(false);
-        modelo.getVistaVentas().txtArea.setVisible(false);
+        modelo.getVistaVentas().scrollPanel.setVisible(false);
         modelo.getVistaVentas().btnCancelarVenta.setVisible(false);
         modelo.getVistaVentas().btnConfirmarVenta.setVisible(false);
+        modelo.getVistaVentas().btnHacerVenta.setVisible(false);
+        modelo.getVistaVentas().labelTotal.setVisible(false);
+        modelo.getVistaVentas().labelSubtotal.setVisible(false);
+        modelo.getVistaVentas().txtTotal.setVisible(false);
+        modelo.getVistaVentas().txtSubTotal.setVisible(false);
         
     }
 
@@ -397,20 +402,28 @@ public class PanelVentas extends javax.swing.JPanel {
 
         fondoPanel.add(btnHacerVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, 90, 40));
 
+        labelSubtotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelSubtotal.setForeground(new java.awt.Color(255, 255, 255));
         labelSubtotal.setText("SubTotal");
         fondoPanel.add(labelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, -1, 20));
 
+        labelTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelTotal.setForeground(new java.awt.Color(255, 255, 255));
         labelTotal.setText("Total");
         fondoPanel.add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, -1));
 
         txtSubTotal.setBackground(new java.awt.Color(75, 128, 146));
+        txtSubTotal.setForeground(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtSubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 70, -1));
 
         txtTotal.setBackground(new java.awt.Color(75, 128, 146));
-        fondoPanel.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, -1, -1));
+        txtTotal.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, 70, -1));
 
         btnAceptar.setBackground(new java.awt.Color(75, 128, 146));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Aceptar");
 
@@ -429,6 +442,8 @@ public class PanelVentas extends javax.swing.JPanel {
 
         btnConfirmarVenta.setBackground(new java.awt.Color(75, 128, 146));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Confirmar Venta");
 
@@ -436,7 +451,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnConfirmarVenta.setLayout(btnConfirmarVentaLayout);
         btnConfirmarVentaLayout.setHorizontalGroup(
             btnConfirmarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         btnConfirmarVentaLayout.setVerticalGroup(
             btnConfirmarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,6 +462,8 @@ public class PanelVentas extends javax.swing.JPanel {
 
         btnCancelarVenta.setBackground(new java.awt.Color(75, 128, 146));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cancelar Venta");
 
         javax.swing.GroupLayout btnCancelarVentaLayout = new javax.swing.GroupLayout(btnCancelarVenta);
@@ -538,7 +555,7 @@ public class PanelVentas extends javax.swing.JPanel {
     public javax.swing.JLabel labelTipoPago;
     public javax.swing.JLabel labelTotal;
     private javax.swing.JLabel marcaAgua;
-    private javax.swing.JScrollPane scrollPanel;
+    public javax.swing.JScrollPane scrollPanel;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
     private javax.swing.JLabel titulo;
