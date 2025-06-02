@@ -4,27 +4,31 @@
  */
 package Implementacion;
 
+//import Modelo.ModeloRegistroCliente;
+//import Conector.DBConnection;
+//import Conector.SQL;
+//import Interfaces.IRegistroCliente;
 import Modelo.ModeloRegistroCliente.Cliente;
-
+//import controladores.ControladorClientes;
+//import java.sql.Timestamp;
 import java.sql.*;
-
-
+//import java.util.ArrayList;
+//import java.util.List;
+//import javax.swing.table.DefaultTableModel;
 import Interfaces.IRegistroCliente;
 //import Modelo.Cliente;
 import Conector.DBConnection;
 import Conector.SQL;
-
-
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import controladores.ControladorClientes;
 
 public class RegistroClienteImpl implements IRegistroCliente {
 
     private final DBConnection conexion;
     private final SQL sql;
 
-    public RegistroClienteImpl(DBConnection conexion, SQL sql) {
+//import java.sql.*;
         this.conexion = conexion;
         this.sql = sql;
     }
@@ -226,3 +230,4 @@ public class RegistroClienteImpl implements IRegistroCliente {
 
 //        return cliente;
 }
+    private final controladores.ControladorClientes controlador;

@@ -20,19 +20,27 @@ import java.awt.event.MouseListener;
 
 public class PanelClientes extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelClientes
-     */
-  public PanelClientes() {
-    initComponents();
-     
+    public PanelClientes() {
+        initComponents();
 
-   // ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
+        
+        // Crear las dependencias necesarias
+        DBConnection conexion = new DBConnection();
+        SQL sql = new SQL(); 
+
+//        IRegistroCliente registro = new RegistroClienteImpl();
+        ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
+        ControladorClientes controlador = new ControladorClientes(this, modelo);
+
+//        IRegistroCliente registro = new RegistroClienteImpl(conexion, null, sql);
+//        ControladorClientes controlador = new ControladorClientes(this, registro);
+    }
+//    PanelClientes panelClientes = new PanelClientes();
+//    ModeloRegistroCliente modelo = new ModeloRegistroCliente(this);
 //    
-  //ControladorClientes controlador = new ControladorClientes(this, modelo);
-   // setControlador(controlador);
-}
-
+//    ControladorClientes controlador = new ControladorClientes(this, modelo);
+//
+//    setControlador(controlador);
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -349,7 +357,7 @@ public class PanelClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void txtFechaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaRegistroActionPerformed
-       
+
     }//GEN-LAST:event_txtFechaRegistroActionPerformed
 
     private void txtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteActionPerformed

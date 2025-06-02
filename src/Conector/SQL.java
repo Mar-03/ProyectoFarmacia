@@ -21,7 +21,7 @@ public class SQL {
     private final String ACTUALIZAR_PRODUCTO = "UPDATE productos SET nombre_oficial = ?,descripcion = ?,codigo_barras = ?,requiere_receta = ?,activo = ?,WHERE id_producto = ?";
     private final String CONSULTA_PRODUCTO_CODIGO = "SELECT id_producto, nombre_oficial, descripcion, codigo_barras, requiere_receta, activo FROM productos WHERE codigo_barras = ?";
     private final String CONSULTA_AMBOS_NC = "";
-    
+
     // CONSULTA SOBRE LOTES
     private final String AGREGAR_LOTE
             = "INSERT INTO lotes (id_producto, numero_lote, fecha_vencimiento, fecha_fabricacion, "
@@ -70,23 +70,20 @@ public class SQL {
     }
 
 // COSULRA PARA CLIENTES USUSARIOS
-   
-  private final String INSERTAR_CLIENTE = 
-        "INSERT INTO clientes (nombre, apellido, telefono, direccion, identificacion, nit, tiene_subsidio, id_institucion_subsidio) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private final String INSERTAR_CLIENTE
+            = "INSERT INTO clientes (nombre, apellido, telefono, direccion, identificacion, nit, tiene_subsidio, id_institucion_subsidio) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    private final String ACTUALIZAR_CLIENTE = 
-        "UPDATE clientes SET nombre = ?, apellido = ?, telefono = ?, direccion = ?, identificacion = ?, nit = ?, tiene_subsidio = ?, id_institucion_subsidio = ?, activo = ? WHERE id_cliente = ?";
+    private final String ACTUALIZAR_CLIENTE
+            = "UPDATE clientes SET nombre = ?, apellido = ?, telefono = ?, direccion = ?, identificacion = ?, nit = ?, tiene_subsidio = ?, id_institucion_subsidio = ?, activo = ? WHERE id_cliente = ?";
 
-    private final String ELIMINAR_CLIENTE = 
-        "UPDATE clientes SET activo = FALSE WHERE id_cliente = ?";
+    private final String ELIMINAR_CLIENTE
+            = "UPDATE clientes SET activo = FALSE WHERE id_cliente = ?";
 
-    private final String LISTAR_CLIENTES = 
-        "SELECT * FROM clientes WHERE activo = TRUE";
+    private final String LISTAR_CLIENTES
+            = "SELECT * FROM clientes WHERE activo = TRUE";
 
-    private final String OBTENER_CLIENTE_POR_ID = 
-        "SELECT * FROM clientes WHERE id_cliente = ?";
-
-   
+    private final String OBTENER_CLIENTE_POR_ID
+            = "SELECT * FROM clientes WHERE id_cliente = ?";
 
     public String getCONSULTA_AMBOS_NC() {
         return CONSULTA_AMBOS_NC;
@@ -112,7 +109,6 @@ public class SQL {
         return OBTENER_CLIENTE_POR_ID;
     }
 
-
     //CONSULTA PARA LOS USUARIOS
     private final String AGREGAR_USUARIO = "INSERT INTO usuarios (nombre, apellido, telefono, email, usuario, contrasena, tipo_usuario, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -120,29 +116,29 @@ public class SQL {
     private final String HACER_VENTA = "INSERT INTO ventas (id_usuario,id_cliente,fecha, subtotal, descuento_subsidio, total, tipo_pago, con_subsidio, id_institucion_subsidio, observaciones) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?);";
     private final String INSERTAR_DETALLE_VENTA = "INSERT INTO detalle_ventas (id_venta, id_lote, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
     private final String ACTUALIZAR_STOCK = "UPDATE lotes SET cantidad_disponible = cantidad_disponible - ? WHERE id_lote = ?";
-    private final String BUSCAR_CLIENTE_NIT_IDENTIFICACION = "SELECT id_cliente, nombre, apellido, direccion, nit, identificacion," + "telefono, tiene_subsidio, id_institucion_subsidio" + "FROM clientes" +
-                                                             "WHERE (nit = ? OR identificacion = ?) AND activo = TRUE";
-    private final String BUSCAR_PRODUCTOS_NOMBRES = "SELECT p.id_producto, p.nombre_oficial, p.descripcion, " +
-                                      "p.codigo_barras, p.requiere_receta, p.activo, " +
-                                      "l.precio_venta AS precio, SUM(l.cantidad_disponible) AS cantidad_disponible " +
-                                      "FROM productos p " +
-                                      "LEFT JOIN nombres_alternativos na ON p.id_producto = na.id_producto " +
-                                      "LEFT JOIN lotes l ON p.id_producto = l.id_producto " +
-                                      "WHERE (p.nombre_oficial LIKE ? OR na.nombre_alternativo LIKE ?) " +
-                                      "AND l.activo = TRUE " +
-                                      "GROUP BY p.id_producto, p.nombre_oficial, p.descripcion, " +
-                                      "p.codigo_barras, p.requiere_receta, p.activo, l.precio_venta " +
-                                      "ORDER BY p.nombre_oficial";
-    
-    private final String BUSCAR_PRODUCTO_CODIGO = "SELECT p.id_producto, p.nombre_oficial, p.descripcion, " +
-                                     "p.codigo_barras, p.requiere_receta, p.activo, " +
-                                     "l.precio_venta AS precio, SUM(l.cantidad_disponible) AS cantidad_disponible " +
-                                     "FROM productos p " +
-                                     "LEFT JOIN lotes l ON p.id_producto = l.id_producto " +
-                                     "WHERE p.codigo_barras = ? " +
-                                     "AND l.activo = TRUE " +
-                                     "GROUP BY p.id_producto, p.nombre_oficial, p.descripcion, " +
-                                     "p.codigo_barras, p.requiere_receta, p.activo, l.precio_venta";
+    private final String BUSCAR_CLIENTE_NIT_IDENTIFICACION = "SELECT id_cliente, nombre, apellido, direccion, nit, identificacion," + "telefono, tiene_subsidio, id_institucion_subsidio" + "FROM clientes"
+            + "WHERE (nit = ? OR identificacion = ?) AND activo = TRUE";
+    private final String BUSCAR_PRODUCTOS_NOMBRES = "SELECT p.id_producto, p.nombre_oficial, p.descripcion, "
+            + "p.codigo_barras, p.requiere_receta, p.activo, "
+            + "l.precio_venta AS precio, SUM(l.cantidad_disponible) AS cantidad_disponible "
+            + "FROM productos p "
+            + "LEFT JOIN nombres_alternativos na ON p.id_producto = na.id_producto "
+            + "LEFT JOIN lotes l ON p.id_producto = l.id_producto "
+            + "WHERE (p.nombre_oficial LIKE ? OR na.nombre_alternativo LIKE ?) "
+            + "AND l.activo = TRUE "
+            + "GROUP BY p.id_producto, p.nombre_oficial, p.descripcion, "
+            + "p.codigo_barras, p.requiere_receta, p.activo, l.precio_venta "
+            + "ORDER BY p.nombre_oficial";
+
+    private final String BUSCAR_PRODUCTO_CODIGO = "SELECT p.id_producto, p.nombre_oficial, p.descripcion, "
+            + "p.codigo_barras, p.requiere_receta, p.activo, "
+            + "l.precio_venta AS precio, SUM(l.cantidad_disponible) AS cantidad_disponible "
+            + "FROM productos p "
+            + "LEFT JOIN lotes l ON p.id_producto = l.id_producto "
+            + "WHERE p.codigo_barras = ? "
+            + "AND l.activo = TRUE "
+            + "GROUP BY p.id_producto, p.nombre_oficial, p.descripcion, "
+            + "p.codigo_barras, p.requiere_receta, p.activo, l.precio_venta";
     private final String GENERAR_COMPROBANTE = "";
     private final String CONSULTAR_USUARIO = "";
 
@@ -178,7 +174,6 @@ public class SQL {
         return HACER_VENTA;
     }
 
-  
     public String getGENERAR_COMPROBANTE() {
         return GENERAR_COMPROBANTE;
     }
@@ -222,22 +217,21 @@ public class SQL {
     public String getBUSCAR_CLIENTE_NIT_IDENTIFICACION() {
         return BUSCAR_CLIENTE_NIT_IDENTIFICACION;
     }
-    
+
     // reportes sql 
-    
-     private final String OBTENER_VENTAS_DIA = 
-        "SELECT v.id_venta, DATE_FORMAT(v.fecha, '%d/%m/%Y %H:%i') AS fecha, " +
-        "CONCAT(c.nombre, ' ', c.apellido) AS cliente, v.subtotal, " +
-        "v.descuento_subsidio AS descuento, v.total, v.tipo_pago " +
-        "FROM ventas v " +
-        "JOIN clientes c ON v.id_cliente = c.id_cliente " +
-        "WHERE DATE(v.fecha) = CURDATE() " +
-        "ORDER BY v.fecha DESC";
-    
-    private final String INSERTAR_REPORTE = 
-        "INSERT INTO reportes (tipo_reporte, id_usuario_generador, " +
-        "parametros, nombre_archivo, ruta_archivo) " +
-        "VALUES (?, ?, ?, ?, ?)";
+    private final String OBTENER_VENTAS_DIA
+            = "SELECT v.id_venta, DATE_FORMAT(v.fecha, '%d/%m/%Y %H:%i') AS fecha, "
+            + "CONCAT(c.nombre, ' ', c.apellido) AS cliente, v.subtotal, "
+            + "v.descuento_subsidio AS descuento, v.total, v.tipo_pago "
+            + "FROM ventas v "
+            + "JOIN clientes c ON v.id_cliente = c.id_cliente "
+            + "WHERE DATE(v.fecha) = CURDATE() "
+            + "ORDER BY v.fecha DESC";
+
+    private final String INSERTAR_REPORTE
+            = "INSERT INTO reportes (tipo_reporte, id_usuario_generador, "
+            + "parametros, nombre_archivo, ruta_archivo) "
+            + "VALUES (?, ?, ?, ?, ?)";
 
     public String getOBTENER_VENTAS_DIA() {
         return OBTENER_VENTAS_DIA;

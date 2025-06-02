@@ -4,15 +4,10 @@
  */
 package controladores;
 
-
-
-
 import Interfaces.IRegistroCliente;
-import Modelo.ModeloRegistroCliente;
+//import Modelo.ModeloRegistroCliente;
 import Vistas.PanelClientes;
-
 import Modelo.ModeloRegistroCliente.Cliente;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
@@ -21,29 +16,27 @@ import javax.swing.table.DefaultTableModel;
 
 public class ControladorClientes implements MouseListener {
 
-        PanelClientes vista;
-    
-     ModeloRegistroCliente modelo;
-     
-     IRegistroCliente interfaz;
-     DefaultTableModel tableModel;
+//    PanelClientes vista;
+//    ModeloRegistroCliente modelo;
+//    IRegistroCliente interfaz;
+//    DefaultTableModel tableModel;
+    private final PanelClientes vista;
+    private final IRegistroCliente interfaz;
+    private final DefaultTableModel tableModel;
 
-   
-
-    
     public ControladorClientes(PanelClientes vista, IRegistroCliente modelo) {
-    this.vista = vista;
-    this.interfaz = modelo;
-    this.tableModel = (DefaultTableModel) vista.tblclientes.getModel();
-    
-    // Asignar listeners
-    this.vista.btnAgregar.addMouseListener(this);
-    this.vista.btnActualizar.addMouseListener(this);
-    this.vista.btnEliminar.addMouseListener(this);
-    this.vista.tblclientes.addMouseListener(this);
+        this.vista = vista;
+        this.interfaz = modelo;
+        this.tableModel = (DefaultTableModel) vista.tblclientes.getModel();
 
-    // Cargar datos al iniciar
-    cargarClientes();
+        // Asignar listeners
+        this.vista.btnAgregar.addMouseListener(this);
+        this.vista.btnActualizar.addMouseListener(this);
+        this.vista.btnEliminar.addMouseListener(this);
+        this.vista.tblclientes.addMouseListener(this);
+
+        // Cargar datos al iniciar
+        cargarClientes();
     }
 
     @Override
@@ -184,11 +177,18 @@ public class ControladorClientes implements MouseListener {
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) {
+    }
+
     @Override
-    public void mouseReleased(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {
+    }
+
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {
+    }
+
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {
+    }
 }

@@ -54,17 +54,17 @@ public class DBConnection {
         }
         return ps;
     }
-    
-    public PreparedStatement preparar(String sql, boolean retornarId) throws SQLException{
-        if(this.link == null || this.link.isClosed()){
+
+    public PreparedStatement preparar(String sql, boolean retornarId) throws SQLException {
+        if (this.link == null || this.link.isClosed()) {
             throw new SQLException("Conexión no establecida");
         }
         return retornarId
                 ? this.link.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
                 : this.link.prepareStatement(sql);
     }
-    
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         return this.link;
     }
     public Connection getConexion() {
