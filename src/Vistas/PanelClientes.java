@@ -182,18 +182,15 @@ public class PanelClientes extends javax.swing.JPanel {
 
         tblclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tblRegistroClientes.setViewportView(tblclientes);
 
-        fondoPanel.add(tblRegistroClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 370, 260));
+        fondoPanel.add(tblRegistroClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 440, 260));
 
         btnSalir.setBackground(new java.awt.Color(75, 128, 146));
         btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -336,19 +333,23 @@ public class PanelClientes extends javax.swing.JPanel {
         txtActivo.setForeground(new java.awt.Color(255, 255, 255));
         txtActivo.setCaretColor(new java.awt.Color(255, 255, 255));
         fondoPanel.add(txtActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 140, -1));
-
-        Subsidio.setText("jCheckBox1");
         fondoPanel.add(Subsidio, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 150, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(150, 150, 150))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -398,7 +399,7 @@ public class PanelClientes extends javax.swing.JPanel {
     public javax.swing.JTextField txtApellidoCliente;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtFechaRegistro;
-    private javax.swing.JTextField txtIdCliente;
+    public javax.swing.JTextField txtIdCliente;
     public javax.swing.JTextField txtIdentificacion;
     public javax.swing.JTextField txtInsSubsidio;
     public javax.swing.JTextField txtNIT;
@@ -411,5 +412,9 @@ public class PanelClientes extends javax.swing.JPanel {
         btnActualizar.addMouseListener(controlador);
         btnEliminar.addMouseListener(controlador);
         tblclientes.addMouseListener(controlador);
+    }
+
+    public Object agregar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

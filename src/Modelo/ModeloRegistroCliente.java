@@ -37,6 +37,10 @@ public class ModeloRegistroCliente {
         return implementacion.insertarCliente(cliente);
     }
 
+    public Object getVistaClientes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public static class Cliente {
         private int idCliente;
         private String nombre;

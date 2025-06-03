@@ -4,10 +4,13 @@
  */
 package controladores;
 
+import Implementacion.RegistroClienteImpl;
 import Interfaces.IRegistroCliente;
+import Modelo.ModeloRegistroCliente;
 //import Modelo.ModeloRegistroCliente;
 import Vistas.PanelClientes;
 import Modelo.ModeloRegistroCliente.Cliente;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
@@ -15,6 +18,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ControladorClientes implements MouseListener {
+    
+    ModeloRegistroCliente modelo;
+    
+    RegistroClienteImpl implementacion = new RegistroClienteImpl();
 
 //    PanelClientes vista;
 //    ModeloRegistroCliente modelo;
@@ -53,14 +60,36 @@ public class ControladorClientes implements MouseListener {
     }
 
     private void agregarCliente() {
-        Cliente cliente = obtenerClienteDesdeFormulario();
-        if (cliente != null && interfaz.insertarCliente(cliente)) {
-            JOptionPane.showMessageDialog(vista, "Cliente agregado exitosamente");
-            limpiarFormulario();
-            cargarClientes();
-        } else {
-            JOptionPane.showMessageDialog(vista, "Error al agregar cliente", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+     
+       // Cliente cliente = obtenerClienteDesdeFormulario();
+      //  if (cliente != null && interfaz.insertarCliente(cliente)) {
+       //     JOptionPane.showMessageDialog(vista, "Cliente agregado exitosamente");
+          //  limpiarFormulario();
+           // cargarClientes();
+       // } else {
+       //     JOptionPane.showMessageDialog(vista, "Error al agregar cliente", "Error", JOptionPane.ERROR_MESSAGE);
+        //}
+        
+    System.out.println("Botón presionado");
+
+    Cliente cliente = obtenerClienteDesdeFormulario();
+    if (cliente == null) {
+        System.out.println("Cliente nulo. Revisa obtenerClienteDesdeFormulario().");
+        JOptionPane.showMessageDialog(vista, "Datos inválidos del formulario", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    boolean guardado = interfaz.insertarCliente(cliente);
+    System.out.println("Resultado de insertarCliente: " + guardado);
+
+    if (guardado) {
+        JOptionPane.showMessageDialog(vista, "Cliente agregado exitosamente");
+        limpiarFormulario();
+        cargarClientes();
+    } else {
+        JOptionPane.showMessageDialog(vista, "Error al agregar cliente", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+        
     }
 
     private void actualizarCliente() {
@@ -175,6 +204,18 @@ public class ControladorClientes implements MouseListener {
 
         return cliente;
     }
+    
+    public boolean validarClienteActivo (String clienteActivo){
+        
+        boolean estaActivo = true;
+        
+        if (clienteActivo.equals("SI")){
+        }else{
+            estaActivo = false;
+        }
+        return estaActivo;
+    
+    }
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -186,9 +227,18 @@ public class ControladorClientes implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+         if (e.getSource() == vista.btnAgregar) {
+            vista.btnAgregar.setBackground(new Color(50,95,110));
+        } else if (e.getSource() == vista.btnActualizar) {
+            vista.btnActualizar.setBackground(new Color(50,95,110));
+        } else if (e.getSource() == vista.btnEliminar) {
+            vista.btnEliminar.setBackground(new Color(50,95,110));
+        }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
     }
+    
+  
 }

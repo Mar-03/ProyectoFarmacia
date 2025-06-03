@@ -32,6 +32,10 @@ public class RegistroClienteImpl implements IRegistroCliente {
         this.conexion = conexion;
         this.sql = sql;
     }
+
+    public RegistroClienteImpl() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
         
    
 //import java.sql.*;
