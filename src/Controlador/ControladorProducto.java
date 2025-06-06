@@ -22,7 +22,9 @@ public class ControladorProducto implements MouseListener {
         if (e.getComponent().equals(modelo.getVistaProducto().btnBuscar)) {
             inputIsEmptyBuscarP();
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnAgregar)) {
-            inputIsEmptyAgregarP();
+           if( inputIsEmptyAgregarP()){
+           capturaDeDatosAgregarP();
+           }
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnActualizar)) {
             actualizarProducto();
         } else if (e.getComponent().equals(modelo.getVistaProducto().btnEliminar)) {
@@ -64,16 +66,15 @@ public class ControladorProducto implements MouseListener {
         }
     }
 
-    public void inputIsEmptyAgregarP() {
+    public boolean inputIsEmptyAgregarP() {
         if (modelo.getVistaProducto().txtNombreProducto.getText().isEmpty()
                 || modelo.getVistaProducto().txtCodigoBarras.getText().isEmpty()
                 || modelo.getVistaProducto().boxActivo.getSelectedItem() == null
                 || modelo.getVistaProducto().boxReceta.getSelectedItem() == null
                 || modelo.getVistaProducto().txtDescripcion.getText().isEmpty()) {
             JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ERROR \"DATOS VACIOS\"", JOptionPane.ERROR_MESSAGE);
-        } else {
-            capturaDeDatosAgregarP();
-        }
+        return false;
+        } return true;
     }
 
     public void inputIsEmptyBuscarP() {

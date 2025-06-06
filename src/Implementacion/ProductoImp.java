@@ -165,7 +165,9 @@ public class ProductoImp implements IProducto {
 
             LocalDate vencimiento = LocalDate.parse(modelo.getFechaVencimiento(), formatter);
             LocalDate fabricación = LocalDate.parse(modelo.getFechaFabricación(), formatter);
-
+            if(vencimiento.isBefore(fabricación)){
+            JOptionPane.showMessageDialog(null, "Error, la fecha de vencimiento no puede ser "
+                    + "menor a la fecha de Fabricacion");}
             ps.setInt(1, idProducto);
             ps.setString(2, modelo.getNumeroLote());
             ps.setDate(3, Date.valueOf(vencimiento));
