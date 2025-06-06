@@ -117,7 +117,19 @@ public class ControladorProducto implements MouseListener {
         String cantidad = modelo.getVistaProducto().txtCantidad.getText();
         BigDecimal precioCompra = new BigDecimal(modelo.getVistaProducto().txtPrecioCompra.getText());
         BigDecimal precioVenta = new BigDecimal(modelo.getVistaProducto().txtPrecioVenta.getText());
-
+            if (!fechaFabricacion.isEmpty() && !fechaVencimiento.isEmpty()) {
+        try {
+            java.time.LocalDate fechaFab = java.time.LocalDate.parse(fechaFabricacion);
+            java.time.LocalDate fechaVen = java.time.LocalDate.parse(fechaVencimiento);
+            if (fechaVen.isBefore(fechaFab)) {
+                JOptionPane.showInternalMessageDialog(null, "La fecha de vencimiento no puede ser menor que la de fabricación", "ERROR DE FECHAS", JOptionPane.ERROR_MESSAGE);
+                return; 
+            }
+        } catch (java.time.format.DateTimeParseException ex) {
+            JOptionPane.showInternalMessageDialog(null, "Formato de fecha incorrecto. Usa el formato yyyy-MM-dd", "ERROR DE FORMATO", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }
         registrarProducto(nombreIngresado, descripcionIngresada, codigoIngresado, receta, activo, numeroLote, fechaVencimiento, fechaFabricacion, cantidad, precioCompra, precioVenta, nombreAlternativo);
 
     }
