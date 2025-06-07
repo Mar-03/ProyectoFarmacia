@@ -1,3 +1,4 @@
+
 package Implementacion;
 
 import Conector.DBConnection;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author jhosu
  */
+
 public class ProductoImp implements IProducto {
 
     DBConnection conector = new DBConnection();
@@ -179,6 +181,35 @@ public class ProductoImp implements IProducto {
         }
 
     }
+    
+//    //Validación para nombre duplicado
+//    public static boolean existeNombreProducto(String nombreOficial) {
+//        Connection con = DBConnection.conectar();
+//        String sql = "SELECT COUNT(*) FROM productos WHERE nombre_oficial = ?";
+//        try (PreparedStatement ps = con.prepareStatement(sql)) {
+//            ps.setString(1, nombreOficial);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) return rs.getInt(1) > 0;
+//        } catch (SQLException e) {
+//            System.out.println("Error en existeNombreProducto: " + e.getMessage());
+//        }
+//        return false;
+//    }
+//
+//    //Validación para código de barras duplicado
+//    public static boolean existeCodigoBarras(String codigo) {
+//        Connection con = DBConnection.conectar();
+//        String sql = "SELECT COUNT(*) FROM productos WHERE codigo_barras = ?";
+//        try (PreparedStatement ps = con.prepareStatement(sql)) {
+//            ps.setString(1, codigo);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) return rs.getInt(1) > 0;
+//        } catch (SQLException e) {
+//            System.out.println("Error en existeCodigoBarras: " + e.getMessage());
+//        }
+//        return false;
+//    }
+
 
     @Override
     public boolean guardarNombreAlternativo(ModeloProducto modelo, int idProducto, Connection conn) throws SQLException {
